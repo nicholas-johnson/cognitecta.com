@@ -6,15 +6,14 @@ interface Props {
 }
 
 const { caption = 'How the products differ' } = Astro.props;
-const keys = ['platform', 'stack', 'wargame'] as const;
 ---
 
 <section>
   <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
   <div class="overflow-x-auto border border-hairline bg-paper">
-    <table class="hidden w-full min-w-[44rem] border-collapse text-left md:table">
+    <table class="hidden w-full min-w-[56rem] border-collapse text-left lg:table">
       <caption class="sr-only">
-        Comparison of Platform, Stack and Wargame by purpose, input, process, output and typical users
+        Comparison of Platform, Stack, Wargame and Funnel by purpose, input, process, output and human role
       </caption>
       <thead>
         <tr class="border-b border-hairline">
@@ -48,8 +47,10 @@ const keys = ['platform', 'stack', 'wargame'] as const;
               >
                 {row.label}
               </th>
-              {keys.map((key) => (
-                <td class="px-5 py-5 align-top text-[0.98rem] leading-relaxed text-ink">{row[key]}</td>
+              {products.map((product) => (
+                <td class="px-5 py-5 align-top text-[0.98rem] leading-relaxed text-ink">
+                  {row[product.slug]}
+                </td>
               ))}
             </tr>
           ))
@@ -58,7 +59,7 @@ const keys = ['platform', 'stack', 'wargame'] as const;
     </table>
   </div>
 
-  <div class="grid gap-0 border border-hairline md:hidden">
+  <div class="grid gap-0 border border-hairline lg:hidden">
     {
       products.map((product, index) => (
         <article

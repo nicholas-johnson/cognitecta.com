@@ -1,0 +1,442 @@
+---
+import type { Product } from '../../../data/products';
+import {
+  funnelIcp,
+  funnelSignals,
+  funnelAgents,
+  funnelOffers,
+  funnelExample,
+  funnelResponses,
+  funnelFollowUp,
+} from '../../../data/products';
+import CapabilityGrid from '../CapabilityGrid.astro';
+import UseCases from '../UseCases.astro';
+import Limits from '../Limits.astro';
+import ProcessFlow from '../ProcessFlow.astro';
+import GridFrame from '../../diagrams/GridFrame.astro';
+import FunnelFiltration from '../diagrams/FunnelFiltration.astro';
+import FunnelEquation from '../diagrams/FunnelEquation.astro';
+import FunnelScoring from '../diagrams/FunnelScoring.astro';
+import FunnelApproval from '../diagrams/FunnelApproval.astro';
+import FunnelDashboard from '../diagrams/FunnelDashboard.astro';
+import FunnelLearning from '../diagrams/FunnelLearning.astro';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+const conventional = [
+  'Buy a list',
+  'Filter by job title',
+  'Generate a generic personalised email',
+  'Send at enormous volume',
+  'Hope somebody responds',
+];
+
+const funnelSteps = [
+  'Define the organisations you actually want to work with',
+  'Continuously discover potential customers',
+  'Research each organisation',
+  'Look for evidence of a genuine current need',
+  'Identify the people most relevant to that need',
+  'Determine which proposition is most appropriate',
+  'Explain why this prospect is worth contacting',
+  'Draft an evidence-based approach',
+  'Ask a human to approve it',
+  'Manage appropriate follow-up',
+  'Learn from outcomes',
+];
+---
+
+<section class="mt-20 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">The problem</p>
+  <div class="max-w-2xl space-y-5 text-[1.05rem] leading-relaxed text-muted">
+    <p>
+      Most prospecting starts with a list. Companies buy databases containing thousands of organisations and contacts. Sales teams then attempt to determine which companies actually matter, which have a current need, what is happening inside each organisation, who owns the problem, what proposition might resonate, and why now is the right time to make contact.
+    </p>
+    <p>
+      The expensive part of good prospecting is not sending an email. It is understanding who is worth contacting, and why. Funnel automates that research process.
+    </p>
+    {product.overview.slice(1).map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+</section>
+
+<section class="mt-20 grid gap-10 lg:grid-cols-2">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Conventional outbound</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">How many people can we contact?</h2>
+    <ol class="mt-6 border-t border-hairline">
+      {
+        conventional.map((item, index) => (
+          <li class="grid grid-cols-[3.5rem_1fr] border-b border-hairline py-4">
+            <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <p class="text-[1.02rem] tracking-tight">{item}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Funnel</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Which people do we actually have a good reason to contact?
+    </h2>
+    <ol class="mt-6 border-t border-hairline">
+      {
+        funnelSteps.map((item, index) => (
+          <li class="grid grid-cols-[3.5rem_1fr] border-b border-hairline py-4">
+            <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <p class="text-[1.02rem] tracking-tight">{item}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<p class="mt-12 max-w-2xl text-[1.25rem] leading-snug font-medium tracking-tight">
+  Better research. Fewer messages. Better conversations.
+</p>
+
+<section id="how-it-works" class="mt-20 scroll-mt-10">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">The workflow</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Automate the research, not the relationship.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Funnel does the research so your people can concentrate on the conversation. Discovery, qualification and drafting are agentic. Contact remains a human decision.
+    </p>
+  </div>
+  <ProcessFlow steps={product.process} caption="Figure · From ICP to learning" compact />
+</section>
+
+<div class="mt-16">
+  <FunnelFiltration />
+</div>
+
+<section class="mt-24 max-w-2xl">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Ideal customer profile</p>
+  <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+    Tell Funnel what a good customer looks like.
+  </h2>
+  <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+    Funnel starts with an Ideal Customer Profile. That profile is a starting point, not a finished lead list. Matching the filters is not enough. The next step is investigation.
+  </p>
+</section>
+<ul class="mt-8 flex flex-wrap gap-2">
+  {
+    funnelIcp.map((item) => (
+      <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+        {item}
+      </li>
+    ))
+  }
+</ul>
+
+<section class="mt-24 grid gap-10 lg:grid-cols-2">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Discovery</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Find the signal before you send the message.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Funnel can continuously discover organisations matching the ICP. It can work across configured public, licensed and customer-connected data sources. We do not publish a vendor integration list the implementation does not yet warrant.
+    </p>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      The specific signals depend on the customer’s proposition. Growth, recruitment, a new office, funding, a product launch or a published technical problem are useful only where they imply a need you can actually serve.
+    </p>
+  </div>
+  <div>
+    <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Possible discovery signals</p>
+    <ul class="flex flex-wrap gap-2">
+      {
+        funnelSignals.map((item) => (
+          <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Signal detection</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Look for a reason to make contact.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Finding a company that matches an ICP is not enough. Funnel investigates whether there is evidence that something is happening now that makes the organisation more likely to need the customer’s proposition.
+    </p>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      A company recruiting multiple AI engineers may need engineering training. An announced internal AI programme may need architecture. A growing data platform may need analytical technology. A newly appointed executive may be reviewing suppliers. The signal has to match the offer.
+    </p>
+  </div>
+  <FunnelEquation />
+</section>
+
+<section class="mt-24">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Research agents</p>
+  <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+    Specialist investigation, not one prompt over a website.
+  </h2>
+  <p class="mt-4 max-w-2xl text-[1.02rem] leading-relaxed text-muted">
+    Funnel is easiest to understand as a set of specialist investigations. These are a way of explaining the agentic architecture. They are not a claim that every deployment exposes these roles as named services.
+  </p>
+  <ol class="mt-10 grid grid-cols-1 border-t border-hairline sm:grid-cols-2 lg:grid-cols-4">
+    {
+      funnelAgents.map((item, index) => (
+        <li
+          class:list={[
+            'border-b border-hairline py-6',
+            index % 2 === 0 ? 'sm:border-r sm:pr-6' : 'sm:pl-6',
+            index % 4 !== 3 && 'lg:border-r lg:pr-6',
+            index % 4 !== 0 && 'lg:pl-6',
+          ]}
+        >
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</span>
+          <h3 class="mt-3 text-[1.02rem] font-medium tracking-tight">{item.title}</h3>
+          <p class="mt-3 max-w-xs text-[0.95rem] leading-relaxed text-muted">{item.body}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<section class="mt-24">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Evidence</p>
+  <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+    Every recommendation should have a reason.
+  </h2>
+  <p class="mt-4 max-w-2xl text-[1.02rem] leading-relaxed text-muted">
+    A Funnel opportunity should not simply say that a company looks like a good prospect. It should say why now, what the likely need is, which proposition fits, who to speak to, and what evidence supports that reading. Humans should be able to verify the recommendation.
+  </p>
+  <p class="mt-3 font-mono text-[11px] tracking-[0.12em] text-muted">{funnelExample.label}</p>
+  <GridFrame class="mt-8 bg-paper p-6 md:p-8">
+    <div class="flex flex-wrap items-baseline justify-between gap-4">
+      <h3 class="text-[1.25rem] font-medium tracking-tight">{funnelExample.company}</h3>
+      <p class="font-mono text-[11px] tracking-[0.14em] text-cobalt">
+        Opportunity score {funnelExample.score}
+      </p>
+    </div>
+    <dl class="mt-8 grid gap-8 md:grid-cols-2">
+      <div>
+        <dt class="font-mono text-[11px] tracking-[0.16em] text-cobalt">Why now</dt>
+        <dd class="mt-3 text-[1.02rem] leading-relaxed text-muted">{funnelExample.whyNow}</dd>
+      </div>
+      <div>
+        <dt class="font-mono text-[11px] tracking-[0.16em] text-cobalt">Likely need</dt>
+        <dd class="mt-3 text-[1.02rem] leading-relaxed text-muted">{funnelExample.need}</dd>
+      </div>
+      <div>
+        <dt class="font-mono text-[11px] tracking-[0.16em] text-cobalt">Relevant proposition</dt>
+        <dd class="mt-3 text-[1.02rem] leading-relaxed">{funnelExample.proposition}</dd>
+      </div>
+      <div>
+        <dt class="font-mono text-[11px] tracking-[0.16em] text-cobalt">Recommended buyer</dt>
+        <dd class="mt-3 text-[1.02rem] leading-relaxed">{funnelExample.buyer}</dd>
+      </div>
+    </dl>
+    <p class="mt-8 font-mono text-[11px] tracking-[0.16em] text-muted">Evidence</p>
+    <ul class="mt-3 space-y-2">
+      {
+        funnelExample.evidence.map((item) => (
+          <li class="text-[0.98rem] leading-relaxed text-muted">{item}</li>
+        ))
+      }
+    </ul>
+  </GridFrame>
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Opportunity scoring</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Rank what is worth a person’s time.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Funnel can rank prospects across several dimensions. The score is a prioritisation mechanism based on configured criteria and available evidence. It is not an objective probability of purchase.
+    </p>
+  </div>
+  <FunnelScoring />
+</section>
+
+<section class="mt-24">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Offer matching</p>
+  <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+    Don’t sell everyone the same thing.
+  </h2>
+  <p class="mt-4 max-w-2xl text-[1.02rem] leading-relaxed text-muted">
+    Funnel can understand a customer’s product and service catalogue. When it identifies an opportunity, it determines which proposition appears most relevant. Cognitecta uses the same logic on its own pipeline.
+  </p>
+  <ol class="mt-10 border-t border-hairline">
+    {
+      funnelOffers.map((item, index) => (
+        <li class="grid gap-2 border-b border-hairline py-5 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-baseline md:gap-8">
+          <p class="text-[1.02rem] tracking-tight">{item.signal}</p>
+          <p class="font-mono text-[11px] tracking-[0.16em] text-cobalt">
+            {String(index + 1).padStart(2, '0')}
+          </p>
+          <p class="text-[1.02rem] tracking-tight text-muted">{item.offer}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<section class="mt-24 grid gap-10 lg:grid-cols-2">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Personalised outreach</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Personalisation should mean understanding the prospect.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Conventional AI email tools often personalise the surface: a first name, a title, a company. Funnel prepares outreach from the observed signal, the organisational context, the likely need, the relevant proposition and the evidence. The result should be concise. Enormous generated sales letters are not the point.
+    </p>
+  </div>
+  <GridFrame class="bg-paper p-6 md:p-8">
+    <p class="font-mono text-[11px] tracking-[0.14em] text-muted">{funnelExample.label}</p>
+    <p class="mt-6 font-mono text-[11px] tracking-[0.16em] text-cobalt">Why contact</p>
+    <p class="mt-2 text-[0.98rem] leading-relaxed text-muted">{funnelExample.whyNow}</p>
+    <p class="mt-6 font-mono text-[11px] tracking-[0.16em] text-cobalt">Suggested approach</p>
+    <p class="mt-2 text-[0.98rem] leading-relaxed text-muted">{funnelExample.approach}</p>
+    <p class="mt-6 font-mono text-[11px] tracking-[0.16em] text-cobalt">Draft</p>
+    <p class="mt-2 text-[0.98rem] leading-relaxed text-ink">{funnelExample.draft}</p>
+  </GridFrame>
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Human approval</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Automation up to the human moment.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Funnel should automate discovery, research, qualification, prioritisation, proposition matching, drafting and follow-up administration. Humans remain responsible for high-value relationship decisions: approve, edit, or skip.
+    </p>
+  </div>
+  <FunnelApproval />
+</section>
+
+<section class="mt-24 grid gap-10 lg:grid-cols-2">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Follow-up</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Controlled, not chased.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Approved opportunities can enter a follow-up process that is restrained by design: schedule the next step, stop when someone replies, recognise an out-of-office, suppress a decline, and treat “not now” as a later reminder rather than a failure.
+    </p>
+    <ul class="mt-6 space-y-2">
+      {
+        funnelFollowUp.map((item) => (
+          <li class="text-[0.98rem] leading-relaxed text-muted">{item}</li>
+        ))
+      }
+    </ul>
+  </div>
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Response intelligence</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Classify the outcome. Decide the next action.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      These workflows should be configurable. The categories are a starting model, not a fixed script.
+    </p>
+    <ol class="mt-6 border-t border-hairline">
+      {
+        funnelResponses.map((item) => (
+          <li class="grid grid-cols-[3.5rem_1fr] gap-4 border-b border-hairline py-4">
+            <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</span>
+            <div>
+              <p class="font-medium tracking-tight">{item.title}</p>
+              <p class="mt-1 text-[0.95rem] leading-relaxed text-muted">{item.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Learning loop</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Learn what actually creates conversations.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Funnel should be able to analyse its own outcomes: which signals correlate with replies, which industries respond, which propositions generate meetings, which roles are effective entry points, which messages fail. That is analytics and feedback that can improve configuration and prioritisation — not a claim that the system rewrites itself.
+    </p>
+  </div>
+  <FunnelLearning />
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Dashboard</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      A sales intelligence view, not a scoreboard.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      The useful view is what was researched, which signals appeared, which opportunities are waiting for a person, and why Funnel selected them. Inspect the evidence. Do not treat volume as the achievement.
+    </p>
+  </div>
+  <FunnelDashboard />
+</section>
+
+<section class="mt-24 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Built to run our own pipeline</p>
+  <div class="max-w-2xl space-y-5 text-[1.05rem] leading-relaxed text-muted">
+    <p class="text-[1.25rem] leading-snug font-medium tracking-tight text-ink">
+      We built Funnel for a problem we have ourselves: finding the small number of organisations where there is a genuine reason to start a conversation.
+    </p>
+    <p>
+      Cognitecta uses Funnel to research its own market, identify organisations investing in AI and surface opportunities for training, consulting and product deployment. It can look for companies hiring AI engineers, launching AI initiatives, investing in RAG or agents, or expanding data infrastructure — then match those opportunities to Training, Consulting, Build, Platform, Stack or Wargame.
+    </p>
+    <p>
+      That is an internal use, not a published performance claim. We do not invent meetings, conversion rates or revenue attributed to Funnel.
+    </p>
+  </div>
+</section>
+
+<section class="mt-24 grid gap-10 lg:grid-cols-2">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Relationship with Platform</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      A specialised workflow on agentic foundations.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Funnel applies Cognitecta’s agentic technology to one specific workflow: finding and qualifying B2B opportunities. Platform is the general-purpose agentic foundation. Funnel is a product focused on sales intelligence. That is a statement of family, not a claim about a particular shared runtime in every deployment.
+    </p>
+  </div>
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Responsible outreach</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Controlled B2B prospecting.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Funnel is designed to support responsible B2B outreach workflows, with human approval, evidence retention and suppression controls forming part of the operating model. Appropriate business contact data, opt-out handling, configurable approval, data governance and auditability belong in that model. We do not make blanket GDPR, PECR or certification claims here.
+    </p>
+  </div>
+</section>
+
+<div class="mt-20">
+  <CapabilityGrid items={product.capabilities} />
+</div>
+
+<div class="mt-24">
+  <UseCases items={product.useCases} title="Where research changes who you contact." />
+</div>
+
+<div class="mt-20">
+  <Limits items={product.limits} title="Research at scale. Judgement stays human." />
+</div>

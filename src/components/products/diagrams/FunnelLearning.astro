@@ -1,0 +1,32 @@
+---
+import { funnelLearning } from '../../../data/products';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Outcomes feed the next configuration' } = Astro.props;
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <ol class="flex flex-col border border-hairline bg-paper md:flex-row">
+    {
+      funnelLearning.map((step, index) => (
+        <li
+          class:list={[
+            'relative flex flex-1 flex-col px-4 py-5',
+            index < funnelLearning.length - 1 && 'border-b border-hairline md:border-r md:border-b-0',
+            index === funnelLearning.length - 1 && 'bg-cobalt/5',
+          ]}
+        >
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{step.id}</span>
+          <p class="mt-6 text-[1rem] font-medium tracking-tight">{step.title}</p>
+        </li>
+      ))
+    }
+  </ol>
+  <figcaption class="sr-only">
+    Discovery, outreach, response, opportunity and outcome feed a learning step that can improve later configuration.
+  </figcaption>
+</figure>

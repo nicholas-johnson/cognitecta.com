@@ -44,20 +44,20 @@ const isHome = path === '/';
                   {item.label}
                 </a>
                 {isProducts && (
-                  <ul class="nav-products__menu absolute top-full left-0 z-20 hidden w-48 flex-col border border-hairline bg-paper">
+                  <ul class="nav-products__menu absolute top-full left-0 z-20 hidden w-[22rem] grid-cols-2 border border-hairline bg-paper">
                     {products.map((product) => (
-                      <li class="border-b border-hairline last:border-b-0">
+                      <li class="border-hairline border-b even:border-l">
                         <a
                           href={productHref(product.slug)}
                           class:list={[
-                            'block px-4 py-2.5 font-mono text-[11px] tracking-[0.14em] no-underline',
+                            'block px-4 py-3 font-mono text-[11px] tracking-[0.14em] no-underline',
                             isActivePath(path, productHref(product.slug))
                               ? 'text-cobalt'
                               : 'text-ink hover:text-cobalt',
                           ]}
                         >
                           {product.name}
-                          <span class="mt-0.5 block tracking-[0.1em] text-muted">
+                          <span class="mt-1 block tracking-[0.1em] text-muted">
                             {product.verb}
                           </span>
                         </a>
@@ -78,7 +78,7 @@ const isHome = path === '/';
   @media (min-width: 1024px) {
     .nav-products:hover .nav-products__menu,
     .nav-products:focus-within .nav-products__menu {
-      display: flex;
+      display: grid;
     }
 
     .nav-products__menu::before {

@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { steps, caption, compact = false } = Astro.props;
-const columns = steps.length === 8 ? 4 : steps.length > 6 ? 3 : 0;
+const columns = steps.length % 4 === 0 && steps.length >= 8 ? 4 : steps.length > 6 ? 3 : 0;
 ---
 
 <div>

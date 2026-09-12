@@ -1,4 +1,4 @@
-export type ProductSlug = 'platform' | 'stack' | 'wargame';
+export type ProductSlug = 'platform' | 'stack' | 'wargame' | 'funnel';
 
 export interface ProductLink {
   label: string;
@@ -50,47 +50,52 @@ export interface Product {
 
 export const productFamily = {
   kicker: 'Cognitecta Products',
-  headline: 'Agentic systems for operations, analysis and strategy.',
+  headline: 'Applied AI, packaged.',
   support:
-    'Cognitecta products apply autonomous and semi-autonomous AI to three different classes of organisational problem: doing work, understanding evidence and reasoning about what happens next.',
-  model: 'Act. Understand. Decide.',
+    'Cognitecta products apply agentic AI to operational work, analytical investigation, strategic simulation and business development.',
+  model: 'Act. Understand. Decide. Discover.',
 } as const;
 
 export const comparison = [
   {
     id: 'purpose',
-    label: 'Primary purpose',
-    platform: 'Execute work',
-    stack: 'Investigate data',
-    wargame: 'Explore strategy',
+    label: 'Purpose',
+    platform: 'Execute organisational work',
+    stack: 'Investigate organisational data',
+    wargame: 'Explore strategic outcomes',
+    funnel: 'Find and qualify potential customers',
   },
   {
     id: 'input',
     label: 'Input',
-    platform: 'Requests, events, workflows',
-    stack: 'Open-ended analytical questions and data',
-    wargame: 'Strategic problem and actor model',
+    platform: 'Requests, events, knowledge and workflows',
+    stack: 'Data and an open-ended question',
+    wargame: 'Strategic problem and actor assumptions',
+    funnel: 'ICP and market or company information',
   },
   {
     id: 'process',
-    label: 'Core process',
-    platform: 'Agents, tools and knowledge',
+    label: 'Agentic process',
+    platform: 'Orchestration, tools and workflows',
     stack: 'Hypothesis generation and testing',
-    wargame: 'Actor simulation and Monte Carlo',
+    wargame: 'Actor modelling and simulation',
+    funnel: 'Discovery, research and qualification',
   },
   {
     id: 'output',
     label: 'Output',
-    platform: 'Actions, answers, completed workflows',
-    stack: 'Findings, visualisations, presentations',
-    wargame: 'Scenario probabilities, risks, action options',
+    platform: 'Answers, actions and completed workflows',
+    stack: 'Findings, visualisations and presentations',
+    wargame: 'Scenario distributions and strategic options',
+    funnel: 'Evidence-backed sales opportunities',
   },
   {
-    id: 'users',
-    label: 'Typical users',
-    platform: 'Operations, support, internal teams',
-    stack: 'Analysts, leaders, strategy and data teams',
-    wargame: 'Leadership, strategy, policy and planning teams',
+    id: 'human',
+    label: 'Human role',
+    platform: 'Oversight and escalation',
+    stack: 'Review and interpretation',
+    wargame: 'Assumption review and strategic judgement',
+    funnel: 'Approval and relationship building',
   },
 ] as const;
 
@@ -105,8 +110,7 @@ export const products: Product[] = [
     framing: 'Agents that act',
     shortDescription:
       'An agent harness and runtime for deploying teams of AI agents around organisational work.',
-    landingLine:
-      'Agent infrastructure for customer support, knowledge systems and operational workflows.',
+    landingLine: 'Agentic infrastructure for operational workflows.',
     headline: 'Agents that can actually do the work.',
     support:
       'Cognitecta Platform orchestrates teams of agents, tools, RAG pipelines and workflows around real business processes — with permission boundaries, escalation and production controls.',
@@ -249,8 +253,7 @@ export const products: Product[] = [
     framing: 'Agents that analyse',
     shortDescription:
       'An agentic data analysis system that investigates open-ended questions, tests hypotheses and produces a structured analytical deliverable.',
-    landingLine:
-      'An analytical workflow that investigates open-ended questions, tests hypotheses and produces decision-ready analysis.',
+    landingLine: 'Agentic investigation of organisational data.',
     headline: 'Ask the question. Let Stack investigate.',
     support:
       'Stack connects to your analytical data, forms hypotheses, tests them against the evidence and turns its findings into a structured analysis — including charts, narrative and a finished presentation.',
@@ -398,11 +401,10 @@ export const products: Product[] = [
     category: 'Agentic Strategy',
     verb: 'Decide',
     intelligence: 'Strategic intelligence',
-    framing: 'Agents that simulate strategy',
+    framing: 'Agents that strategise',
     shortDescription:
       'An agentic strategy and scenario simulation system that models actors, incentives and possible responses under uncertainty.',
-    landingLine:
-      'Actor modelling and Monte Carlo simulation for complex strategic environments.',
+    landingLine: 'Actor modelling and simulation for strategic decisions.',
     headline: 'Model the actors. Simulate the outcomes. Improve the strategy.',
     support:
       'Wargame builds an explicit model of a strategic environment, simulates possible interactions and helps identify actions that may improve the likelihood of the outcome you want.',
@@ -509,6 +511,148 @@ export const products: Product[] = [
       'Probabilities are conditional estimates, not forecasts of what will happen.',
       'Actor models need review. Human experts should be able to inspect and correct the incentives and constraints.',
       'Uncertainty should be visible. Sensitivity is part of the result, not a footnote.',
+    ],
+  },
+  {
+    slug: 'funnel',
+    name: 'Funnel',
+    fullName: 'Cognitecta Funnel',
+    category: 'Agentic Sales Intelligence',
+    verb: 'Discover',
+    intelligence: 'Sales intelligence',
+    framing: 'Agents that find customers',
+    shortDescription:
+      'An agentic B2B prospecting system that researches organisations, finds evidence of buying intent and prepares qualified outreach for human approval.',
+    landingLine: 'Agentic research, qualification and sales intelligence.',
+    headline: 'Find the companies that need you.',
+    support:
+      'Funnel continuously researches your market, identifies evidence of buying intent and turns promising organisations into qualified, evidence-backed opportunities.',
+    overview: [
+      'Funnel turns B2B prospecting into an agentic research workflow. It starts with the organisations you actually want to work with, then investigates whether there is a genuine current need — and only then prepares an approach.',
+      'It is not a bulk email tool. Conventional outbound buys a list, filters by job title and sends at volume. Funnel rejects that model. The expensive part of good prospecting is not sending a message. It is understanding who is worth contacting, and why.',
+      'Find the right company. Understand why they might buy. Know what to say. A human decides whether to make contact.',
+    ],
+    seoTitle: 'Funnel | Agentic Sales Intelligence | Cognitecta',
+    seoDescription:
+      'Cognitecta Funnel is an agentic B2B prospecting system. It researches organisations, finds evidence of buying intent and prepares qualified, evidence-backed outreach for human approval.',
+    primaryCta: { label: 'Discuss Funnel', href: '/contact?interest=funnel' },
+    secondaryCta: { label: 'See how it works', href: '#how-it-works' },
+    closingQuestion: 'Have a market where better research would change who you contact?',
+    capabilities: [
+      {
+        id: '01',
+        title: 'Ideal customer profile',
+        body: 'Start from the organisations you actually want — geography, industry, scale, stack and priorities — then investigate.',
+      },
+      {
+        id: '02',
+        title: 'Continuous discovery',
+        body: 'Find organisations that match the profile across configured public, licensed and customer-connected sources.',
+      },
+      {
+        id: '03',
+        title: 'Signal detection',
+        body: 'Look for evidence that something is happening now that makes a conversation more relevant.',
+      },
+      {
+        id: '04',
+        title: 'Buyer identification',
+        body: 'Identify the roles most likely to own the problem, influence the decision or control the budget.',
+      },
+      {
+        id: '05',
+        title: 'Qualification',
+        body: 'Combine fit, intent, timing and proposition into a reviewable opportunity score.',
+      },
+      {
+        id: '06',
+        title: 'Offer matching',
+        body: 'Choose the customer proposition that appears most relevant to the observed need — not one message for everyone.',
+      },
+      {
+        id: '07',
+        title: 'Evidence-backed briefing',
+        body: 'Preserve the reasons and sources so a person can verify why the opportunity was recommended.',
+      },
+      {
+        id: '08',
+        title: 'Drafted approach',
+        body: 'Prepare a concise, evidence-based outreach draft. Personalisation means understanding the prospect, not greeting them by title.',
+      },
+      {
+        id: '09',
+        title: 'Human approval',
+        body: 'Automate research up to the relationship. A person approves, edits or skips before anyone is contacted.',
+      },
+      {
+        id: '10',
+        title: 'Controlled follow-up',
+        body: 'Schedule appropriate follow-up, stop on a reply, suppress declines and recognise when the answer is not now.',
+      },
+      {
+        id: '11',
+        title: 'Response classification',
+        body: 'Sort outcomes so the next action is clear: take over, wait, find another person, or stop.',
+      },
+      {
+        id: '12',
+        title: 'Learning from outcomes',
+        body: 'See which signals, roles and propositions actually create conversations — and use that to refine configuration.',
+      },
+    ],
+    useCases: [
+      {
+        id: '01',
+        title: 'Specialist technology sales',
+        problem:
+          'The buyers who need a specialist product are few. A purchased list treats them as a volume problem.',
+        approach:
+          'Define the organisations that can actually use the product, then let Funnel look for the signals that suggest a current need.',
+      },
+      {
+        id: '02',
+        title: 'Professional services',
+        problem:
+          'A useful conversation usually starts from a specific initiative, not from a generic capability brochure.',
+        approach:
+          'Match observed programmes, hiring and published problems to the service that would actually help — then ask a person whether to make contact.',
+      },
+      {
+        id: '03',
+        title: 'Training and capability building',
+        problem:
+          'Teams buy training when they are already building something. Job titles alone do not show that.',
+        approach:
+          'Recruitment, programme announcements and technical publication can be evidence of a team that needs to learn a particular skill now.',
+      },
+      {
+        id: '04',
+        title: 'Product deployment',
+        problem:
+          'A product such as Platform, Stack or Wargame is useful only where the organisational problem already exists.',
+        approach:
+          'Funnel can look for the conditions that make a product relevant — an agent programme, a large analytical estate, a strategic decision under uncertainty — and surface those organisations first.',
+      },
+    ],
+    process: [
+      { id: '01', title: 'ICP' },
+      { id: '02', title: 'Discover' },
+      { id: '03', title: 'Research' },
+      { id: '04', title: 'Detect signals' },
+      { id: '05', title: 'Identify buyers' },
+      { id: '06', title: 'Qualify' },
+      { id: '07', title: 'Match offer' },
+      { id: '08', title: 'Draft approach' },
+      { id: '09', title: 'Human approval' },
+      { id: '10', title: 'Outreach' },
+      { id: '11', title: 'Follow up' },
+      { id: '12', title: 'Learn' },
+    ],
+    limits: [
+      'A score is a prioritisation mechanism, not an objective probability that someone will buy.',
+      'Recommendations depend on the quality of the ICP, the available sources and the evidence those sources contain.',
+      'Humans remain responsible for high-value relationship decisions. Funnel drafts; it does not send on its own as a matter of product principle.',
+      'Learning from outcomes is analytics and feedback for configuration. It is not a claim of autonomous self-modification.',
     ],
   },
 ];
@@ -645,6 +789,245 @@ export const platformLayers = [
     items: ['Escalation', 'Traces', 'Controls'],
   },
 ] as const;
+
+export const funnelIcp = [
+  'Geography',
+  'Industry',
+  'Organisation size',
+  'Revenue range',
+  'Employee count',
+  'Technology environment',
+  'Growth stage',
+  'Business model',
+  'Relevant departments',
+  'Strategic priorities',
+  'Technologies in use',
+  'Current initiatives',
+] as const;
+
+export const funnelSignals = [
+  'Company growth',
+  'Recruitment',
+  'New offices',
+  'Funding',
+  'Acquisitions',
+  'Product launches',
+  'Technology adoption',
+  'Executive appointments',
+  'Organisational change',
+  'Public strategy',
+  'Procurement activity',
+  'Published technical material',
+] as const;
+
+export const funnelAgents = [
+  {
+    id: '01',
+    title: 'Company',
+    body: 'What the organisation does, its scale, market, structure and current priorities.',
+  },
+  {
+    id: '02',
+    title: 'Signal',
+    body: 'Change, investment, recruitment, projects, initiatives, problems and evidence of intent.',
+  },
+  {
+    id: '03',
+    title: 'Technology',
+    body: 'Where relevant: engineering activity, cloud and platform choices, public architecture and hiring requirements.',
+  },
+  {
+    id: '04',
+    title: 'Buyer',
+    body: 'Which roles are most likely to own the problem, influence the decision or control the budget.',
+  },
+  {
+    id: '05',
+    title: 'Qualification',
+    body: 'Combine the available evidence into an opportunity the team can rank and review.',
+  },
+  {
+    id: '06',
+    title: 'Proposition',
+    body: 'Which customer offering best matches the observed need.',
+  },
+  {
+    id: '07',
+    title: 'Research',
+    body: 'An evidence-backed briefing a person can read before deciding to make contact.',
+  },
+  {
+    id: '08',
+    title: 'Writer',
+    body: 'A concise personalised approach that uses the research, not a greeting plus a job title.',
+  },
+] as const;
+
+export const funnelEquation = [
+  { id: '01', title: 'Company fit' },
+  { id: '02', title: 'Buying signal' },
+  { id: '03', title: 'Relevant person' },
+  { id: '04', title: 'Matched proposition' },
+] as const;
+
+export const funnelScoring = [
+  {
+    id: '01',
+    title: 'Fit',
+    body: 'How closely the organisation matches the ICP.',
+    share: 86,
+  },
+  {
+    id: '02',
+    title: 'Intent',
+    body: 'Whether there is evidence of a current relevant need.',
+    share: 78,
+  },
+  {
+    id: '03',
+    title: 'Timing',
+    body: 'Whether there is a reason to approach the organisation now.',
+    share: 72,
+  },
+  {
+    id: '04',
+    title: 'Proposition fit',
+    body: 'Whether the customer has a strong offering for the detected need.',
+    share: 90,
+  },
+  {
+    id: '05',
+    title: 'Contact confidence',
+    body: 'Whether an appropriate person or role has been identified.',
+    share: 68,
+  },
+  {
+    id: '06',
+    title: 'Commercial potential',
+    body: 'Whether the opportunity appears commercially worthwhile.',
+    share: 74,
+  },
+] as const;
+
+export const funnelOffers = [
+  { signal: 'AI engineering recruitment', offer: 'AI Engineering training' },
+  { signal: 'RAG initiative', offer: 'RAG training or architecture' },
+  { signal: 'Agent project', offer: 'Platform' },
+  { signal: 'Large analytical data estate', offer: 'Stack' },
+  { signal: 'Strategic planning requirement', offer: 'Wargame' },
+  { signal: 'AI programme without clear architecture', offer: 'AI discovery / consulting' },
+  { signal: 'Custom implementation requirement', offer: 'Build' },
+] as const;
+
+export const funnelExample = {
+  label: 'Illustrative example — not a customer result',
+  company: 'Acme Corp',
+  score: 86,
+  whyNow:
+    'Acme has advertised four AI engineering positions during the last six weeks, including roles referencing retrieval-augmented generation and LLM evaluation.',
+  need: 'The engineering organisation appears to be developing internal generative AI capability.',
+  proposition: 'AI Engineering for Software Developers',
+  buyer: 'VP Engineering / Head of AI',
+  evidence: [
+    'Four advertised AI engineering roles in six weeks',
+    'Job descriptions referencing RAG and LLM evaluation',
+    'Public mention of an internal generative AI programme',
+  ],
+  approach: 'Offer a private RAG / AI engineering programme for the engineering team.',
+  draft:
+    'You are hiring several AI engineers with RAG and evaluation in the brief. We run a private programme for engineering teams who have to put that work into production — not a survey of tools. If useful, we can discuss whether that room would help the people you are hiring now.',
+} as const;
+
+export const funnelApprovals = [
+  { company: 'Acme Corporation', score: 87, signal: 'RAG programme detected' },
+  { company: 'Northstar Financial', score: 82, signal: 'AI platform recruitment' },
+  { company: 'Example Industries', score: 78, signal: 'Data transformation initiative' },
+] as const;
+
+export const funnelResponses = [
+  { id: '01', title: 'Interested', body: 'A human takes over the conversation.' },
+  { id: '02', title: 'Not now', body: 'Return to the pipeline at an appropriate later point.' },
+  { id: '03', title: 'Wrong person', body: 'Research an appropriate alternative contact.' },
+  { id: '04', title: 'Send information', body: 'Prepare the relevant material for review.' },
+  { id: '05', title: 'Not interested', body: 'Suppress further outreach to that contact.' },
+  { id: '06', title: 'Out of office', body: 'Resume after the stated return date, where one is given.' },
+] as const;
+
+export const funnelFollowUp = [
+  'Schedule an appropriate follow-up',
+  'Stop when a prospect responds',
+  'Recognise an out-of-office reply',
+  'Suppress contacts who decline',
+  'Identify not-now opportunities',
+  'Create a later reminder',
+  'Classify the response',
+  'Update opportunity status',
+] as const;
+
+export const funnelLearning = [
+  { id: '01', title: 'Discovery' },
+  { id: '02', title: 'Outreach' },
+  { id: '03', title: 'Response' },
+  { id: '04', title: 'Opportunity' },
+  { id: '05', title: 'Outcome' },
+  { id: '06', title: 'Learning' },
+] as const;
+
+export const funnelDashboard = {
+  label: 'Illustrative dashboard — not live customer metrics',
+  metrics: [
+    { title: 'Companies researched', value: '248' },
+    { title: 'Signals detected', value: '47' },
+    { title: 'Qualified opportunities', value: '19' },
+    { title: 'Awaiting approval', value: '8' },
+    { title: 'Active conversations', value: '6' },
+  ],
+  opportunities: [
+    {
+      company: 'Acme Corporation',
+      score: 87,
+      signal: 'RAG programme',
+      proposition: 'AI Engineering training',
+      buyer: 'VP Engineering',
+      status: 'Awaiting approval',
+    },
+    {
+      company: 'Northstar Financial',
+      score: 82,
+      signal: 'AI platform hiring',
+      proposition: 'Platform',
+      buyer: 'Head of Architecture',
+      status: 'In review',
+    },
+    {
+      company: 'Example Industries',
+      score: 78,
+      signal: 'Data transformation',
+      proposition: 'Stack',
+      buyer: 'Director of Analytics',
+      status: 'Qualified',
+    },
+  ],
+  signalActivity: [
+    { title: 'Hiring', share: 34 },
+    { title: 'Technology', share: 22 },
+    { title: 'Investment', share: 16 },
+    { title: 'Leadership', share: 12 },
+    { title: 'Strategy', share: 10 },
+    { title: 'Growth', share: 6 },
+  ],
+} as const;
+
+export const funnelFiltration = {
+  label: 'Illustrative filtration — not a customer result',
+  stages: [
+    { id: '01', title: 'Organisations in view', value: '1,000' },
+    { id: '02', title: 'ICP matches', value: '240' },
+    { id: '03', title: 'Signals', value: '48' },
+    { id: '04', title: 'Qualified', value: '17' },
+    { id: '05', title: 'High-priority', value: '6' },
+  ],
+} as const;
 
 export function getProduct(slug: string) {
   return products.find((product) => product.slug === slug);

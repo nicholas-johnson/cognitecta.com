@@ -1,0 +1,60 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+import { funnelApprovals, funnelExample } from '../../../data/products';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Approval, not auto-send' } = Astro.props;
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <div class="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+    <GridFrame class="bg-paper p-5 md:p-7">
+      <p class="font-mono text-[11px] tracking-[0.16em] text-cobalt">12 opportunities ready</p>
+      <ol class="mt-6 divide-y divide-hairline border-t border-hairline">
+        {
+          funnelApprovals.map((item) => (
+            <li class="flex items-baseline justify-between gap-4 py-4">
+              <div>
+                <p class="text-[1.02rem] font-medium tracking-tight">{item.company}</p>
+                <p class="mt-1 font-mono text-[11px] tracking-[0.12em] text-muted">{item.signal}</p>
+              </div>
+              <p class="font-mono text-[11px] tracking-[0.14em] text-ink">{item.score}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </GridFrame>
+    <GridFrame class="bg-paper p-5 md:p-7">
+      <p class="font-mono text-[11px] tracking-[0.16em] text-cobalt">Review opportunity</p>
+      <p class="mt-4 text-[1.15rem] font-medium tracking-tight">{funnelExample.company}</p>
+      <dl class="mt-6 space-y-4">
+        <div>
+          <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">Why now</dt>
+          <dd class="mt-1 text-[0.95rem] leading-relaxed text-muted">{funnelExample.whyNow}</dd>
+        </div>
+        <div>
+          <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">Suggested contact</dt>
+          <dd class="mt-1 text-[0.95rem] leading-relaxed">{funnelExample.buyer}</dd>
+        </div>
+        <div>
+          <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">Recommended proposition</dt>
+          <dd class="mt-1 text-[0.95rem] leading-relaxed">{funnelExample.proposition}</dd>
+        </div>
+      </dl>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <span class="bg-cobalt px-4 py-2 font-mono text-[11px] tracking-[0.14em] text-white">Approve</span>
+        <span class="border border-hairline px-4 py-2 font-mono text-[11px] tracking-[0.14em]">Edit</span>
+        <span class="border border-hairline px-4 py-2 font-mono text-[11px] tracking-[0.14em] text-muted">
+          Skip
+        </span>
+      </div>
+      <p class="mt-5 font-mono text-[11px] tracking-[0.12em] text-muted">
+        Interface concept — not a live product screenshot.
+      </p>
+    </GridFrame>
+  </div>
+</figure>
