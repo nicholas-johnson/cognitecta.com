@@ -1,0 +1,30 @@
+---
+import Section from '../Section.astro';
+import GridFrame from '../diagrams/GridFrame.astro';
+import { founder } from '../../data/site';
+---
+
+<Section class="pb-16 md:pb-24">
+  <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+    <div class="max-w-xl">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Practice</p>
+      <p class="mt-6 text-[1.15rem] leading-[1.35] font-medium tracking-tight text-ink">
+        A specialist technical organisation. Training, consultancy and substantial AI engineering — led by people who still do the work.
+      </p>
+      <p class="mt-5 text-[1.02rem] leading-relaxed text-muted">
+        Cognitecta is not a trainer who visits architecture, and not an agency that cannot teach. The same practice designs the system, explains it, and builds it.
+      </p>
+      <a href="/about" class="mt-6 inline-block font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt">
+        About
+      </a>
+    </div>
+    <GridFrame class="h-fit bg-paper p-6 md:p-8">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Principal</p>
+      <p class="mt-4 text-[1.1rem] font-medium tracking-tight">{founder.name}</p>
+      <p class="mt-1 font-mono text-[11px] tracking-[0.12em] text-muted">{founder.role}</p>
+      <p class="mt-5 text-[0.95rem] leading-relaxed text-muted">
+        The work is led from practice: architecture, engineering, and the teaching of both.
+      </p>
+    </GridFrame>
+  </div>
+</Section>

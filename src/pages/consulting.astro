@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { consultingServices } from '../data/site';
+---
+
+<BaseLayout
+  title="Consulting"
+  description="AI strategy, discovery and architecture. Work out what to build — and how to build it properly."
+>
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <PageIntro kicker="03 / Consulting" title="Work out what to build — and how to build it properly.">
+      <p>
+        Cognitecta works with organisations before they build. The objective is to identify where AI is genuinely useful rather than applying it indiscriminately.
+      </p>
+    </PageIntro>
+
+    <ol class="mt-16 border-t border-ink/20">
+      {
+        consultingServices.map((item) => (
+          <li class="grid grid-cols-1 gap-3 border-b border-hairline py-8 md:grid-cols-[5.5rem_minmax(0,16rem)_1fr] md:gap-10">
+            <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</p>
+            <h2 class="text-[1.15rem] font-medium tracking-tight">{item.title}</h2>
+            <p class="max-w-xl text-[1.02rem] leading-relaxed text-muted">{item.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="mt-14 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+      Strategy, discovery and architecture from people who understand the underlying technology — and who will still be in the room if the organisation decides to build.
+      {' '}
+      <a href="/contact" class="text-ink hover:text-cobalt">Talk to us</a>.
+    </p>
+  </article>
+</BaseLayout>

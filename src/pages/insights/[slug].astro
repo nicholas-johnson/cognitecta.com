@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('insights');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFormat = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
+      <a href="/insights" class="text-cobalt no-underline hover:text-ink">Insights</a>
+    </p>
+    <p class="mt-6 font-mono text-[11px] tracking-[0.14em] text-muted">
+      <time datetime={post.data.pubDate.toISOString()}>
+        {dateFormat.format(post.data.pubDate)}
+      </time>
+    </p>
+    <h1 class="mt-4 max-w-2xl text-[2rem] leading-[1.15] font-medium tracking-tight md:text-[2.5rem]">
+      {post.data.title}
+    </h1>
+    <div
+      class="article-body mt-12 max-w-xl text-[1.05rem] leading-relaxed text-muted [&_p]:mt-5 [&_p:first-child]:mt-0"
+    >
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

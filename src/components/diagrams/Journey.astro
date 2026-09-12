@@ -1,0 +1,44 @@
+---
+import { journey } from '../../data/site';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<ol class:list={['border-t border-hairline', className]}>
+  {
+    journey.map((step, index) => (
+      <li class="grid grid-cols-[auto_1fr] border-b border-hairline md:grid-cols-[5.5rem_11rem_1fr_8rem]">
+        <div class="flex items-center border-r border-hairline px-4 py-5 md:px-5">
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+            {step.id}
+          </span>
+        </div>
+        <div class="border-hairline px-4 py-5 md:border-r md:px-6">
+          <p class="text-[1.05rem] font-medium tracking-tight uppercase">
+            {step.title}
+          </p>
+        </div>
+        <p class="col-span-2 max-w-xl px-4 pt-0 pb-5 text-[0.98rem] leading-relaxed text-muted md:col-span-1 md:px-6 md:py-5">
+          {step.body}
+        </p>
+        <div
+          class="col-span-2 flex items-center gap-1.5 border-t border-hairline px-4 py-4 md:col-span-1 md:justify-end md:border-t-0 md:border-l md:px-6"
+          aria-hidden="true"
+        >
+          {journey.map((_, i) => (
+            <span
+              class:list={[
+                'inline-block h-2 w-2',
+                i <= index ? 'bg-cobalt' : 'bg-hairline',
+              ]}
+            />
+          ))}
+        </div>
+      </li>
+    ))
+  }
+</ol>

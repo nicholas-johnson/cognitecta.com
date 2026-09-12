@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { trainingAudiences, trainingTopics } from '../data/site';
+---
+
+<BaseLayout
+  title="Training"
+  description="Practitioner-led AI and technology training for engineering teams, technical leaders and organisations."
+>
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <PageIntro kicker="02 / Training" title="Capability, not a catalogue of courses.">
+      <p>
+        Professional, practitioner-led training for people who have to ship. Live engineering education — not a public timetable of introductory modules, and not a room taught how to use a chatbot.
+      </p>
+    </PageIntro>
+
+    <ol class="mt-16 border-t border-ink/20">
+      {
+        trainingAudiences.map((item) => (
+          <li
+            id={item.slug}
+            class="grid scroll-mt-10 grid-cols-1 gap-4 border-b border-hairline py-10 md:grid-cols-[5.5rem_minmax(0,14rem)_1fr] md:gap-10"
+          >
+            <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</p>
+            <h2 class="text-[1.2rem] font-medium tracking-tight">{item.title}</h2>
+            <p class="max-w-xl text-[1.02rem] leading-relaxed text-muted">{item.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="mt-16 mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Topics</p>
+    <ol class="grid grid-cols-1 border-t border-hairline sm:grid-cols-2">
+      {
+        trainingTopics.map((item, index) => (
+          <li
+            class:list={[
+              'border-b border-hairline py-5',
+              index % 2 === 0 && 'sm:border-r sm:pr-8',
+              index % 2 === 1 && 'sm:pl-8',
+            ]}
+          >
+            <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</span>
+            <p class="mt-2 text-[1.02rem] tracking-tight">{item.title}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="mt-14 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+      Engagements are scoped to the organisation. If you are assembling a programme for a technical team,
+      {' '}
+      <a href="/contact" class="text-ink hover:text-cobalt">talk to us</a>.
+    </p>
+  </article>
+</BaseLayout>

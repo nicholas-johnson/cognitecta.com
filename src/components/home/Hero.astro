@@ -1,0 +1,48 @@
+---
+import Wordmark from '../Wordmark.astro';
+import Mark from '../Mark.astro';
+import GridFrame from '../diagrams/GridFrame.astro';
+import CtaLink from '../CtaLink.astro';
+import { site } from '../../data/site';
+---
+
+<section class="grid-surface border-b border-hairline">
+  <div class="mx-auto max-w-[88rem] px-6 pt-16 pb-14 md:px-10 md:pt-24 md:pb-20 lg:px-16">
+    <Wordmark
+      as="p"
+      class="max-w-full text-[clamp(2.2rem,10.5vw,6.75rem)] leading-none tracking-[0.08em] sm:tracking-[0.16em] md:tracking-[0.22em] lg:tracking-[0.26em]"
+    />
+    <p class="mt-8 font-mono text-[11px] tracking-[0.22em] text-cobalt uppercase sm:text-xs">
+      {site.descriptor}
+    </p>
+  </div>
+</section>
+
+<section class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+  <div class="grid gap-16 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)] lg:gap-24">
+    <div>
+      <h1 class="max-w-xl text-[1.85rem] leading-[1.2] font-medium tracking-tight text-ink md:text-[2.35rem]">
+        {site.hero}
+      </h1>
+      <p class="mt-8 max-w-xl text-[1.05rem] leading-relaxed text-muted">
+        {site.support}
+      </p>
+      <p class="mt-4 max-w-xl text-[1.05rem] leading-relaxed text-muted">
+        {site.sub}
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <CtaLink href="/contact">Talk to us</CtaLink>
+        <CtaLink href="#pillars" variant="secondary">Explore our capabilities</CtaLink>
+      </div>
+    </div>
+    <GridFrame class="h-fit bg-paper p-8 md:p-10">
+      <div class="flex items-start justify-between gap-6">
+        <Mark class="size-14 text-ink sm:size-16" plan />
+        <p class="font-mono text-[11px] tracking-[0.16em] text-muted">C / 05×05</p>
+      </div>
+      <p class="mt-8 max-w-xs font-mono text-[11px] leading-relaxed tracking-[0.08em] text-muted">
+        {site.line}
+      </p>
+    </GridFrame>
+  </div>
+</section>

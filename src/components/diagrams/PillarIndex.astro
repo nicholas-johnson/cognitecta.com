@@ -1,0 +1,52 @@
+---
+import { pillars } from '../../data/site';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<ol
+  class:list={[
+    'grid grid-cols-1 border-t border-hairline md:grid-cols-3',
+    className,
+  ]}
+>
+  {
+    pillars.map((item, index) => (
+      <li
+        class:list={[
+          'border-hairline border-b py-8 md:border-b-0 md:py-0',
+          index < pillars.length - 1 && 'md:border-r md:pr-8 lg:pr-10',
+          index > 0 && 'md:pl-8 lg:pl-10',
+        ]}
+      >
+        <a href={item.href} class="group block no-underline">
+          <div class="mb-6 flex items-center gap-3">
+            <span
+              class:list={[
+                'inline-block size-2.5 shrink-0',
+                index === 0 ? 'bg-cobalt' : 'bg-ink',
+              ]}
+              aria-hidden="true"
+            />
+            <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+              {item.id}
+            </span>
+          </div>
+          <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
+            {item.kicker}
+          </p>
+          <p class="mt-3 text-[1.15rem] font-medium tracking-tight text-ink group-hover:text-cobalt">
+            {item.lede}
+          </p>
+          <p class="mt-3 max-w-[20rem] text-[0.98rem] leading-relaxed text-muted">
+            {item.body}
+          </p>
+        </a>
+      </li>
+    ))
+  }
+</ol>

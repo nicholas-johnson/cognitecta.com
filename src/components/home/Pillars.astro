@@ -1,0 +1,17 @@
+---
+import Section from '../Section.astro';
+import PillarIndex from '../diagrams/PillarIndex.astro';
+import { site } from '../../data/site';
+---
+
+<Section id="pillars" class="pb-16 md:pb-24">
+  <div class="mb-10 flex flex-wrap items-baseline justify-between gap-4 border-b border-hairline pb-4">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
+      Understand it. Design it. Build it.
+    </p>
+    <p class="max-w-md font-mono text-[11px] tracking-[0.08em] text-muted">
+      {site.spine}
+    </p>
+  </div>
+  <PillarIndex />
+</Section>

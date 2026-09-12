@@ -1,0 +1,65 @@
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+
+  --color-ink: #111110;
+  --color-cream: #f4f1ea;
+  --color-paper: #fbfaf6;
+  --color-cobalt: #1b4dff;
+  --color-hairline: rgb(17 17 16 / 0.14);
+  --color-muted: rgb(17 17 16 / 0.62);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-weight: 450;
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-cobalt);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cobalt);
+    outline-offset: 3px;
+  }
+
+  a {
+    text-underline-offset: 0.18em;
+    transition: color 150ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility grid-surface {
+  background-image:
+    linear-gradient(to right, rgb(17 17 16 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(17 17 16 / 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
+}

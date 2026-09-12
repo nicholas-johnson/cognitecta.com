@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { site, interests } from '../data/site';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Talk to Cognitecta. Write with the organisation and the work."
+>
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <PageIntro kicker="07 / Contact" title="Talk to us.">
+      <p>
+        Write with a short account of the organisation and the problem. Serious enquiries receive a reply. If email is easier, use
+        {' '}
+        <a href={`mailto:${site.email}`} class="text-ink hover:text-cobalt">{site.email}</a>.
+      </p>
+    </PageIntro>
+
+    <form id="enquiry" class="mt-14 max-w-xl border-t border-ink/20 pt-10">
+      <div class="space-y-8">
+        <label class="block">
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">Name</span>
+          <input
+            type="text"
+            name="name"
+            required
+            autocomplete="name"
+            class="mt-2 w-full border border-hairline bg-paper px-3 py-3 text-[1rem] text-ink outline-none"
+          />
+        </label>
+        <label class="block">
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">Organisation</span>
+          <input
+            type="text"
+            name="organisation"
+            required
+            autocomplete="organization"
+            class="mt-2 w-full border border-hairline bg-paper px-3 py-3 text-[1rem] text-ink outline-none"
+          />
+        </label>
+        <label class="block">
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">Interest</span>
+          <select
+            name="interest"
+            class="mt-2 w-full appearance-none rounded-none border border-hairline bg-paper px-3 py-3 text-[1rem] text-ink outline-none"
+          >
+            {
+              interests.map((item) => (
+                <option value={item.label}>{item.label}</option>
+              ))
+            }
+          </select>
+        </label>
+        <label class="block">
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">Context</span>
+          <textarea
+            name="context"
+            required
+            rows="6"
+            class="mt-2 w-full resize-y border border-hairline bg-paper px-3 py-3 text-[1rem] text-ink outline-none"
+            placeholder="The organisation, the team, and what you need them to be able to do."
+          ></textarea>
+        </label>
+      </div>
+      <button
+        type="submit"
+        class="mt-10 bg-cobalt px-6 py-3 font-mono text-[11px] tracking-[0.16em] text-white transition-colors hover:bg-ink"
+      >
+        Talk to us
+      </button>
+    </form>
+  </article>
+</BaseLayout>
+
+<script define:vars={{ email: site.email }}>
+  const form = document.getElementById('enquiry');
+  if (form instanceof HTMLFormElement) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const name = String(data.get('name') ?? '').trim();
+      const organisation = String(data.get('organisation') ?? '').trim();
+      const interest = String(data.get('interest') ?? '').trim();
+      const context = String(data.get('context') ?? '').trim();
+      const subject = `Cognitecta enquiry — ${organisation}`;
+      const body = `Name: ${name}\nOrganisation: ${organisation}\nInterest: ${interest}\n\n${context}`;
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  }
+</script>

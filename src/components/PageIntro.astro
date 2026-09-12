@@ -1,0 +1,23 @@
+---
+interface Props {
+  kicker: string;
+  title: string;
+  class?: string;
+}
+
+const { kicker, title, class: className } = Astro.props;
+---
+
+<header class:list={['max-w-2xl', className]}>
+  <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{kicker}</p>
+  <h1 class="mt-4 text-[2rem] leading-[1.15] font-medium tracking-tight md:text-[2.75rem]">
+    {title}
+  </h1>
+  {
+    Astro.slots.has('default') && (
+      <div class="mt-8 max-w-xl text-[1.05rem] leading-relaxed text-muted">
+        <slot />
+      </div>
+    )
+  }
+</header>

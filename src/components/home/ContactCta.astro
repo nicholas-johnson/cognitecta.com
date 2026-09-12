@@ -1,0 +1,30 @@
+---
+import Section from '../Section.astro';
+import GridFrame from '../diagrams/GridFrame.astro';
+import CtaLink from '../CtaLink.astro';
+---
+
+<Section class="pb-16 md:pb-24">
+  <div class="grid gap-8 lg:grid-cols-2 lg:items-end">
+    <div>
+      <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Talk to us</p>
+      <p class="mt-4 max-w-lg text-[1.45rem] leading-[1.25] font-medium tracking-tight md:text-[1.7rem]">
+        From first understanding to a working production system.
+      </p>
+      <p class="mt-5 max-w-lg text-[1.02rem] leading-relaxed text-muted">
+        Write with the organisation and the problem. Engage for training, architecture, delivery — or the whole path.
+      </p>
+      <div class="mt-8">
+        <CtaLink href="/contact">Talk to us</CtaLink>
+      </div>
+    </div>
+    <GridFrame class="bg-paper p-6 md:p-8">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-muted">
+        Engagement notes — forthcoming
+      </p>
+      <p class="mt-4 max-w-sm text-[0.95rem] leading-relaxed text-muted">
+        Selected work will sit here when it can be discussed. Until then, the work speaks in the room.
+      </p>
+    </GridFrame>
+  </div>
+</Section>

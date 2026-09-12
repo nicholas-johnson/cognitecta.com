@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { buildOfferings } from '../data/site';
+---
+
+<BaseLayout
+  title="Build"
+  description="Production AI systems: agents, RAG, copilots and bespoke applications, designed around real organisational requirements."
+>
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <PageIntro kicker="04 / Build" title="Take AI into production.">
+      <p>
+        Cognitecta designs and delivers production systems. Agents, RAG, intelligent applications and bespoke AI — around the organisation as it is, including the systems already running.
+      </p>
+    </PageIntro>
+
+    <p class="mt-16 mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">
+      What we deliver
+    </p>
+    <ol class="grid grid-cols-1 border-t border-hairline sm:grid-cols-2">
+      {
+        buildOfferings.map((item, index) => (
+          <li
+            class:list={[
+              'border-b border-hairline py-5',
+              index % 2 === 0 && 'sm:border-r sm:pr-8',
+              index % 2 === 1 && 'sm:pl-8',
+            ]}
+          >
+            <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</span>
+            <p class="mt-2 text-[1.02rem] tracking-tight">{item.title}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="mt-16 max-w-xl border-t border-hairline pt-10">
+      <h2 class="text-[1.2rem] font-medium tracking-tight">Accelerators, not a product catalogue.</h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+        Cognitecta has reusable, production-ready technology that can be adapted to customer requirements. Some solutions therefore do not start from zero. That is still bespoke delivery — not an off-the-shelf product line.
+      </p>
+      <p class="mt-6 text-[1.02rem] leading-relaxed text-muted">
+        <a href="/contact" class="text-ink hover:text-cobalt">Talk to us</a>
+        {' '}
+        about the system you need in production.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,18 @@
+---
+import Section from '../Section.astro';
+import { site } from '../../data/site';
+---
+
+<Section class="pb-16 md:pb-24">
+  <div class="grid gap-10 border-t border-hairline pt-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Why Cognitecta</p>
+    <div class="max-w-xl">
+      <p class="text-[1.35rem] leading-[1.3] font-medium tracking-tight text-ink md:text-[1.55rem]">
+        {site.why}
+      </p>
+      <p class="mt-6 text-[1.05rem] leading-relaxed text-muted">
+        {site.spine} Customers engage at any point on that path. They do not have to follow the entire journey.
+      </p>
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,18 @@
+// @ts-check
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  site: 'https://cognitecta.com',
+  output: 'static',
+  prefetch: true,
+  devToolbar: { enabled: false },
+  integrations: [sitemap()],
+  redirects: {
+    '/approach': '/consulting',
+  },
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});

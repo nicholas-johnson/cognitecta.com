@@ -1,0 +1,23 @@
+---
+import Section from '../Section.astro';
+import { credibility } from '../../data/site';
+---
+
+<Section class="pb-16 md:pb-24">
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">
+    Practice, not company age
+  </p>
+  <ol class="border-t border-hairline">
+    {
+      credibility.map((item) => (
+        <li class="grid grid-cols-[3.5rem_1fr] border-b border-hairline py-5 md:grid-cols-[5.5rem_11rem_1fr] md:gap-10">
+          <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</p>
+          <p class="text-[1.02rem] font-medium tracking-tight">{item.title}</p>
+          <p class="col-span-2 mt-2 max-w-xl text-[0.98rem] leading-relaxed text-muted md:col-span-1 md:mt-0">
+            {item.body}
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+</Section>

@@ -1,0 +1,17 @@
+---
+interface Props {
+  as?: 'h1' | 'p' | 'span';
+  class?: string;
+}
+
+const { as: Tag = 'span', class: className } = Astro.props;
+---
+
+<Tag
+  class:list={[
+    'font-sans font-medium uppercase text-ink',
+    className,
+  ]}
+>
+  Cognitecta
+</Tag>
