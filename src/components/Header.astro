@@ -8,7 +8,7 @@ const path = currentPath(Astro.url.pathname);
 const isHome = path === '/';
 ---
 
-<header class="border-b border-hairline">
+<header class="relative z-30 border-b border-hairline">
   <div class="h-[3px] bg-cobalt" aria-hidden="true"></div>
   <div
     class="mx-auto flex max-w-[88rem] flex-col gap-5 px-6 py-5 sm:flex-row sm:items-center sm:justify-between md:px-10 lg:px-16"
@@ -32,7 +32,7 @@ const isHome = path === '/';
             const active = isActivePath(path, item.href);
             const isProducts = item.href === '/products';
             return (
-              <li class:list={[isProducts && 'group relative py-1']}>
+              <li class:list={[isProducts && 'nav-products relative py-1']}>
                 <a
                   href={item.href}
                   aria-current={active ? 'page' : undefined}
@@ -44,19 +44,22 @@ const isHome = path === '/';
                   {item.label}
                 </a>
                 {isProducts && (
-                  <ul class="absolute top-full left-0 z-20 hidden w-44 flex-col gap-2 border border-hairline bg-paper px-4 py-3 lg:group-hover:flex lg:group-focus-within:flex">
+                  <ul class="nav-products__menu absolute top-full left-0 z-20 hidden w-48 flex-col border border-hairline bg-paper">
                     {products.map((product) => (
-                      <li>
+                      <li class="border-b border-hairline last:border-b-0">
                         <a
                           href={productHref(product.slug)}
                           class:list={[
-                            'font-mono text-[11px] tracking-[0.14em] no-underline',
+                            'block px-4 py-2.5 font-mono text-[11px] tracking-[0.14em] no-underline',
                             isActivePath(path, productHref(product.slug))
                               ? 'text-cobalt'
                               : 'text-ink hover:text-cobalt',
                           ]}
                         >
                           {product.name}
+                          <span class="mt-0.5 block tracking-[0.1em] text-muted">
+                            {product.verb}
+                          </span>
                         </a>
                       </li>
                     ))}
@@ -70,3 +73,22 @@ const isHome = path === '/';
     </nav>
   </div>
 </header>
+
+<style>
+  @media (min-width: 1024px) {
+    .nav-products:hover .nav-products__menu,
+    .nav-products:focus-within .nav-products__menu {
+      display: flex;
+    }
+
+    .nav-products__menu::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 100%;
+      left: 0;
+      height: 0.55rem;
+    }
+  }
+</style>
+
