@@ -1,0 +1,9 @@
+---
+import ProgrammeLayout from '../../layouts/ProgrammeLayout.astro';
+import { getProgramme } from '../../data/programmes';
+
+const programme = getProgramme('ai-engineering');
+if (!programme) throw new Error('Unknown programme: ai-engineering');
+---
+
+<ProgrammeLayout programme={programme} />

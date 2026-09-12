@@ -1,0 +1,139 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import CtaLink from '../components/CtaLink.astro';
+import { founder, site } from '../data/site';
+import {
+  type Programme,
+  formatPrice,
+  programmeContactHref,
+} from '../data/programmes';
+
+interface Props {
+  programme: Programme;
+}
+
+const { programme } = Astro.props;
+const contactHref = programmeContactHref(programme.slug);
+const pageUrl = new URL(`/training/${programme.slug}/`, Astro.site).toString();
+const price = formatPrice(programme.priceFrom);
+
+const courseLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: programme.title,
+  description: programme.description,
+  url: pageUrl,
+  provider: {
+    '@type': 'Organization',
+    '@id': `${site.url}/#organisation`,
+    name: site.name,
+    url: site.url,
+  },
+  offers: {
+    '@type': 'Offer',
+    price: programme.priceFrom,
+    priceCurrency: programme.currency,
+    availability: 'Enquiry',
+    url: new URL(contactHref, Astro.site).toString(),
+  },
+};
+---
+
+<BaseLayout title={programme.seoTitle} description={programme.description}>
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(courseLd)} />
+
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <PageIntro kicker={programme.kicker} title={programme.title}>
+      <p>{programme.lede}</p>
+    </PageIntro>
+
+    <p class="mt-10 font-mono text-[11px] tracking-[0.14em] text-muted">
+      {programme.duration}
+      {' · '}
+      {programme.capacity}
+      {' · '}
+      {programme.format}
+      {' · '}
+      From {price}
+    </p>
+
+    <p class="mt-8">
+      <CtaLink href={contactHref}>Talk to us</CtaLink>
+    </p>
+
+    <div class="mt-16 grid gap-10 border-t border-ink/20 pt-10 md:grid-cols-2 md:gap-16">
+      <div>
+        <h2 class="text-[1.15rem] font-medium tracking-tight">Who it is for</h2>
+        <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">{programme.who}</p>
+      </div>
+      <div>
+        <h2 class="text-[1.15rem] font-medium tracking-tight">Who it is not</h2>
+        <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">{programme.whoNot}</p>
+      </div>
+    </div>
+
+    <section class="mt-16">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">What they will be able to do</h2>
+      <ol class="mt-8 border-t border-hairline">
+        {
+          programme.outcomes.map((item, index) => (
+            <li class="grid grid-cols-[auto_1fr] gap-4 border-b border-hairline py-5 md:grid-cols-[5.5rem_1fr] md:gap-10">
+              <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <p class="max-w-xl text-[1.02rem] leading-relaxed text-muted">{item}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-16">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">Outline</h2>
+      <ol class="mt-8 border-t border-hairline">
+        {
+          programme.days.map((day) => (
+            <li class="grid grid-cols-1 border-b border-hairline md:grid-cols-[5.5rem_minmax(0,14rem)_1fr]">
+              <div class="flex items-center border-hairline py-5 md:border-r md:pr-5">
+                <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{day.id}</span>
+              </div>
+              <h3 class="px-0 py-2 text-[1.05rem] font-medium tracking-tight uppercase md:border-r md:px-6 md:py-5">
+                {day.title}
+              </h3>
+              <p class="max-w-xl pb-5 text-[0.98rem] leading-relaxed text-muted md:px-6 md:py-5">
+                {day.body}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-16 max-w-xl">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">How it is taught</h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{programme.taught}</p>
+    </section>
+
+    <section class="mt-16 max-w-xl border-t border-hairline pt-10">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">Delivery and price</h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+        From {price} for {programme.capacity.toLowerCase()}, {programme.format.toLowerCase()}.
+        Talk to us to confirm dates, location, and any tailoring.
+      </p>
+    </section>
+
+    <section class="mt-16 max-w-xl">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">Instructor</h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+        {founder.name}, {founder.role}. Degree in Artificial Intelligence; around twenty years of professional technology training.
+        {' '}
+        <a href="/about" class="text-ink hover:text-cobalt">About</a>.
+      </p>
+    </section>
+
+    <p class="mt-16">
+      <CtaLink href={contactHref}>Talk to us</CtaLink>
+    </p>
+  </article>
+</BaseLayout>

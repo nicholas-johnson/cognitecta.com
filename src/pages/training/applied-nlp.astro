@@ -1,0 +1,9 @@
+---
+import ProgrammeLayout from '../../layouts/ProgrammeLayout.astro';
+import { getProgramme } from '../../data/programmes';
+
+const programme = getProgramme('applied-nlp');
+if (!programme) throw new Error('Unknown programme: applied-nlp');
+---
+
+<ProgrammeLayout programme={programme} />

@@ -47,6 +47,7 @@ const ogImage = new URL('/og.png', Astro.site).toString();
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
     <JsonLd />
+    <slot name="head" />
   </head>
   <body class="flex min-h-screen flex-col">
     <a

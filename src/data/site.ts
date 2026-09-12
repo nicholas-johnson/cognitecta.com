@@ -220,6 +220,8 @@ export const buildOfferings = [
 
 export const interests = [
   { value: 'train', label: 'Train' },
+  { value: 'ai-engineering', label: 'AI Engineering with Python' },
+  { value: 'applied-nlp', label: 'Applied NLP with Python' },
   { value: 'advise', label: 'Advise' },
   { value: 'build', label: 'Build' },
   { value: 'unsure', label: 'Not sure' },

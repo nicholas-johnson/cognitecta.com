@@ -47,7 +47,9 @@ import { site, interests } from '../data/site';
           >
             {
               interests.map((item) => (
-                <option value={item.label}>{item.label}</option>
+                <option value={item.value} selected={item.value === 'train'}>
+                  {item.label}
+                </option>
               ))
             }
           </select>
@@ -73,17 +75,24 @@ import { site, interests } from '../data/site';
   </article>
 </BaseLayout>
 
-<script define:vars={{ email: site.email }}>
+<script define:vars={{ email: site.email, interestLabels: Object.fromEntries(interests.map((item) => [item.value, item.label])) }}>
   const form = document.getElementById('enquiry');
   if (form instanceof HTMLFormElement) {
+    const interestField = form.elements.namedItem('interest');
+    const requested = new URLSearchParams(window.location.search).get('programme');
+    if (interestField instanceof HTMLSelectElement && requested && requested in interestLabels) {
+      interestField.value = requested;
+    }
+
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const data = new FormData(form);
       const name = String(data.get('name') ?? '').trim();
       const organisation = String(data.get('organisation') ?? '').trim();
-      const interest = String(data.get('interest') ?? '').trim();
+      const interestValue = String(data.get('interest') ?? '').trim();
+      const interest = interestLabels[interestValue] ?? interestValue;
       const context = String(data.get('context') ?? '').trim();
-      const subject = `Cognitecta enquiry — ${organisation}`;
+      const subject = `Cognitecta enquiry — ${organisation} — ${interest}`;
       const body = `Name: ${name}\nOrganisation: ${organisation}\nInterest: ${interest}\n\n${context}`;
       window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });

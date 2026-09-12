@@ -1,7 +1,8 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PageIntro from '../components/PageIntro.astro';
-import { trainingAudiences, trainingTopics } from '../data/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import { trainingAudiences, trainingTopics } from '../../data/site';
+import { formatPrice, programmeContactHref, programmes } from '../../data/programmes';
 ---
 
 <BaseLayout
@@ -9,13 +10,46 @@ import { trainingAudiences, trainingTopics } from '../data/site';
   description="Practitioner-led AI and technology training for engineering teams, technical leaders and organisations."
 >
   <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
-    <PageIntro kicker="02 / Training" title="Capability, not a catalogue of courses.">
+    <PageIntro kicker="02 / Training" title="Serious programmes for technical teams.">
       <p>
         Professional, practitioner-led training for people who have to ship. Live engineering education — not a public timetable of introductory modules, and not a room taught how to use a chatbot.
       </p>
     </PageIntro>
 
-    <ol class="mt-16 border-t border-ink/20">
+    <p class="mt-16 mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Programmes</p>
+    <ol class="border-t border-ink/20">
+      {
+        programmes.map((item) => (
+          <li class="grid grid-cols-1 gap-3 border-b border-hairline py-10 md:grid-cols-[5.5rem_minmax(0,16rem)_1fr] md:gap-10">
+            <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.duration}</p>
+            <div>
+              <h2 class="text-[1.2rem] font-medium tracking-tight">
+                <a href={`/training/${item.slug}`} class="text-ink no-underline hover:text-cobalt">
+                  {item.title}
+                </a>
+              </h2>
+              <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">
+                From {formatPrice(item.priceFrom)}
+              </p>
+            </div>
+            <div class="max-w-xl">
+              <p class="text-[1.02rem] leading-relaxed text-muted">{item.summary}</p>
+              <p class="mt-4">
+                <a
+                  href={programmeContactHref(item.slug)}
+                  class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+                >
+                  Talk to us
+                </a>
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="mt-16 mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Audiences</p>
+    <ol class="border-t border-ink/20">
       {
         trainingAudiences.map((item) => (
           <li
