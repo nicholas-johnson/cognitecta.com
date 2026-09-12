@@ -1,0 +1,209 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import CtaLink from '../components/CtaLink.astro';
+import { founder, site } from '../data/site';
+import { deliveryOptions } from '../data/courses/catalogue';
+import {
+  type Course,
+  courseContactHref,
+  getCategory,
+  relatedCourses,
+  courseHref,
+} from '../data/courses';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+const contactHref = courseContactHref(course.slug);
+const pageUrl = new URL(`/training/${course.slug}/`, Astro.site).toString();
+const category = getCategory(course.category);
+const related = relatedCourses(course);
+const overviewParagraphs = course.overview.split(/\n\n/);
+
+const courseLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: course.title,
+  description: course.shortDescription,
+  url: pageUrl,
+  provider: {
+    '@type': 'Organization',
+    '@id': `${site.url}/#organisation`,
+    name: site.name,
+    url: site.url,
+  },
+  educationalLevel: course.level,
+  timeRequired: course.duration,
+};
+---
+
+<BaseLayout title={course.title} description={course.shortDescription}>
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(courseLd)} />
+
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
+      <a href="/training" class="text-cobalt no-underline hover:text-ink">Training</a>
+      {
+        category && (
+          <>
+            {' / '}
+            <a href={`/training#${category.id}`} class="text-cobalt no-underline hover:text-ink">
+              {category.title}
+            </a>
+          </>
+        )
+      }
+    </p>
+
+    <PageIntro kicker={`${course.level} · ${course.duration}`} title={course.title} class="mt-6">
+      <p>{course.shortDescription}</p>
+    </PageIntro>
+
+    <p class="mt-10 font-mono text-[11px] tracking-[0.14em] text-muted">
+      {course.duration}
+      {' · '}
+      {course.level}
+      {category && ` · ${category.title}`}
+      {' · '}
+      {course.audienceLabel}
+    </p>
+
+    <p class="mt-8">
+      <CtaLink href={contactHref}>Talk to us</CtaLink>
+    </p>
+
+    <section class="mt-16 max-w-2xl">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">Overview</h2>
+      <div class="mt-6 space-y-5 text-[1.02rem] leading-relaxed text-muted">
+        {overviewParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </section>
+
+    <div class="mt-16 grid gap-10 border-t border-ink/20 pt-10 md:grid-cols-2 md:gap-16">
+      <div>
+        <h2 class="text-[1.15rem] font-medium tracking-tight">Audience</h2>
+        <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">{course.audience}</p>
+      </div>
+      <div>
+        <h2 class="text-[1.15rem] font-medium tracking-tight">Prerequisites</h2>
+        <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+          {course.prerequisites}
+        </p>
+      </div>
+    </div>
+
+    <section class="mt-16 max-w-2xl">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">Duration</h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{course.duration}</p>
+      {
+        course.durationNote && (
+          <p class="mt-3 text-[1.02rem] leading-relaxed text-muted">{course.durationNote}</p>
+        )
+      }
+    </section>
+
+    <section class="mt-16">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">Learning outcomes</h2>
+      <ol class="mt-8 border-t border-hairline">
+        {
+          course.outcomes.map((item, index) => (
+            <li class="grid grid-cols-[auto_1fr] gap-4 border-b border-hairline py-5 md:grid-cols-[5.5rem_1fr] md:gap-10">
+              <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <p class="max-w-2xl text-[1.02rem] leading-relaxed text-muted">{item}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-16">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">Outline</h2>
+      <ol class="mt-8 border-t border-hairline">
+        {
+          course.outline.map((module, index) => (
+            <li class="grid grid-cols-1 border-b border-hairline md:grid-cols-[5.5rem_minmax(0,16rem)_1fr]">
+              <div class="flex items-start border-hairline py-5 md:border-r md:pr-5">
+                <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </div>
+              <h3 class="px-0 py-2 text-[1.05rem] font-medium tracking-tight md:border-r md:px-6 md:py-5">
+                {module.title}
+              </h3>
+              <ul class="max-w-2xl list-disc space-y-2 pb-5 pl-5 text-[0.98rem] leading-relaxed text-muted marker:text-ink/30 md:px-6 md:py-5">
+                {module.points.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <div class="mt-16 grid gap-10 md:grid-cols-2 md:gap-16">
+      <section>
+        <h2 class="text-[1.15rem] font-medium tracking-tight">Practical work</h2>
+        <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+          {course.practicalWork}
+        </p>
+      </section>
+      <section>
+        <h2 class="text-[1.15rem] font-medium tracking-tight">Takeaways</h2>
+        <ul class="mt-4 max-w-xl list-disc space-y-3 pl-5 text-[1.02rem] leading-relaxed text-muted marker:text-ink/30">
+          {course.takeaways.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+    </div>
+
+    <section class="mt-16 max-w-2xl border-t border-hairline pt-10">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">{deliveryOptions.title}</h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{deliveryOptions.body}</p>
+    </section>
+
+    <section class="mt-16 max-w-xl">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">Instructor</h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+        {founder.name}, {founder.role}. Degree in Artificial Intelligence; around twenty years of
+        professional technology training, including hundreds of courses for engineering teams and
+        large organisations.
+        {' '}
+        <a href="/about" class="text-ink hover:text-cobalt">About</a>.
+      </p>
+    </section>
+
+    {
+      related.length > 0 && (
+        <section class="mt-16">
+          <h2 class="text-[1.15rem] font-medium tracking-tight">Related courses</h2>
+          <ol class="mt-8 border-t border-hairline">
+            {related.map((item) => (
+              <li class="border-b border-hairline py-5">
+                <p class="font-mono text-[11px] tracking-[0.14em] text-muted">
+                  {item.duration} · {item.level}
+                </p>
+                <h3 class="mt-2 text-[1.05rem] font-medium tracking-tight">
+                  <a href={courseHref(item.slug)} class="text-ink no-underline hover:text-cobalt">
+                    {item.title}
+                  </a>
+                </h3>
+                <p class="mt-2 max-w-xl text-[0.98rem] leading-relaxed text-muted">
+                  {item.shortDescription}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
+
+    <p class="mt-16">
+      <CtaLink href={contactHref}>Talk to us</CtaLink>
+    </p>
+  </article>
+</BaseLayout>

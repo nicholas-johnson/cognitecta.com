@@ -1,0 +1,16 @@
+---
+import CourseLayout from '../../layouts/CourseLayout.astro';
+import { courses, getCourse } from '../../data/courses';
+
+export function getStaticPaths() {
+  return courses.map((course) => ({
+    params: { slug: course.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const course = slug ? getCourse(slug) : undefined;
+if (!course) throw new Error(`Unknown course: ${slug}`);
+---
+
+<CourseLayout course={course} />

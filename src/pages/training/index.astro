@@ -1,91 +1,201 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
-import { trainingAudiences, trainingTopics } from '../../data/site';
+import CourseCard from '../../components/training/CourseCard.astro';
+import CtaLink from '../../components/CtaLink.astro';
+import {
+  courses,
+  courseCategories,
+  coursePathways,
+  coursesInCategory,
+  courseHref,
+  pathwayCourses,
+} from '../../data/courses';
+import {
+  catalogueIntro,
+  bespokeTraining,
+  deliveryOptions,
+} from '../../data/courses/catalogue';
 import { formatPrice, programmeContactHref, programmes } from '../../data/programmes';
 ---
 
 <BaseLayout
   title="Training"
-  description="Practitioner-led AI and technology training for engineering teams, technical leaders and organisations."
+  description="Practitioner-led AI and technology training for engineering teams, technical leaders and organisations. A course catalogue covering foundations, engineering, RAG, agents, architecture and workshops."
 >
   <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
-    <PageIntro kicker="02 / Training" title="Serious programmes for technical teams.">
-      <p>
-        Professional, practitioner-led training for people who have to ship. Live engineering education — not a public timetable of introductory modules, and not a room taught how to use a chatbot.
-      </p>
+    <PageIntro kicker="02 / Training" title="A practitioner-led course catalogue.">
+      <p>{catalogueIntro}</p>
     </PageIntro>
 
-    <p class="mt-16 mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Programmes</p>
-    <ol class="border-t border-ink/20">
-      {
-        programmes.map((item) => (
-          <li class="grid grid-cols-1 gap-3 border-b border-hairline py-10 md:grid-cols-[5.5rem_minmax(0,16rem)_1fr] md:gap-10">
-            <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.duration}</p>
-            <div>
-              <h2 class="text-[1.2rem] font-medium tracking-tight">
-                <a href={`/training/${item.slug}`} class="text-ink no-underline hover:text-cobalt">
-                  {item.title}
-                </a>
-              </h2>
-              <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">
-                From {formatPrice(item.priceFrom)}
-              </p>
-            </div>
-            <div class="max-w-xl">
-              <p class="text-[1.02rem] leading-relaxed text-muted">{item.summary}</p>
-              <p class="mt-4">
-                <a
-                  href={programmeContactHref(item.slug)}
-                  class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
-                >
-                  Talk to us
-                </a>
-              </p>
-            </div>
-          </li>
-        ))
-      }
-    </ol>
-
-    <p class="mt-16 mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Audiences</p>
-    <ol class="border-t border-ink/20">
-      {
-        trainingAudiences.map((item) => (
-          <li
-            id={item.slug}
-            class="grid scroll-mt-10 grid-cols-1 gap-4 border-b border-hairline py-10 md:grid-cols-[5.5rem_minmax(0,14rem)_1fr] md:gap-10"
-          >
-            <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</p>
-            <h2 class="text-[1.2rem] font-medium tracking-tight">{item.title}</h2>
-            <p class="max-w-xl text-[1.02rem] leading-relaxed text-muted">{item.body}</p>
-          </li>
-        ))
-      }
-    </ol>
-
-    <p class="mt-16 mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Topics</p>
-    <ol class="grid grid-cols-1 border-t border-hairline sm:grid-cols-2">
-      {
-        trainingTopics.map((item, index) => (
-          <li
-            class:list={[
-              'border-b border-hairline py-5',
-              index % 2 === 0 && 'sm:border-r sm:pr-8',
-              index % 2 === 1 && 'sm:pl-8',
-            ]}
-          >
-            <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</span>
-            <p class="mt-2 text-[1.02rem] tracking-tight">{item.title}</p>
-          </li>
-        ))
-      }
-    </ol>
-
-    <p class="mt-14 max-w-xl text-[1.02rem] leading-relaxed text-muted">
-      Engagements are scoped to the organisation. If you are assembling a programme for a technical team,
-      {' '}
-      <a href="/contact" class="text-ink hover:text-cobalt">talk to us</a>.
+    <p class="mt-10 font-mono text-[11px] tracking-[0.14em] text-muted">
+      {courses.length} courses · private corporate training · on-site or remote
     </p>
+
+    <nav aria-label="Course categories" class="mt-14 border-t border-ink/20 pt-8">
+      <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Categories</p>
+      <ul class="flex flex-wrap gap-x-5 gap-y-2">
+        {
+          courseCategories.map((category) => (
+            <li>
+              <a
+                href={`#${category.id}`}
+                class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+              >
+                {category.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    {
+      courseCategories.map((category, index) => {
+        const items = coursesInCategory(category.id);
+        return (
+          <section id={category.id} class="mt-20 scroll-mt-10">
+            <div class="border-b border-ink/20 pb-6">
+              <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
+                {String(index + 1).padStart(2, '0')}
+              </p>
+              <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">{category.title}</h2>
+              <p class="mt-3 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+                {category.summary}
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-12">
+              {items.map((course, index) => (
+                <div
+                  class:list={[
+                    index % 2 === 0 && 'md:border-r md:pr-10',
+                    index % 2 === 1 && 'md:pl-2',
+                  ]}
+                >
+                  <CourseCard
+                    title={course.title}
+                    href={courseHref(course.slug)}
+                    shortDescription={course.shortDescription}
+                    duration={course.duration}
+                    level={course.level}
+                    audienceLabel={course.audienceLabel}
+                    categoryTitle={category.title}
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      })
+    }
+
+    <section id="pathways" class="mt-24">
+      <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Pathways</p>
+      <h2 class="text-[1.35rem] font-medium tracking-tight">Suggested learning pathways</h2>
+      <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+        These are starting points, not prescriptions. Most organisations mix courses, shorten them,
+        or commission a programme around a particular stack.
+      </p>
+      <div class="mt-10 grid gap-10 lg:grid-cols-2">
+        {
+          coursePathways.map((pathway) => {
+            const steps = pathwayCourses(pathway.slugs);
+            return (
+              <div class="border-t border-hairline pt-8">
+                <h3 class="text-[1.15rem] font-medium tracking-tight">{pathway.title}</h3>
+                <p class="mt-3 max-w-xl text-[0.98rem] leading-relaxed text-muted">
+                  {pathway.summary}
+                </p>
+                <ol class="mt-6 space-y-3">
+                  {steps.map((course, index) => (
+                    <li class="grid grid-cols-[auto_1fr] gap-3">
+                      <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <div>
+                        <a
+                          href={courseHref(course.slug)}
+                          class="text-ink no-underline hover:text-cobalt"
+                        >
+                          {course.title}
+                        </a>
+                        <p class="mt-1 font-mono text-[11px] tracking-[0.12em] text-muted">
+                          {course.duration} · {course.level}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <section id="bespoke" class="mt-24 max-w-2xl">
+      <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Bespoke</p>
+      <h2 class="text-[1.35rem] font-medium tracking-tight">{bespokeTraining.title}</h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{bespokeTraining.lede}</p>
+      <ol class="mt-8 border-t border-hairline">
+        {
+          bespokeTraining.points.map((item, index) => (
+            <li class="grid grid-cols-[auto_1fr] gap-4 border-b border-hairline py-5 md:grid-cols-[5.5rem_1fr] md:gap-10">
+              <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <p class="text-[1.02rem] leading-relaxed text-muted">{item}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-24">
+      <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Python programmes</p>
+      <h2 class="text-[1.35rem] font-medium tracking-tight">Flagship Python programmes</h2>
+      <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+        Two priced, lab-intensive programmes taught in Python. They sit alongside the catalogue and
+        can be tailored to a team in the same way.
+      </p>
+      <ol class="mt-8 border-t border-ink/20">
+        {
+          programmes.map((item) => (
+            <li class="grid grid-cols-1 gap-3 border-b border-hairline py-10 md:grid-cols-[5.5rem_minmax(0,16rem)_1fr] md:gap-10">
+              <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.duration}</p>
+              <div>
+                <h3 class="text-[1.2rem] font-medium tracking-tight">
+                  <a href={`/training/${item.slug}`} class="text-ink no-underline hover:text-cobalt">
+                    {item.title}
+                  </a>
+                </h3>
+                <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">
+                  From {formatPrice(item.priceFrom)}
+                </p>
+              </div>
+              <div class="max-w-xl">
+                <p class="text-[1.02rem] leading-relaxed text-muted">{item.summary}</p>
+                <p class="mt-4">
+                  <a
+                    href={programmeContactHref(item.slug)}
+                    class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+                  >
+                    Talk to us
+                  </a>
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-24 max-w-2xl border-t border-hairline pt-10">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">{deliveryOptions.title}</h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{deliveryOptions.body}</p>
+      <p class="mt-8">
+        <CtaLink href="/contact?interest=train">Talk to us about a programme</CtaLink>
+      </p>
+    </section>
   </article>
 </BaseLayout>

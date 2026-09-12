@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import { site, interests } from '../data/site';
+import { courses } from '../data/courses';
+
+const courseLabels = Object.fromEntries(courses.map((course) => [course.slug, course.title]));
 ---
 
 <BaseLayout
@@ -18,6 +21,8 @@ import { site, interests } from '../data/site';
     </PageIntro>
 
     <form id="enquiry" class="mt-14 max-w-xl border-t border-ink/20 pt-10">
+      <p id="course-note" class="mb-8 hidden font-mono text-[11px] tracking-[0.14em] text-muted"></p>
+      <input type="hidden" name="course" id="course-field" />
       <div class="space-y-8">
         <label class="block">
           <span class="font-mono text-[11px] tracking-[0.18em] text-muted">Name</span>
@@ -75,13 +80,33 @@ import { site, interests } from '../data/site';
   </article>
 </BaseLayout>
 
-<script define:vars={{ email: site.email, interestLabels: Object.fromEntries(interests.map((item) => [item.value, item.label])) }}>
+<script define:vars={{ email: site.email, interestLabels: Object.fromEntries(interests.map((item) => [item.value, item.label])), courseLabels }}>
   const form = document.getElementById('enquiry');
   if (form instanceof HTMLFormElement) {
+    const params = new URLSearchParams(window.location.search);
     const interestField = form.elements.namedItem('interest');
-    const requested = new URLSearchParams(window.location.search).get('programme');
-    if (interestField instanceof HTMLSelectElement && requested && requested in interestLabels) {
-      interestField.value = requested;
+    const requestedProgramme = params.get('programme');
+    const requestedInterest = params.get('interest');
+    const requestedCourse = params.get('course');
+    const courseNote = document.getElementById('course-note');
+    const courseField = document.getElementById('course-field');
+    const courseTitle =
+      requestedCourse && requestedCourse in courseLabels ? courseLabels[requestedCourse] : '';
+
+    if (interestField instanceof HTMLSelectElement) {
+      if (requestedProgramme && requestedProgramme in interestLabels) {
+        interestField.value = requestedProgramme;
+      } else if (requestedInterest && requestedInterest in interestLabels) {
+        interestField.value = requestedInterest;
+      } else if (courseTitle) {
+        interestField.value = 'train';
+      }
+    }
+
+    if (courseTitle && courseNote instanceof HTMLElement && courseField instanceof HTMLInputElement) {
+      courseNote.textContent = `Course: ${courseTitle}`;
+      courseNote.classList.remove('hidden');
+      courseField.value = courseTitle;
     }
 
     form.addEventListener('submit', (event) => {
@@ -91,9 +116,12 @@ import { site, interests } from '../data/site';
       const organisation = String(data.get('organisation') ?? '').trim();
       const interestValue = String(data.get('interest') ?? '').trim();
       const interest = interestLabels[interestValue] ?? interestValue;
+      const course = String(data.get('course') ?? '').trim();
       const context = String(data.get('context') ?? '').trim();
-      const subject = `Cognitecta enquiry — ${organisation} — ${interest}`;
-      const body = `Name: ${name}\nOrganisation: ${organisation}\nInterest: ${interest}\n\n${context}`;
+      const subjectLabel = course || interest;
+      const subject = `Cognitecta enquiry — ${organisation} — ${subjectLabel}`;
+      const courseLine = course ? `Course: ${course}\n` : '';
+      const body = `Name: ${name}\nOrganisation: ${organisation}\nInterest: ${interest}\n${courseLine}\n${context}`;
       window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   }
