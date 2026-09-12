@@ -91,23 +91,23 @@ const courseLd = {
 
     <section class="mt-16">
       <h2 class="text-[1.15rem] font-medium tracking-tight">Outline</h2>
-      <ol class="mt-8 border-t border-hairline">
-        {
-          programme.days.map((day) => (
-            <li class="grid grid-cols-1 border-b border-hairline md:grid-cols-[5.5rem_minmax(0,14rem)_1fr]">
-              <div class="flex items-center border-hairline py-5 md:border-r md:pr-5">
-                <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{day.id}</span>
-              </div>
-              <h3 class="px-0 py-2 text-[1.05rem] font-medium tracking-tight uppercase md:border-r md:px-6 md:py-5">
-                {day.title}
-              </h3>
-              <p class="max-w-xl pb-5 text-[0.98rem] leading-relaxed text-muted md:px-6 md:py-5">
-                {day.body}
-              </p>
-            </li>
-          ))
-        }
-      </ol>
+      {
+        programme.days.map((day) => (
+          <div class="mt-10">
+            <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Day {day.id}</p>
+            <h3 class="mt-2 text-[1.15rem] font-medium tracking-tight">{day.title}</h3>
+            <ol class="mt-6 border-t border-hairline">
+              {day.modules.map((mod) => (
+                <li class="grid grid-cols-1 gap-2 border-b border-hairline py-6 md:grid-cols-[5.5rem_minmax(0,16rem)_1fr] md:gap-10">
+                  <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{mod.id}</span>
+                  <h4 class="text-[1.05rem] font-medium tracking-tight">{mod.title}</h4>
+                  <p class="max-w-2xl text-[0.98rem] leading-relaxed text-muted">{mod.body}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))
+      }
     </section>
 
     <section class="mt-16 max-w-xl">
