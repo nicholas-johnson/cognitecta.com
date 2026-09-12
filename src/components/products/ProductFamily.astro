@@ -1,0 +1,40 @@
+---
+import { products, productFamily, productHref } from '../../data/products';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Product family' } = Astro.props;
+---
+
+<div>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <div class="border border-hairline bg-paper">
+    <p class="border-b border-hairline px-5 py-4 font-mono text-[11px] tracking-[0.22em] text-cobalt">
+      {productFamily.model}
+    </p>
+    <ol class="grid grid-cols-1 md:grid-cols-3">
+      {
+        products.map((product, index) => (
+          <li
+            class:list={[
+              'border-hairline p-6 md:p-8',
+              index < products.length - 1 && 'border-b md:border-r md:border-b-0',
+            ]}
+          >
+            <a href={productHref(product.slug)} class="group block no-underline">
+              <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{product.name}</p>
+              <p class="mt-4 text-[1.15rem] font-medium tracking-tight text-ink group-hover:text-cobalt">
+                {product.intelligence}
+              </p>
+              <p class="mt-6 font-mono text-[11px] tracking-[0.22em] text-cobalt uppercase">
+                {product.verb}
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+---
+interface Props {
+  items: string[];
+  caption?: string;
+  title?: string;
+}
+
+const {
+  items,
+  caption = 'Limits that keep the system honest',
+  title = 'What the product does not pretend to do',
+} = Astro.props;
+---
+
+<section>
+  <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <h2 class="mt-3 max-w-xl text-[1.35rem] font-medium tracking-tight">{title}</h2>
+  <ol class="mt-8 border-t border-hairline">
+    {
+      items.map((item, index) => (
+        <li class="grid grid-cols-[auto_1fr] gap-4 border-b border-hairline py-5 md:grid-cols-[5.5rem_1fr] md:gap-10">
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <p class="max-w-2xl text-[1.02rem] leading-relaxed text-muted">{item}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>

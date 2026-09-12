@@ -1,0 +1,37 @@
+---
+import CtaLink from '../CtaLink.astro';
+import type { Product } from '../../data/products';
+
+interface Props {
+  product: Product;
+  kicker?: string;
+}
+
+const { product, kicker = '05 / Products' } = Astro.props;
+---
+
+<header class="grid gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-end lg:gap-20">
+  <div class="max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{kicker}</p>
+    <p class="mt-5 font-mono text-[11px] tracking-[0.18em] text-muted">
+      {product.name}
+      <span class="mx-2 text-hairline">/</span>
+      {product.category}
+    </p>
+    <h1 class="mt-4 text-[2rem] leading-[1.15] font-medium tracking-tight md:text-[2.75rem]">
+      {product.headline}
+    </h1>
+    <p class="mt-8 max-w-xl text-[1.05rem] leading-relaxed text-muted">
+      {product.support}
+    </p>
+    <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+      <CtaLink href={product.primaryCta.href}>{product.primaryCta.label}</CtaLink>
+      <CtaLink href={product.secondaryCta.href} variant="secondary">
+        {product.secondaryCta.label}
+      </CtaLink>
+    </div>
+  </div>
+  <div class="min-w-0">
+    <slot />
+  </div>
+</header>

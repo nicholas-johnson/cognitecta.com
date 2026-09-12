@@ -1,0 +1,101 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+import type { ProductSlug } from '../../../data/products';
+
+interface Props {
+  slug: ProductSlug;
+}
+
+const { slug } = Astro.props;
+
+const copy = {
+  platform: {
+    kicker: 'Runtime',
+    line: 'Events routed through agent teams to tools, knowledge and escalation.',
+  },
+  stack: {
+    kicker: 'Investigation',
+    line: 'A question branches into hypotheses, then converges on evidence.',
+  },
+  wargame: {
+    kicker: 'Simulation',
+    line: 'Actors, incentives and responses, read as a distribution of outcomes.',
+  },
+}[slug];
+---
+
+<GridFrame class="h-full bg-paper p-6 md:p-8">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{copy.kicker}</p>
+  {
+    slug === 'platform' && (
+      <svg class="mt-6 h-24 w-full text-ink" viewBox="0 0 240 96" fill="none" aria-hidden="true">
+        <rect x="4" y="8" width="44" height="20" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="58" y="8" width="44" height="20" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="112" y="8" width="44" height="20" stroke="currentColor" stroke-opacity="0.35" />
+        <path d="M26 28v10h94V28" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="78" y="38" width="84" height="20" stroke="currentColor" />
+        <path d="M120 58v8" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="28" y="66" width="36" height="18" stroke="#1B4DFF" />
+        <rect x="72" y="66" width="36" height="18" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="116" y="66" width="36" height="18" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="160" y="66" width="36" height="18" stroke="currentColor" stroke-opacity="0.35" />
+        <circle class="motif-pulse" cx="120" cy="48" r="2.5" fill="#1B4DFF" />
+      </svg>
+    )
+  }
+  {
+    slug === 'stack' && (
+      <svg class="mt-6 h-24 w-full text-ink" viewBox="0 0 240 96" fill="none" aria-hidden="true">
+        <rect x="78" y="6" width="84" height="18" stroke="currentColor" />
+        <path d="M120 24v10M48 50V34h144v16" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="16" y="50" width="36" height="16" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="60" y="50" width="36" height="16" stroke="#1B4DFF" />
+        <rect x="104" y="50" width="36" height="16" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="148" y="50" width="36" height="16" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="192" y="50" width="32" height="16" stroke="currentColor" stroke-opacity="0.35" />
+        <path d="M78 66v8h84v-8" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="78" y="74" width="84" height="16" stroke="currentColor" />
+      </svg>
+    )
+  }
+  {
+    slug === 'wargame' && (
+      <svg class="mt-6 h-24 w-full text-ink" viewBox="0 0 240 96" fill="none" aria-hidden="true">
+        <circle cx="40" cy="28" r="10" stroke="currentColor" />
+        <circle cx="120" cy="20" r="10" stroke="#1B4DFF" />
+        <circle cx="200" cy="28" r="10" stroke="currentColor" />
+        <circle cx="80" cy="68" r="10" stroke="currentColor" stroke-opacity="0.45" />
+        <circle cx="160" cy="68" r="10" stroke="currentColor" stroke-opacity="0.45" />
+        <path
+          d="M50 32l62-8M130 24l62 8M48 36l24 24M200 36l-32 24M90 68h52"
+          stroke="currentColor"
+          stroke-opacity="0.28"
+        />
+        <rect x="20" y="86" width="52" height="4" fill="#1B4DFF" />
+        <rect x="78" y="86" width="31" height="4" fill="#1B4DFF" fill-opacity="0.55" />
+        <rect x="115" y="86" width="17" height="4" fill="#1B4DFF" fill-opacity="0.3" />
+      </svg>
+    )
+  }
+  <p class="mt-6 max-w-xs font-mono text-[11px] leading-relaxed tracking-[0.08em] text-muted">
+    {copy.line}
+  </p>
+</GridFrame>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .motif-pulse {
+      animation: motif-pulse 2.2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes motif-pulse {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>

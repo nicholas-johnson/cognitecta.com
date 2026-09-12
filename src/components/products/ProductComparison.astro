@@ -1,0 +1,81 @@
+---
+import { comparison, products, productHref } from '../../data/products';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'How the products differ' } = Astro.props;
+const keys = ['platform', 'stack', 'wargame'] as const;
+---
+
+<section>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <div class="overflow-x-auto border border-hairline bg-paper">
+    <table class="hidden w-full min-w-[44rem] border-collapse text-left md:table">
+      <caption class="sr-only">
+        Comparison of Platform, Stack and Wargame by purpose, input, process, output and typical users
+      </caption>
+      <thead>
+        <tr class="border-b border-hairline">
+          <th scope="col" class="w-[11rem] px-5 py-4 font-mono text-[11px] font-normal tracking-[0.16em] text-muted">
+            —
+          </th>
+          {
+            products.map((product) => (
+              <th scope="col" class="px-5 py-4">
+                <a
+                  href={productHref(product.slug)}
+                  class="font-mono text-[11px] tracking-[0.16em] text-ink no-underline hover:text-cobalt"
+                >
+                  {product.name}
+                </a>
+                <span class="mt-1 block font-mono text-[11px] tracking-[0.12em] font-normal text-muted">
+                  {product.verb}
+                </span>
+              </th>
+            ))
+          }
+        </tr>
+      </thead>
+      <tbody>
+        {
+          comparison.map((row) => (
+            <tr class="border-b border-hairline last:border-b-0">
+              <th
+                scope="row"
+                class="px-5 py-5 align-top font-mono text-[11px] font-normal tracking-[0.14em] text-muted"
+              >
+                {row.label}
+              </th>
+              {keys.map((key) => (
+                <td class="px-5 py-5 align-top text-[0.98rem] leading-relaxed text-ink">{row[key]}</td>
+              ))}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid gap-0 border border-hairline md:hidden">
+    {
+      products.map((product, index) => (
+        <article
+          class:list={['bg-paper p-5', index < products.length - 1 && 'border-b border-hairline']}
+        >
+          <p class="font-mono text-[11px] tracking-[0.16em] text-cobalt">{product.name}</p>
+          <p class="mt-1 font-mono text-[11px] tracking-[0.12em] text-muted">{product.verb}</p>
+          <dl class="mt-5 space-y-4">
+            {comparison.map((row) => (
+              <div>
+                <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">{row.label}</dt>
+                <dd class="mt-1 text-[0.98rem] leading-relaxed">{row[product.slug]}</dd>
+              </div>
+            ))}
+          </dl>
+        </article>
+      ))
+    }
+  </div>
+</section>

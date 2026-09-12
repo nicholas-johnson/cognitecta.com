@@ -1,0 +1,28 @@
+---
+import { site } from '../../data/site';
+import type { Product } from '../../data/products';
+import { productHref } from '../../data/products';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: product.fullName,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  url: new URL(productHref(product.slug), site.url).toString(),
+  description: product.seoDescription,
+  provider: {
+    '@type': 'Organization',
+    name: site.name,
+    url: site.url,
+  },
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

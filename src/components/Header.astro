@@ -2,6 +2,7 @@
 import Mark from './Mark.astro';
 import Wordmark from './Wordmark.astro';
 import { nav, currentPath, isActivePath } from '../data/site';
+import { products, productHref } from '../data/products';
 
 const path = currentPath(Astro.url.pathname);
 const isHome = path === '/';
@@ -25,12 +26,13 @@ const isHome = path === '/';
       }
     </a>
     <nav aria-label="Primary">
-      <ul class="flex flex-wrap gap-x-5 gap-y-2 sm:gap-x-6">
+      <ul class="flex flex-wrap gap-x-4 gap-y-2 sm:gap-x-6">
         {
           nav.map((item) => {
             const active = isActivePath(path, item.href);
+            const isProducts = item.href === '/products';
             return (
-              <li>
+              <li class:list={[isProducts && 'group relative py-1']}>
                 <a
                   href={item.href}
                   aria-current={active ? 'page' : undefined}
@@ -41,6 +43,25 @@ const isHome = path === '/';
                 >
                   {item.label}
                 </a>
+                {isProducts && (
+                  <ul class="absolute top-full left-0 z-20 hidden w-44 flex-col gap-2 border border-hairline bg-paper px-4 py-3 lg:group-hover:flex lg:group-focus-within:flex">
+                    {products.map((product) => (
+                      <li>
+                        <a
+                          href={productHref(product.slug)}
+                          class:list={[
+                            'font-mono text-[11px] tracking-[0.14em] no-underline',
+                            isActivePath(path, productHref(product.slug))
+                              ? 'text-cobalt'
+                              : 'text-ink hover:text-cobalt',
+                          ]}
+                        >
+                          {product.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             );
           })

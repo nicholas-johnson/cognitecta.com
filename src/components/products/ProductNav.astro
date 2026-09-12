@@ -1,0 +1,48 @@
+---
+import { products, productHref } from '../../data/products';
+import { currentPath, isActivePath } from '../../data/site';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const path = currentPath(Astro.url.pathname);
+---
+
+<nav aria-label="Products" class:list={className}>
+  <ul class="flex flex-wrap gap-x-6 gap-y-2 border-y border-hairline py-4">
+    <li>
+      <a
+        href="/products"
+        aria-current={path === '/products' ? 'page' : undefined}
+        class:list={[
+          'font-mono text-[11px] tracking-[0.16em] no-underline',
+          path === '/products' ? 'text-cobalt' : 'text-ink hover:text-cobalt',
+        ]}
+      >
+        Family
+      </a>
+    </li>
+    {
+      products.map((product) => {
+        const href = productHref(product.slug);
+        const active = isActivePath(path, href);
+        return (
+          <li>
+            <a
+              href={href}
+              aria-current={active ? 'page' : undefined}
+              class:list={[
+                'font-mono text-[11px] tracking-[0.16em] no-underline',
+                active ? 'text-cobalt' : 'text-ink hover:text-cobalt',
+              ]}
+            >
+              {product.name}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>

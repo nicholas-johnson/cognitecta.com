@@ -1,0 +1,79 @@
+---
+import Section from '../Section.astro';
+import { engagementStarts, layers, reinforcement } from '../../data/site';
+---
+
+<Section id="together" class="pb-16 md:pb-24">
+  <div class="grid gap-10 border-t border-hairline pt-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Start where you need us</p>
+    <div class="max-w-xl">
+      <h2 class="text-[1.35rem] leading-[1.3] font-medium tracking-tight md:text-[1.55rem]">
+        Services show the practice. Products show the technology already built.
+      </h2>
+      <p class="mt-6 text-[1.05rem] leading-relaxed text-muted">
+        Book a programme, bring us in for architecture, commission a system, or deploy a product. The customer should not be forced into a single sales journey. The capabilities reinforce each other.
+      </p>
+    </div>
+  </div>
+
+  <ol class="mt-12 grid grid-cols-1 border-t border-hairline md:grid-cols-4">
+    {
+      reinforcement.map((item, index) => (
+        <li
+          class:list={[
+            'border-hairline py-8',
+            index < reinforcement.length - 1 && 'border-b md:border-r md:border-b-0 md:pr-6 lg:pr-8',
+            index > 0 && 'md:pl-6 lg:pl-8',
+          ]}
+        >
+          <a href={item.href} class="group block no-underline">
+            <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</p>
+            <p class="mt-4 font-mono text-[11px] tracking-[0.18em] text-cobalt">{item.kicker}</p>
+            <p class="mt-3 text-[1.02rem] font-medium tracking-tight text-ink group-hover:text-cobalt">
+              {item.title}
+            </p>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="mt-16 grid gap-12 lg:grid-cols-2">
+    <div>
+      <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Four layers</p>
+      <ol class="border-t border-hairline">
+        {
+          layers.map((item) => (
+            <li class="grid grid-cols-[3.5rem_1fr] border-b border-hairline py-5">
+              <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</p>
+              <div>
+                <p class="text-[1.02rem] font-medium tracking-tight">{item.title}</p>
+                <p class="mt-2 text-[0.95rem] leading-relaxed text-muted">{item.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+    <div>
+      <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Customers might</p>
+      <ol class="border-t border-hairline">
+        {
+          engagementStarts.map((item, index) => (
+            <li class="border-b border-hairline py-4">
+              <a
+                href={item.href}
+                class="flex items-baseline justify-between gap-4 text-ink no-underline hover:text-cobalt"
+              >
+                <span class="text-[0.98rem] tracking-tight">{item.title}</span>
+                <span class="font-mono text-[11px] tracking-[0.14em] text-muted">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</Section>

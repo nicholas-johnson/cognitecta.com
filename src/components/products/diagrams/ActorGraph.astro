@@ -1,0 +1,45 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Actor model' } = Astro.props;
+
+const actors = [
+  { id: '01', title: 'You', role: 'Decision' },
+  { id: '02', title: 'Competitor', role: 'Response' },
+  { id: '03', title: 'Customer', role: 'Demand' },
+  { id: '04', title: 'Regulator', role: 'Constraint' },
+  { id: '05', title: 'Partner', role: 'Incentive' },
+];
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <GridFrame class="bg-paper p-5 md:p-8">
+    <ol class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+      {
+        actors.map((actor, index) => (
+          <li
+            class:list={[
+              'actor-node border px-3 py-4',
+              index === 0 ? 'border-ink' : 'border-hairline',
+            ]}
+          >
+            <p class="font-mono text-[11px] tracking-[0.16em] text-muted">{actor.id}</p>
+            <p class="mt-3 text-[1rem] font-medium tracking-tight">{actor.title}</p>
+            <p class="mt-2 font-mono text-[11px] tracking-[0.12em] text-cobalt">{actor.role}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="mt-6 max-w-lg text-[0.92rem] leading-relaxed text-muted">
+      Each actor carries objectives, capabilities, constraints and likely behaviours. Experts can review and refine those assumptions before any simulation runs.
+    </p>
+  </GridFrame>
+  <figcaption class="sr-only">
+    A strategic environment represented as interacting actors: the decision-maker, competitors, customers, regulators and partners.
+  </figcaption>
+</figure>

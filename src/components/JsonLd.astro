@@ -1,5 +1,6 @@
 ---
 import { site, founder } from '../data/site';
+import { products, productHref } from '../data/products';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -32,8 +33,27 @@ const jsonLd = {
         'AI training',
         'AI consultancy',
         'Production AI systems',
+        'Agentic AI products',
       ],
       provider: { '@id': `${site.url}/#organisation` },
+      hasOfferCatalog: { '@id': `${site.url}/#products` },
+    },
+    {
+      '@type': 'OfferCatalog',
+      '@id': `${site.url}/#products`,
+      name: 'Cognitecta products',
+      url: `${site.url}/products`,
+      itemListElement: products.map((product, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'SoftwareApplication',
+          name: product.fullName,
+          applicationCategory: 'BusinessApplication',
+          url: `${site.url}${productHref(product.slug)}`,
+          description: product.seoDescription,
+        },
+      })),
     },
   ],
 };
