@@ -1,0 +1,35 @@
+---
+import type { ProductCapability } from '../../data/products';
+
+interface Props {
+  items: ProductCapability[];
+  id?: string;
+  caption?: string;
+}
+
+const { items, id = 'capabilities', caption = 'Capabilities' } = Astro.props;
+---
+
+<section id={id} class="scroll-mt-10">
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <ol class="grid grid-cols-1 border-t border-hairline sm:grid-cols-2 lg:grid-cols-3">
+    {
+      items.map((item, index) => (
+        <li
+          class:list={[
+            'border-b border-hairline py-6',
+            index % 2 === 0 ? 'sm:border-r sm:pr-8' : 'sm:pl-8',
+            index % 3 !== 2 && 'lg:border-r',
+            index % 3 === 0 && 'lg:pr-8 lg:pl-0',
+            index % 3 === 1 && 'lg:px-8',
+            index % 3 === 2 && 'lg:pl-8 lg:pr-0',
+          ]}
+        >
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</span>
+          <h3 class="mt-3 text-[1.02rem] font-medium tracking-tight">{item.title}</h3>
+          <p class="mt-3 max-w-sm text-[0.95rem] leading-relaxed text-muted">{item.body}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>

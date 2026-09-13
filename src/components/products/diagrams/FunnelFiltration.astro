@@ -1,0 +1,59 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+import { funnelFiltration } from '../../../data/products';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Noise to opportunity' } = Astro.props;
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <GridFrame class="bg-paper p-5 md:p-8">
+    <p class="font-mono text-[11px] tracking-[0.14em] text-muted">{funnelFiltration.label}</p>
+    <ol class="mt-6 flex flex-col border border-hairline md:flex-row">
+      {
+        funnelFiltration.stages.map((stage, index) => (
+          <li
+            class:list={[
+              'funnel-stage relative flex flex-1 flex-col justify-between px-4 py-5',
+              index < funnelFiltration.stages.length - 1 &&
+                'border-b border-hairline md:border-r md:border-b-0',
+            ]}
+            style={`--delay: ${index * 140}ms`}
+          >
+            <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{stage.id}</span>
+            <p class="mt-6 font-mono text-[1.35rem] tracking-tight text-ink">{stage.value}</p>
+            <p class="mt-2 text-[0.92rem] tracking-tight text-muted">{stage.title}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="mt-6 max-w-lg font-mono text-[11px] leading-relaxed tracking-[0.08em] text-muted">
+      Noise → evidence → signal → opportunity. Most organisations never become a conversation.
+    </p>
+  </GridFrame>
+  <figcaption class="sr-only">
+    Illustrative filtration from one thousand organisations in view, through ICP matches and signals, to a small number of high-priority opportunities.
+  </figcaption>
+</figure>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .funnel-stage {
+      animation: funnel-in 0.9s ease both;
+      animation-delay: var(--delay);
+    }
+  }
+
+  @keyframes funnel-in {
+    from {
+      opacity: 0.25;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>

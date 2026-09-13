@@ -1,0 +1,18 @@
+---
+import ProcessFlow from '../ProcessFlow.astro';
+import type { ProcessStep } from '../../../data/products';
+
+interface Props {
+  steps: readonly ProcessStep[];
+  caption?: string;
+}
+
+const { steps, caption = 'Figure · From environment to distribution' } = Astro.props;
+---
+
+<figure>
+  <ProcessFlow steps={steps} caption={caption} compact />
+  <figcaption class="sr-only">
+    Wargame moves from environment and actors through incentives, actions, responses and scenarios to simulation and an outcome distribution.
+  </figcaption>
+</figure>

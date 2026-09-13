@@ -1,0 +1,44 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+import { callcenterSupervisor } from '../../../data/callcenter';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Supervisor console' } = Astro.props;
+
+const columns = [
+  { title: 'Live', items: callcenterSupervisor.live },
+  { title: 'Emerging issues', items: callcenterSupervisor.emerging },
+  { title: 'Performance', items: callcenterSupervisor.performance },
+];
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <GridFrame class="overflow-hidden bg-paper">
+    <p class="border-b border-hairline px-5 py-3 font-mono text-[11px] tracking-[0.16em] text-muted md:px-8">
+      {callcenterSupervisor.label}
+    </p>
+    <ol class="grid gap-0 lg:grid-cols-3">
+      {
+        columns.map((column, index) => (
+          <li
+            class:list={[
+              'border-hairline px-5 py-6 md:px-8',
+              index < columns.length - 1 && 'border-b lg:border-r lg:border-b-0',
+            ]}
+          >
+            <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{column.title}</p>
+            <ul class="mt-5 space-y-3">
+              {column.items.map((item) => (
+                <li class="text-[0.95rem] leading-relaxed text-muted">{item}</li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ol>
+  </GridFrame>
+</figure>

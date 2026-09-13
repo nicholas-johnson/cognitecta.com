@@ -1,0 +1,40 @@
+---
+import type { ProductUseCase } from '../../data/products';
+
+interface Props {
+  items: ProductUseCase[];
+  caption?: string;
+  title?: string;
+}
+
+const {
+  items,
+  caption = 'Use cases',
+  title = 'Where the product is used',
+} = Astro.props;
+---
+
+<section>
+  <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">{title}</h2>
+  <ol class="mt-10 border-t border-hairline">
+    {
+      items.map((item) => (
+        <li class="grid gap-6 border-b border-hairline py-10 lg:grid-cols-[5.5rem_minmax(0,16rem)_1fr] lg:gap-12">
+          <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</p>
+          <h3 class="text-[1.15rem] font-medium tracking-tight">{item.title}</h3>
+          <div class="grid gap-6 md:grid-cols-2 md:gap-10">
+            <div>
+              <p class="font-mono text-[11px] tracking-[0.16em] text-cobalt">The problem</p>
+              <p class="mt-3 text-[1.02rem] leading-relaxed text-muted">{item.problem}</p>
+            </div>
+            <div>
+              <p class="font-mono text-[11px] tracking-[0.16em] text-cobalt">How it is addressed</p>
+              <p class="mt-3 text-[1.02rem] leading-relaxed text-muted">{item.approach}</p>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>

@@ -1,0 +1,57 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+import { callcenterIdentity, callcenterTrust } from '../../../data/callcenter';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Identity and trust' } = Astro.props;
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <div class="grid gap-px bg-hairline md:grid-cols-2">
+    <GridFrame class="bg-paper">
+      <div class="px-5 py-5 md:px-8">
+        <p class="font-mono text-[11px] tracking-[0.16em] text-cobalt">Identity resolution</p>
+        <ol class="mt-6 space-y-3">
+          {
+            callcenterIdentity.map((item) => (
+              <li class="border border-hairline px-3 py-3 font-mono text-[11px] tracking-[0.14em] uppercase">
+                {item.title}
+              </li>
+            ))
+          }
+        </ol>
+        <p class="mt-6 border-t border-hairline pt-5 font-mono text-[11px] tracking-[0.18em] text-cobalt">
+          Customer context
+        </p>
+        <p class="mt-3 text-[0.95rem] leading-relaxed text-muted">
+          Subject to organisational policy and appropriate authentication. A recognised number is not a completed check.
+        </p>
+      </div>
+    </GridFrame>
+    <GridFrame class="bg-paper">
+      <div class="px-5 py-5 md:px-8">
+        <p class="font-mono text-[11px] tracking-[0.16em] text-cobalt">Step-up verification</p>
+        <ol class="mt-6">
+          {
+            callcenterTrust.map((level, index) => (
+              <li
+                class:list={[
+                  'relative py-3',
+                  index < callcenterTrust.length - 1 && 'border-b border-hairline',
+                ]}
+              >
+                <p class="font-mono text-[11px] tracking-[0.14em] text-muted">{level.id}</p>
+                <p class="mt-1 font-medium tracking-tight">{level.title}</p>
+                <p class="mt-2 text-[0.92rem] leading-relaxed text-muted">{level.body}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </GridFrame>
+  </div>
+</figure>

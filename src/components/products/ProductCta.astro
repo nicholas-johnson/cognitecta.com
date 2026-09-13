@@ -1,0 +1,29 @@
+---
+import GridFrame from '../diagrams/GridFrame.astro';
+import CtaLink from '../CtaLink.astro';
+import type { Product } from '../../data/products';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<section class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{product.name}</p>
+    <h2 class="mt-4 max-w-lg text-[1.45rem] leading-[1.25] font-medium tracking-tight md:text-[1.7rem]">
+      {product.closingQuestion}
+    </h2>
+    <div class="mt-8">
+      <CtaLink href={product.primaryCta.href}>Talk to Cognitecta</CtaLink>
+    </div>
+  </div>
+  <GridFrame class="bg-paper p-6 md:p-8">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Enterprise deployment</p>
+    <p class="mt-4 max-w-sm text-[0.95rem] leading-relaxed text-muted">
+      These are engagements, not self-serve licences. The conversation starts with the problem, the data, and the systems already running.
+    </p>
+  </GridFrame>
+</section>

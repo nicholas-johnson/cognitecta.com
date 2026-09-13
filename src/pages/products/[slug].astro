@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductHero from '../../components/products/ProductHero.astro';
+import ProductNav from '../../components/products/ProductNav.astro';
+import ProductCta from '../../components/products/ProductCta.astro';
+import ProductJsonLd from '../../components/products/ProductJsonLd.astro';
+import HeroMotif from '../../components/products/diagrams/HeroMotif.astro';
+import PlatformBody from '../../components/products/platform/Body.astro';
+import StackBody from '../../components/products/stack/Body.astro';
+import WargameBody from '../../components/products/wargame/Body.astro';
+import FunnelBody from '../../components/products/funnel/Body.astro';
+import CallcenterBody from '../../components/products/callcenter/Body.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<BaseLayout fullTitle={product.seoTitle} description={product.seoDescription}>
+  <ProductJsonLd slot="head" product={product} />
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <ProductHero product={product}>
+      <HeroMotif slug={product.slug} />
+    </ProductHero>
+    <ProductNav class="mt-14" />
+    {product.slug === 'platform' && <PlatformBody product={product} />}
+    {product.slug === 'stack' && <StackBody product={product} />}
+    {product.slug === 'wargame' && <WargameBody product={product} />}
+    {product.slug === 'funnel' && <FunnelBody product={product} />}
+    {product.slug === 'callcenter' && <CallcenterBody product={product} />}
+    <div class="mt-24 border-t border-hairline pt-14">
+      <ProductCta product={product} />
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,71 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Question to conclusion' } = Astro.props;
+
+const hypotheses = ['Retention', 'Price', 'Mix', 'Cost', 'Season'];
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <GridFrame class="bg-paper p-5 md:p-8">
+    <div class="stack-branch grid gap-6">
+      <div class="border border-ink px-4 py-3">
+        <p class="font-mono text-[11px] tracking-[0.16em] text-muted">Question</p>
+        <p class="mt-2 text-[1.02rem] font-medium tracking-tight">Why did the metric move?</p>
+      </div>
+      <div class="grid grid-cols-2 gap-2 sm:grid-cols-5">
+        {
+          hypotheses.map((item, index) => (
+            <div
+              class="stack-branch__node border border-hairline px-3 py-3"
+              style={`--delay: ${index * 180}ms`}
+            >
+              <p class="font-mono text-[11px] tracking-[0.12em] text-cobalt">H{index + 1}</p>
+              <p class="mt-2 text-[0.92rem] tracking-tight">{item}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="grid gap-2 md:grid-cols-2">
+        <div class="border border-hairline px-4 py-3">
+          <p class="font-mono text-[11px] tracking-[0.16em] text-muted">Evidence</p>
+          <p class="mt-2 text-[0.95rem] leading-relaxed text-muted">
+            Surviving explanations, discarded ones, and the cuts that justified each.
+          </p>
+        </div>
+        <div class="border border-cobalt/40 bg-cobalt/5 px-4 py-3">
+          <p class="font-mono text-[11px] tracking-[0.16em] text-cobalt">Deliverable</p>
+          <p class="mt-2 text-[0.95rem] leading-relaxed text-muted">
+            Narrative, charts, sequence — a presentation a person can review.
+          </p>
+        </div>
+      </div>
+    </div>
+  </GridFrame>
+  <figcaption class="sr-only">
+    An open question branches into candidate hypotheses, then converges into evidence and a reviewable analytical deliverable.
+  </figcaption>
+</figure>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .stack-branch__node {
+      animation: stack-in 1.2s ease both;
+      animation-delay: var(--delay);
+    }
+  }
+
+  @keyframes stack-in {
+    from {
+      opacity: 0.25;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+import { chatToAction } from '../../../data/products';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · From interface to action' } = Astro.props;
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <ol class="flex flex-col border border-hairline bg-paper md:flex-row">
+    {
+      chatToAction.map((step, index) => (
+        <li
+          class:list={[
+            'relative flex flex-1 flex-col justify-between px-4 py-5',
+            index < chatToAction.length - 1 && 'border-b border-hairline md:border-r md:border-b-0',
+          ]}
+        >
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{step.id}</span>
+          <p class="mt-6 text-[1rem] font-medium tracking-tight">{step.title}</p>
+          {index < chatToAction.length - 1 && (
+            <span
+              class="chat-flow__arrow mt-4 font-mono text-[11px] tracking-[0.16em] text-cobalt md:absolute md:right-2 md:bottom-5 md:mt-0"
+              aria-hidden="true"
+            >
+              →
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+  <figcaption class="sr-only">
+    Progression from a basic chat interface through knowledge, tools, workflows and agent teams to an operational system.
+  </figcaption>
+</figure>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .chat-flow__arrow {
+      animation: chat-nudge 2.4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes chat-nudge {
+    0%,
+    100% {
+      opacity: 0.45;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>

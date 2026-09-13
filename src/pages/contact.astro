@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageIntro from '../components/PageIntro.astro';
-import { site, interests } from '../data/site';
+import { site, interests, interestAliases } from '../data/site';
 import { courses } from '../data/courses';
 
 const courseLabels = Object.fromEntries(courses.map((course) => [course.slug, course.title]));
@@ -9,10 +9,10 @@ const courseLabels = Object.fromEntries(courses.map((course) => [course.slug, co
 
 <BaseLayout
   title="Contact"
-  description="Talk to Cognitecta. Write with the organisation and the work."
+  description="Talk to Cognitecta about training, consulting, a bespoke system, or a Platform, Stack, Wargame, Funnel or Callcenter deployment."
 >
   <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
-    <PageIntro kicker="07 / Contact" title="Talk to us.">
+    <PageIntro kicker="08 / Contact" title="Talk to us.">
       <p>
         Write with a short account of the organisation and the problem. Serious enquiries receive a reply. If email is easier, use
         {' '}
@@ -66,7 +66,7 @@ const courseLabels = Object.fromEntries(courses.map((course) => [course.slug, co
             required
             rows="6"
             class="mt-2 w-full resize-y border border-hairline bg-paper px-3 py-3 text-[1rem] text-ink outline-none"
-            placeholder="The organisation, the team, and what you need them to be able to do."
+            placeholder="The organisation, the problem, and whether this is training, a system, or a product conversation."
           ></textarea>
         </label>
       </div>
@@ -80,13 +80,15 @@ const courseLabels = Object.fromEntries(courses.map((course) => [course.slug, co
   </article>
 </BaseLayout>
 
-<script define:vars={{ email: site.email, interestLabels: Object.fromEntries(interests.map((item) => [item.value, item.label])), courseLabels }}>
+<script define:vars={{ email: site.email, interestLabels: Object.fromEntries(interests.map((item) => [item.value, item.label])), interestAliases, courseLabels }}>
   const form = document.getElementById('enquiry');
   if (form instanceof HTMLFormElement) {
     const params = new URLSearchParams(window.location.search);
     const interestField = form.elements.namedItem('interest');
     const requestedProgramme = params.get('programme');
-    const requestedInterest = params.get('interest');
+    const rawInterest = params.get('interest');
+    const requestedInterest =
+      rawInterest && rawInterest in interestAliases ? interestAliases[rawInterest] : rawInterest;
     const requestedCourse = params.get('course');
     const courseNote = document.getElementById('course-note');
     const courseField = document.getElementById('course-field');

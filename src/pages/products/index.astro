@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaLink from '../../components/CtaLink.astro';
+import ProductNav from '../../components/products/ProductNav.astro';
+import ProductFamily from '../../components/products/ProductFamily.astro';
+import ProductComparison from '../../components/products/ProductComparison.astro';
+import {
+  productFamily,
+  productHref,
+  getFoundationProducts,
+  getApplicationProducts,
+} from '../../data/products';
+
+const foundation = getFoundationProducts();
+const applications = getApplicationProducts();
+---
+
+<BaseLayout
+  fullTitle="AI Products | Platform, Stack, Wargame, Funnel & Callcenter | Cognitecta"
+  description="Cognitecta Platform provides the agentic foundation. Stack, Wargame, Funnel and Callcenter apply agentic AI to analysis, strategy, growth and customer service."
+>
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <header class="max-w-2xl">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">05 / Products</p>
+      <h1 class="mt-4 text-[2rem] leading-[1.15] font-medium tracking-tight md:text-[2.75rem]">
+        {productFamily.headline}
+      </h1>
+      <p class="mt-8 max-w-xl text-[1.05rem] leading-relaxed text-muted">
+        {productFamily.support}
+      </p>
+    </header>
+
+    <ProductNav class="mt-12" />
+
+    <div class="mt-16">
+      <ProductFamily />
+    </div>
+
+    <section class="mt-20">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Foundation</p>
+      <ol class="mt-6 border-t border-hairline">
+        {
+          foundation.map((product) => (
+            <li class="grid gap-6 border-b border-hairline py-12 lg:grid-cols-[5.5rem_minmax(0,18rem)_1fr] lg:gap-12">
+              <p class="font-mono text-[11px] tracking-[0.18em] text-muted">01</p>
+              <div>
+                <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{product.name}</p>
+                <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">{product.framing}.</h2>
+                <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">{product.category}</p>
+              </div>
+              <div class="max-w-xl">
+                <p class="text-[1.05rem] leading-relaxed text-muted">{product.landingLine}</p>
+                <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{product.shortDescription}</p>
+                <p class="mt-6">
+                  <a
+                    href={productHref(product.slug)}
+                    class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+                  >
+                    {product.name}
+                  </a>
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-16">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Applications</p>
+      <ol class="mt-6 border-t border-hairline">
+        {
+          applications.map((product, index) => (
+            <li class="grid gap-6 border-b border-hairline py-12 lg:grid-cols-[5.5rem_minmax(0,18rem)_1fr] lg:gap-12">
+              <p class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                {String(index + 2).padStart(2, '0')}
+              </p>
+              <div>
+                <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{product.name}</p>
+                <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">{product.framing}.</h2>
+                <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">
+                  {product.domain}
+                  <span class="mx-2 text-hairline">/</span>
+                  {product.category}
+                </p>
+              </div>
+              <div class="max-w-xl">
+                <p class="text-[1.05rem] leading-relaxed text-muted">{product.landingLine}</p>
+                <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{product.shortDescription}</p>
+                <p class="mt-6">
+                  <a
+                    href={productHref(product.slug)}
+                    class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+                  >
+                    {product.name}
+                  </a>
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <div class="mt-20">
+      <ProductComparison />
+    </div>
+
+    <section class="mt-20 max-w-2xl">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-muted">How they are used</p>
+      <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+        Products can be deployed, adapted, or combined with services.
+      </h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+        Customers do not have to choose between a product and an engagement. Platform, Stack, Wargame, Funnel and Callcenter can be deployed as products, adapted to existing systems, extended, or combined with consultancy and training. They exist so that not every piece of work starts from a blank page.
+      </p>
+      <div class="mt-8">
+        <CtaLink href="/contact?interest=platform">Talk to Cognitecta</CtaLink>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

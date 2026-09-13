@@ -1,0 +1,18 @@
+---
+import ProcessFlow from '../ProcessFlow.astro';
+import type { ProcessStep } from '../../../data/products';
+
+interface Props {
+  steps: readonly ProcessStep[];
+  caption?: string;
+}
+
+const { steps, caption = 'Figure · How Stack investigates' } = Astro.props;
+---
+
+<figure>
+  <ProcessFlow steps={steps} caption={caption} compact />
+  <figcaption class="sr-only">
+    Stack takes a question, inspects the data, forms and tests hypotheses, refines the analysis, selects evidence, visualises findings, builds a narrative and generates a presentation.
+  </figcaption>
+</figure>

@@ -1,0 +1,60 @@
+---
+/**
+ * Reusable case-study structure for future evidence.
+ * Do not publish fictional customers or outcomes.
+ * Only render when `published` is true and the fields describe real work.
+ */
+interface Props {
+  published?: boolean;
+  customer?: string;
+  problem?: string;
+  environment?: string;
+  approach?: string;
+  product?: string;
+  integration?: string;
+  outcome?: string;
+  evidence?: string;
+}
+
+const {
+  published = false,
+  customer,
+  problem,
+  environment,
+  approach,
+  product,
+  integration,
+  outcome,
+  evidence,
+} = Astro.props;
+
+const fields = [
+  { label: 'Customer problem', value: problem },
+  { label: 'Environment', value: environment },
+  { label: 'Cognitecta approach', value: approach },
+  { label: 'Product used', value: product },
+  { label: 'Integration', value: integration },
+  { label: 'Outcome', value: outcome },
+  { label: 'Evidence / metrics', value: evidence },
+];
+---
+
+{
+  published && (
+    <article class="border border-hairline bg-paper p-6 md:p-8">
+      {customer && (
+        <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{customer}</p>
+      )}
+      <dl class="mt-6 space-y-5">
+        {fields
+          .filter((field) => field.value)
+          .map((field) => (
+            <div>
+              <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">{field.label}</dt>
+              <dd class="mt-2 text-[0.98rem] leading-relaxed text-ink">{field.value}</dd>
+            </div>
+          ))}
+      </dl>
+    </article>
+  )
+}

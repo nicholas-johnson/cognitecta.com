@@ -1,22 +1,37 @@
 ---
 import Wordmark from './Wordmark.astro';
 import { site, pillars } from '../data/site';
+import { products, productHref } from '../data/products';
 
 const year = new Date().getFullYear();
+
+const company = [
+  { href: '/about', title: 'About' },
+  { href: '/insights', title: 'Insights' },
+  { href: '/contact', title: 'Contact' },
+];
 ---
 
 <footer class="mt-auto border-t border-hairline">
   <div
-    class="mx-auto flex max-w-[88rem] flex-col gap-10 px-6 py-10 md:flex-row md:items-end md:justify-between md:px-10 lg:px-16"
+    class="mx-auto grid max-w-[88rem] gap-10 px-6 py-10 md:grid-cols-[minmax(0,1.2fr)_repeat(3,minmax(0,0.7fr))] md:items-start md:px-10 lg:px-16"
   >
     <div>
       <Wordmark class="text-[0.7rem] tracking-[0.28em]" />
       <p class="mt-3 font-mono text-[11px] tracking-[0.14em] text-muted">
         {site.line}
       </p>
+      <a
+        href={`mailto:${site.email}`}
+        class="mt-4 inline-block font-mono text-[11px] tracking-[0.12em] text-ink no-underline hover:text-cobalt"
+      >
+        {site.email}
+      </a>
+      <p class="mt-6 font-mono text-[11px] tracking-[0.12em] text-muted">© {year} Cognitecta</p>
     </div>
-    <nav aria-label="Footer">
-      <ul class="flex flex-wrap gap-x-5 gap-y-2">
+    <nav aria-label="Services">
+      <p class="mb-4 font-mono text-[11px] tracking-[0.16em] text-muted">Services</p>
+      <ul class="space-y-2">
         {
           pillars.map((item) => (
             <li>
@@ -29,21 +44,41 @@ const year = new Date().getFullYear();
             </li>
           ))
         }
-        <li>
-          <a
-            href="/insights"
-            class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
-          >
-            Insights
-          </a>
-        </li>
       </ul>
     </nav>
-    <div class="flex flex-col gap-2 font-mono text-[11px] tracking-[0.12em] text-muted md:items-end">
-      <a href={`mailto:${site.email}`} class="text-ink no-underline hover:text-cobalt">
-        {site.email}
-      </a>
-      <p>© {year} Cognitecta</p>
-    </div>
+    <nav aria-label="Products">
+      <p class="mb-4 font-mono text-[11px] tracking-[0.16em] text-muted">Products</p>
+      <ul class="space-y-2">
+        {
+          products.map((item) => (
+            <li>
+              <a
+                href={productHref(item.slug)}
+                class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <nav aria-label="Company">
+      <p class="mb-4 font-mono text-[11px] tracking-[0.16em] text-muted">Company</p>
+      <ul class="space-y-2">
+        {
+          company.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+              >
+                {item.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
   </div>
 </footer>

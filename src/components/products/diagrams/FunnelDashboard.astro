@@ -1,0 +1,89 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+import { funnelDashboard } from '../../../data/products';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Sales intelligence, not a CRM wallpaper' } = Astro.props;
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <GridFrame class="bg-paper p-5 md:p-8">
+    <p class="font-mono text-[11px] tracking-[0.14em] text-muted">{funnelDashboard.label}</p>
+    <ol class="mt-6 grid grid-cols-2 border-t border-hairline lg:grid-cols-5">
+      {
+        funnelDashboard.metrics.map((item, index) => (
+          <li
+            class:list={[
+              'border-b border-hairline py-5 pr-4',
+              index < 4 && 'lg:border-r lg:pr-6',
+              index % 2 === 0 && 'sm:pr-6',
+              index % 2 === 1 && 'pl-4 sm:pl-6',
+              index > 0 && 'lg:pl-6',
+            ]}
+          >
+            <p class="font-mono text-[1.35rem] tracking-tight">{item.value}</p>
+            <p class="mt-2 font-mono text-[11px] tracking-[0.12em] text-muted">{item.title}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="mt-10 font-mono text-[11px] tracking-[0.16em] text-cobalt">Today’s opportunities</p>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[40rem] border-collapse text-left">
+        <caption class="sr-only">Illustrative opportunities awaiting review</caption>
+        <thead>
+          <tr class="border-y border-hairline">
+            {
+              ['Company', 'Score', 'Signal', 'Proposition', 'Buyer', 'Status'].map((label) => (
+                <th
+                  scope="col"
+                  class="px-0 py-3 pr-4 font-mono text-[11px] font-normal tracking-[0.12em] text-muted"
+                >
+                  {label}
+                </th>
+              ))
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {
+            funnelDashboard.opportunities.map((row) => (
+              <tr class="border-b border-hairline">
+                <th scope="row" class="py-4 pr-4 text-[0.95rem] font-medium tracking-tight">
+                  {row.company}
+                </th>
+                <td class="py-4 pr-4 font-mono text-[11px] tracking-[0.12em]">{row.score}</td>
+                <td class="py-4 pr-4 text-[0.92rem] text-muted">{row.signal}</td>
+                <td class="py-4 pr-4 text-[0.92rem] text-muted">{row.proposition}</td>
+                <td class="py-4 pr-4 text-[0.92rem] text-muted">{row.buyer}</td>
+                <td class="py-4 text-[0.92rem] text-muted">{row.status}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-10 font-mono text-[11px] tracking-[0.16em] text-cobalt">Signal activity</p>
+    <ol class="mt-5 space-y-4">
+      {
+        funnelDashboard.signalActivity.map((item) => (
+          <li>
+            <div class="mb-1.5 flex items-baseline justify-between gap-4">
+              <p class="text-[0.95rem] tracking-tight">{item.title}</p>
+              <p class="font-mono text-[11px] tracking-[0.12em] text-muted">{item.share}</p>
+            </div>
+            <div class="h-1.5 bg-hairline">
+              <div class="h-1.5 bg-cobalt" style={`width: ${item.share * 2}%`}></div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </GridFrame>
+</figure>

@@ -1,0 +1,144 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+import type { ProductSlug } from '../../../data/products';
+
+interface Props {
+  slug: ProductSlug;
+}
+
+const { slug } = Astro.props;
+
+const copy = {
+  platform: {
+    kicker: 'Runtime',
+    line: 'Events routed through agent teams to tools, knowledge and escalation.',
+  },
+  stack: {
+    kicker: 'Investigation',
+    line: 'A question branches into hypotheses, then converges on evidence.',
+  },
+  wargame: {
+    kicker: 'Simulation',
+    line: 'Actors, incentives and responses, read as a distribution of outcomes.',
+  },
+  funnel: {
+    kicker: 'Filtration',
+    line: 'A wide search space narrows to a few evidence-backed opportunities.',
+  },
+  callcenter: {
+    kicker: 'Conversation',
+    line: 'Many channels enter one conversation, then resolve or hand off.',
+  },
+}[slug];
+---
+
+<GridFrame class="h-full bg-paper p-6 md:p-8">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{copy.kicker}</p>
+  {
+    slug === 'platform' && (
+      <svg class="mt-6 h-32 w-full text-ink" viewBox="0 0 240 110" fill="none" aria-hidden="true">
+        <rect x="8" y="8" width="48" height="22" stroke="currentColor" stroke-opacity="0.55" />
+        <rect x="66" y="8" width="48" height="22" stroke="currentColor" stroke-opacity="0.55" />
+        <rect x="124" y="8" width="48" height="22" stroke="currentColor" stroke-opacity="0.55" />
+        <path d="M32 30v12h90V30" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="74" y="42" width="92" height="22" stroke="currentColor" />
+        <path d="M120 64v10" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="16" y="74" width="44" height="20" stroke="#1B4DFF" />
+        <rect x="70" y="74" width="44" height="20" stroke="currentColor" stroke-opacity="0.55" />
+        <rect x="124" y="74" width="44" height="20" stroke="currentColor" stroke-opacity="0.55" />
+        <rect x="178" y="74" width="44" height="20" stroke="currentColor" stroke-opacity="0.55" />
+        <circle class="motif-pulse" cx="120" cy="53" r="3" fill="#1B4DFF" />
+      </svg>
+    )
+  }
+  {
+    slug === 'stack' && (
+      <svg class="mt-6 h-32 w-full text-ink" viewBox="0 0 240 110" fill="none" aria-hidden="true">
+        <rect x="74" y="6" width="92" height="20" stroke="currentColor" />
+        <path d="M120 26v12M40 56V38h160v18" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="8" y="56" width="38" height="18" stroke="currentColor" stroke-opacity="0.5" />
+        <rect x="54" y="56" width="38" height="18" stroke="#1B4DFF" />
+        <rect x="100" y="56" width="38" height="18" stroke="currentColor" stroke-opacity="0.5" />
+        <rect x="146" y="56" width="38" height="18" stroke="currentColor" stroke-opacity="0.5" />
+        <rect x="192" y="56" width="38" height="18" stroke="currentColor" stroke-opacity="0.5" />
+        <path d="M73 74v10h94V74" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="74" y="84" width="92" height="20" stroke="currentColor" />
+      </svg>
+    )
+  }
+  {
+    slug === 'wargame' && (
+      <svg class="mt-6 h-32 w-full text-ink" viewBox="0 0 240 110" fill="none" aria-hidden="true">
+        <circle cx="40" cy="30" r="12" stroke="currentColor" />
+        <circle cx="120" cy="22" r="12" stroke="#1B4DFF" />
+        <circle cx="200" cy="30" r="12" stroke="currentColor" />
+        <circle cx="80" cy="74" r="12" stroke="currentColor" stroke-opacity="0.65" />
+        <circle cx="160" cy="74" r="12" stroke="currentColor" stroke-opacity="0.65" />
+        <path
+          d="M52 34l56-8M132 26l56 8M50 40l22 24M190 40l-22 24M92 74h56"
+          stroke="currentColor"
+          stroke-opacity="0.4"
+        />
+        <rect x="16" y="98" width="70" height="5" fill="#1B4DFF" />
+        <rect x="92" y="98" width="42" height="5" fill="#1B4DFF" fill-opacity="0.6" />
+        <rect x="140" y="98" width="24" height="5" fill="#1B4DFF" fill-opacity="0.35" />
+      </svg>
+    )
+  }
+  {
+    slug === 'funnel' && (
+      <svg class="mt-6 h-32 w-full text-ink" viewBox="0 0 240 110" fill="none" aria-hidden="true">
+        <rect x="8" y="8" width="28" height="10" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="42" y="8" width="28" height="10" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="76" y="8" width="28" height="10" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="110" y="8" width="28" height="10" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="144" y="8" width="28" height="10" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="178" y="8" width="28" height="10" stroke="currentColor" stroke-opacity="0.35" />
+        <path d="M22 18v12h196V18" stroke="currentColor" stroke-opacity="0.35" />
+        <rect x="40" y="30" width="160" height="14" stroke="currentColor" stroke-opacity="0.55" />
+        <path d="M70 44v10h100V44" stroke="currentColor" stroke-opacity="0.4" />
+        <rect x="70" y="54" width="100" height="14" stroke="currentColor" />
+        <path d="M95 68v10h50V68" stroke="currentColor" stroke-opacity="0.4" />
+        <rect x="95" y="78" width="50" height="16" stroke="#1B4DFF" />
+        <circle class="motif-pulse" cx="120" cy="86" r="2.5" fill="#1B4DFF" />
+      </svg>
+    )
+  }
+  {
+    slug === 'callcenter' && (
+      <svg class="mt-6 h-32 w-full text-ink" viewBox="0 0 240 110" fill="none" aria-hidden="true">
+        <rect x="8" y="8" width="44" height="16" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="8" y="30" width="44" height="16" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="8" y="52" width="44" height="16" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="8" y="74" width="44" height="16" stroke="currentColor" stroke-opacity="0.45" />
+        <path d="M52 16h28V82H52" stroke="currentColor" stroke-opacity="0.4" />
+        <rect x="80" y="38" width="86" height="22" stroke="currentColor" />
+        <path d="M166 49h18" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="184" y="18" width="48" height="20" stroke="#1B4DFF" />
+        <rect x="184" y="62" width="48" height="20" stroke="currentColor" stroke-opacity="0.55" />
+        <circle class="motif-pulse" cx="123" cy="49" r="2.5" fill="#1B4DFF" />
+      </svg>
+    )
+  }
+  <p class="mt-6 max-w-xs font-mono text-[11px] leading-relaxed tracking-[0.08em] text-muted">
+    {copy.line}
+  </p>
+</GridFrame>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .motif-pulse {
+      animation: motif-pulse 2.2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes motif-pulse {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>

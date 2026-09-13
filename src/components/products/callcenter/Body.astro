@@ -1,0 +1,778 @@
+---
+import type { Product } from '../../../data/products';
+import {
+  callcenterPillars,
+  callcenterProblems,
+  callcenterContext,
+  callcenterVoiceSteps,
+  callcenterVoiceExamples,
+  callcenterProactive,
+  callcenterActions,
+  callcenterActionExamples,
+  callcenterRouting,
+  callcenterAssist,
+  callcenterAfterCall,
+  callcenterSalesforce,
+  callcenterCollaboration,
+  callcenterKnowledgeSources,
+  callcenterKnowledgeProperties,
+  callcenterKnowledgeGaps,
+  callcenterQa,
+  callcenterDrivers,
+  callcenterRootCauses,
+  callcenterBenefits,
+  callcenterEscalation,
+  callcenterGovernance,
+  callcenterApproval,
+} from '../../../data/callcenter';
+import CapabilityGrid from '../CapabilityGrid.astro';
+import UseCases from '../UseCases.astro';
+import Limits from '../Limits.astro';
+import ProcessFlow from '../ProcessFlow.astro';
+import GridFrame from '../../diagrams/GridFrame.astro';
+import CallcenterConversation from '../diagrams/CallcenterConversation.astro';
+import CallcenterArchitecture from '../diagrams/CallcenterArchitecture.astro';
+import CallcenterHandoff from '../diagrams/CallcenterHandoff.astro';
+import CallcenterChannels from '../diagrams/CallcenterChannels.astro';
+import CallcenterAutonomy from '../diagrams/CallcenterAutonomy.astro';
+import CallcenterSwitching from '../diagrams/CallcenterSwitching.astro';
+import CallcenterIdentity from '../diagrams/CallcenterIdentity.astro';
+import CallcenterAgents from '../diagrams/CallcenterAgents.astro';
+import CallcenterSupervisor from '../diagrams/CallcenterSupervisor.astro';
+import CallcenterFlow from '../diagrams/CallcenterFlow.astro';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+const fragments = [
+  'Send an email',
+  'Reply over WhatsApp',
+  'Phone later',
+  'Receive an SMS',
+  'Speak to a human adviser',
+  'Have the same information recorded separately in Salesforce',
+];
+---
+
+<section class="mt-20 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">The problem</p>
+  <div class="max-w-2xl space-y-5 text-[1.05rem] leading-relaxed text-muted">
+    <p>
+      Customer service has become fragmented. A customer may send an email, follow up on WhatsApp, phone later, receive an SMS, speak to an adviser, and have those fragments recorded separately in Salesforce.
+    </p>
+    <p>
+      Traditional systems often treat each of those as a separate interaction. The customer repeats themselves. Context is lost. Cases are duplicated. Handoffs are thin. Handling times rise and the service feels inconsistent.
+    </p>
+    <p>
+      Callcenter is designed to treat them as one service journey.
+    </p>
+  </div>
+</section>
+
+<ul class="mt-12 grid gap-0 border-t border-hairline sm:grid-cols-2 lg:grid-cols-3">
+  {
+    fragments.map((item, index) => (
+      <li
+        class:list={[
+          'border-b border-hairline py-4 pr-6',
+          index % 2 === 0 && 'sm:border-r sm:pr-8',
+          index % 2 === 1 && 'sm:pl-8',
+          index % 3 !== 2 && 'lg:border-r lg:pr-8',
+          index % 3 === 1 && 'lg:pl-8',
+          index % 3 === 2 && 'lg:border-r-0 lg:pl-8',
+        ]}
+      >
+        <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <p class="mt-2 text-[1.02rem] tracking-tight">{item}</p>
+      </li>
+    ))
+  }
+</ul>
+
+<ul class="mt-8 flex flex-wrap gap-2">
+  {
+    callcenterProblems.map((item) => (
+      <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+        {item}
+      </li>
+    ))
+  }
+</ul>
+
+<section id="how-it-works" class="mt-24 scroll-mt-10">
+  <div class="mb-10 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Three pillars</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Resolve what AI can. Route what it can’t. Give humans everything they need to finish the job.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Callcenter is not a novelty voice bot. It is an omnichannel agentic customer-service system: one conversation across channels, actions where policy allows, and a complete handoff when a person should take over.
+    </p>
+  </div>
+  <ol class="grid gap-0 border-t border-hairline lg:grid-cols-3">
+    {
+      callcenterPillars.map((pillar, index) => (
+        <li
+          class:list={[
+            'border-hairline py-8',
+            index < callcenterPillars.length - 1 && 'border-b lg:border-r lg:border-b-0 lg:pr-10',
+            index > 0 && 'lg:pl-10',
+          ]}
+        >
+          <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{pillar.id}</p>
+          <h3 class="mt-3 text-[1.15rem] font-medium tracking-tight">{pillar.title}</h3>
+          <p class="mt-4 text-[1.02rem] leading-snug font-medium tracking-tight">{pillar.line}</p>
+          <p class="mt-4 text-[0.98rem] leading-relaxed text-muted">{pillar.body}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<section class="mt-20">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">The workflow</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Understand. Retrieve. Act. Resolve or hand off.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      A Callcenter interaction enters through a channel, establishes who is speaking, determines what they need, retrieves the relevant knowledge and records, then either completes permitted work or prepares a person to finish it.
+    </p>
+  </div>
+  <ProcessFlow steps={product.process} caption="Figure · From channel to resolution" compact />
+</section>
+
+<div class="mt-16">
+  <CallcenterFlow />
+</div>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Channels</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      One service layer. Multiple channels.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Callcenter already integrates with voice, WhatsApp, SMS, email, Microsoft Teams, Slack and Salesforce. The point is not a logo wall. Each surface has a job: customers ask for help, people collaborate, and Salesforce holds the case.
+    </p>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Human operators should be able to work from the tools they already use — escalation into Teams or Slack, case updates in Salesforce, a conversation summary pushed into the CRM, and takeover from an internal collaboration interface.
+    </p>
+  </div>
+  <CallcenterChannels />
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Universal Conversation</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      The channel changes. The conversation doesn’t.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      At 09:10 a customer emails that a delivery has not arrived. Callcenter investigates. At 10:24 they follow up on WhatsApp. The system is designed to recognise the same customer and the same issue. At 11:03 they phone. The voice interaction already has who they are, what has been checked, which systems were consulted, and what has already been attempted.
+    </p>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      That is stronger than saying the product is omnichannel. Omnichannel often means many inboxes. Universal Conversation means one journey.
+    </p>
+  </div>
+  <CallcenterConversation />
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Identity</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">Know who you’re serving.</h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Callcenter can conceptually reconcile a phone number, a WhatsApp identity, an email address and a Salesforce contact into a common customer context. Identity resolution is subject to organisational policy. Recognising a number is not sufficient for sensitive actions.
+    </p>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Different interactions require different levels of trust. Some requests need little authentication. Others require a stronger check before Callcenter can expose information or execute an action. The levels are configurable policy, not a single invented authentication technology.
+    </p>
+  </div>
+  <CallcenterIdentity />
+</section>
+
+<section class="mt-24 max-w-2xl">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Intent and context</p>
+  <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+    Understand more than the last message.
+  </h2>
+  <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+    Callcenter should read a contact against previous interactions, account context, urgency, issue complexity, Salesforce data, business rules and model confidence. Sentiment is one signal that may help prioritisation or escalation. It is not treated as a reliable reading of how a person feels.
+  </p>
+</section>
+<ul class="mt-8 flex flex-wrap gap-2">
+  {
+    callcenterContext.map((item) => (
+      <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+        {item}
+      </li>
+    ))
+  }
+</ul>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Voice</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Handle routine calls without the queue.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      A Callcenter voice interaction may answer immediately, determine intent, identify the customer, authenticate where appropriate, retrieve information and knowledge, invoke tools, perform permitted actions, confirm the result, and escalate when necessary. The value is resolution. The system is not designed to impersonate a human adviser.
+    </p>
+  </div>
+  <ProcessFlow
+    steps={callcenterVoiceSteps}
+    caption="Figure · Voice interaction"
+    compact
+  />
+  <ul class="mt-8 flex flex-wrap gap-2">
+    {
+      callcenterVoiceExamples.map((item) => (
+        <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<section class="mt-24 grid gap-10 lg:grid-cols-2">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Call deflection</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Deflect the call by solving the problem.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Call deflection should not mean hiding the phone number, making a human difficult to reach, forcing people through a frustrating bot, or pushing customers into static FAQs.
+    </p>
+    <p class="mt-4 text-[1.15rem] leading-snug font-medium tracking-tight">
+      Deflection through resolution, not obstruction.
+    </p>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      A customer might begin on the website and finish the task in an automated conversation. Or Callcenter may send information by WhatsApp or SMS that prevents the later call. The goal is fewer reasons to call, not simply fewer calls accepted.
+    </p>
+  </div>
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Callback</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Keep the context while the customer leaves the queue.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      A customer can request a callback rather than remain waiting. When the callback takes place, the adviser should already have customer context, the reason for contact, conversation history, a summary, attempted actions and the relevant records. The callback continues the same conversation. It is not a fresh interaction.
+    </p>
+  </div>
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Channel switching</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Move the conversation to the right channel.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Callcenter can transition a conversation between channels while retaining context. The agent may recommend a different channel if it is more appropriate for the task — “I can send that form to you by WhatsApp now” — without restarting the case.
+    </p>
+  </div>
+  <CallcenterSwitching />
+</section>
+
+<section class="mt-24">
+  <div class="max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Proactive customer service</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Solve problems before customers need to call.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Callcenter is not only inbound. A business event — a delivery delay, a failed payment, an outage, a changed appointment — can open an SMS, WhatsApp or email conversation and let the customer resolve the situation there.
+    </p>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Illustrative workflow: the customer is told a delivery has been delayed and asked whether Tuesday would work instead. They confirm. Callcenter updates the appropriate system and confirms the revised delivery. Workflows of this kind are configured against the organisation’s systems and policies.
+    </p>
+  </div>
+  <ul class="mt-8 flex flex-wrap gap-2">
+    {
+      callcenterProactive.map((item) => (
+        <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<section class="mt-24 grid gap-10 lg:grid-cols-2">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Knowledge</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Ground answers in organisational knowledge.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Callcenter can use RAG pipelines and enterprise knowledge sources — help centres, policy, procedures, manuals, Salesforce knowledge and authorised account data. Retrieval should respect permissions, freshness, conflicting sources and policy constraints, and cite evidence where that is useful. This is the same retrieval discipline as
+      {' '}
+      <a href="/products/platform" class="text-ink hover:text-cobalt">Cognitecta Platform</a>.
+    </p>
+    <ul class="mt-6 flex flex-wrap gap-2">
+      {
+        callcenterKnowledgeSources.map((item) => (
+          <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+    <ul class="mt-4 flex flex-wrap gap-2">
+      {
+        callcenterKnowledgeProperties.map((item) => (
+          <li class="border border-cobalt/30 px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-cobalt">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Knowledge-gap detection</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Find what your service operation doesn’t know.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      If customer interactions repeatedly fail because required information is missing, contradictory, obsolete or difficult to retrieve, Callcenter should be able to surface that. Conversations become signals for improving the knowledge base. The product does not automatically rewrite documents.
+    </p>
+    <ul class="mt-6 border-t border-hairline">
+      {
+        callcenterKnowledgeGaps.map((item) => (
+          <li class="border-b border-hairline py-4 text-[0.98rem] leading-relaxed text-muted">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Actions</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">From answers to actions.</h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Where authorised, Callcenter agents can use tools and integrations to perform work. The examples below are illustrative of the kinds of permitted actions a deployment may expose. Action boundaries are governed. Not every tool is available to every conversation.
+    </p>
+  </div>
+  <ul class="grid grid-cols-2 border-t border-hairline sm:grid-cols-3 lg:grid-cols-5">
+    {
+      callcenterActions.map((item) => (
+        <li class="border-b border-r border-hairline px-4 py-4 font-mono text-[11px] tracking-[0.12em] uppercase last:border-r-0">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+  <ul class="mt-8 flex flex-wrap gap-2">
+    {
+      callcenterActionExamples.map((item) => (
+        <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Autonomy and policy</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Decide what AI is allowed to do.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Different operations should have different autonomy levels. Callcenter should not treat all tool access equally. The organisation decides whether the system may inform, recommend, act after confirmation, wait for approval, or stay out of the way.
+    </p>
+  </div>
+  <CallcenterAutonomy />
+</section>
+
+<section class="mt-24">
+  <div class="max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Intelligent routing</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Route based on the problem, not just the menu option.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Traditional call routing asks the customer to press 1 for sales, 2 for support, 3 for billing. Callcenter can route on richer context — intent, product, urgency, account, language, skills, previous contact, channel and why escalation is happening. Where appropriate, the route should be explainable. This is configured policy and available signals, not an invented routing algorithm.
+    </p>
+  </div>
+  <ul class="mt-8 flex flex-wrap gap-2">
+    {
+      callcenterRouting.map((item) => (
+        <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Warm handoff</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      When a human takes over, don’t make the customer start again.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      If automation reaches a boundary, Callcenter transfers the interaction without discarding context. The human receives a structured handoff: who the customer is, what they need, what has already been checked, and why a person is required.
+    </p>
+    <p class="mt-4 text-[1.15rem] leading-snug font-medium tracking-tight">
+      The conversation transfers. The context transfers with it.
+    </p>
+  </div>
+  <CallcenterHandoff />
+</section>
+
+<section class="mt-24 grid gap-10 lg:grid-cols-2">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Human takeover</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Take over when judgement matters.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      A human operator should be able to assume control through Teams, Slack, a contact-centre interface, Salesforce, or another configured operational surface. After takeover, conversation history remains, AI context remains available, tools remain accessible according to role, and the customer stays in the same journey.
+    </p>
+  </div>
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Agent assist</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Give every human agent an AI copilot.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      After a person takes over, Callcenter can continue to retrieve knowledge, surface history, suggest responses, recommend next actions, draft communications and prepare after-call notes. Suggestions are assistance. They are not always correct. The human retains control.
+    </p>
+  </div>
+</section>
+<ul class="mt-8 flex flex-wrap gap-2">
+  {
+    callcenterAssist.map((item) => (
+      <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+        {item}
+      </li>
+    ))
+  }
+</ul>
+
+<section class="mt-24 max-w-2xl">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-muted">After-call work</p>
+  <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+    Finish the administration automatically.
+  </h2>
+  <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+    After a conversation — whether AI-handled or human-handled — Callcenter can summarise the interaction, update Salesforce, classify the contact reason, record disposition, generate follow-up tasks and identify what remains unresolved.
+  </p>
+</section>
+<ul class="mt-8 flex flex-wrap gap-2">
+  {
+    callcenterAfterCall.map((item) => (
+      <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+        {item}
+      </li>
+    ))
+  }
+</ul>
+
+<section class="mt-24 grid gap-10 lg:grid-cols-2">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Salesforce</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Keep customer context connected to the CRM.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Salesforce is not merely another outbound channel. It is part of the customer context and the operational system of record. Callcenter can retrieve contacts and accounts, open and update cases, attach summaries, add notes and use account context when routing. Specific objects and automations follow the organisation’s Salesforce model.
+    </p>
+    <ul class="mt-6 flex flex-wrap gap-2">
+      {
+        callcenterSalesforce.map((item) => (
+          <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Microsoft Teams and Slack</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Bring escalation into the tools your teams already use.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Teams and Slack can carry escalation notifications, takeover, approval requests, specialist consultation, conversation summaries and supervisor alerts. A refund that needs manager approval, for example, can appear as a structured request in the collaboration tool the team already watches.
+    </p>
+    <ul class="mt-6 flex flex-wrap gap-2">
+      {
+        callcenterCollaboration.map((item) => (
+          <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+    <GridFrame class="mt-8 bg-paper p-5">
+      <p class="font-mono text-[11px] tracking-[0.14em] text-muted">{callcenterApproval.label}</p>
+      <dl class="mt-4 space-y-3">
+        <div>
+          <dt class="font-mono text-[11px] tracking-[0.12em] text-muted">Customer</dt>
+          <dd class="mt-1 text-[0.98rem]">{callcenterApproval.customer}</dd>
+        </div>
+        <div>
+          <dt class="font-mono text-[11px] tracking-[0.12em] text-muted">Request</dt>
+          <dd class="mt-1 text-[0.98rem]">{callcenterApproval.request}</dd>
+        </div>
+        <div>
+          <dt class="font-mono text-[11px] tracking-[0.12em] text-muted">Reason</dt>
+          <dd class="mt-1 text-[0.98rem]">{callcenterApproval.reason}</dd>
+        </div>
+        <div>
+          <dt class="font-mono text-[11px] tracking-[0.12em] text-muted">AI recommendation</dt>
+          <dd class="mt-1 text-[0.98rem]">{callcenterApproval.recommendation}</dd>
+        </div>
+      </dl>
+    </GridFrame>
+  </div>
+</section>
+
+<section class="mt-24 grid gap-10 lg:grid-cols-2">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Multilingual service</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Serve customers across languages.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Where enabled for a deployment, Callcenter can hold multilingual conversations across channels against a single underlying knowledge base: understand the customer’s language, retrieve approved information, respond appropriately, and hand over with translated context. A human adviser might receive an English summary of a conversation that took place in another language. This is not a promise of universal language coverage.
+    </p>
+  </div>
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Sensitive data</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Keep sensitive information under control.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Callcenter is designed to operate within configurable identity, permission and data-governance boundaries — PII handling, masking, redaction, logs, transcripts, retention, access and tool permissions. We do not claim compliance certifications here.
+    </p>
+    <ul class="mt-6 flex flex-wrap gap-2">
+      {
+        callcenterGovernance.map((item) => (
+          <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Quality assurance</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">Evaluate every interaction.</h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Traditional service quality programmes often review only a sample of conversations. Callcenter should support automated evaluation of AI and human interactions against configured criteria. The questions below are the kind of checks a deployment can run. They are not scores, and they are not a published accuracy claim.
+    </p>
+  </div>
+  <ol class="grid gap-0 border-t border-hairline sm:grid-cols-2">
+    {
+      callcenterQa.map((item, index) => (
+        <li
+          class:list={[
+            'border-b border-hairline py-4',
+            index % 2 === 0 && 'sm:border-r sm:pr-8',
+            index % 2 === 1 && 'sm:pl-8',
+          ]}
+        >
+          <p class="text-[0.98rem] leading-relaxed">{item}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Supervision</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      See the operation while it is happening.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      A supervisor view can show live conversations and handoffs, emerging issues such as new intents or knowledge gaps, and performance indicators the organisation actually collects. The categories below are a conceptual console. They are not live metrics.
+    </p>
+  </div>
+  <CallcenterSupervisor />
+</section>
+
+<section class="mt-24">
+  <div class="max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Contact-driver analysis</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Understand why customers are contacting you.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Structured interaction data can reveal product defects, delivery problems, confusing billing, broken website journeys, failed internal processes and documentation gaps. Customer service data becomes operational intelligence.
+    </p>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      That creates a natural relationship with other Cognitecta products, without making combinations mandatory. Callcenter captures and structures the interactions.
+      {' '}
+      <a href="/products/stack" class="text-ink hover:text-cobalt">Stack</a>
+      {' '}
+      can investigate the underlying data.
+      {' '}
+      <a href="/products/wargame" class="text-ink hover:text-cobalt">Wargame</a>
+      {' '}
+      can explore strategic responses where that is useful.
+    </p>
+  </div>
+  <ul class="mt-8 flex flex-wrap gap-2">
+    {
+      callcenterDrivers.map((item) => (
+        <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+  <div class="mt-10 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Root-cause feedback</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Go beyond contact-centre reporting.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      The product should be able to frame patterns of the kind below. These are illustrative readings, not claims from a live deployment.
+    </p>
+    <ul class="mt-6 border-t border-hairline">
+      {
+        callcenterRootCauses.map((item) => (
+          <li class="border-b border-hairline py-4 text-[0.98rem] leading-relaxed text-muted">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="mt-24 max-w-2xl">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Conversation memory</p>
+  <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+    Remember the history that matters.
+  </h2>
+  <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+    Subject to retention and data policy, Callcenter can use relevant previous interactions — for example, that this is the customer’s third contact about the same unresolved issue. That can affect prioritisation, escalation, routing and the recommended response. Memory is policy-controlled. It is not indefinite recall.
+  </p>
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Multi-agent architecture</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      A specialist team, not a single chatbot.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Callcenter is easiest to understand as a set of specialist investigations: identity, intent, conversation state, knowledge, customer context, actions, policy, routing, translation, summary and quality. That is a way of explaining the operating model. It is not a claim that every deployment exposes these roles as named services.
+    </p>
+  </div>
+  <CallcenterAgents />
+</section>
+
+<section class="mt-24">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Architecture</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Channels into one layer. Then resolve or hand off.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Voice, WhatsApp, SMS and email enter a universal conversation layer. Identity, intent and orchestration sit above an agent team connected to knowledge, Salesforce, tools, customer data and policies. The path then either resolves or hands off to Teams, Slack, Salesforce or a human adviser — surrounded by identity, permissions, observability, evaluation, audit and guardrails.
+    </p>
+  </div>
+  <CallcenterArchitecture />
+</section>
+
+<section class="mt-24 border-t border-hairline pt-14">
+  <p class="max-w-2xl text-[1.55rem] leading-snug font-medium tracking-tight md:text-[1.85rem]">
+    The objective isn’t fewer calls. It’s fewer unresolved problems.
+  </p>
+  <p class="mt-6 max-w-2xl text-[1.05rem] leading-relaxed text-muted">
+    Callcenter is designed to improve service outcomes, not simply to suppress contact volume. Immediate response, less queue dependence, better context, fewer repeated explanations and cleaner handover matter because they finish the work. Automate the routine. Preserve human judgement.
+  </p>
+  <ul class="mt-8 flex flex-wrap gap-2">
+    {
+      callcenterBenefits.map((item) => (
+        <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<section class="mt-24 grid gap-10 lg:grid-cols-2">
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Escalation</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Not every conversation should be automated.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Organisations may choose immediate or early human handling for vulnerable customers, serious complaints, emotionally sensitive issues, uncertain model confidence, high-value or high-risk actions, regulated work, or an explicit request for a person. Escalation is configurable.
+    </p>
+    <p class="mt-4 text-[1.15rem] leading-snug font-medium tracking-tight">
+      Controlled autonomy. Human judgement where it matters.
+    </p>
+    <ul class="mt-6 flex flex-wrap gap-2">
+      {
+        callcenterEscalation.map((item) => (
+          <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div>
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Trust</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Automation customers can understand.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Callcenter is not designed to trick customers into believing they are speaking to a person. Where appropriate, automated interactions should be identifiable as automated. Customers should have a way to reach human help. The product prioritises transparency, predictable behaviour, escalation, auditability and customer control.
+    </p>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Customer service that knows when to act — and when to hand over.
+    </p>
+  </div>
+</section>
+
+<section class="mt-24 max-w-2xl">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Relationship with Platform</p>
+  <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+    A specialist product on a general-purpose foundation.
+  </h2>
+  <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+    <a href="/products/platform" class="text-ink hover:text-cobalt">Cognitecta Platform</a>
+    {' '}
+    is the general-purpose agentic foundation: orchestration, tools, retrieval, memory, permissions and production controls.
+    {' '}
+    Cognitecta Callcenter applies those same principles to customer service, support, contact centres and service desks — with the channel model, handoff and CRM context that work requires. That is a statement of family, not a claim that every deployment shares one runtime.
+  </p>
+</section>
+
+<div class="mt-20">
+  <CapabilityGrid items={product.capabilities} />
+</div>
+
+<div class="mt-24">
+  <UseCases items={product.useCases} title="Service work the product is designed to carry." />
+</div>
+
+<div class="mt-20">
+  <Limits items={product.limits} title="Resolve more. Escalate better." />
+</div>

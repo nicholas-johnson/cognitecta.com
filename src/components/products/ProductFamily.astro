@@ -1,0 +1,76 @@
+---
+import {
+  productFamily,
+  productHref,
+  getFoundationProducts,
+  getApplicationProducts,
+} from '../../data/products';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Product family' } = Astro.props;
+const foundation = getFoundationProducts();
+const applications = getApplicationProducts();
+---
+
+<div>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <div class="border border-hairline bg-paper">
+    <p class="border-b border-hairline px-5 py-4 font-mono text-[11px] tracking-[0.22em] text-cobalt">
+      {productFamily.model}
+    </p>
+
+    <div class="border-b border-hairline px-5 py-3 md:px-8">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Foundation</p>
+    </div>
+    {
+      foundation.map((product) => (
+        <a
+          href={productHref(product.slug)}
+          class="group grid gap-4 border-b border-hairline px-5 py-8 no-underline md:grid-cols-[8rem_minmax(0,14rem)_1fr] md:items-end md:px-8"
+        >
+          <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{product.name}</p>
+          <div>
+            <p class="text-[1.25rem] font-medium tracking-tight text-ink group-hover:text-cobalt">
+              {product.intelligence}
+            </p>
+            <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">{product.category}</p>
+          </div>
+          <p class="max-w-md text-[1.02rem] leading-relaxed text-muted">{product.landingLine}</p>
+        </a>
+      ))
+    }
+
+    <div class="border-b border-hairline px-5 py-3 md:px-8">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Applications</p>
+    </div>
+    <ol class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
+      {
+        applications.map((product, index) => (
+          <li
+            class:list={[
+              'border-hairline p-6 md:p-8',
+              'border-b xl:border-b-0',
+              index % 2 === 0 && 'sm:border-r',
+              index >= 2 && 'sm:border-b-0',
+              index < 3 && 'xl:border-r',
+            ]}
+          >
+            <a href={productHref(product.slug)} class="group block no-underline">
+              <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{product.name}</p>
+              <p class="mt-3 font-mono text-[11px] tracking-[0.14em] text-cobalt">{product.domain}</p>
+              <p class="mt-4 text-[1.08rem] font-medium tracking-tight text-ink group-hover:text-cobalt">
+                {product.landingLine}
+              </p>
+              <p class="mt-6 font-mono text-[11px] tracking-[0.22em] text-cobalt uppercase">
+                {product.verb}
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</div>

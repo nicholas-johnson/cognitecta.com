@@ -5,13 +5,13 @@ export const site = {
   email: 'hello@cognitecta.com',
   url: 'https://cognitecta.com',
   description:
-    'We help organisations understand, design and deploy artificial intelligence. Expert training, strategic consultancy and production AI systems.',
+    'We help organisations understand, design and deploy artificial intelligence — through expert training, technical consultancy, production engineering and our own agentic AI products.',
   hero: 'Make AI useful.',
   support:
-    'We help organisations understand, design and deploy artificial intelligence.',
-  sub: 'Expert training. Strategic consultancy. Production AI systems.',
-  spine: 'We don’t just advise on AI. We teach it, architect it and build it.',
-  why: 'Cognitecta closes the gap between learning about AI and putting it into production.',
+    'We help organisations understand, design and deploy artificial intelligence — through expert training, technical consultancy, production engineering and our own agentic AI products.',
+  sub: 'Understand it. Design it. Build it. Deploy it.',
+  spine: 'We teach AI, architect it, build it and provide the technology to run it.',
+  why: 'Cognitecta closes the gap between understanding AI and using it to perform real work, analyse real evidence and make better decisions.',
 } as const;
 
 export const founder = {
@@ -24,6 +24,7 @@ export const nav = [
   { href: '/training', label: 'Training' },
   { href: '/consulting', label: 'Consulting' },
   { href: '/build', label: 'Build' },
+  { href: '/products', label: 'Products' },
   { href: '/about', label: 'About' },
   { href: '/insights', label: 'Insights' },
   { href: '/contact', label: 'Contact' },
@@ -222,9 +223,81 @@ export const interests = [
   { value: 'train', label: 'Training' },
   { value: 'ai-engineering', label: 'AI Engineering with Python' },
   { value: 'applied-nlp', label: 'Applied NLP with Python' },
-  { value: 'advise', label: 'Advise' },
-  { value: 'build', label: 'Build' },
-  { value: 'unsure', label: 'Not sure' },
+  { value: 'consulting', label: 'Consulting' },
+  { value: 'build', label: 'Bespoke build' },
+  { value: 'platform', label: 'Platform' },
+  { value: 'stack', label: 'Stack' },
+  { value: 'wargame', label: 'Wargame' },
+  { value: 'funnel', label: 'Funnel' },
+  { value: 'callcenter', label: 'Callcenter' },
+  { value: 'other', label: 'Something else' },
+] as const;
+
+export const interestAliases: Record<string, string> = {
+  advise: 'consulting',
+  unsure: 'other',
+};
+
+export const layers = [
+  {
+    id: '01',
+    title: 'Understand AI',
+    body: 'Build the language and judgement a team needs before it designs a system.',
+  },
+  {
+    id: '02',
+    title: 'Decide what to build',
+    body: 'Identify where AI is useful, what the architecture should be, and what good looks like.',
+  },
+  {
+    id: '03',
+    title: 'Deploy working systems',
+    body: 'Take a design into production against real data, interfaces and ownership.',
+  },
+  {
+    id: '04',
+    title: 'Accelerate with products',
+    body: 'Use existing Cognitecta technology where the problem already has a product shape.',
+  },
+] as const;
+
+export const reinforcement = [
+  {
+    id: '01',
+    kicker: 'TRAIN',
+    title: 'Teams understand the technology',
+    href: '/training',
+  },
+  {
+    id: '02',
+    kicker: 'ADVISE',
+    title: 'Identify opportunities and architecture',
+    href: '/consulting',
+  },
+  {
+    id: '03',
+    kicker: 'BUILD',
+    title: 'Implement bespoke systems',
+    href: '/build',
+  },
+  {
+    id: '04',
+    kicker: 'PRODUCTS',
+    title: 'Accelerate using reusable Cognitecta technology',
+    href: '/products',
+  },
+] as const;
+
+export const engagementStarts = [
+  { title: 'Book a training programme', href: '/training' },
+  { title: 'Bring Cognitecta in for AI architecture', href: '/consulting' },
+  { title: 'Commission a bespoke application', href: '/build' },
+  { title: 'Deploy a Cognitecta product', href: '/products' },
+  { title: 'Customise Platform around a specific workflow', href: '/products/platform' },
+  { title: 'Connect Stack to an analytical environment', href: '/products/stack' },
+  { title: 'Use Wargame for a strategic decision process', href: '/products/wargame' },
+  { title: 'Use Funnel to research and qualify a market', href: '/products/funnel' },
+  { title: 'Use Callcenter for agentic customer service', href: '/products/callcenter' },
 ] as const;
 
 export function currentPath(pathname: string) {

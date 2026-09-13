@@ -1,0 +1,40 @@
+---
+import { funnelEquation } from '../../../data/products';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · What makes an opportunity' } = Astro.props;
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <ol class="flex flex-col border border-hairline bg-paper md:flex-row">
+    {
+      funnelEquation.map((item, index) => (
+        <li
+          class:list={[
+            'relative flex flex-1 flex-col px-4 py-5',
+            index < funnelEquation.length - 1 && 'border-b border-hairline md:border-r md:border-b-0',
+          ]}
+        >
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.id}</span>
+          <p class="mt-6 text-[1rem] font-medium tracking-tight">{item.title}</p>
+          {index < funnelEquation.length - 1 && (
+            <span class="mt-4 font-mono text-[11px] tracking-[0.16em] text-cobalt md:absolute md:right-2 md:bottom-5 md:mt-0" aria-hidden="true">
+              +
+            </span>
+          )}
+        </li>
+      ))
+    }
+    <li class="border-t border-hairline bg-cobalt/5 px-4 py-5 md:border-t-0 md:border-l">
+      <span class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Result</span>
+      <p class="mt-6 text-[1rem] font-medium tracking-tight">Qualified opportunity</p>
+    </li>
+  </ol>
+  <figcaption class="sr-only">
+    A qualified opportunity is company fit plus a buying signal plus a relevant person plus a matched proposition.
+  </figcaption>
+</figure>

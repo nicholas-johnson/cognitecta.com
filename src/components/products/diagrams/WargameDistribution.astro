@@ -1,0 +1,60 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+import { wargameDistribution } from '../../../data/products';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Outcome distribution' } = Astro.props;
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <GridFrame class="bg-paper p-5 md:p-8">
+    <p class="font-mono text-[11px] tracking-[0.14em] text-muted">{wargameDistribution.label}</p>
+    <ol class="mt-6 space-y-5">
+      {
+        wargameDistribution.outcomes.map((outcome) => (
+          <li>
+            <div class="mb-2 flex items-baseline justify-between gap-4">
+              <p class="text-[0.98rem] font-medium tracking-tight">{outcome.title}</p>
+              <p class="font-mono text-[11px] tracking-[0.14em] text-muted">{outcome.share}%</p>
+            </div>
+            <div class="h-2 bg-hairline">
+              <div
+                class="wargame-bar h-2 bg-cobalt"
+                style={`width: ${outcome.share}%; --share: ${outcome.share}` }
+              >
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="mt-6 max-w-lg text-[0.92rem] leading-relaxed text-muted">
+      Rather than a single answer, repeated simulation produces a distribution. The quality of that distribution depends on the assumptions, the actor model, the data and the design of the run.
+    </p>
+  </GridFrame>
+  <figcaption class="sr-only">
+    Illustrative outcome distribution showing three scenario classes at fifty-two, thirty-one and seventeen percent.
+  </figcaption>
+</figure>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .wargame-bar {
+      transform-origin: left center;
+      animation: wargame-grow 1.1s ease both;
+    }
+  }
+
+  @keyframes wargame-grow {
+    from {
+      transform: scaleX(0.08);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+</style>

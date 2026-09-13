@@ -8,16 +8,20 @@ import { site } from '../data/site';
 interface Props {
   title?: string;
   description?: string;
+  fullTitle?: string;
 }
 
 const {
   title,
   description = site.description,
+  fullTitle,
 } = Astro.props;
 
-const pageTitle = title
-  ? `${title} — ${site.name}`
-  : `${site.name} — ${site.descriptor}`;
+const pageTitle = fullTitle
+  ? fullTitle
+  : title
+    ? `${title} — ${site.name}`
+    : `${site.name} — ${site.descriptor}`;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImage = new URL('/og.png', Astro.site).toString();
