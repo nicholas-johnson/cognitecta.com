@@ -1,0 +1,55 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+import { callcenterHandoff } from '../../../data/callcenter';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Warm handoff' } = Astro.props;
+
+const fields = [
+  { label: 'Customer', value: callcenterHandoff.customer },
+  { label: 'Current issue', value: callcenterHandoff.issue },
+  { label: 'Conversation history', value: callcenterHandoff.history },
+  { label: 'Identity', value: callcenterHandoff.identity },
+  { label: 'Summary', value: callcenterHandoff.summary },
+  { label: 'Reason for escalation', value: callcenterHandoff.reason },
+  { label: 'Suggested next action', value: callcenterHandoff.next },
+  { label: 'Customer sentiment', value: callcenterHandoff.sentiment },
+];
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <GridFrame class="bg-paper">
+    <p class="border-b border-hairline px-5 py-3 font-mono text-[11px] tracking-[0.16em] text-muted md:px-8">
+      {callcenterHandoff.label}
+    </p>
+    <dl class="divide-y divide-hairline">
+      {
+        fields.map((field) => (
+          <div class="grid gap-2 px-5 py-4 md:grid-cols-[12rem_1fr] md:px-8">
+            <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">{field.label}</dt>
+            <dd class="text-[0.98rem] leading-relaxed">{field.value}</dd>
+          </div>
+        ))
+      }
+      <div class="grid gap-2 px-5 py-4 md:grid-cols-[12rem_1fr] md:px-8">
+        <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">Actions completed</dt>
+        <dd>
+          <ul class="space-y-1">
+            {
+              callcenterHandoff.actions.map((item) => (
+                <li class="text-[0.98rem] leading-relaxed">{item}</li>
+              ))
+            }
+          </ul>
+        </dd>
+      </div>
+    </dl>
+  </GridFrame>
+  <figcaption class="sr-only">
+    Illustrative handoff for a customer named John Smith whose order has not arrived. The adviser receives conversation history, a summary, completed actions and a suggested next step. Example data only.
+  </figcaption>
+</figure>

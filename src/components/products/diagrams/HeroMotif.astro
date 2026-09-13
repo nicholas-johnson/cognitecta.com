@@ -25,6 +25,10 @@ const copy = {
     kicker: 'Filtration',
     line: 'A wide search space narrows to a few evidence-backed opportunities.',
   },
+  callcenter: {
+    kicker: 'Conversation',
+    line: 'Many channels enter one conversation, then resolve or hand off.',
+  },
 }[slug];
 ---
 
@@ -97,6 +101,22 @@ const copy = {
         <path d="M95 68v10h50V68" stroke="currentColor" stroke-opacity="0.4" />
         <rect x="95" y="78" width="50" height="16" stroke="#1B4DFF" />
         <circle class="motif-pulse" cx="120" cy="86" r="2.5" fill="#1B4DFF" />
+      </svg>
+    )
+  }
+  {
+    slug === 'callcenter' && (
+      <svg class="mt-6 h-32 w-full text-ink" viewBox="0 0 240 110" fill="none" aria-hidden="true">
+        <rect x="8" y="8" width="44" height="16" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="8" y="30" width="44" height="16" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="8" y="52" width="44" height="16" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="8" y="74" width="44" height="16" stroke="currentColor" stroke-opacity="0.45" />
+        <path d="M52 16h28V82H52" stroke="currentColor" stroke-opacity="0.4" />
+        <rect x="80" y="38" width="86" height="22" stroke="currentColor" />
+        <path d="M166 49h18" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="184" y="18" width="48" height="20" stroke="#1B4DFF" />
+        <rect x="184" y="62" width="48" height="20" stroke="currentColor" stroke-opacity="0.55" />
+        <circle class="motif-pulse" cx="123" cy="49" r="2.5" fill="#1B4DFF" />
       </svg>
     )
   }

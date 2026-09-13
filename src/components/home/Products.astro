@@ -3,7 +3,15 @@ import Section from '../Section.astro';
 import CtaLink from '../CtaLink.astro';
 import ProductFamily from '../products/ProductFamily.astro';
 import ProductComparison from '../products/ProductComparison.astro';
-import { productFamily, products, productHref } from '../../data/products';
+import {
+  productFamily,
+  productHref,
+  getFoundationProducts,
+  getApplicationProducts,
+} from '../../data/products';
+
+const foundation = getFoundationProducts();
+const applications = getApplicationProducts();
 ---
 
 <Section id="products" class="pb-16 md:pb-24">
@@ -21,21 +29,52 @@ import { productFamily, products, productHref } from '../../data/products';
     <ProductFamily />
   </div>
 
-  <ol class="mt-16 border-t border-hairline">
-    {
-      products.map((product, index) => (
-        <li class="grid gap-6 border-b border-hairline py-12 lg:grid-cols-[5.5rem_minmax(0,18rem)_1fr] lg:gap-12">
-          <p class="font-mono text-[11px] tracking-[0.18em] text-muted">
-            {String(index + 1).padStart(2, '0')}
+  {
+    foundation.map((product) => (
+      <article class="mt-16 grid gap-6 border-t border-hairline pt-12 lg:grid-cols-[5.5rem_minmax(0,18rem)_1fr] lg:gap-12">
+        <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Foundation</p>
+        <div>
+          <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{product.name}</p>
+          <h3 class="mt-3 text-[1.25rem] font-medium tracking-tight">{product.framing}.</h3>
+          <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">{product.category}</p>
+        </div>
+        <div class="max-w-xl">
+          <p class="text-[1.05rem] leading-relaxed text-muted">{product.headline}</p>
+          <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{product.shortDescription}</p>
+          <p class="mt-6">
+            <a
+              href={productHref(product.slug)}
+              class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+            >
+              Explore {product.name}
+            </a>
           </p>
-          <div>
+        </div>
+      </article>
+    ))
+  }
+
+  <div class="mt-16 border-t border-hairline pt-10">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Applications</p>
+    <ol class="mt-8 grid gap-0 border-t border-hairline sm:grid-cols-2">
+      {
+        applications.map((product, index) => (
+          <li
+            class:list={[
+              'border-hairline py-10',
+              index < applications.length - 1 && 'border-b',
+              index % 2 === 0 && 'sm:border-r sm:pr-10',
+              index % 2 === 1 && 'sm:pl-10',
+              index < 2 && 'sm:border-b',
+              index >= 2 && 'sm:border-b-0',
+            ]}
+          >
             <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{product.name}</p>
-            <h3 class="mt-3 text-[1.25rem] font-medium tracking-tight">{product.framing}.</h3>
-            <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">{product.category}</p>
-          </div>
-          <div class="max-w-xl">
-            <p class="text-[1.05rem] leading-relaxed text-muted">{product.headline}</p>
-            <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{product.shortDescription}</p>
+            <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">{product.domain}</p>
+            <h3 class="mt-4 text-[1.15rem] font-medium tracking-tight">{product.framing}.</h3>
+            <p class="mt-4 max-w-md text-[1.02rem] leading-relaxed text-muted">
+              {product.shortDescription}
+            </p>
             <p class="mt-6">
               <a
                 href={productHref(product.slug)}
@@ -44,14 +83,14 @@ import { productFamily, products, productHref } from '../../data/products';
                 Explore {product.name}
               </a>
             </p>
-          </div>
-        </li>
-      ))
-    }
-  </ol>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
 
   <div class="mt-16">
-    <ProductComparison caption="Why the four products are different" />
+    <ProductComparison caption="How the products differ" />
   </div>
 
   <div class="mt-10">

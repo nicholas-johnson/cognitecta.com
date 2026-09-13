@@ -2,10 +2,16 @@
 import Mark from './Mark.astro';
 import Wordmark from './Wordmark.astro';
 import { nav, currentPath, isActivePath } from '../data/site';
-import { products, productHref } from '../data/products';
+import {
+  productHref,
+  getFoundationProducts,
+  getApplicationProducts,
+} from '../data/products';
 
 const path = currentPath(Astro.url.pathname);
 const isHome = path === '/';
+const foundation = getFoundationProducts();
+const applications = getApplicationProducts();
 ---
 
 <header class="relative z-30 border-b border-hairline">
@@ -44,26 +50,54 @@ const isHome = path === '/';
                   {item.label}
                 </a>
                 {isProducts && (
-                  <ul class="nav-products__menu absolute top-full left-0 z-20 hidden w-[22rem] grid-cols-2 border border-hairline bg-paper">
-                    {products.map((product) => (
-                      <li class="border-hairline border-b even:border-l">
-                        <a
-                          href={productHref(product.slug)}
-                          class:list={[
-                            'block px-4 py-3 font-mono text-[11px] tracking-[0.14em] no-underline',
-                            isActivePath(path, productHref(product.slug))
-                              ? 'text-cobalt'
-                              : 'text-ink hover:text-cobalt',
-                          ]}
-                        >
-                          {product.name}
-                          <span class="mt-1 block tracking-[0.1em] text-muted">
-                            {product.verb}
-                          </span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+                  <div class="nav-products__menu absolute top-full left-0 z-20 hidden w-[22rem] border border-hairline bg-paper">
+                    <p class="px-4 pt-3 font-mono text-[10px] tracking-[0.18em] text-muted">
+                      Foundation
+                    </p>
+                    <ul>
+                      {foundation.map((product) => (
+                        <li>
+                          <a
+                            href={productHref(product.slug)}
+                            class:list={[
+                              'block px-4 py-3 font-mono text-[11px] tracking-[0.14em] no-underline',
+                              isActivePath(path, productHref(product.slug))
+                                ? 'text-cobalt'
+                                : 'text-ink hover:text-cobalt',
+                            ]}
+                          >
+                            {product.name}
+                            <span class="mt-1 block tracking-[0.08em] text-muted">
+                              {product.landingLine}
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    <p class="border-t border-hairline px-4 pt-3 font-mono text-[10px] tracking-[0.18em] text-muted">
+                      Applications
+                    </p>
+                    <ul>
+                      {applications.map((product) => (
+                        <li>
+                          <a
+                            href={productHref(product.slug)}
+                            class:list={[
+                              'block px-4 py-2.5 font-mono text-[11px] tracking-[0.14em] no-underline',
+                              isActivePath(path, productHref(product.slug))
+                                ? 'text-cobalt'
+                                : 'text-ink hover:text-cobalt',
+                            ]}
+                          >
+                            {product.name}
+                            <span class="mt-1 block tracking-[0.08em] text-muted">
+                              {product.landingLine}
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </li>
             );
@@ -78,7 +112,7 @@ const isHome = path === '/';
   @media (min-width: 1024px) {
     .nav-products:hover .nav-products__menu,
     .nav-products:focus-within .nav-products__menu {
-      display: grid;
+      display: block;
     }
 
     .nav-products__menu::before {
@@ -91,4 +125,3 @@ const isHome = path === '/';
     }
   }
 </style>
-

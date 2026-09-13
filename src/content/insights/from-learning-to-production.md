@@ -8,6 +8,6 @@ Most organisations now have people who have “done AI”. They have sat through
 
 The gap is not usually a shortage of tools. It is the distance between a fluent conversation about models and a system that has owners, interfaces, failure modes and a budget. Training that never meets that system becomes theatre. Architecture that never meets the people who will ship it becomes a slide.
 
-Cognitecta exists on that distance. We teach so that a room of engineers can judge a design. We advise so that the organisation knows what would actually constitute a good outcome. We build so that the thing leaves the lab. And we provide productised technology — Platform, Stack, Wargame and Funnel — so that not every engagement starts from a blank page.
+Cognitecta exists on that distance. We teach so that a room of engineers can judge a design. We advise so that the organisation knows what would actually constitute a good outcome. We build so that the thing leaves the lab. And we provide productised technology — Platform, Stack, Wargame, Funnel and Callcenter — so that not every engagement starts from a blank page.
 
 Customers do not have to buy the whole path. They can enter at learning, at discovery, at delivery, or at a product. The point is that the same practice can walk the rest of the way — from capability to production — without handing the problem to a different kind of company halfway through.

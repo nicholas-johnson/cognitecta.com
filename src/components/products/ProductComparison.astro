@@ -11,18 +11,18 @@ const { caption = 'How the products differ' } = Astro.props;
 <section>
   <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
   <div class="overflow-x-auto border border-hairline bg-paper">
-    <table class="hidden w-full min-w-[56rem] border-collapse text-left lg:table">
+    <table class="hidden w-full min-w-[80rem] border-collapse text-left lg:table">
       <caption class="sr-only">
-        Comparison of Platform, Stack, Wargame and Funnel by purpose, input, process, output and human role
+        Comparison of Platform, Stack, Wargame, Funnel and Callcenter by purpose, input, process, output, channels and human role
       </caption>
       <thead>
         <tr class="border-b border-hairline">
-          <th scope="col" class="w-[11rem] px-5 py-4 font-mono text-[11px] font-normal tracking-[0.16em] text-muted">
+          <th scope="col" class="w-[9rem] px-4 py-4 font-mono text-[11px] font-normal tracking-[0.16em] text-muted">
             —
           </th>
           {
             products.map((product) => (
-              <th scope="col" class="px-5 py-4">
+              <th scope="col" class="px-4 py-4">
                 <a
                   href={productHref(product.slug)}
                   class="font-mono text-[11px] tracking-[0.16em] text-ink no-underline hover:text-cobalt"
@@ -43,12 +43,12 @@ const { caption = 'How the products differ' } = Astro.props;
             <tr class="border-b border-hairline last:border-b-0">
               <th
                 scope="row"
-                class="px-5 py-5 align-top font-mono text-[11px] font-normal tracking-[0.14em] text-muted"
+                class="px-4 py-5 align-top font-mono text-[11px] font-normal tracking-[0.14em] text-muted"
               >
                 {row.label}
               </th>
               {products.map((product) => (
-                <td class="px-5 py-5 align-top text-[0.98rem] leading-relaxed text-ink">
+                <td class="px-4 py-5 align-top text-[0.92rem] leading-relaxed text-ink">
                   {row[product.slug]}
                 </td>
               ))}

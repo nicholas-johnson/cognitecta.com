@@ -1,4 +1,5 @@
-export type ProductSlug = 'platform' | 'stack' | 'wargame' | 'funnel';
+export type ProductSlug = 'platform' | 'stack' | 'wargame' | 'funnel' | 'callcenter';
+export type ProductTier = 'foundation' | 'application';
 
 export interface ProductLink {
   label: string;
@@ -28,6 +29,8 @@ export interface Product {
   slug: ProductSlug;
   name: string;
   fullName: string;
+  tier: ProductTier;
+  domain: string;
   category: string;
   verb: string;
   intelligence: string;
@@ -50,28 +53,30 @@ export interface Product {
 
 export const productFamily = {
   kicker: 'Cognitecta Products',
-  headline: 'Applied AI, packaged.',
+  headline: 'Agentic systems for real organisational work.',
   support:
-    'Cognitecta products apply agentic AI to operational work, analytical investigation, strategic simulation and business development.',
-  model: 'Act. Understand. Decide. Discover.',
+    'Cognitecta Platform provides the foundation. Our specialist products apply agentic AI to analysis, strategy, growth and customer service.',
+  model: 'Foundation. Applications.',
 } as const;
 
 export const comparison = [
   {
     id: 'purpose',
     label: 'Purpose',
-    platform: 'Execute organisational work',
-    stack: 'Investigate organisational data',
-    wargame: 'Explore strategic outcomes',
-    funnel: 'Find and qualify potential customers',
+    platform: 'Run agentic systems',
+    stack: 'Investigate data',
+    wargame: 'Explore strategy',
+    funnel: 'Find customers',
+    callcenter: 'Serve customers',
   },
   {
     id: 'input',
     label: 'Input',
-    platform: 'Requests, events, knowledge and workflows',
-    stack: 'Data and an open-ended question',
-    wargame: 'Strategic problem and actor assumptions',
-    funnel: 'ICP and market or company information',
+    platform: 'Events, requests, knowledge and tools',
+    stack: 'Open-ended questions and organisational data',
+    wargame: 'Strategic problem and actor model',
+    funnel: 'ICP and market signals',
+    callcenter: 'Voice, messaging, email and customer context',
   },
   {
     id: 'process',
@@ -80,14 +85,25 @@ export const comparison = [
     stack: 'Hypothesis generation and testing',
     wargame: 'Actor modelling and simulation',
     funnel: 'Discovery, research and qualification',
+    callcenter: 'Understand, retrieve, act, resolve or hand off',
   },
   {
     id: 'output',
     label: 'Output',
-    platform: 'Answers, actions and completed workflows',
-    stack: 'Findings, visualisations and presentations',
+    platform: 'Agentic workflows and actions',
+    stack: 'Evidence, analysis, visualisations and presentations',
     wargame: 'Scenario distributions and strategic options',
-    funnel: 'Evidence-backed sales opportunities',
+    funnel: 'Evidence-backed opportunities',
+    callcenter: 'Resolution, action or context-rich human escalation',
+  },
+  {
+    id: 'channels',
+    label: 'Channels',
+    platform: 'Events, APIs and operational interfaces',
+    stack: 'Analytical environments and presentations',
+    wargame: 'Strategic briefs and simulation outputs',
+    funnel: 'Research sources and approved outreach',
+    callcenter: 'Voice, WhatsApp, SMS, email, Teams, Slack, Salesforce',
   },
   {
     id: 'human',
@@ -96,6 +112,7 @@ export const comparison = [
     stack: 'Review and interpretation',
     wargame: 'Assumption review and strategic judgement',
     funnel: 'Approval and relationship building',
+    callcenter: 'Judgement, takeover and the work that should not be automated',
   },
 ] as const;
 
@@ -104,13 +121,15 @@ export const products: Product[] = [
     slug: 'platform',
     name: 'Platform',
     fullName: 'Cognitecta Platform',
-    category: 'Agentic Operations',
+    tier: 'foundation',
+    domain: 'Infrastructure',
+    category: 'Agentic Infrastructure',
     verb: 'Act',
     intelligence: 'Operational intelligence',
     framing: 'Agents that act',
     shortDescription:
       'An agent harness and runtime for deploying teams of AI agents around organisational work.',
-    landingLine: 'Agentic infrastructure for operational workflows.',
+    landingLine: 'Build and run agentic systems.',
     headline: 'Agents that can actually do the work.',
     support:
       'Cognitecta Platform orchestrates teams of agents, tools, RAG pipelines and workflows around real business processes — with permission boundaries, escalation and production controls.',
@@ -119,7 +138,7 @@ export const products: Product[] = [
       'A chatbot can be one interface to Platform. The product is broader than that. Its function is to let agents operate inside an organisation with access to the appropriate tools, knowledge and workflows — and to stop, ask or escalate when the work exceeds a defined boundary.',
       'Build customer support, knowledge assistants and operational agents on a common production-ready foundation, adapted to existing systems rather than replacing them.',
     ],
-    seoTitle: 'Platform | Agentic AI Operations | Cognitecta',
+    seoTitle: 'Platform | Agentic Infrastructure | Cognitecta',
     seoDescription:
       'Cognitecta Platform is an agent harness and runtime for deploying teams of AI agents around organisational work — with tools, RAG, workflows, escalation and production controls.',
     primaryCta: { label: 'Discuss a deployment', href: '/contact?interest=platform' },
@@ -194,7 +213,7 @@ export const products: Product[] = [
         problem:
           'Support desks accumulate the same questions, the same account lookups and the same routing decisions. Knowledge is scattered, context is lost between channels, and experienced agents spend time on work that is repetitive rather than judgement-heavy.',
         approach:
-          'Platform can operate a support desk as a governed agent system: answer from approved knowledge, inspect account information through authorised tools, classify issues, route work, recommend or execute defined actions, retain relevant context, and produce summaries for human agents. Complex or high-risk cases escalate. Completely unsupervised operation is not the point; controlled autonomy is.',
+          'Platform can operate a support desk as a governed agent system: answer from approved knowledge, inspect account information through authorised tools, classify issues, route work, recommend or execute defined actions, retain relevant context, and produce summaries for human agents. Complex or high-risk cases escalate. Completely unsupervised operation is not the point; controlled autonomy is. For contact-centre work specifically, Callcenter applies the same agentic principles to voice, messaging and human handoff.',
       },
       {
         id: '02',
@@ -247,13 +266,15 @@ export const products: Product[] = [
     slug: 'stack',
     name: 'Stack',
     fullName: 'Cognitecta Stack',
+    tier: 'application',
+    domain: 'Analysis',
     category: 'Agentic Data Analysis',
     verb: 'Understand',
     intelligence: 'Analytical intelligence',
     framing: 'Agents that analyse',
     shortDescription:
       'An agentic data analysis system that investigates open-ended questions, tests hypotheses and produces a structured analytical deliverable.',
-    landingLine: 'Agentic investigation of organisational data.',
+    landingLine: 'Ask open-ended questions of your data.',
     headline: 'Ask the question. Let Stack investigate.',
     support:
       'Stack connects to your analytical data, forms hypotheses, tests them against the evidence and turns its findings into a structured analysis — including charts, narrative and a finished presentation.',
@@ -398,13 +419,15 @@ export const products: Product[] = [
     slug: 'wargame',
     name: 'Wargame',
     fullName: 'Cognitecta Wargame',
+    tier: 'application',
+    domain: 'Strategy',
     category: 'Agentic Strategy',
     verb: 'Decide',
     intelligence: 'Strategic intelligence',
     framing: 'Agents that strategise',
     shortDescription:
       'An agentic strategy and scenario simulation system that models actors, incentives and possible responses under uncertainty.',
-    landingLine: 'Actor modelling and simulation for strategic decisions.',
+    landingLine: 'Explore strategic outcomes.',
     headline: 'Model the actors. Simulate the outcomes. Improve the strategy.',
     support:
       'Wargame builds an explicit model of a strategic environment, simulates possible interactions and helps identify actions that may improve the likelihood of the outcome you want.',
@@ -517,13 +540,15 @@ export const products: Product[] = [
     slug: 'funnel',
     name: 'Funnel',
     fullName: 'Cognitecta Funnel',
+    tier: 'application',
+    domain: 'Growth',
     category: 'Agentic Sales Intelligence',
     verb: 'Discover',
     intelligence: 'Sales intelligence',
     framing: 'Agents that find customers',
     shortDescription:
       'An agentic B2B prospecting system that researches organisations, finds evidence of buying intent and prepares qualified outreach for human approval.',
-    landingLine: 'Agentic research, qualification and sales intelligence.',
+    landingLine: 'Find the companies that need you.',
     headline: 'Find the companies that need you.',
     support:
       'Funnel continuously researches your market, identifies evidence of buying intent and turns promising organisations into qualified, evidence-backed opportunities.',
@@ -629,9 +654,9 @@ export const products: Product[] = [
         id: '04',
         title: 'Product deployment',
         problem:
-          'A product such as Platform, Stack or Wargame is useful only where the organisational problem already exists.',
+          'A product such as Platform, Stack, Wargame or Callcenter is useful only where the organisational problem already exists.',
         approach:
-          'Funnel can look for the conditions that make a product relevant — an agent programme, a large analytical estate, a strategic decision under uncertainty — and surface those organisations first.',
+          'Funnel can look for the conditions that make a product relevant — an agent programme, a large analytical estate, a strategic decision under uncertainty, a contact-centre transformation — and surface those organisations first.',
       },
     ],
     process: [
@@ -653,6 +678,156 @@ export const products: Product[] = [
       'Recommendations depend on the quality of the ICP, the available sources and the evidence those sources contain.',
       'Humans remain responsible for high-value relationship decisions. Funnel drafts; it does not send on its own as a matter of product principle.',
       'Learning from outcomes is analytics and feedback for configuration. It is not a claim of autonomous self-modification.',
+    ],
+  },
+  {
+    slug: 'callcenter',
+    name: 'Callcenter',
+    fullName: 'Cognitecta Callcenter',
+    tier: 'application',
+    domain: 'Customer Service',
+    category: 'Agentic Customer Service',
+    verb: 'Serve',
+    intelligence: 'Customer-service intelligence',
+    framing: 'Agents that serve customers',
+    shortDescription:
+      'Resolve customer needs across voice, messaging and email, with intelligent human handoff when judgement matters.',
+    landingLine: 'One customer. One conversation. Every channel.',
+    headline: 'One customer. One conversation. Every channel.',
+    support:
+      'Callcenter connects voice, WhatsApp, SMS, email, Teams, Slack and Salesforce through an agentic service layer that can understand customer needs, retrieve knowledge, take permitted actions and hand complex interactions to people without losing context.',
+    overview: [
+      'Callcenter is an AI-powered customer-service platform for call deflection, multichannel handling, automated resolution, intelligent routing, human handoff and agent augmentation. It is a specialist product on the same agentic principles as Cognitecta Platform, applied to contact centres, support desks and service operations.',
+      'A customer might start by email, continue over WhatsApp, then phone. Callcenter is designed to retain that context and treat the interactions as one service journey rather than three unrelated conversations.',
+      'Resolve what AI can. Route what it can’t. Give humans everything they need to finish the job.',
+    ],
+    seoTitle: 'Callcenter | Agentic Customer Service | Cognitecta',
+    seoDescription:
+      'Cognitecta Callcenter unifies voice, WhatsApp, SMS, email, Teams, Slack and Salesforce into an agentic customer-service layer for automated resolution, intelligent routing and human handoff.',
+    primaryCta: { label: 'Discuss Callcenter', href: '/contact?interest=callcenter' },
+    secondaryCta: { label: 'See how it works', href: '#how-it-works' },
+    closingQuestion: 'Have a service operation where customers still have to start again?',
+    capabilities: [
+      {
+        id: '01',
+        title: 'Universal Conversation',
+        body: 'Keep one shared conversation state as a customer moves between email, WhatsApp, SMS, voice and a human adviser.',
+      },
+      {
+        id: '02',
+        title: 'Agentic resolution',
+        body: 'Use approved knowledge, tools, workflows and Salesforce context to complete suitable work — not only to answer FAQs.',
+      },
+      {
+        id: '03',
+        title: 'Warm handoff',
+        body: 'When a person takes over, they receive identity, history, summary, actions attempted and a suggested next step.',
+      },
+      {
+        id: '04',
+        title: 'Voice handling',
+        body: 'Answer routine calls, determine intent, retrieve context and resolve or escalate — without pretending to be human.',
+      },
+      {
+        id: '05',
+        title: 'Call deflection',
+        body: 'Remove the reason to phone by resolving the problem on a digital channel, not by hiding the number.',
+      },
+      {
+        id: '06',
+        title: 'Channel switching',
+        body: 'Move a live journey to a more suitable channel — a form, a document, a callback — without restarting the case.',
+      },
+      {
+        id: '07',
+        title: 'Governed actions',
+        body: 'Check an order, update a case, schedule an appointment or trigger a workflow inside configured autonomy limits.',
+      },
+      {
+        id: '08',
+        title: 'Intelligent routing',
+        body: 'Route on intent, product, urgency, account and skills — not only on a keypad menu.',
+      },
+      {
+        id: '09',
+        title: 'Human takeover',
+        body: 'Let an adviser assume control from Teams, Slack or another configured operational interface.',
+      },
+      {
+        id: '10',
+        title: 'Agent assist',
+        body: 'After takeover, surface knowledge, history, suggested next actions and after-call notes. The human remains in control.',
+      },
+      {
+        id: '11',
+        title: 'Salesforce context',
+        body: 'Treat Salesforce as the operational system of record: contacts, cases, history and updates, not another outbound channel.',
+      },
+      {
+        id: '12',
+        title: 'Service intelligence',
+        body: 'Use conversations to find knowledge gaps, contact drivers and recurring operational failures — for people to act on.',
+      },
+    ],
+    useCases: [
+      {
+        id: '01',
+        title: 'Fragmented omnichannel service',
+        problem:
+          'Customers email, message and phone about the same issue. Each channel opens a new interaction. Advisers ask the same questions again.',
+        approach:
+          'Callcenter holds a shared conversation state so the channel can change without the customer restarting the story.',
+      },
+      {
+        id: '02',
+        title: 'Routine voice resolution',
+        problem:
+          'Queues fill with delivery checks, booking changes and account questions that already have a system of record.',
+        approach:
+          'A voice interaction can identify the customer, retrieve the relevant record, take a permitted action and confirm the result — or escalate with the work already done.',
+      },
+      {
+        id: '03',
+        title: 'Salesforce-connected service desks',
+        problem:
+          'The conversation happens in one place and the case lives in another. Context is copied late, or not at all.',
+        approach:
+          'Callcenter can retrieve and update Salesforce records as part of the same journey, then attach a summary when a person takes over.',
+      },
+      {
+        id: '04',
+        title: 'Proactive exception handling',
+        problem:
+          'Customers call because nobody told them about a delay, a failed payment or a changed appointment.',
+        approach:
+          'A business event can open an SMS, WhatsApp or email conversation and let the customer resolve the exception there.',
+      },
+      {
+        id: '05',
+        title: 'Knowledge and contact-driver improvement',
+        problem:
+          'The same questions escalate because the approved answer is missing, contradictory or obsolete.',
+        approach:
+          'Repeated retrieval failures and escalations become signals for the knowledge base — and, where useful, for Stack to investigate the underlying operation.',
+      },
+    ],
+    process: [
+      { id: '01', title: 'Channel' },
+      { id: '02', title: 'Identity' },
+      { id: '03', title: 'Intent' },
+      { id: '04', title: 'Retrieve' },
+      { id: '05', title: 'Act' },
+      { id: '06', title: 'Resolve' },
+      { id: '07', title: 'Route' },
+      { id: '08', title: 'Handoff' },
+    ],
+    limits: [
+      'Not every conversation should be automated. Escalation is a designed outcome, not a failure of the product.',
+      'Authentication and organisational policy govern what can be disclosed or done. Recognising a phone number is not enough for sensitive actions.',
+      'Sentiment is one signal that may help prioritisation. It is not a diagnosis of a customer’s emotional state.',
+      'Conversation memory and retention follow the organisation’s data policy. The system is not designed as indefinite recall.',
+      'Specialist agents describe the operating model. They are not a claim that every deployment exposes these roles as named services.',
+      'Resolution depends on approved knowledge, connected systems and the actions the organisation has authorised.',
     ],
   },
 ];
@@ -915,6 +1090,7 @@ export const funnelOffers = [
   { signal: 'Agent project', offer: 'Platform' },
   { signal: 'Large analytical data estate', offer: 'Stack' },
   { signal: 'Strategic planning requirement', offer: 'Wargame' },
+  { signal: 'Contact-centre transformation', offer: 'Callcenter' },
   { signal: 'AI programme without clear architecture', offer: 'AI discovery / consulting' },
   { signal: 'Custom implementation requirement', offer: 'Build' },
 ] as const;
@@ -1031,6 +1207,14 @@ export const funnelFiltration = {
 
 export function getProduct(slug: string) {
   return products.find((product) => product.slug === slug);
+}
+
+export function getFoundationProducts() {
+  return products.filter((product) => product.tier === 'foundation');
+}
+
+export function getApplicationProducts() {
+  return products.filter((product) => product.tier === 'application');
 }
 
 export function productHref(slug: ProductSlug) {

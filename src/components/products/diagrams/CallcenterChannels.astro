@@ -1,0 +1,39 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+import { callcenterChannelGroups } from '../../../data/callcenter';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · One service layer. Multiple channels.' } = Astro.props;
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <GridFrame class="overflow-hidden bg-paper">
+    <ol class="grid gap-0 lg:grid-cols-3">
+      {
+        callcenterChannelGroups.map((group, index) => (
+          <li
+            class:list={[
+              'border-hairline px-5 py-6 md:px-8',
+              index < callcenterChannelGroups.length - 1 && 'border-b lg:border-r lg:border-b-0',
+            ]}
+          >
+            <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{group.title}</p>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-muted">{group.body}</p>
+            <ul class="mt-6 space-y-5">
+              {group.items.map((item) => (
+                <li>
+                  <p class="font-mono text-[11px] tracking-[0.14em] uppercase">{item.title}</p>
+                  <p class="mt-2 text-[0.95rem] leading-relaxed text-muted">{item.body}</p>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ol>
+  </GridFrame>
+</figure>

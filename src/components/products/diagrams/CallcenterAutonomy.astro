@@ -1,0 +1,56 @@
+---
+import GridFrame from '../../diagrams/GridFrame.astro';
+import { callcenterAutonomy } from '../../../data/callcenter';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Autonomy and policy' } = Astro.props;
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <GridFrame class="overflow-hidden bg-paper">
+    <ol>
+      {
+        callcenterAutonomy.map((level, index) => (
+          <li
+            class:list={[
+              'relative grid gap-3 px-5 py-5 md:grid-cols-[4.5rem_11rem_1fr] md:items-baseline md:px-8',
+              index < callcenterAutonomy.length - 1 && 'border-b border-hairline',
+            ]}
+          >
+            <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{level.id}</p>
+            <p class="font-medium tracking-tight">{level.title}</p>
+            <p class="text-[0.98rem] leading-relaxed text-muted">{level.body}</p>
+            {index < callcenterAutonomy.length - 1 && (
+              <span
+                class="callcenter-autonomy__pulse pointer-events-none absolute bottom-0 left-8 hidden h-px w-10 bg-cobalt/70 md:block"
+                aria-hidden="true"
+              />
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </GridFrame>
+</figure>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .callcenter-autonomy__pulse {
+      animation: callcenter-autonomy 3.2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes callcenter-autonomy {
+    0%,
+    100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>

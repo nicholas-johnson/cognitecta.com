@@ -229,6 +229,7 @@ export const interests = [
   { value: 'stack', label: 'Stack' },
   { value: 'wargame', label: 'Wargame' },
   { value: 'funnel', label: 'Funnel' },
+  { value: 'callcenter', label: 'Callcenter' },
   { value: 'other', label: 'Something else' },
 ] as const;
 
@@ -296,6 +297,7 @@ export const engagementStarts = [
   { title: 'Connect Stack to an analytical environment', href: '/products/stack' },
   { title: 'Use Wargame for a strategic decision process', href: '/products/wargame' },
   { title: 'Use Funnel to research and qualify a market', href: '/products/funnel' },
+  { title: 'Use Callcenter for agentic customer service', href: '/products/callcenter' },
 ] as const;
 
 export function currentPath(pathname: string) {
