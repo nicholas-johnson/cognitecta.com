@@ -45,3 +45,16 @@ Apex (`cognitecta.com`):
 | `CNAME` | `www` | `<user-or-org>.github.io` |
 
 GitHub may also ask you to add a verification `TXT` record when you attach the domain in **Settings → Pages**.
+
+## Contact form
+
+The contact page posts a web-channel conversation to Callcenter (`POST /api/v1/conversations`). GitHub Pages only serves the static form; the browser calls Callcenter directly.
+
+Set these repository variables if the ingest host or key is not the default:
+
+| Variable | Purpose |
+| --- | --- |
+| `PUBLIC_CALLCENTER_INGEST_URL` | Ingest endpoint. Default: `https://callcenter.cognitecta.com/api/v1/conversations` |
+| `PUBLIC_CALLCENTER_PUBLISHABLE_KEY` | Optional bearer token sent as `Authorization` |
+
+Callcenter must allow CORS from `https://cognitecta.com` (and `http://localhost:4321` in development).
