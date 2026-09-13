@@ -5,6 +5,12 @@ import { site, interests, interestAliases } from '../data/site';
 import { courses } from '../data/courses';
 
 const courseLabels = Object.fromEntries(courses.map((course) => [course.slug, course.title]));
+const enquiryConfig = {
+  interestLabels: Object.fromEntries(interests.map((item) => [item.value, item.label])),
+  interestAliases,
+  courseLabels,
+  replyEmail: site.email,
+};
 ---
 
 <BaseLayout
@@ -14,16 +20,26 @@ const courseLabels = Object.fromEntries(courses.map((course) => [course.slug, co
   <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
     <PageIntro kicker="08 / Contact" title="Talk to us.">
       <p>
-        Write with a short account of the organisation and the problem. Serious enquiries receive a reply. If email is easier, use
+        Write with a short account of the organisation and the problem. The form opens a conversation in Callcenter. If email is easier, use
         {' '}
         <a href={`mailto:${site.email}`} class="text-ink hover:text-cobalt">{site.email}</a>.
       </p>
     </PageIntro>
 
     <form id="enquiry" class="mt-14 max-w-xl border-t border-ink/20 pt-10">
+      <script type="application/json" id="enquiry-config" set:html={JSON.stringify(enquiryConfig)} />
       <p id="course-note" class="mb-8 hidden font-mono text-[11px] tracking-[0.14em] text-muted"></p>
       <input type="hidden" name="course" id="course-field" />
-      <div class="space-y-8">
+      <div
+        class="absolute -left-[9999px] h-0 w-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <label>
+          Website
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+      <div id="enquiry-fields" class="space-y-8">
         <label class="block">
           <span class="font-mono text-[11px] tracking-[0.18em] text-muted">Name</span>
           <input
@@ -31,6 +47,16 @@ const courseLabels = Object.fromEntries(courses.map((course) => [course.slug, co
             name="name"
             required
             autocomplete="name"
+            class="mt-2 w-full border border-hairline bg-paper px-3 py-3 text-[1rem] text-ink outline-none"
+          />
+        </label>
+        <label class="block">
+          <span class="font-mono text-[11px] tracking-[0.18em] text-muted">Email</span>
+          <input
+            type="email"
+            name="email"
+            required
+            autocomplete="email"
             class="mt-2 w-full border border-hairline bg-paper px-3 py-3 text-[1rem] text-ink outline-none"
           />
         </label>
@@ -70,9 +96,17 @@ const courseLabels = Object.fromEntries(courses.map((course) => [course.slug, co
           ></textarea>
         </label>
       </div>
+      <p id="enquiry-success" hidden class="mt-10 text-[1.05rem] leading-relaxed text-muted">
+        The enquiry is with us. We will reply.
+      </p>
+      <p
+        id="enquiry-status"
+        role="status"
+        class="mt-6 font-mono text-[11px] tracking-[0.12em] text-muted"
+      ></p>
       <button
         type="submit"
-        class="mt-10 bg-cobalt px-6 py-3 font-mono text-[11px] tracking-[0.16em] text-white transition-colors hover:bg-ink"
+        class="mt-10 bg-cobalt px-6 py-3 font-mono text-[11px] tracking-[0.16em] text-white transition-colors hover:bg-ink disabled:cursor-wait disabled:opacity-60"
       >
         Talk to us
       </button>
@@ -80,51 +114,7 @@ const courseLabels = Object.fromEntries(courses.map((course) => [course.slug, co
   </article>
 </BaseLayout>
 
-<script define:vars={{ email: site.email, interestLabels: Object.fromEntries(interests.map((item) => [item.value, item.label])), interestAliases, courseLabels }}>
-  const form = document.getElementById('enquiry');
-  if (form instanceof HTMLFormElement) {
-    const params = new URLSearchParams(window.location.search);
-    const interestField = form.elements.namedItem('interest');
-    const requestedProgramme = params.get('programme');
-    const rawInterest = params.get('interest');
-    const requestedInterest =
-      rawInterest && rawInterest in interestAliases ? interestAliases[rawInterest] : rawInterest;
-    const requestedCourse = params.get('course');
-    const courseNote = document.getElementById('course-note');
-    const courseField = document.getElementById('course-field');
-    const courseTitle =
-      requestedCourse && requestedCourse in courseLabels ? courseLabels[requestedCourse] : '';
-
-    if (interestField instanceof HTMLSelectElement) {
-      if (requestedProgramme && requestedProgramme in interestLabels) {
-        interestField.value = requestedProgramme;
-      } else if (requestedInterest && requestedInterest in interestLabels) {
-        interestField.value = requestedInterest;
-      } else if (courseTitle) {
-        interestField.value = 'train';
-      }
-    }
-
-    if (courseTitle && courseNote instanceof HTMLElement && courseField instanceof HTMLInputElement) {
-      courseNote.textContent = `Course: ${courseTitle}`;
-      courseNote.classList.remove('hidden');
-      courseField.value = courseTitle;
-    }
-
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const data = new FormData(form);
-      const name = String(data.get('name') ?? '').trim();
-      const organisation = String(data.get('organisation') ?? '').trim();
-      const interestValue = String(data.get('interest') ?? '').trim();
-      const interest = interestLabels[interestValue] ?? interestValue;
-      const course = String(data.get('course') ?? '').trim();
-      const context = String(data.get('context') ?? '').trim();
-      const subjectLabel = course || interest;
-      const subject = `Cognitecta enquiry — ${organisation} — ${subjectLabel}`;
-      const courseLine = course ? `Course: ${course}\n` : '';
-      const body = `Name: ${name}\nOrganisation: ${organisation}\nInterest: ${interest}\n${courseLine}\n${context}`;
-      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    });
-  }
+<script>
+  import { mountEnquiryForm } from '../scripts/enquiry-form';
+  mountEnquiryForm();
 </script>
