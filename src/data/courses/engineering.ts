@@ -7,14 +7,14 @@ export const engineeringCourses: Course[] = [
     shortDescription:
       'A three-day programme for professional software engineers: how to build real applications with modern AI, from model APIs and RAG through agents, evaluation and production patterns.',
     overview:
-      'Most software engineers are now expected to put large language models into applications. The gap is not access to an API. It is the engineering around it: structured outputs, retrieval, tools, evaluation, security, testing and the production behaviour of a non-deterministic component.\n\nThis course teaches those fundamentals before any particular framework. Participants call models, constrain outputs, build embeddings and retrieval, then add tool calling, agents and orchestration. Context engineering, evaluation and observability are treated as part of the design, not as later extras.\n\nThe labs are substantial. Delegates write working software, compare approaches, and learn to recognise when a framework is helping and when it is hiding a design they will have to own. The course is not bound to a single vendor SDK or agent library.\n\nAfter three days, engineers can design and implement AI-backed features with the same seriousness they would apply to any other production integration: interfaces, failure modes, tests, and an honest account of what the model is allowed to do.',
+      'Most software engineers are now expected to put large language models into applications. The gap is not access to an API. It is the engineering around it: structured outputs, retrieval, tools, evaluation, security, testing and the production behaviour of a non-deterministic component.\n\nThis course teaches those fundamentals before any particular framework. You call models, constrain outputs, build embeddings and retrieval, then add tool calling, agents and orchestration. Context engineering, evaluation and observability are treated as part of the design, not as later extras.\n\nThe labs are substantial. You write working software, compare approaches, and learn to recognise when a framework is helping and when it is hiding a design you will have to own. The course is not bound to a single vendor SDK or agent library.\n\nAfter three days, you can design and implement AI-backed features with the same seriousness you would apply to any other production integration: interfaces, failure modes, tests, and an honest account of what the model is allowed to do.',
     audience:
       'Professional software developers with little or moderate AI experience. Suitable for senior developers and technical leads who will implement, review or own LLM-backed features.',
     audienceLabel: 'Software developers',
     prerequisites:
       'Professional software development experience and comfort writing backend or full-stack code. Familiarity with HTTP APIs and JSON is expected. Python or TypeScript is used in labs; the concepts are not language-specific. No machine-learning background is required.',
     duration: '3 days',
-    durationNote: 'Can be condensed to two days for experienced teams, or extended with a fourth day on the organisation’s stack.',
+    durationNote: 'Can be condensed to two days for experienced teams, or extended with a fourth day on your organisation’s stack.',
     level: 'Intermediate',
     category: 'ai-engineering',
     outcomes: [
@@ -77,7 +77,7 @@ export const engineeringCourses: Course[] = [
       },
     ],
     practicalWork:
-      'The course is lab-heavy. Participants build against model APIs, add structured outputs and tests, implement retrieval, then introduce tools and a bounded agent. The final work is a small service with evaluation, tracing and explicit failure behaviour rather than a chat demo.',
+      'The course is lab-heavy. You build against model APIs, add structured outputs and tests, implement retrieval, then introduce tools and a bounded agent. The final work is a small service with evaluation, tracing and explicit failure behaviour rather than a chat demo.',
     takeaways: [
       'Working code for API integration, RAG, tool calling and evaluation',
       'Reference implementations that are not tied to a single framework',
@@ -91,12 +91,12 @@ export const engineeringCourses: Course[] = [
     shortDescription:
       'A two-to-three-day build course for software engineers: take an AI-powered application from architecture through RAG, tools, evaluation and deployment, ending with an end-to-end system.',
     overview:
-      'Isolated demos hide the parts of an AI application that determine whether it can be shipped: application structure, error handling, evaluation, cost, latency and the boundary between the model and the rest of the system. This course is organised around building one application, not around a sequence of disconnected labs.\n\nParticipants start with architecture and model APIs, then add prompt design, structured outputs, tools, context and retrieval. Memory, agents, guardrails and testing are introduced as the application becomes capable enough to need them. Cost, latency and deployment are treated as design constraints from the middle of the course, not as a closing discussion.\n\nThe course is practical and progressive. Each module extends the same system. The final project is an end-to-end application with a retrieval path, tools, evaluation and a deployment shape that could be handed to a team.\n\nEngineers leave with a working application and a clearer sense of which patterns belong in production and which only belong in a prototype.',
+      'Isolated demos hide the parts of an AI application that determine whether it can be shipped: application structure, error handling, evaluation, cost, latency and the boundary between the model and the rest of the system. This course is organised around building one application, not around a sequence of disconnected labs.\n\nYou start with architecture and model APIs, then add prompt design, structured outputs, tools, context and retrieval. Memory, agents, guardrails and testing are introduced as the application becomes capable enough to need them. Cost, latency and deployment are treated as design constraints from the middle of the course, not as a closing discussion.\n\nThe course is practical and progressive. Each module extends the same system. The final project is an end-to-end application with a retrieval path, tools, evaluation and a deployment shape that could be handed to a team.\n\nYou leave with a working application and a clearer sense of which patterns belong in production and which only belong in a prototype.',
     audience:
       'Software engineers and technical teams who will implement AI-powered products or internal applications.',
     audienceLabel: 'Software engineers and technical teams',
     prerequisites:
-      'Professional software development experience. Participants should be able to build and run a small web or backend application. Prior LLM experience is helpful but not required.',
+      'Professional software development experience. You should be able to build and run a small web or backend application. Prior LLM experience is helpful but not required.',
     duration: '2–3 days',
     durationNote: 'Two days covers a complete application. Three days adds more depth on agents, evaluation and production hardening.',
     level: 'Intermediate',
@@ -150,7 +150,7 @@ export const engineeringCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants progressively build one application across the course. Typical shape: a domain assistant or workflow tool with retrieval, at least one tool, evaluation and a deployable service. The final session is an end-to-end project rather than a slide recap.',
+      'You progressively build one application across the course. Typical shape: a domain assistant or workflow tool with retrieval, at least one tool, evaluation and a deployable service. The final session is an end-to-end project rather than a presentation recap.',
     takeaways: [
       'A working end-to-end application',
       'Architecture patterns for model access, RAG, tools and guardrails',
@@ -164,12 +164,12 @@ export const engineeringCourses: Course[] = [
     shortDescription:
       'A one-day course on evaluating non-deterministic systems: golden datasets, semantic checks, LLM-as-judge, retrieval and agent evaluation, and the pipeline that keeps quality from drifting.',
     overview:
-      'Conventional software testing assumes that the same input should produce the same output. LLM applications violate that assumption while still needing regression control, release judgement and production monitoring. Teams that skip this work discover quality issues only through users.\n\nThis course teaches a practical evaluation discipline. Participants separate deterministic tests from semantic evaluation, build golden datasets, and use human review and LLM-as-judge where they are justified. Retrieval is evaluated separately from generation. Groundedness, hallucination, agent behaviour and prompt or model changes are treated as first-class concerns.\n\nThe day is a build. Participants construct an evaluation suite around a realistic application path, then look at how that suite becomes a pipeline: versioning, model comparison, regression gates and production monitoring.\n\nEngineers and technical leads leave able to say whether a change made the system better, worse, or merely different.',
+      'Conventional software testing assumes that the same input should produce the same output. LLM applications violate that assumption while still needing regression control, release judgement and production monitoring. Teams that skip this work discover quality issues only through users.\n\nThis course teaches a practical evaluation discipline. You separate deterministic tests from semantic evaluation, build golden datasets, and use human review and LLM-as-judge where they are justified. Retrieval is evaluated separately from generation. Groundedness, hallucination, agent behaviour and prompt or model changes are treated as first-class concerns.\n\nThe day is a build. You construct an evaluation suite around a realistic application path, then look at how that suite becomes a pipeline: versioning, model comparison, regression gates and production monitoring.\n\nYou leave able to say whether a change made the system better, worse, or merely different.',
     audience:
       'AI developers, QA engineers, ML engineers and technical leads responsible for quality, release and monitoring of LLM applications.',
     audienceLabel: 'AI developers, QA engineers and technical leads',
     prerequisites:
-      'Experience building or testing software. Familiarity with LLM applications is expected. Participants do not need a research background in evaluation metrics.',
+      'Experience building or testing software. Familiarity with LLM applications is expected. You do not need a research background in evaluation metrics.',
     duration: '1 day',
     durationNote: 'Can be extended with a second day to instrument a customer system or to deepen agent evaluation.',
     level: 'Intermediate',
@@ -223,7 +223,7 @@ export const engineeringCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants build an evaluation suite around a representative application: a golden set, mixed checkers, retrieval and generation scores, and a simple regression report. The closing work is a pipeline design that could be implemented on their own system.',
+      'You build an evaluation suite around a representative application: a golden set, mixed checkers, retrieval and generation scores, and a simple regression report. The closing work is a pipeline design that could be implemented on your own system.',
     takeaways: [
       'A working evaluation suite',
       'Templates for golden datasets and score definitions',
@@ -237,7 +237,7 @@ export const engineeringCourses: Course[] = [
     shortDescription:
       'A one-day security course for developers, security engineers and architects: the specific risks created by LLM applications, and the controls that actually reduce them.',
     overview:
-      'LLM applications create attack surface that conventional application security only partly covers. Prompt injection, indirect injection through retrieved documents, tool misuse, data leakage and excessive agency are not theoretical. They appear as soon as a model can read untrusted text or call a tool.\n\nThis course treats those risks as engineering problems. Participants work through threat scenarios: injected instructions, poisoned knowledge bases, over-privileged tools, unsafe output handling and the supply chain of models, prompts and plugins. Identity, permissions, sandboxing, audit and logging are covered as controls, not as a policy appendix.\n\nThe teaching is concrete. Each major risk is paired with a mitigation that can be implemented in application and platform design: argument validation, allow-lists, output encoding, retrieval access control, human approval and least privilege.\n\nParticipants leave able to review an LLM application for the failures that matter, and to put proportionate controls in place before the system is exposed to untrusted input.',
+      'LLM applications create attack surface that conventional application security only partly covers. Prompt injection, indirect injection through retrieved documents, tool misuse, data leakage and excessive agency are not theoretical. They appear as soon as a model can read untrusted text or call a tool.\n\nThis course treats those risks as engineering problems. You work through threat scenarios: injected instructions, poisoned knowledge bases, over-privileged tools, unsafe output handling and the supply chain of models, prompts and plugins. Identity, permissions, sandboxing, audit and logging are covered as controls, not as a policy appendix.\n\nThe teaching is concrete. Each major risk is paired with a mitigation that can be implemented in application and platform design: argument validation, allow-lists, output encoding, retrieval access control, human approval and least privilege.\n\nYou leave able to review an LLM application for the failures that matter, and to put proportionate controls in place before the system is exposed to untrusted input.',
     audience:
       'Developers, security engineers and architects responsible for designing, reviewing or operating LLM-powered applications.',
     audienceLabel: 'Developers, security engineers and architects',
@@ -298,7 +298,7 @@ export const engineeringCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants work through realistic threat scenarios on intentionally weak applications, then apply controls. The day includes at least one injection and one tool-permission exercise, plus a structured review of a more complete design. No “attack cookbook” for third-party systems: the work is on designs the room can change.',
+      'You work through realistic threat scenarios on intentionally weak applications, then apply controls. The day includes at least one injection and one tool-permission exercise, plus a structured review of a more complete design. This is not an attack cookbook for third-party systems: the work is on designs your team can change.',
     takeaways: [
       'A threat model template for LLM applications',
       'Mitigation patterns for injection, retrieval, tools and output handling',

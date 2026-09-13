@@ -2,19 +2,19 @@ export const callcenterPillars = [
   {
     id: '01',
     title: 'Universal Conversation',
-    line: 'The channel changes. The conversation doesn’t.',
+    line: 'The channel changes. The conversation does not.',
     body: 'One customer interaction can move from email to WhatsApp to SMS to voice to a human adviser without losing shared state.',
   },
   {
     id: '02',
     title: 'Agentic Resolution',
-    line: 'From answers to actions.',
+    line: 'Answers are useful. Permitted actions finish the work.',
     body: 'Callcenter is designed to retrieve approved knowledge, consult connected systems and take permitted actions — not only to answer FAQs.',
   },
   {
     id: '03',
     title: 'Warm Handoff',
-    line: 'The conversation transfers. The context transfers with it.',
+    line: 'The conversation transfers, and the context transfers with it.',
     body: 'When automation reaches a boundary, a person receives identity, history, summary, actions already attempted and a suggested next step.',
   },
 ] as const;
@@ -137,12 +137,12 @@ export const callcenterTrust = [
   {
     id: '02',
     title: 'Recognised customer',
-    body: 'A contact identity has been reconciled. Recognition is not authorisation.',
+    body: 'A contact identity has been reconciled. Recognition on its own is not authorisation.',
   },
   {
     id: '03',
     title: 'Authenticated customer',
-    body: 'The organisation’s configured checks have been satisfied for ordinary account work.',
+    body: 'Your configured checks have been satisfied for ordinary account work.',
   },
   {
     id: '04',
@@ -152,7 +152,7 @@ export const callcenterTrust = [
   {
     id: '05',
     title: 'Sensitive action',
-    body: 'Work that policy treats as high-risk: a human, an extra check, or both.',
+    body: 'Work that policy treats as high-risk: a person, an extra check, or both.',
   },
 ] as const;
 
@@ -261,7 +261,7 @@ export const callcenterAutonomy = [
   {
     id: '04',
     title: 'Approve',
-    body: 'AI prepares the action but a human must authorise it.',
+    body: 'AI prepares the action but a person must authorise it.',
   },
   {
     id: '05',
@@ -423,7 +423,7 @@ export const callcenterRootCauses = [
 export const callcenterAgents = [
   {
     title: 'Identity Agent',
-    body: 'Resolves customer identity and authentication state.',
+    body: 'Resolves who the customer is and what authentication state applies.',
   },
   {
     title: 'Intent Agent',
@@ -431,39 +431,39 @@ export const callcenterAgents = [
   },
   {
     title: 'Conversation Agent',
-    body: 'Maintains state across channels.',
+    body: 'Maintains conversation state as the customer moves between channels.',
   },
   {
     title: 'Knowledge Agent',
-    body: 'Retrieves relevant approved information.',
+    body: 'Retrieves relevant approved information from the sources you have authorised.',
   },
   {
     title: 'Customer Agent',
-    body: 'Retrieves customer and account context.',
+    body: 'Retrieves customer and account context from connected systems.',
   },
   {
     title: 'Action Agent',
-    body: 'Executes permitted tool calls.',
+    body: 'Executes permitted tool calls inside the autonomy limits you set.',
   },
   {
     title: 'Policy Agent',
-    body: 'Checks organisational constraints.',
+    body: 'Checks organisational constraints before information is disclosed or an action is taken.',
   },
   {
     title: 'Routing Agent',
-    body: 'Determines when and where to hand off.',
+    body: 'Determines when and where to hand the conversation off.',
   },
   {
     title: 'Translation Agent',
-    body: 'Supports multilingual service where enabled.',
+    body: 'Supports multilingual service where that is enabled for a deployment.',
   },
   {
     title: 'Summary Agent',
-    body: 'Creates structured summaries and handoffs.',
+    body: 'Creates structured summaries and handoffs for the next person in the path.',
   },
   {
     title: 'Quality Agent',
-    body: 'Evaluates completed interactions.',
+    body: 'Evaluates completed interactions against configured criteria.',
   },
 ] as const;
 

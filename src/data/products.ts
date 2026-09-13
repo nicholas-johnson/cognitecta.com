@@ -55,7 +55,7 @@ export const productFamily = {
   kicker: 'Cognitecta Products',
   headline: 'Agentic systems for real organisational work.',
   support:
-    'Cognitecta Platform provides the foundation. Our specialist products apply agentic AI to analysis, strategy, growth and customer service.',
+    'Cognitecta Platform provides the foundation. Specialist products then apply agentic AI to analysis, strategy, growth and customer service.',
   model: 'Foundation. Applications.',
 } as const;
 
@@ -64,7 +64,7 @@ export const comparison = [
     id: 'purpose',
     label: 'Purpose',
     platform: 'Run agentic systems',
-    stack: 'Investigate data',
+    stack: 'Investigate your data',
     wargame: 'Explore strategy',
     funnel: 'Find customers',
     callcenter: 'Serve customers',
@@ -112,7 +112,7 @@ export const comparison = [
     stack: 'Review and interpretation',
     wargame: 'Assumption review and strategic judgement',
     funnel: 'Approval and relationship building',
-    callcenter: 'Judgement, takeover and the work that should not be automated',
+    callcenter: 'Judgement, takeover and the work that still needs a person',
   },
 ] as const;
 
@@ -128,15 +128,15 @@ export const products: Product[] = [
     intelligence: 'Operational intelligence',
     framing: 'Agents that act',
     shortDescription:
-      'An agent harness and runtime for deploying teams of AI agents around organisational work.',
+      'An agent harness and runtime for deploying teams of AI agents around the work your organisation already does.',
     landingLine: 'Build and run agentic systems.',
     headline: 'Agents that can actually do the work.',
     support:
-      'Cognitecta Platform orchestrates teams of agents, tools, RAG pipelines and workflows around real business processes — with permission boundaries, escalation and production controls.',
+      'Cognitecta Platform orchestrates teams of agents, tools, RAG pipelines and workflows around the processes you already run — with permission boundaries, escalation and production controls.',
     overview: [
       'Platform is an agent harness and runtime. It provides the reusable infrastructure needed to put specialist agent teams into organisational work: orchestration, tools, workflows, retrieval, memory, routing, integration and the operational controls that decide whether a system can leave a prototype.',
-      'A chatbot can be one interface to Platform. The product is broader than that. Its function is to let agents operate inside an organisation with access to the appropriate tools, knowledge and workflows — and to stop, ask or escalate when the work exceeds a defined boundary.',
-      'Build customer support, knowledge assistants and operational agents on a common production-ready foundation, adapted to existing systems rather than replacing them.',
+      'A chatbot can be one interface to Platform, but the product is broader than chat. Its function is to let agents operate inside your organisation with access to the appropriate tools, knowledge and workflows — and to stop, ask or escalate when the work exceeds a defined boundary.',
+      'You can build customer support, knowledge assistants and operational agents on a common production-ready foundation, adapted to the systems you already run rather than replacing them.',
     ],
     seoTitle: 'Platform | Agentic Infrastructure | Cognitecta',
     seoDescription:
@@ -163,12 +163,12 @@ export const products: Product[] = [
       {
         id: '04',
         title: 'Workflow execution',
-        body: 'Run multi-step processes rather than isolated replies — classify, retrieve, act, record, escalate.',
+        body: 'Run multi-step processes rather than isolated replies: classify, retrieve, act, record and escalate.',
       },
       {
         id: '05',
         title: 'Memory and context',
-        body: 'Retain the context that a task actually needs, without treating every conversation as a blank page.',
+        body: 'Keep the context a task actually needs, so the next step does not start from a blank page.',
       },
       {
         id: '06',
@@ -178,17 +178,17 @@ export const products: Product[] = [
       {
         id: '07',
         title: 'Permission-aware access',
-        body: 'Respect the identity and access model of the organisation. Agents see what the user is allowed to see.',
+        body: 'Respect your identity and access model. Agents see what the user is allowed to see.',
       },
       {
         id: '08',
         title: 'System integrations',
-        body: 'Connect to line-of-business systems, APIs and knowledge bases already in use.',
+        body: 'Connect to the line-of-business systems, APIs and knowledge bases you already use.',
       },
       {
         id: '09',
         title: 'Evaluation',
-        body: 'Measure whether the system is doing the job — groundedness, routing quality, task completion, refusal.',
+        body: 'Measure whether the system is doing the job: groundedness, routing quality, task completion and appropriate refusal.',
       },
       {
         id: '10',
@@ -213,7 +213,7 @@ export const products: Product[] = [
         problem:
           'Support desks accumulate the same questions, the same account lookups and the same routing decisions. Knowledge is scattered, context is lost between channels, and experienced agents spend time on work that is repetitive rather than judgement-heavy.',
         approach:
-          'Platform can operate a support desk as a governed agent system: answer from approved knowledge, inspect account information through authorised tools, classify issues, route work, recommend or execute defined actions, retain relevant context, and produce summaries for human agents. Complex or high-risk cases escalate. Completely unsupervised operation is not the point; controlled autonomy is. For contact-centre work specifically, Callcenter applies the same agentic principles to voice, messaging and human handoff.',
+          'Platform can operate a support desk as a governed agent system: answer from approved knowledge, inspect account information through authorised tools, classify issues, route work, recommend or execute defined actions, retain relevant context, and produce summaries for human agents. Complex or high-risk cases escalate. The aim is controlled autonomy, with a person in the path where the work needs judgement. For contact-centre work specifically, Callcenter applies the same agentic principles to voice, messaging and human handoff.',
       },
       {
         id: '02',
@@ -221,7 +221,7 @@ export const products: Product[] = [
         problem:
           'Internal and external conversational interfaces often stop at a fluent answer. They cannot retrieve the right document, call the right system, or respect who is asking.',
         approach:
-          'Platform can power an internal or external assistant that answers from approved sources, retrieves and cites documentation, accesses tools, performs authorised actions, and orchestrates specialist agents behind a single interface. The conversation is the visible layer. The agent system behind it is the product.',
+          'Platform can power an internal or external assistant that answers from approved sources, retrieves and cites documentation, accesses tools, performs authorised actions, and orchestrates specialist agents behind a single interface. The conversation is the visible layer; the agent system behind it is what does the work.',
       },
       {
         id: '03',
@@ -257,9 +257,9 @@ export const products: Product[] = [
       { id: '06', title: 'Escalation / Observability / Governance' },
     ],
     limits: [
-      'Permission boundaries matter. Agents operate inside the organisation’s identity and access model.',
+      'Permission boundaries matter. Agents operate inside your organisation’s identity and access model.',
       'Human escalation matters. Ambiguous, high-risk or out-of-policy work should reach a person.',
-      'Operational controls matter. Retrieval, tools, evaluation and monitoring are part of the system, not later extras.',
+      'Operational controls matter. Retrieval, tools, evaluation and monitoring are part of the system, not extras you add later.',
     ],
   },
   {
@@ -279,7 +279,7 @@ export const products: Product[] = [
     support:
       'Stack connects to your analytical data, forms hypotheses, tests them against the evidence and turns its findings into a structured analysis — including charts, narrative and a finished presentation.',
     overview: [
-      'Stack is an agentic data analysis system. A user points it at organisational data — a data lake, warehouse or analytical environment — and asks an open-ended question.',
+      'Stack is an agentic data analysis system. You point it at organisational data — a data lake, warehouse or analytical environment — and ask an open-ended question.',
       'It does not simply translate that question into one SQL query. It behaves more like an analytical team: interpret the question, inspect the available data, form hypotheses, test those that can be tested, compare evidence, reject weak explanations, refine the analysis, and decide how the findings should be communicated.',
       'Traditional BI asks what the dashboard shows. Stack asks what might be happening, and what evidence supports that reading. The result is an investigative workflow, not a guaranteed account of the truth.',
     ],
@@ -288,7 +288,7 @@ export const products: Product[] = [
       'Cognitecta Stack is an agentic data analysis system. Ask an open-ended question; Stack investigates hypotheses, tests them against the evidence and produces structured analysis and presentations.',
     primaryCta: { label: 'Discuss your data', href: '/contact?interest=stack' },
     secondaryCta: { label: 'See how it works', href: '#how-it-works' },
-    closingQuestion: 'Bring Stack an open-ended question.',
+    closingQuestion: 'Have an open-ended question you would like Stack to investigate?',
     capabilities: [
       {
         id: '01',
@@ -323,12 +323,12 @@ export const products: Product[] = [
       {
         id: '07',
         title: 'Segmentation',
-        body: 'Separate the averages that hide the work from the groups that actually moved.',
+        body: 'Separate the groups that actually moved from the averages that hide them.',
       },
       {
         id: '08',
         title: 'Presentation intelligence',
-        body: 'Choose findings, charts and sequence so the output is an argument, not a pile of slides.',
+        body: 'Choose findings, charts and sequence so the output is an argument a person can follow, not a pile of slides.',
       },
     ],
     useCases: [
@@ -338,7 +338,7 @@ export const products: Product[] = [
         problem:
           'Revenue, margin and mix questions are rarely answered by a single chart. The useful question is what changed, where, and what else moved with it.',
         approach:
-          'Stack can investigate performance across products, regions, channels and time, then assemble the evidence into a narrative a commercial team can review.',
+          'Stack can investigate performance across products, regions, channels and time, then assemble the evidence into a narrative your commercial team can review.',
       },
       {
         id: '02',
@@ -346,7 +346,7 @@ export const products: Product[] = [
         problem:
           'Retention, churn and conversion shifts often have several plausible causes. Dashboards show the metric; they do not run the investigation.',
         approach:
-          'Point Stack at the relevant customer and event data and ask what appears to have changed — then review the hypotheses it tested and the ones it discarded.',
+          'Point Stack at the relevant customer and event data and ask what appears to have changed. You can then review the hypotheses it tested and the ones it discarded.',
       },
       {
         id: '03',
@@ -354,7 +354,7 @@ export const products: Product[] = [
         problem:
           'Inefficiency is easy to feel and hard to locate. The work is finding where time, cost or failure actually concentrates.',
         approach:
-          'Stack can look across operational measures, compare units and time periods, and surface the patterns that deserve a closer human look.',
+          'Stack can look across operational measures, compare units and time periods, and surface the patterns that deserve a closer look from your team.',
       },
       {
         id: '04',
@@ -362,7 +362,7 @@ export const products: Product[] = [
         problem:
           'Campaign, channel and creative questions are usually asked after the fact, against incomplete attribution and too many cuts of the data.',
         approach:
-          'Stack investigates the cuts that the question implies, reports what the data can support, and stays silent where the evidence is too thin.',
+          'Stack investigates the cuts that the question implies, reports what the data can support, and is clear where the evidence is too thin.',
       },
       {
         id: '05',
@@ -386,7 +386,7 @@ export const products: Product[] = [
         problem:
           'Leadership packs take time because someone has to decide what matters, what to show, and in what order.',
         approach:
-          'Stack can draft that argument from the data — findings, charts, sequence — for a human to accept, edit or reject.',
+          'Stack can draft that argument from the data — findings, charts, sequence — for someone on your team to accept, edit or reject.',
       },
       {
         id: '08',
@@ -427,14 +427,14 @@ export const products: Product[] = [
     framing: 'Agents that strategise',
     shortDescription:
       'An agentic strategy and scenario simulation system that models actors, incentives and possible responses under uncertainty.',
-    landingLine: 'Explore strategic outcomes.',
+    landingLine: 'Explore how a strategy might play out.',
     headline: 'Model the actors. Simulate the outcomes. Improve the strategy.',
     support:
       'Wargame builds an explicit model of a strategic environment, simulates possible interactions and helps identify actions that may improve the likelihood of the outcome you want.',
     overview: [
       'Wargame is an agentic strategy and scenario simulation system. It creates a model of the relevant actors in a strategic environment — competitors, customers, regulators, partners, political actors, market participants, internal stakeholders — and the incentives, goals, constraints and relationships that shape what they may do.',
       'Strategy is a system of interacting actors. Wargame attempts to model those actors and explore how their decisions may interact. It can then run large numbers of possible scenarios, using Monte Carlo simulation where appropriate, to estimate a distribution of outcomes rather than a single forecast.',
-      'The point is not to predict the future with certainty. It is to make assumptions explicit, explore their consequences at scale, and help a decision-maker see risks, opportunities, influential variables and actions that may shift the distribution.',
+      'The aim is not to predict the future with certainty. It is to make assumptions explicit, explore their consequences at scale, and help you see risks, opportunities, influential variables and actions that may shift the distribution.',
     ],
     seoTitle: 'Wargame | Agentic Strategy & Simulation | Cognitecta',
     seoDescription:
@@ -462,7 +462,7 @@ export const products: Product[] = [
       {
         id: '04',
         title: 'Monte Carlo simulation',
-        body: 'Run many simulations with variation in uncertain assumptions, and read a distribution rather than a point.',
+        body: 'Run many simulations with variation in uncertain assumptions, and read a distribution of outcomes rather than a single point forecast.',
       },
       {
         id: '05',
@@ -490,7 +490,7 @@ export const products: Product[] = [
         id: '01',
         title: 'Competitive response',
         problem:
-          'A price, product or channel move is rarely answered by the market as a static equation. Competitors react. Customers migrate. Margins move twice.',
+          'A price, product or channel move is rarely answered by the market as a static equation. Competitors react. Customers migrate. Margins can move more than once.',
         approach:
           'Model the relevant competitors and customers, then simulate responses to a proposed action — for example a price reduction — including follow-on pricing behaviour and share effects. The output is a distribution of outcomes, not a promise.',
       },
@@ -506,7 +506,7 @@ export const products: Product[] = [
         id: '03',
         title: 'Negotiation',
         problem:
-          'Negotiations fail when fallback positions, concessions and reactions stay implicit until they are tested in the room.',
+          'Negotiations fail when fallback positions, concessions and reactions stay implicit until they are tested in a live discussion.',
         approach:
           'Represent the stakeholders, their incentives and their likely responses, then explore negotiation paths and the conditions under which an acceptable agreement appears more often.',
       },
@@ -548,14 +548,14 @@ export const products: Product[] = [
     framing: 'Agents that find customers',
     shortDescription:
       'An agentic B2B prospecting system that researches organisations, finds evidence of buying intent and prepares qualified outreach for human approval.',
-    landingLine: 'Find the companies that need you.',
+    landingLine: 'Research the market. Find who actually needs you.',
     headline: 'Find the companies that need you.',
     support:
       'Funnel continuously researches your market, identifies evidence of buying intent and turns promising organisations into qualified, evidence-backed opportunities.',
     overview: [
       'Funnel turns B2B prospecting into an agentic research workflow. It starts with the organisations you actually want to work with, then investigates whether there is a genuine current need — and only then prepares an approach.',
-      'It is not a bulk email tool. Conventional outbound buys a list, filters by job title and sends at volume. Funnel rejects that model. The expensive part of good prospecting is not sending a message. It is understanding who is worth contacting, and why.',
-      'Find the right company. Understand why they might buy. Know what to say. A human decides whether to make contact.',
+      'It is not a bulk email tool. Conventional outbound buys a list, filters by job title and sends at volume. Funnel is built against that model. The expensive part of good prospecting is not sending a message. It is understanding who is worth contacting, and why.',
+      'The workflow is simple to state: find the right company, understand why they might buy, and know what to say. Someone on your team decides whether to make contact.',
     ],
     seoTitle: 'Funnel | Agentic Sales Intelligence | Cognitecta',
     seoDescription:
@@ -592,7 +592,7 @@ export const products: Product[] = [
       {
         id: '06',
         title: 'Offer matching',
-        body: 'Choose the customer proposition that appears most relevant to the observed need — not one message for everyone.',
+        body: 'Choose the proposition that appears most relevant to the observed need, rather than sending one message to everyone.',
       },
       {
         id: '07',
@@ -602,12 +602,12 @@ export const products: Product[] = [
       {
         id: '08',
         title: 'Drafted approach',
-        body: 'Prepare a concise, evidence-based outreach draft. Personalisation means understanding the prospect, not greeting them by title.',
+        body: 'Prepare a concise, evidence-based outreach draft. Personalisation means understanding the prospect, rather than greeting them by title.',
       },
       {
         id: '09',
         title: 'Human approval',
-        body: 'Automate research up to the relationship. A person approves, edits or skips before anyone is contacted.',
+        body: 'Automate research up to the relationship. Someone on your team approves, edits or skips before anyone is contacted.',
       },
       {
         id: '10',
@@ -622,7 +622,7 @@ export const products: Product[] = [
       {
         id: '12',
         title: 'Learning from outcomes',
-        body: 'See which signals, roles and propositions actually create conversations — and use that to refine configuration.',
+        body: 'See which signals, roles and propositions actually create conversations — and use that to refine how Funnel is configured.',
       },
     ],
     useCases: [
@@ -640,7 +640,7 @@ export const products: Product[] = [
         problem:
           'A useful conversation usually starts from a specific initiative, not from a generic capability brochure.',
         approach:
-          'Match observed programmes, hiring and published problems to the service that would actually help — then ask a person whether to make contact.',
+          'Match observed programmes, hiring and published problems to the service that would actually help — then ask someone on your team whether to make contact.',
       },
       {
         id: '03',
@@ -676,7 +676,7 @@ export const products: Product[] = [
     limits: [
       'A score is a prioritisation mechanism, not an objective probability that someone will buy.',
       'Recommendations depend on the quality of the ICP, the available sources and the evidence those sources contain.',
-      'Humans remain responsible for high-value relationship decisions. Funnel drafts; it does not send on its own as a matter of product principle.',
+      'Your team remains responsible for high-value relationship decisions. Funnel drafts; it does not send on its own as a matter of product principle.',
       'Learning from outcomes is analytics and feedback for configuration. It is not a claim of autonomous self-modification.',
     ],
   },
@@ -692,14 +692,14 @@ export const products: Product[] = [
     framing: 'Agents that serve customers',
     shortDescription:
       'Resolve customer needs across voice, messaging and email, with intelligent human handoff when judgement matters.',
-    landingLine: 'One customer. One conversation. Every channel.',
+    landingLine: 'One conversation, across every channel.',
     headline: 'One customer. One conversation. Every channel.',
     support:
       'Callcenter connects voice, WhatsApp, SMS, email, Teams, Slack and Salesforce through an agentic service layer that can understand customer needs, retrieve knowledge, take permitted actions and hand complex interactions to people without losing context.',
     overview: [
       'Callcenter is an AI-powered customer-service platform for call deflection, multichannel handling, automated resolution, intelligent routing, human handoff and agent augmentation. It is a specialist product on the same agentic principles as Cognitecta Platform, applied to contact centres, support desks and service operations.',
       'A customer might start by email, continue over WhatsApp, then phone. Callcenter is designed to retain that context and treat the interactions as one service journey rather than three unrelated conversations.',
-      'Resolve what AI can. Route what it can’t. Give humans everything they need to finish the job.',
+      'The aim is to resolve what AI can, route what it cannot, and give people everything they need to finish the job.',
     ],
     seoTitle: 'Callcenter | Agentic Customer Service | Cognitecta',
     seoDescription:
@@ -731,7 +731,7 @@ export const products: Product[] = [
       {
         id: '05',
         title: 'Call deflection',
-        body: 'Remove the reason to phone by resolving the problem on a digital channel, not by hiding the number.',
+        body: 'Remove the reason to phone by resolving the problem on a digital channel, rather than by hiding the number.',
       },
       {
         id: '06',
@@ -751,17 +751,17 @@ export const products: Product[] = [
       {
         id: '09',
         title: 'Human takeover',
-        body: 'Let an adviser assume control from Teams, Slack or another configured operational interface.',
+        body: 'Let an adviser assume control from Teams, Slack or another operational interface you already use.',
       },
       {
         id: '10',
         title: 'Agent assist',
-        body: 'After takeover, surface knowledge, history, suggested next actions and after-call notes. The human remains in control.',
+        body: 'After takeover, surface knowledge, history, suggested next actions and after-call notes. The person remains in control.',
       },
       {
         id: '11',
         title: 'Salesforce context',
-        body: 'Treat Salesforce as the operational system of record: contacts, cases, history and updates, not another outbound channel.',
+        body: 'Treat Salesforce as the operational system of record: contacts, cases, history and updates, rather than another outbound channel.',
       },
       {
         id: '12',
@@ -825,9 +825,9 @@ export const products: Product[] = [
       'Not every conversation should be automated. Escalation is a designed outcome, not a failure of the product.',
       'Authentication and organisational policy govern what can be disclosed or done. Recognising a phone number is not enough for sensitive actions.',
       'Sentiment is one signal that may help prioritisation. It is not a diagnosis of a customer’s emotional state.',
-      'Conversation memory and retention follow the organisation’s data policy. The system is not designed as indefinite recall.',
+      'Conversation memory and retention follow your data policy. The system is not designed as indefinite recall.',
       'Specialist agents describe the operating model. They are not a claim that every deployment exposes these roles as named services.',
-      'Resolution depends on approved knowledge, connected systems and the actions the organisation has authorised.',
+      'Resolution depends on approved knowledge, connected systems and the actions you have authorised.',
     ],
   },
 ];
@@ -1034,7 +1034,7 @@ export const funnelAgents = [
   {
     id: '08',
     title: 'Writer',
-    body: 'A concise personalised approach that uses the research, not a greeting plus a job title.',
+    body: 'A concise personalised approach that uses the research, rather than a greeting plus a job title.',
   },
 ] as const;
 
@@ -1061,13 +1061,13 @@ export const funnelScoring = [
   {
     id: '03',
     title: 'Timing',
-    body: 'Whether there is a reason to approach the organisation now.',
+    body: 'Whether there is a reason to approach them now.',
     share: 72,
   },
   {
     id: '04',
     title: 'Proposition fit',
-    body: 'Whether the customer has a strong offering for the detected need.',
+    body: 'Whether you have a strong offering for the detected need.',
     share: 90,
   },
   {

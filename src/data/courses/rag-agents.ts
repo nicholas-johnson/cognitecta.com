@@ -7,7 +7,7 @@ export const ragAgentCourses: Course[] = [
     shortDescription:
       'A two-day course on retrieval-augmented generation as an engineering discipline: why naive RAG fails, and how to design a system that can be evaluated, secured and operated.',
     overview:
-      'Many RAG systems fail for ordinary reasons: poor parsing, arbitrary chunking, weak retrieval, no reranking, no evaluation, and a prompt that asks the model to sound certain. The result is fluent answers with weak grounding, which is worse than a search box.\n\nThis course teaches RAG properly. Participants start with architecture, embeddings and vector databases, then spend serious time on ingestion, parsing, chunking, metadata and retrieval strategy. Hybrid search, reranking, query rewriting, context construction, citations and access control are treated as the difference between a demo and a system.\n\nLabs compare a weak pipeline with an improved one on the same corpus. The second day moves into production architecture: evaluation, hallucination reduction, permissions, monitoring, performance and cost.\n\nParticipants build a production-style RAG system they can explain, measure and harden — not a notebook that only works on a handful of happy questions.',
+      'Many RAG systems fail for ordinary reasons: poor parsing, arbitrary chunking, weak retrieval, no reranking, no evaluation, and a prompt that asks the model to sound certain. The result is fluent answers with weak grounding, which is worse than a search box.\n\nThis course teaches RAG properly. You start with architecture, embeddings and vector databases, then spend serious time on ingestion, parsing, chunking, metadata and retrieval strategy. Hybrid search, reranking, query rewriting, context construction, citations and access control are treated as the difference between a demo and a system.\n\nLabs compare a weak pipeline with an improved one on the same corpus. The second day moves into production architecture: evaluation, hallucination reduction, permissions, monitoring, performance and cost.\n\nYou build a production-style RAG system you can explain, measure and harden — not a notebook that only works on a handful of happy questions.',
     audience:
       'Developers, ML engineers and architects who will design, implement or review retrieval-augmented systems.',
     audienceLabel: 'Developers, ML engineers and architects',
@@ -68,7 +68,7 @@ export const ragAgentCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants build a RAG system on a realistic corpus. The first pipeline is deliberately naive. Subsequent labs improve parsing, chunking, retrieval, reranking, citations and evaluation. The closing system is production-shaped: measurable, permission-aware and operable, not merely fluent.',
+      'You build a RAG system on a realistic corpus. The first pipeline is deliberately naive. Subsequent labs improve parsing, chunking, retrieval, reranking, citations and evaluation. The closing system is production-shaped: measurable, permission-aware and operable, not merely fluent.',
     takeaways: [
       'A working production-style RAG implementation',
       'Weak-versus-improved retrieval comparisons on a fixed question set',
@@ -82,7 +82,7 @@ export const ragAgentCourses: Course[] = [
     shortDescription:
       'A two-day course for intermediate and advanced developers: design and build useful agents with tools, state, permissions and evaluation, rather than unsupervised demos.',
     overview:
-      '“Agent” is used to mean anything from a single tool call to an unsupervised loop that books travel and writes to production systems. Most organisations need the former, with the discipline of the latter. This course teaches how to build agents that are useful, bounded and operable.\n\nParticipants start with a precise definition: an agent as software that can choose tools, maintain state and iterate toward a task, inside limits set by the application. The course covers function calling, planning, reasoning loops, memory, workflows, structured outputs, retries and failure handling. Human-in-the-loop, permissions, evaluation, observability and cost are treated as design requirements.\n\nThe labs are multiple and progressive. The course ends with a production-oriented agent: clear tools, explicit boundaries, traces, and a path for a human to approve or stop work.\n\nDevelopers leave able to choose between a deterministic workflow and an agentic loop, and to implement the latter without giving the model more authority than the organisation intended.',
+      '“Agent” is used to mean anything from a single tool call to an unsupervised loop that books travel and writes to production systems. Most organisations need the former, with the discipline of the latter. This course teaches how to build agents that are useful, bounded and operable.\n\nYou start with a precise definition: an agent as software that can choose tools, maintain state and iterate toward a task, inside limits set by the application. The course covers function calling, planning, reasoning loops, memory, workflows, structured outputs, retries and failure handling. Human-in-the-loop, permissions, evaluation, observability and cost are treated as design requirements.\n\nThe labs are multiple and progressive. The course ends with a production-oriented agent: clear tools, explicit boundaries, traces, and a path for a human to approve or stop work.\n\nYou leave able to choose between a deterministic workflow and an agentic loop, and to implement the latter without giving the model more authority than your organisation intended.',
     audience:
       'Intermediate and advanced developers who will implement or review tool-using and agentic systems.',
     audienceLabel: 'Intermediate and advanced developers',
@@ -155,12 +155,12 @@ export const ragAgentCourses: Course[] = [
     shortDescription:
       'A two-day advanced course combining retrieval with agentic reasoning and tool use: multi-step retrieval, query planning, structured sources and a production architecture for complex knowledge work.',
     overview:
-      'Static RAG answers a question with a single retrieve-then-generate pass. That is often enough. It fails when the question requires planning, multiple searches, comparison across sources, or a mix of documents and APIs. Agentic RAG is the attempt to do that work without turning the system into an unsupervised research assistant with no budget.\n\nThis course starts from the limits of static RAG, then builds the pieces of an agentic retrieval system: query planning, multi-step retrieval, tool-driven search, document selection, iterative retrieval and memory. Structured knowledge sources and APIs are combined with unstructured corpora. Planning, evaluation, security, latency and cost are treated as first-class design constraints.\n\nThe practical work is a complex system, not a toy. Participants implement a path that can plan, retrieve, call tools, keep intermediate state and produce a grounded answer with traces.\n\nThe outcome is the ability to design agentic retrieval where it is justified, and to keep static RAG where it is not.',
+      'Static RAG answers a question with a single retrieve-then-generate pass. That is often enough. It fails when the question requires planning, multiple searches, comparison across sources, or a mix of documents and APIs. Agentic RAG is the attempt to do that work without turning the system into an unsupervised research assistant with no budget.\n\nThis course starts from the limits of static RAG, then builds the pieces of an agentic retrieval system: query planning, multi-step retrieval, tool-driven search, document selection, iterative retrieval and memory. Structured knowledge sources and APIs are combined with unstructured corpora. Planning, evaluation, security, latency and cost are treated as first-class design constraints.\n\nThe practical work is a complex system, not a toy. You implement a path that can plan, retrieve, call tools, keep intermediate state and produce a grounded answer with traces.\n\nYou leave able to design agentic retrieval where it is justified, and to keep static RAG where it is not.',
     audience:
       'Experienced AI engineers, developers and architects who already understand RAG and tool calling and need to compose them.',
     audienceLabel: 'Experienced AI engineers, developers and architects',
     prerequisites:
-      'Experience implementing RAG and tool calling, or completion of the RAG and agents courses. Participants should be comfortable with production application structure.',
+      'Experience implementing RAG and tool calling, or completion of the RAG and agents courses. You should be comfortable with production application structure.',
     duration: '2 days',
     durationNote: 'Best delivered against a customer corpus and internal APIs where those can be shared.',
     level: 'Advanced',
@@ -215,7 +215,7 @@ export const ragAgentCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants build a multi-step retrieval system against a corpus that cannot be handled by a single search. The system plans queries, retrieves iteratively, can call at least one non-vector tool, and produces a grounded answer with traces and a cost/latency budget.',
+      'You build a multi-step retrieval system against a corpus that cannot be handled by a single search. The system plans queries, retrieves iteratively, can call at least one non-vector tool, and produces a grounded answer with traces and a cost/latency budget.',
     takeaways: [
       'A working agentic RAG system',
       'Planning and retrieval patterns for multi-hop questions',

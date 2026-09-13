@@ -18,7 +18,7 @@ const { product } = Astro.props;
   <div class="max-w-2xl space-y-5 text-[1.05rem] leading-relaxed text-muted">
     {product.overview.map((paragraph) => <p>{paragraph}</p>)}
     <p>
-      The runtime is built around agents, specialist agent teams, tools, knowledge, workflows, controlled autonomy, human escalation, integration, and the production operations that make those things operable. It is not a chatbot framework with a different label.
+      The runtime is built around agents, specialist agent teams, tools, knowledge, workflows, controlled autonomy, human escalation, integration, and the production operations that make those things operable. A chatbot framework with a different label is not enough.
     </p>
   </div>
 </section>
@@ -43,7 +43,7 @@ const { product } = Astro.props;
 <div class="mt-24">
   <UseCases
     items={product.useCases}
-    title="Work the runtime is designed to carry."
+    title="Work the runtime is designed to carry"
   />
 </div>
 
@@ -54,7 +54,7 @@ const { product } = Astro.props;
       A chatbot is an interface. Platform is the system behind it.
     </h2>
     <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
-      A basic chatbot replies. A retrieval assistant grounds that reply in documents. An operational agent can use tools, run workflows and coordinate a team. Buyers often buy the first and need the last. The progression is the difference.
+      A basic chatbot replies. A retrieval assistant grounds that reply in documents. An operational agent can use tools, run workflows and coordinate a team. Many teams buy the first of these and later find they needed the last. The progression is what Platform is for.
     </p>
   </div>
   <ChatToAction />
@@ -62,7 +62,7 @@ const { product } = Astro.props;
     <li>
       <p class="font-mono text-[11px] tracking-[0.16em] text-cobalt">Chat</p>
       <p class="mt-3 text-[0.98rem] leading-relaxed text-muted">
-        A conversational interface. Useful, and usually insufficient on its own.
+        A conversational interface. Useful, and usually not enough on its own.
       </p>
     </li>
     <li>
@@ -83,13 +83,13 @@ const { product } = Astro.props;
 <section class="mt-24 max-w-2xl">
   <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Deployment model</p>
   <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
-    Adapted to the organisation as it is.
+    Adapted to the organisation you already have.
   </h2>
   <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
-    Platform is deployed around existing systems, APIs, knowledge bases, security requirements, workflows, identity models and cloud environments. The product is the runtime and the method. The shape of a given deployment is the customer’s.
+    Platform is deployed around the systems, APIs, knowledge bases, security requirements, workflows, identity models and cloud environments you already run. The product is the runtime and the method. The shape of a given deployment is yours.
   </p>
   <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
-    Hosting, identity and compliance follow the environment the organisation already runs. We do not claim a single hosting or certification posture for every deployment.
+    Hosting, identity and compliance follow the environment you already run. We do not claim a single hosting or certification posture for every deployment.
   </p>
   <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
     Specialist products apply the same foundation to a particular domain.
@@ -101,5 +101,5 @@ const { product } = Astro.props;
 </section>
 
 <div class="mt-20">
-  <Limits items={product.limits} title="Controlled autonomy, not unsupervised operation." />
+  <Limits items={product.limits} title="Controlled autonomy, with a person in the path where it is needed." />
 </div>

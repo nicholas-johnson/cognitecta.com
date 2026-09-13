@@ -7,7 +7,7 @@ export const workshopCourses: Course[] = [
     shortDescription:
       'A focused workshop for developers: build a complete retrieval-augmented generation system in one day, from ingestion and chunking through citations and a first evaluation.',
     overview:
-      'Some teams need RAG in their hands before they need the full production course. This workshop is that day. Theory is kept short. The spine of the day is a working system: ingest documents, chunk them, embed, retrieve, prompt, cite and evaluate.\n\nParticipants implement each stage, see what a weak default does, and improve the pieces that most often fail. The result is not a complete production platform. It is a complete path a developer can extend, measure and take back to a product.\n\nThe workshop assumes professional developers. It does not spend the morning on what a token is. It spends it on a corpus, a question set and a pipeline that can be shown to a colleague.\n\nBy the end of the day, participants have a RAG system they built, a small evaluation set, and a clear view of what would still be required for production.',
+      'Some teams need RAG in their hands before they need the full production course. This workshop is that day. Theory is kept short. The spine of the day is a working system: ingest documents, chunk them, embed, retrieve, prompt, cite and evaluate.\n\nYou implement each stage, see what a weak default does, and improve the pieces that most often fail. The result is not a complete production platform. It is a complete path a developer can extend, measure and take back to a product.\n\nThe workshop assumes professional developers. It does not spend the morning on what a token is. It spends it on a corpus, a question set and a pipeline that can be shown to a colleague.\n\nBy the end of the day, you have a RAG system you built, a small evaluation set, and a clear view of what would still be required for production.',
     audience:
       'Developers who need to implement a first serious RAG path and prefer to learn by building.',
     audienceLabel: 'Developers',
@@ -52,7 +52,7 @@ export const workshopCourses: Course[] = [
       },
     ],
     practicalWork:
-      'The entire day is a build. Participants leave with a working RAG pipeline covering ingestion, chunking, embeddings, retrieval, prompting, citations and a small evaluation set.',
+      'The entire day is a build. You leave with a working RAG pipeline covering ingestion, chunking, embeddings, retrieval, prompting, citations and a small evaluation set.',
     takeaways: [
       'A working RAG system',
       'A small golden question set',
@@ -66,7 +66,7 @@ export const workshopCourses: Course[] = [
     shortDescription:
       'A hands-on workshop for developers: build a working agent with tool calling, state, structured outputs, error handling, permissions and a first evaluation.',
     overview:
-      'This is a build day, not a survey of agent frameworks. Participants start with a task that actually needs tools, then implement function calling, state, planning, structured outputs, error handling and permissions. The day ends with a functioning agent and a short evaluation, not with a slide about autonomy.\n\nThe course keeps the agent small enough to finish and strict enough to be worth finishing: validated tool arguments, a stop condition, and a permission boundary. Planning is introduced where it helps the task, not as a default.\n\nDevelopers who need the deeper two-day agents course still benefit from this workshop as a first implementation. Teams that only need one internal agent often stop here and take the code into their own repository.\n\nThe output is a practical agent the room ran, with traces and a list of the safeguards still required for production.',
+      'This is a build day, not a survey of agent frameworks. You start with a task that actually needs tools, then implement function calling, state, planning, structured outputs, error handling and permissions. The day ends with a functioning agent and a short evaluation, not with a presentation about autonomy.\n\nThe course keeps the agent small enough to finish and strict enough to be worth finishing: validated tool arguments, a stop condition, and a permission boundary. Planning is introduced where it helps the task, not as a default.\n\nDevelopers who need the deeper two-day agents course still benefit from this workshop as a first implementation. Teams that only need one internal agent often stop here and take the code into their own repository.\n\nThe output is a practical agent you ran, with traces and a list of the safeguards still required for production.',
     audience:
       'Developers who need to implement a first agent and will learn faster from a complete path than from a lecture.',
     audienceLabel: 'Developers',
@@ -112,7 +112,7 @@ export const workshopCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants build one agent through the day. Typical tasks are internal operations, research with tools, or a constrained workflow. The agent runs, has traces, and is evaluated on a handful of tasks including a failure case.',
+      'You build one agent through the day. Typical tasks are internal operations, research with tools, or a constrained workflow. The agent runs, has traces, and is evaluated on a handful of tasks including a failure case.',
     takeaways: [
       'A functioning practical agent',
       'Tool schemas and a permission map',
@@ -126,14 +126,14 @@ export const workshopCourses: Course[] = [
     shortDescription:
       'A one-day workshop that starts with a basic LLM chat application and evolves it, step by step, into a useful agentic system with retrieval, tools, state and production safeguards.',
     overview:
-      'Many teams already have a chatbot. The question is how to grow it without rewriting it every time a new capability appears. This workshop uses that progression as the course: chat, structured output, retrieval, tool use, workflow state, agentic behaviour, evaluation and production safeguards.\n\nEach step is implemented on the same application. Participants see what breaks when structured output is added, what retrieval changes, and why an agent loop is a different system from a chat with extra prompts. The day is a sequence of working increments, not a set of optional extras.\n\nThe teaching is deliberately conservative. Not every chatbot should become an agent. The workshop makes the cost of each step visible so the team can stop at the right layer.\n\nParticipants leave with an evolved application and a map of the increments they would take on their own system.',
+      'Many teams already have a chatbot. The question is how to grow it without rewriting it every time a new capability appears. This workshop uses that progression as the course: chat, structured output, retrieval, tool use, workflow state, agentic behaviour, evaluation and production safeguards.\n\nEach step is implemented on the same application. You see what breaks when structured output is added, what retrieval changes, and why an agent loop is a different system from a chat with extra prompts. The day is a sequence of working increments, not a set of optional extras.\n\nThe teaching is deliberately conservative. Not every chatbot should become an agent. The workshop makes the cost of each step visible so your team can stop at the right layer.\n\nYou leave with an evolved application and a map of the increments you would take on your own system.',
     audience:
       'Developers and technical teams who already have, or are about to build, a chat interface and need a controlled path toward retrieval and agents.',
     audienceLabel: 'Developers and technical teams',
     prerequisites:
       'Ability to work in an application codebase. Prior LLM API experience is expected. A simple chat starter is provided if teams do not bring their own.',
     duration: '1 day',
-    durationNote: 'Can be delivered against the team’s existing chat application where that is practical.',
+    durationNote: 'Can be delivered against your team’s existing chat application where that is practical.',
     level: 'Intermediate',
     category: 'workshops',
     outcomes: [
@@ -142,7 +142,7 @@ export const workshopCourses: Course[] = [
       'Introduce tool use and workflow state as explicit application capabilities.',
       'Add bounded agentic behaviour only where the task requires it.',
       'Evaluate the system at each increment and add production safeguards.',
-      'Decide where their own product should stop on the path from chatbot to agent.',
+      'Decide where your own product should stop on the path from chatbot to agent.',
     ],
     outline: [
       {
@@ -172,12 +172,12 @@ export const workshopCourses: Course[] = [
       },
     ],
     practicalWork:
-      'One application is evolved through the eight-step progression. Participants run the same tasks after each increment so the room can see what improved, what became slower, and which safeguards became mandatory.',
+      'One application is evolved through the eight-step progression. You run the same tasks after each increment so the group can see what improved, what became slower, and which safeguards became mandatory.',
     takeaways: [
       'An evolved application from chat through retrieval and tools to a bounded agent',
       'A step-by-step increment map for the team’s own product',
       'Evaluation tasks reused across increments',
-      'A production-safeguard checklist for the layer they choose to ship',
+      'A production-safeguard checklist for the layer you choose to ship',
     ],
   },
   {
@@ -186,12 +186,12 @@ export const workshopCourses: Course[] = [
     shortDescription:
       'A facilitated workshop for technical teams, architects and engineering leaders around a real customer problem. The output is an architecture and a next-step roadmap, not a training certificate.',
     overview:
-      'This is consultancy delivered as a structured workshop. The room brings a real problem. Cognitecta facilitates a day that produces clarified requirements, an AI suitability assessment, architecture options, risks, a recommended approach, an initial technical architecture and a next-step roadmap.\n\nThe day is not a lecture with a case study bolted on. It uses a repeatable method: problem framing, constraints, data and systems, options, risks, and a recommendation that can be owned by the people in the room. Training content is used only where it helps the decision.\n\nParticipants should include the people who will own the system. The workshop fails if the only output is a diagram nobody is accountable for.\n\nThe organisation leaves with artefacts it can put in front of delivery, security and budget, and a clear account of what would still need discovery or a proof of concept.',
+      'This is consultancy delivered as a structured workshop. Your team brings a real problem. Cognitecta facilitates a day that produces clarified requirements, an AI suitability assessment, architecture options, risks, a recommended approach, an initial technical architecture and a next-step roadmap.\n\nThe day is not a lecture with a case study bolted on. It uses a repeatable method: problem framing, constraints, data and systems, options, risks, and a recommendation that can be owned by the people who will deliver it. Training content is used only where it helps the decision.\n\nParticipants should include the people who will own the system. The workshop fails if the only output is a diagram nobody is accountable for.\n\nYour organisation leaves with artefacts it can put in front of delivery, security and budget, and a clear account of what would still need discovery or a proof of concept.',
     audience:
       'Technical teams, architects and engineering leaders with a live problem that might be an AI system — or might not.',
     audienceLabel: 'Technical teams, architects and engineering leaders',
     prerequisites:
-      'A real problem, identified stakeholders, and access to people who know the current systems and constraints. No particular AI course is required, though a shared fundamentals session beforehand often improves the room.',
+      'A real problem, identified stakeholders, and access to people who know the current systems and constraints. No particular AI course is required, though a shared fundamentals session beforehand often improves the conversation.',
     duration: '1 day',
     durationNote: 'Can be run as a half-day framing session, or extended with a follow-on design day. Preparation with the customer before the workshop is part of the engagement.',
     level: 'Leadership',
@@ -233,7 +233,7 @@ export const workshopCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Facilitated working session on the customer’s problem. Participants produce written artefacts: problem statement, suitability assessment, options, risks, recommended architecture and a next-step roadmap. Cognitecta facilitates and contributes architecture judgement; the organisation owns the decision.',
+      'Facilitated working session on your organisation’s problem. You produce written artefacts: problem statement, suitability assessment, options, risks, recommended architecture and a next-step roadmap. Cognitecta facilitates and contributes architecture judgement; your organisation owns the decision.',
     takeaways: [
       'Clarified requirements and success criteria',
       'AI suitability assessment',
@@ -247,14 +247,14 @@ export const workshopCourses: Course[] = [
     shortDescription:
       'A discovery workshop for business and technical leaders: identify where AI can create meaningful value, score the opportunities, and leave with a ranked list and recommended next steps.',
     overview:
-      'Organisations are not short of AI ideas. They are short of a way to compare them. This workshop is a structured discovery session: problem discovery, process mapping, automation versus augmentation, suitability, feasibility, data, value, risk, complexity and prioritisation.\n\nParticipants use a practical scoring framework rather than a brainstorm. Each candidate is examined for whether AI is actually required, whether the data exists, who would own the change, and what would constitute a good outcome. The output is a ranked list, not a longer backlog of slogans.\n\nThe session can be a half day or a full day depending on the number of processes in play and the depth of scoring required.\n\nLeaders leave with a shortlist they can commission, and an explicit list of ideas that should not be funded.',
+      'Organisations are not short of AI ideas. They are short of a way to compare them. This workshop is a structured discovery session: problem discovery, process mapping, automation versus augmentation, suitability, feasibility, data, value, risk, complexity and prioritisation.\n\nYou use a practical scoring framework rather than a brainstorm. Each candidate is examined for whether AI is actually required, whether the data exists, who would own the change, and what would constitute a good outcome. The output is a ranked list, not a longer backlog of slogans.\n\nThe session can be a half day or a full day depending on the number of processes in play and the depth of scoring required.\n\nYou leave with a shortlist you can commission, and an explicit list of ideas that should not be funded.',
     audience:
-      'Business and technical leaders who need to choose where to invest, including product, operations, architecture and delivery stakeholders in the same room.',
+      'Business and technical leaders who need to choose where to invest, including product, operations, architecture and delivery stakeholders in the same session.',
     audienceLabel: 'Business and technical leaders',
     prerequisites:
       'A willingness to examine real processes, including the unglamorous ones. Pre-work to gather candidate processes and constraints improves the session. No technical implementation is required during the day.',
     duration: 'Half day or 1 day',
-    durationNote: 'Half day for a focused shortlist. Full day when several functions are in the room or when scoring needs more evidence.',
+    durationNote: 'Half day for a focused shortlist. Full day when several functions are present or when scoring needs more evidence.',
     level: 'Leadership',
     category: 'workshops',
     outcomes: [
@@ -281,7 +281,7 @@ export const workshopCourses: Course[] = [
           'Suitability: is this an AI problem, a search problem, or a process problem?',
           'Feasibility: data, systems, identity, and the team that would own it.',
           'Value, risk, complexity and reversibility.',
-          'Exercise: score the candidates in the room with the same rubric.',
+          'Exercise: score the candidates with the group using the same rubric.',
         ],
       },
       {
@@ -295,7 +295,7 @@ export const workshopCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Facilitated discovery using a scoring framework. Participants map processes, score candidates and produce a ranked list. The room includes both business and technical voices so feasibility and value are judged together.',
+      'Facilitated discovery using a scoring framework. You map processes, score candidates and produce a ranked list. The group includes both business and technical voices so feasibility and value are judged together.',
     takeaways: [
       'A practical scoring framework the organisation can reuse',
       'A ranked list of AI opportunities',

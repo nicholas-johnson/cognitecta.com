@@ -13,8 +13,8 @@ export const programmes = [
     capacity: 'Up to 12 participants',
     priceFrom: 10000,
     currency: 'GBP',
-    who: 'Software engineers and technical leads who will design, integrate and own LLM systems — not a room being shown a chatbot.',
-    whoNot: 'It is not an executive overview, and it is not a survey of products. Delegates write, test and run code.',
+    who: 'Software engineers and technical leads who will design, integrate and own LLM systems.',
+    whoNot: 'This is not an executive overview, and it is not a survey of products. Delegates write, test and run code.',
     outcomes: [
       'Call, stream and constrain an LLM from Python, with prompts and structured outputs that can be tested.',
       'Build a tool-calling agent with a registry, allowlists, rate limits, audit logs and an evaluation harness.',
@@ -77,7 +77,7 @@ export const programmes = [
           {
             id: '08',
             title: 'Structured workflows',
-            body: 'Day 2 closer. ReAct (reason, act, observe), plan-and-execute with replanning, tool routing, and structured execution traces — workflows as software, not a prompt that hopes.',
+            body: 'Day 2 closer. ReAct (reason, act, observe), plan-and-execute with replanning, tool routing, and structured execution traces — workflows as software, not a prompt that hopes the next step will work.',
           },
         ],
       },
@@ -93,12 +93,12 @@ export const programmes = [
           {
             id: '10',
             title: 'LangChain, as a choice',
-            body: 'LCEL, prompt templates, output parsers, AgentExecutor, RetrievalQA, LangServe. The same loops already written by hand, now in a framework — so the room can judge the abstraction rather than start inside it.',
+            body: 'LCEL, prompt templates, output parsers, AgentExecutor, RetrievalQA, LangServe. The same loops already written by hand, now in a framework — so participants can judge the abstraction rather than start inside it.',
           },
           {
             id: '11',
             title: 'Edge topics',
-            body: 'Pick-and-choose, according to the room: hybrid search, reranking, HyDE, agentic RAG, citation verification, web-search backends, text-to-SQL, LLM evaluation, fine-tuning datasets, guardrails, semantic caching, multimodal RAG, contextual chunking.',
+            body: 'Pick-and-choose, according to the group: hybrid search, reranking, HyDE, agentic RAG, citation verification, web-search backends, text-to-SQL, LLM evaluation, fine-tuning datasets, guardrails, semantic caching, multimodal RAG, contextual chunking.',
           },
           {
             id: '12',
@@ -109,7 +109,7 @@ export const programmes = [
       },
     ],
     taught:
-      'Live engineering education. Delegates work in a Python lab with pytest on every exercise. Demos are run, not slid through. The programme can be tailored to the organisation’s stack; the spine stays the same.',
+      'Live engineering education. Delegates work in a Python lab with pytest on every exercise. Demonstrations are run, not presented as slides. The programme can be tailored to your organisation’s stack; the spine stays the same.',
   },
   {
     slug: 'applied-nlp',
@@ -126,7 +126,7 @@ export const programmes = [
     priceFrom: 7000,
     currency: 'GBP',
     who: 'Engineers and analysts who need to build text pipelines in Python: search, classification, extraction, or a path into modern models.',
-    whoNot: 'It is not a linguistics seminar, and it is not a one-hour tour of a hosted API. Delegates implement, measure and compare.',
+    whoNot: 'This is not a linguistics seminar, and it is not a one-hour tour of a hosted API. Delegates implement, measure and compare.',
     outcomes: [
       'Build a preprocessing pipeline you can defend: tokenisation, Unicode normalisation, stemming, lemmatisation.',
       'Vectorise a corpus with bag-of-words, n-grams and TF-IDF, and retrieve with cosine similarity.',
@@ -163,7 +163,7 @@ export const programmes = [
           {
             id: '04',
             title: 'Topic modelling',
-            body: 'Day 1 closer. Unsupervised discovery: LDA (the generative story, Dirichlet priors), NMF, perplexity and coherence, labelling topics. Compare models and topic counts against a corpus with known categories, so the topics cannot hide.',
+            body: 'Day 1 closer. Unsupervised discovery: LDA (the generative story, Dirichlet priors), NMF, perplexity and coherence, labelling topics. Compare models and topic counts against a corpus with known categories, so the topics have to stand up to known labels.',
           },
         ],
       },
@@ -195,7 +195,7 @@ export const programmes = [
       },
     ],
     taught:
-      'Labs with pytest, live coding, and comparison against real public corpora as well as course data. Slides support the room; they are not the course.',
+      'Labs with pytest, live coding, and comparison against real public corpora as well as course data. Slides support the teaching; they are not the course.',
   },
 ] as const;
 

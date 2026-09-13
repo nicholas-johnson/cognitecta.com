@@ -7,12 +7,12 @@ export const architectureCourses: Course[] = [
     shortDescription:
       'A two-day architecture course for senior engineers and technical leaders: reference architectures, model gateways, RAG, agents, security, evaluation and the operational concerns that decide whether a system can leave the lab.',
     overview:
-      'Production AI systems fail less often because the model is weak, and more often because the surrounding architecture was never designed: no gateway, no evaluation, no identity story, no cost control, and no owner for failure. This course is for people who have to draw that architecture and defend it.\n\nThe course works through reference architectures for hosted and self-hosted models, model abstraction, RAG, agents, event-driven and asynchronous workloads. Data boundaries, identity, permissions, secrets and governance are treated as structural, not as a later security review. Observability, prompt versioning, evaluation, rate limits, fallbacks and resilience are part of the same design.\n\nThe work is architectural. Participants complete design exercises and design reviews, including multi-model systems and the latency, scaling and deployment choices those systems force.\n\nArchitects leave with a production-shaped reference they can take back to a real programme, and a review method for designs that still look like a demo.',
+      'Production AI systems fail less often because the model is weak, and more often because the surrounding architecture was never designed: no gateway, no evaluation, no identity story, no cost control, and no owner for failure. This course is for people who have to draw that architecture and defend it.\n\nThe course works through reference architectures for hosted and self-hosted models, model abstraction, RAG, agents, event-driven and asynchronous workloads. Data boundaries, identity, permissions, secrets and governance are treated as structural, not as a later security review. Observability, prompt versioning, evaluation, rate limits, fallbacks and resilience are part of the same design.\n\nThe work is architectural. You complete design exercises and design reviews, including multi-model systems and the latency, scaling and deployment choices those systems force.\n\nYou leave with a production-shaped reference you can take back to a real programme, and a review method for designs that still look like a demo.',
     audience:
       'Software architects, senior engineers, platform engineers and technical leaders responsible for production shape, not only for a prototype.',
     audienceLabel: 'Architects, senior engineers and platform engineers',
     prerequisites:
-      'Experience designing or delivering production software. Familiarity with LLMs is expected. Participants do not need to implement models, but they should be able to read an architecture and argue about interfaces, failure and operations.',
+      'Experience designing or delivering production software. Familiarity with LLMs is expected. You do not need to implement models, but you should be able to read an architecture and argue about interfaces, failure and operations.',
     duration: '2 days',
     durationNote: 'Can be combined with the enterprise platform course, or focused on a live customer architecture.',
     level: 'Advanced',
@@ -68,7 +68,7 @@ export const architectureCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Architecture exercises and design reviews, not coding labs. Participants produce architecture options, review a weak design, and complete a production architecture for a realistic system including gateway, RAG or agents, security and operations. Reviews are run as they would be in an engineering organisation.',
+      'Architecture exercises and design reviews, not coding labs. You produce architecture options, review a weak design, and complete a production architecture for a realistic system including gateway, RAG or agents, security and operations. Reviews are run as they would be in an engineering organisation.',
     takeaways: [
       'Reference architecture diagrams and component checklists',
       'A production-readiness review method',
@@ -82,14 +82,14 @@ export const architectureCourses: Course[] = [
     shortDescription:
       'A two-day course for developers and platform teams: build a secure internal assistant that can use organisational knowledge and systems, with identity, permissions, citations and evaluation.',
     overview:
-      'Internal assistants fail when they are treated as a chatbot with a company PDF attached. Enterprises need identity, permissions-aware retrieval, tool access to internal APIs, citations, logging and a deployment path that security will accept. This course is about that system.\n\nParticipants design and build an assistant architecture: enterprise search and RAG, identity and SSO, data access, tool use, workflows, conversational context and memory. Security, privacy, logging, evaluation and deployment are part of the same build, not a later hardening pass.\n\nThe practical work is an internal knowledge assistant that can answer from permitted documents, call a constrained internal tool, cite sources, and refuse when it should.\n\nTeams leave with a working assistant and a clear list of the platform pieces — identity, retrieval ACLs, audit — that a product team should not have to reinvent.',
+      'Internal assistants fail when they are treated as a chatbot with a company PDF attached. Enterprises need identity, permissions-aware retrieval, tool access to internal APIs, citations, logging and a deployment path that security will accept. This course is about that system.\n\nYou design and build an assistant architecture: enterprise search and RAG, identity and SSO, data access, tool use, workflows, conversational context and memory. Security, privacy, logging, evaluation and deployment are part of the same build, not a later hardening pass.\n\nThe practical work is an internal knowledge assistant that can answer from permitted documents, call a constrained internal tool, cite sources, and refuse when it should.\n\nYou leave with a working assistant and a clear list of the platform pieces — identity, retrieval ACLs, audit — that a product team should not have to reinvent.',
     audience:
       'Developers and enterprise platform teams building internal assistants, copilots or knowledge systems.',
     audienceLabel: 'Developers and enterprise platform teams',
     prerequisites:
       'Professional software development experience and familiarity with authentication concepts. RAG experience is helpful. Access to a representative document set improves the labs.',
     duration: '2 days',
-    durationNote: 'Can be delivered against the organisation’s identity provider, document stores and internal APIs.',
+    durationNote: 'Can be delivered against your organisation’s identity provider, document stores and internal APIs.',
     level: 'Intermediate',
     category: 'architecture',
     outcomes: [
@@ -140,7 +140,7 @@ export const architectureCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants build an internal knowledge assistant over a representative corpus. The system authenticates, retrieves only permitted material, cites sources, can call one internal tool, and is evaluated against realistic internal questions.',
+      'You build an internal knowledge assistant over a representative corpus. The system authenticates, retrieves only permitted material, cites sources, can call one internal tool, and is evaluated against realistic internal questions.',
     takeaways: [
       'A working internal knowledge assistant',
       'Patterns for SSO, retrieval ACLs and tool scopes',
@@ -154,14 +154,14 @@ export const architectureCourses: Course[] = [
     shortDescription:
       'A two-day course for architects and senior technical leaders: design enterprise-scale AI capability as a platform, not as a sequence of isolated projects.',
     overview:
-      'Organisations that succeed with generative AI rarely do it as a pile of unrelated copilots. They build a small number of shared capabilities — identity, model access, retrieval, evaluation, cost control — and let product teams consume them. This course is about that enterprise shape.\n\nParticipants work through enterprise AI platforms, shared services, model gateways, identity, security, governance and data access. RAG platforms, observability, evaluation and cost management are designed as multi-team services. Vendor abstraction, deployment patterns and the split between platform and product responsibilities are made explicit.\n\nThe teaching uses architecture case studies. Participants design a platform that several product teams could use without each team negotiating a model vendor, a vector database and a logging story from scratch.\n\nThe result is an enterprise architecture and an operating model, not a project plan for a single assistant.',
+      'Organisations that succeed with generative AI rarely do it as a pile of unrelated copilots. They build a small number of shared capabilities — identity, model access, retrieval, evaluation, cost control — and let product teams consume them. This course is about that enterprise shape.\n\nYou work through enterprise AI platforms, shared services, model gateways, identity, security, governance and data access. RAG platforms, observability, evaluation and cost management are designed as multi-team services. Vendor abstraction, deployment patterns and the split between platform and product responsibilities are made explicit.\n\nThe teaching uses architecture case studies. You design a platform that several product teams could use without each team negotiating a model vendor, a vector database and a logging story from scratch.\n\nThe result is an enterprise architecture and an operating model, not a project plan for a single assistant.',
     audience:
       'Architects and senior technical leaders responsible for enterprise AI capability, platform strategy or multi-team enablement.',
     audienceLabel: 'Architects and senior technical leaders',
     prerequisites:
       'Experience with enterprise architecture, platform engineering or large-scale delivery. Familiarity with generative AI is expected. This is not an introductory course.',
     duration: '2 days',
-    durationNote: 'Often delivered as a private session around the organisation’s current estate and constraints.',
+    durationNote: 'Often delivered as a private session around your organisation’s current estate and constraints.',
     level: 'Advanced',
     category: 'architecture',
     outcomes: [
@@ -206,14 +206,14 @@ export const architectureCourses: Course[] = [
         title: 'Target architecture',
         points: [
           'A complete enterprise architecture: control plane, data, runtime and delivery.',
-          'Risks: central bottleneck, shadow AI, and platform that is only a procurement wrapper.',
+          'Risks: central bottleneck, shadow AI, and a platform that is only a procurement wrapper.',
           'Case study review and critique.',
           'Produce a target diagram, responsibility matrix and next-step programme.',
         ],
       },
     ],
     practicalWork:
-      'Architecture case studies and design work. Participants critique an estate of isolated AI projects, define shared services, and produce a target architecture, responsibility split and sequenced roadmap. Where possible, the case is the customer’s.',
+      'Architecture case studies and design work. You critique an estate of isolated AI projects, define shared services, and produce a target architecture, responsibility split and sequenced roadmap. Where possible, the case is your organisation’s.',
     takeaways: [
       'A target enterprise AI architecture',
       'A platform versus product responsibility matrix',

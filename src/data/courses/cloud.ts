@@ -7,14 +7,14 @@ export const cloudCourses: Course[] = [
     shortDescription:
       'A two-day course for cloud engineers, developers and architects: design and build AI systems on AWS, with architecture first and managed services in their proper place.',
     overview:
-      'AWS offers a dense set of managed AI services. Teams that start from the product list often produce designs that are hard to move, hard to evaluate and expensive to run. This course starts from the system: model access, identity, retrieval, orchestration, events, security and cost. AWS services are then used as implementations of those parts.\n\nParticipants cover managed foundation models, identity and IAM, storage, serverless patterns, RAG and vector search, agents, event-driven systems, observability, deployment, security and cost. Service names are taught as current implementations, not as the architecture itself, so the design still holds when the console labels change.\n\nThe course is practical. Participants design and build against AWS primitives for model access, retrieval and an application path, then review the security and cost of what they built.\n\nEngineers leave able to design an AI system that happens to run on AWS, rather than an AWS diagram that happens to mention a model.',
+      'AWS offers a dense set of managed AI services. Teams that start from the product list often produce designs that are hard to move, hard to evaluate and expensive to run. This course starts from the system: model access, identity, retrieval, orchestration, events, security and cost. AWS services are then used as implementations of those parts.\n\nYou cover managed foundation models, identity and IAM, storage, serverless patterns, RAG and vector search, agents, event-driven systems, observability, deployment, security and cost. Service names are taught as current implementations, not as the architecture itself, so the design still holds when the console labels change.\n\nThe course is practical. You design and build against AWS primitives for model access, retrieval and an application path, then review the security and cost of what you built.\n\nYou leave able to design an AI system that happens to run on AWS, rather than an AWS diagram that happens to mention a model.',
     audience:
       'Cloud engineers, developers and architects working on AWS who will design or implement AI systems.',
     audienceLabel: 'Cloud engineers, developers and architects',
     prerequisites:
       'Working knowledge of AWS identity, networking and at least one compute option (functions, containers or virtual machines). Familiarity with LLM applications is helpful.',
     duration: '2 days',
-    durationNote: 'Can be aligned to the organisation’s AWS estate, landing zone and approved services.',
+    durationNote: 'Can be aligned to your organisation’s AWS estate, landing zone and approved services.',
     level: 'Intermediate',
     category: 'cloud-platform',
     outcomes: [
@@ -56,7 +56,7 @@ export const cloudCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants build a small AWS-backed AI path: authenticated model access, a retrieval component, and either a synchronous application or an event-driven job. The closing review covers IAM, cost, observability and which interfaces should stay portable.',
+      'You build a small AWS-backed AI path: authenticated model access, a retrieval component, and either a synchronous application or an event-driven job. The closing review covers IAM, cost, observability and which interfaces should stay portable.',
     takeaways: [
       'A working AWS implementation of a small AI system',
       'Reference architectures mapped to current AWS services',
@@ -70,14 +70,14 @@ export const cloudCourses: Course[] = [
     shortDescription:
       'A two-day course for cloud engineers, developers and architects: design enterprise AI systems on Azure, including identity, search, model APIs and the architecture those services should sit inside.',
     overview:
-      'Azure is often chosen for enterprise AI because of identity, compliance and the Microsoft estate already in place. That is a reason to be more careful about architecture, not less. This course teaches how to design AI systems on Azure without treating a managed agent or a search resource as the whole design.\n\nThe course covers model APIs, Microsoft Entra integration, Azure AI services, RAG and search, storage, APIs, agents, security, observability, networking, deployment and cost. Identity is a thread through the two days: who the user is, what they may retrieve, and what a tool may do.\n\nAs with the AWS course, services are implementations. Participants design the system first, then map it onto current Azure AI, search and hosting capabilities.\n\nTeams leave able to build an enterprise-shaped assistant or application on Azure with identity, retrieval and operations that would survive a security review.',
+      'Azure is often chosen for enterprise AI because of identity, compliance and the Microsoft estate already in place. That is a reason to be more careful about architecture, not less. This course teaches how to design AI systems on Azure without treating a managed agent or a search resource as the whole design.\n\nThe course covers model APIs, Microsoft Entra integration, Azure AI services, RAG and search, storage, APIs, agents, security, observability, networking, deployment and cost. Identity is a thread through the two days: who the user is, what they may retrieve, and what a tool may do.\n\nAs with the AWS course, services are implementations. You design the system first, then map it onto current Azure AI, search and hosting capabilities.\n\nYou leave able to build an enterprise-shaped assistant or application on Azure with identity, retrieval and operations that would survive a security review.',
     audience:
       'Cloud engineers, developers and architects working on Azure who will design or implement enterprise AI systems.',
     audienceLabel: 'Cloud engineers, developers and architects',
     prerequisites:
       'Working knowledge of Azure identity, resource organisation and a compute option. Familiarity with Entra ID and with LLM applications is helpful.',
     duration: '2 days',
-    durationNote: 'Can be aligned to the organisation’s Azure landing zone, Entra configuration and approved AI services.',
+    durationNote: 'Can be aligned to your organisation’s Azure landing zone, Entra configuration and approved AI services.',
     level: 'Intermediate',
     category: 'cloud-platform',
     outcomes: [
@@ -118,7 +118,7 @@ export const cloudCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants build an Azure-backed path: Entra-authenticated access, retrieval over a small corpus, and an application or agent that calls a constrained API. The review focuses on identity, network, cost and operations.',
+      'You build an Azure-backed path: Entra-authenticated access, retrieval over a small corpus, and an application or agent that calls a constrained API. The review focuses on identity, network, cost and operations.',
     takeaways: [
       'A working Azure implementation of a small enterprise AI path',
       'Reference architectures mapped to current Azure AI and search services',
@@ -132,14 +132,14 @@ export const cloudCourses: Course[] = [
     shortDescription:
       'A two-day course for platform engineers, architects and senior developers: build the internal infrastructure that lets multiple product teams use AI safely and consistently.',
     overview:
-      'If every product team integrates a model, a vector store and a logging story independently, the organisation gets duplicated cost, inconsistent security and no way to evaluate quality. Platform engineering for AI is the work of making a paved path: model access, policy, retrieval, observability and developer experience.\n\nThis course covers model gateways, routing, authentication, policy, rate limiting and model abstraction. Prompt management, evaluation, secrets, data controls, RAG services, vector infrastructure, cost allocation, caching, resilience and developer experience are designed as platform products.\n\nThe teaching is design-heavy, with enough implementation detail to be concrete. Participants work through the contracts a platform should offer a product team, and the ones it should refuse to hide.\n\nPlatform engineers leave with a service design, not a catalogue of tools to install.',
+      'If every product team integrates a model, a vector store and a logging story independently, the organisation gets duplicated cost, inconsistent security and no way to evaluate quality. Platform engineering for AI is the work of making a paved path: model access, policy, retrieval, observability and developer experience.\n\nThis course covers model gateways, routing, authentication, policy, rate limiting and model abstraction. Prompt management, evaluation, secrets, data controls, RAG services, vector infrastructure, cost allocation, caching, resilience and developer experience are designed as platform products.\n\nThe teaching is design-heavy, with enough implementation detail to be concrete. You work through the contracts a platform should offer a product team, and the ones it should refuse to hide.\n\nYou leave with a service design, not a catalogue of tools to install.',
     audience:
       'Platform engineers, architects and senior developers responsible for shared AI infrastructure and developer enablement.',
     audienceLabel: 'Platform engineers, architects and senior developers',
     prerequisites:
       'Experience building internal platforms, APIs or shared infrastructure. Familiarity with LLM applications is expected. This is not a first course in generative AI.',
     duration: '2 days',
-    durationNote: 'Often delivered around the organisation’s existing platform, identity and observability stack.',
+    durationNote: 'Often delivered around your organisation’s existing platform, identity and observability stack.',
     level: 'Advanced',
     category: 'cloud-platform',
     outcomes: [
@@ -181,7 +181,7 @@ export const cloudCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Design exercises throughout. Participants specify gateway, retrieval, evaluation and cost-allocation services, critique a weak platform proposal, and produce a paved-path design including developer experience. Implementation snippets are used where they clarify an interface; the deliverable is a platform design.',
+      'Design exercises throughout. You specify gateway, retrieval, evaluation and cost-allocation services, critique a weak platform proposal, and produce a paved-path design including developer experience. Implementation snippets are used where they clarify an interface; the deliverable is a platform design.',
     takeaways: [
       'A model-gateway and paved-path design',
       'Service contracts for retrieval, evaluation and cost allocation',

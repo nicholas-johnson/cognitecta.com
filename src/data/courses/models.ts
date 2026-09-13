@@ -7,7 +7,7 @@ export const modelsCourses: Course[] = [
     shortDescription:
       'A two-day course for technically strong practitioners: build a usable understanding of transformer models by implementing simplified components, without unnecessary mathematical formalism.',
     overview:
-      'Transformer models sit under almost every production language system in current use. Many engineers can call an API without being able to reason about attention, context, or why scaling and quantisation behave as they do. This course closes that gap by building the mechanism from the pieces.\n\nThe course starts with vectors, embeddings and matrix operations at an intuitive level, then implements attention, self-attention, queries, keys and values. Positional information, transformer blocks, feed-forward layers and normalisation are assembled into a working picture of a model. Training, loss, token prediction and inference are connected to that implementation.\n\nThe mathematics is kept as light as the subject allows. Participants write code for simplified transformer components and inspect them, rather than being asked to reproduce a paper. Scaling and production implications are drawn out as the implementation grows.\n\nEngineers leave able to read a transformer architecture, discuss it with ML specialists, and make better choices about context, fine-tuning and local inference.',
+      'Transformer models sit under almost every production language system in current use. Many engineers can call an API without being able to reason about attention, context, or why scaling and quantisation behave as they do. This course closes that gap by building the mechanism from the pieces.\n\nThe course starts with vectors, embeddings and matrix operations at an intuitive level, then implements attention, self-attention, queries, keys and values. Positional information, transformer blocks, feed-forward layers and normalisation are assembled into a working picture of a model. Training, loss, token prediction and inference are connected to that implementation.\n\nThe mathematics is kept as light as the subject allows. You write code for simplified transformer components and inspect them, rather than being asked to reproduce a paper. Scaling and production implications are drawn out as the implementation grows.\n\nYou leave able to read a transformer architecture, discuss it with ML specialists, and make better choices about context, fine-tuning and local inference.',
     audience:
       'Developers, ML engineers and technically strong practitioners who want a deeper, implementation-level understanding of transformer models.',
     audienceLabel: 'Developers, ML engineers and strong practitioners',
@@ -63,7 +63,7 @@ export const modelsCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants implement simplified transformer components in code: embeddings, attention, a block, and a tiny training and generation loop. The objective is understanding, not reproducing a production-scale model.',
+      'You implement simplified transformer components in code: embeddings, attention, a block, and a tiny training and generation loop. The objective is understanding, not reproducing a production-scale model.',
     takeaways: [
       'Working code for simplified transformer components',
       'Visualisations of attention and token prediction',
@@ -77,14 +77,14 @@ export const modelsCourses: Course[] = [
     shortDescription:
       'A two-day course for ML engineers and experienced AI developers: when to adapt a model, how to do it with parameter-efficient methods, and how to evaluate and deploy the result.',
     overview:
-      'Fine-tuning is often proposed when the real problem is retrieval, prompting, or data that should never enter a model. It is also under-used where a model must acquire a style, a schema, or a behaviour that prompting cannot hold. This course teaches the distinction, then the practice.\n\nParticipants cover dataset construction, cleaning, supervised fine-tuning, LoRA, QLoRA and other parameter-efficient methods. Training configuration, GPUs, quantisation, evaluation, overfitting, safety and deployment are treated as operational work. RAG versus fine-tuning is kept in view throughout.\n\nThe course includes a practical fine-tuning exercise. Participants run a parameter-efficient adaption, evaluate it against a held-out set, and discuss whether the result is worth the operational cost compared with retrieval or a better application design.\n\nThe aim is a team that can fine-tune when it is justified, and refuse it when it is not.',
+      'Fine-tuning is often proposed when the real problem is retrieval, prompting, or data that should never enter a model. It is also under-used where a model must acquire a style, a schema, or a behaviour that prompting cannot hold. This course teaches the distinction, then the practice.\n\nYou cover dataset construction, cleaning, supervised fine-tuning, LoRA, QLoRA and other parameter-efficient methods. Training configuration, GPUs, quantisation, evaluation, overfitting, safety and deployment are treated as operational work. RAG versus fine-tuning is kept in view throughout.\n\nThe course includes a practical fine-tuning exercise. You run a parameter-efficient adaptation, evaluate it against a held-out set, and discuss whether the result is worth the operational cost compared with retrieval or a better application design.\n\nThe aim is a team that can fine-tune when it is justified, and refuse it when it is not.',
     audience:
       'ML engineers and experienced AI developers responsible for model adaptation, evaluation and deployment.',
     audienceLabel: 'ML engineers and experienced AI developers',
     prerequisites:
       'Comfortable with Python, training loops at a basic level, and LLM application design. GPU access is required for the labs. The RAG course is useful context but not mandatory.',
     duration: '2 days',
-    durationNote: 'Can be focused on the organisation’s base model and data, including safety and deployment constraints.',
+    durationNote: 'Can be focused on your organisation’s base model and data, including safety and deployment constraints.',
     level: 'Advanced',
     category: 'models-ml',
     outcomes: [
@@ -135,7 +135,7 @@ export const modelsCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants prepare a dataset, run a parameter-efficient fine-tune, evaluate against a held-out set and the base model, and produce a deployment note. The exercise is sized to finish in the room; it is not an attempt to beat a frontier model.',
+      'You prepare a dataset, run a parameter-efficient fine-tune, evaluate against a held-out set and the base model, and produce a deployment note. The exercise is sized to finish during the course; it is not an attempt to beat a frontier model.',
     takeaways: [
       'A trained adapter and evaluation report',
       'Dataset and training configuration templates',
@@ -149,7 +149,7 @@ export const modelsCourses: Course[] = [
     shortDescription:
       'A two-to-three-day course for advanced developers and ML engineers: build and train a small language model in order to understand the process, not to compete with frontier systems.',
     overview:
-      'Training a language model looks opaque from the outside. This course demystifies it by having participants construct a dataset, tokenise, implement a small transformer, and run a training loop they can inspect. The objective is understanding. Nobody leaves with a model that replaces a production API, and that is stated at the start.\n\nThe course covers dataset construction, tokenisation, embeddings, architecture, the training loop, loss, optimisation, batching, validation, checkpoints and inference. GPU constraints, scaling and evaluation are discussed as the reasons large training runs look the way they do.\n\nParticipants train a small working model. They watch loss move, inspect generations, and connect those observations to the production models they already call.\n\nThe value is a team that can talk to ML engineers, judge training proposals, and stop treating “we should train our own model” as either magic or a strategy.',
+      'Training a language model looks opaque from the outside. This course demystifies it by having you construct a dataset, tokenise, implement a small transformer, and run a training loop you can inspect. The objective is understanding. Nobody leaves with a model that replaces a production API, and that is stated at the start.\n\nThe course covers dataset construction, tokenisation, embeddings, architecture, the training loop, loss, optimisation, batching, validation, checkpoints and inference. GPU constraints, scaling and evaluation are discussed as the reasons large training runs look the way they do.\n\nYou train a small working model. You watch loss move, inspect generations, and connect those observations to the production models you already call.\n\nThe value is a team that can talk to ML engineers, judge training proposals, and stop treating “we should train our own model” as either magic or a strategy.',
     audience:
       'Advanced developers and ML engineers who need a grounded understanding of language-model training.',
     audienceLabel: 'Advanced developers and ML engineers',
@@ -164,7 +164,7 @@ export const modelsCourses: Course[] = [
       'Implement or assemble a small transformer and explain each stage of the forward pass.',
       'Run a training loop with batching, loss, optimisation, validation and checkpoints.',
       'Generate from a checkpoint and evaluate it honestly against the training objective.',
-      'Relate GPU memory, batch size and context length to what is feasible in the room and in a real cluster.',
+      'Relate GPU memory, batch size and context length to what is feasible in the course and in a real cluster.',
       'Judge when training from scratch is the wrong proposal compared with adapting or calling an existing model.',
     ],
     outline: [
@@ -198,7 +198,7 @@ export const modelsCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants train a small working language model. They own the dataset, the loop, the checkpoints and the evaluation. The closing artefact is the model plus a short report that states what was learned and what would not transfer to a production training programme.',
+      'You train a small working language model. You own the dataset, the loop, the checkpoints and the evaluation. The closing artefact is the model plus a short report that states what was learned and what would not transfer to a production training programme.',
     takeaways: [
       'A small trained model and checkpoints',
       'A training-loop implementation and run notes',
@@ -212,7 +212,7 @@ export const modelsCourses: Course[] = [
     shortDescription:
       'A one-day practical course on local and private inference: model formats, hardware, quantisation, engines, benchmarking and the privacy and cost reasons to run models yourself.',
     overview:
-      'Local inference is no longer only a hobbyist concern. Teams run models on laptops, on-prem GPUs and private cloud for privacy, cost, latency or air-gapped work. The difficulty is operational: choosing a model size that fits VRAM, a format the engine can load, and a configuration that meets a latency target.\n\nThis course is practical. Participants work through model families, formats, sizes, quantisation, inference engines, CPU versus GPU, throughput, latency, context length and batching. They expose a local API, measure it, and discuss hardware selection and deployment.\n\nPrivacy and cost are treated as the usual reasons to do this work, not as slogans. The course is honest about quality loss from aggressive quantisation and about the gap between a laptop demo and a multi-user service.\n\nParticipants leave able to select, run, benchmark and expose a local model, and to decide when local inference is the right deployment rather than a preferred ideology.',
+      'Local inference is no longer only a hobbyist concern. Teams run models on laptops, on-prem GPUs and private cloud for privacy, cost, latency or air-gapped work. The difficulty is operational: choosing a model size that fits VRAM, a format the engine can load, and a configuration that meets a latency target.\n\nThis course is practical. You work through model families, formats, sizes, quantisation, inference engines, CPU versus GPU, throughput, latency, context length and batching. You expose a local API, measure it, and discuss hardware selection and deployment.\n\nPrivacy and cost are treated as the usual reasons to do this work, not as slogans. The course is honest about quality loss from aggressive quantisation and about the gap between a laptop demo and a multi-user service.\n\nYou leave able to select, run, benchmark and expose a local model, and to decide when local inference is the right deployment rather than a preferred ideology.',
     audience:
       'Developers, infrastructure engineers and AI engineers who need to run or support local and private inference.',
     audienceLabel: 'Developers, infrastructure and AI engineers',
@@ -260,7 +260,7 @@ export const modelsCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants install or use a local inference engine, load a quantised model, expose an API, and benchmark latency and throughput. They compare configurations and produce a short hardware and deployment recommendation.',
+      'You install or use a local inference engine, load a quantised model, expose an API, and benchmark latency and throughput. You compare configurations and produce a short hardware and deployment recommendation.',
     takeaways: [
       'A running local model and API',
       'Benchmark notes for latency, throughput and quantisation',

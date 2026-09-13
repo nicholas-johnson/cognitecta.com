@@ -5,14 +5,14 @@ export const foundationsCourses: Course[] = [
     slug: 'generative-ai-fundamentals',
     title: 'Generative AI Fundamentals',
     shortDescription:
-      'A technically accurate, practical introduction to modern generative AI for mixed rooms. Enough depth to make sound decisions; no requirement to write code.',
+      'A technically accurate, practical introduction to modern generative AI for mixed technical and non-technical audiences. Enough depth to make sound decisions, with no requirement to write code.',
     overview:
-      'Most introductions to generative AI either stay at the level of product demonstrations or assume a software engineering background. This course sits between those two. It explains what large language models actually do, where they are reliable, and where they fail, in language that holds up in a technical conversation without turning the day into a coding class.\n\nParticipants work through tokens, context, generation, prompting, retrieval, tools and agents as a coherent model rather than a list of features. The aim is not familiarity with a particular product. It is a working picture of the technology: how output is produced, why hallucination occurs, what retrieval actually changes, and what “an agent” means in practice.\n\nThe course is hands-on. Participants use current AI systems to test prompting, structured requests, retrieval and multimodal inputs, then examine the results with enough scepticism to be useful at work. Privacy, security and responsible use are treated as operating constraints, not as a closing slide.\n\nBy the end of the day, participants can talk about generative AI with precision, choose appropriate uses, and recognise designs that will not survive contact with real data, real users or organisational risk.',
+      'Most introductions to generative AI either stay at the level of product demonstrations or assume a software engineering background. This course sits between those two. It explains what large language models actually do, where they are reliable, and where they fail — in language that holds up in a technical conversation, without turning the day into a coding class.\n\nYou work through tokens, context, generation, prompting, retrieval, tools and agents as a coherent picture rather than a list of features. The aim is not familiarity with a particular product. It is a working understanding of the technology: how output is produced, why hallucination occurs, what retrieval actually changes, and what an agent means in practice.\n\nThe course is hands-on. You use current AI systems to test prompting, structured requests, retrieval and multimodal inputs, then examine the results with enough scepticism to be useful at work. Privacy, security and responsible use are treated as operating constraints, not as a closing presentation.\n\nBy the end of the day, you can talk about generative AI with precision, choose appropriate uses, and recognise designs that will not survive contact with real data, real users or organisational risk.',
     audience:
       'Mixed technical and non-technical professionals: product managers, analysts, knowledge workers, business stakeholders, and engineers who want a shared, accurate foundation before more specialised work.',
     audienceLabel: 'Mixed technical and non-technical professionals',
     prerequisites:
-      'No programming experience is required. Participants should be comfortable using a computer and working with documents, and should have access to a current generative AI system during the course.',
+      'No programming experience is required. You should be comfortable using a computer and working with documents, and should have access to a current generative AI system during the course.',
     duration: '1 day',
     durationNote: 'Can be adapted to a half-day briefing, or extended with additional exercises for a particular domain.',
     level: 'Foundation',
@@ -30,7 +30,7 @@ export const foundationsCourses: Course[] = [
       {
         title: 'What generative AI is — and is not',
         points: [
-          'A precise model of generative systems versus classical software and predictive ML.',
+          'A precise picture of generative systems versus classical software and predictive ML.',
           'Large language models as next-token predictors, not knowledge bases or reasoning engines.',
           'Strengths: drafting, transformation, synthesis, coding assistance, interface generation.',
           'Limits: truth, currency, counting, long-horizon planning, and tasks that require authority.',
@@ -80,7 +80,7 @@ export const foundationsCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants work throughout the day in a current generative AI system. Exercises include inspecting failure modes, rewriting prompts, comparing ungrounded and retrieved answers, and assessing proposed workplace uses against capability, risk and data sensitivity.',
+      'You work throughout the day in a current generative AI system. Exercises include inspecting failure modes, rewriting prompts, comparing ungrounded and retrieved answers, and assessing proposed workplace uses against capability, risk and data sensitivity.',
     takeaways: [
       'A shared, technically accurate vocabulary for models, context, retrieval, tools and agents',
       'Prompt patterns that can be reused and inspected at work',
@@ -94,12 +94,12 @@ export const foundationsCourses: Course[] = [
     shortDescription:
       'A working day for knowledge workers and business teams: using generative AI for research, writing, analysis and document work, with enough discipline to trust the output.',
     overview:
-      'Generative AI is already in daily work, often without a shared method. People paste confidential text into consumer tools, accept fluent answers as evidence, or abandon the technology after a few disappointing attempts. This course is for the people who have to use it on real documents, real numbers and real decisions.\n\nThe day is organised around work, not around a catalogue of tips. Participants practise research, summarisation, writing, analysis, brainstorming and structured extraction, then spend as much time on verification as on generation. Hallucination is treated as an expected property of the system, not as a rare defect. Privacy and confidential information are handled as operating rules.\n\nThe course is deliberately not a tour of a single product’s interface. Participants learn a method they can take back to whatever approved tools the organisation uses: how to specify the task, constrain the output, check the result, and decide when not to use a model at all.\n\nBy the end of the day, participants can use generative AI as a serious work tool — faster on the tasks it is good at, slower and more careful where the cost of a fluent error is high.',
+      'Generative AI is already in daily work, often without a shared method. People paste confidential text into consumer tools, accept fluent answers as evidence, or abandon the technology after a few disappointing attempts. This course is for you if you have to use it on real documents, real numbers and real decisions.\n\nThe day is organised around work, not around a catalogue of tips. You practise research, summarisation, writing, analysis, brainstorming and structured extraction, then spend as much time on verification as on generation. Hallucination is treated as an expected property of the system, not as a rare defect. Privacy and confidential information are handled as operating rules.\n\nThe course is deliberately not a tour of a single product’s interface. You learn a method you can take back to whatever approved tools your organisation uses: how to specify the task, constrain the output, check the result, and decide when not to use a model at all.\n\nBy the end of the day, you can use generative AI as a serious work tool — faster on the tasks it is good at, slower and more careful where the cost of a fluent error is high.',
     audience:
       'Knowledge workers and business teams: analysts, operations, research, communications, programme managers and specialists who work with documents, data and decisions.',
     audienceLabel: 'Knowledge workers and business teams',
     prerequisites:
-      'No technical background is required. Participants should bring typical work examples where possible, and should use an approved organisational AI tool rather than an unmanaged consumer account if one is available.',
+      'No technical background is required. Bring typical work examples where possible, and use an approved organisational AI tool rather than an unmanaged consumer account if one is available.',
     duration: '1 day',
     durationNote: 'Can be delivered as a half-day for a single function, or extended with domain-specific exercises.',
     level: 'Foundation',
@@ -111,7 +111,7 @@ export const foundationsCourses: Course[] = [
       'Handle confidential and personal information according to organisational rules rather than convenience.',
       'Use generative AI on spreadsheets and data with enough scepticism to catch invented figures and false structure.',
       'Decide when not to use a model, including legal, numerical, personal and high-stakes work.',
-      'Build a small set of reusable work patterns for recurring tasks in their role.',
+      'Build a small set of reusable work patterns for recurring tasks in your role.',
     ],
     outline: [
       {
@@ -120,14 +120,14 @@ export const foundationsCourses: Course[] = [
           'What current systems do well in knowledge work, and where fluency is a liability.',
           'A repeatable pattern: purpose, source, constraints, output, verification.',
           'The difference between drafting support and an authoritative answer.',
-          'Exercise: take a real request from the room and make the task spec explicit.',
+          'Exercise: take a real request from the group and make the task spec explicit.',
         ],
       },
       {
         title: 'Research, reading and summarisation',
         points: [
           'Briefing, comparison and synthesis from source material rather than from the model’s prior.',
-          'Summaries for different audiences: executives, specialists, and people who were not in the room.',
+          'Summaries for different audiences: executives, specialists, and people who were not in the meeting.',
           'Citations, quotations and the habit of sending the reader back to the source.',
           'Exercise: summarise a long document, then mark every claim that is not grounded in the text.',
         ],
@@ -154,7 +154,7 @@ export const foundationsCourses: Course[] = [
       },
     ],
     practicalWork:
-      'The day is a sequence of workplace exercises on participants’ own material where possible: research and briefing, document summarisation, writing, structured extraction, and a verification pass. Each exercise ends with a judgement about whether the output is usable as-is, usable after checking, or not to be used.',
+      'The day is a sequence of workplace exercises on your own material where possible: research and briefing, document summarisation, writing, structured extraction, and a verification pass. Each exercise ends with a judgement about whether the output is usable as-is, usable after checking, or not to be used.',
     takeaways: [
       'Reusable prompt patterns for briefing, writing, extraction and analysis',
       'A verification checklist for generated work',
@@ -168,7 +168,7 @@ export const foundationsCourses: Course[] = [
     shortDescription:
       'A one-day explanation of LLM internals for developers, architects and technically curious professionals. Enough mechanism to improve engineering decisions, without a research-paper prerequisite.',
     overview:
-      'Many teams are building on large language models without a usable picture of the mechanism. That leads to poor assumptions about memory, truth, context, fine-tuning and cost. This course explains how current models actually work, at a depth that changes how participants design systems.\n\nThe day covers tokenisation, embeddings, attention, the transformer stack, training, inference and sampling. Pretraining, instruction tuning, alignment and fine-tuning are separated carefully, because they answer different problems. Quantisation, model size and scaling are discussed as engineering constraints rather than as a race.\n\nThe explanations are visual and concrete. Small demonstrations show what tokens look like, how sampling changes output, and why a longer context is not the same thing as understanding. Mathematics is used where it clarifies; it is not the point of the course.\n\nParticipants leave able to reason about context windows, latency, model choice and the limits of prompting, retrieval and fine-tuning with more than folklore.',
+      'Many teams are building on large language models without a usable picture of the mechanism. That leads to poor assumptions about memory, truth, context, fine-tuning and cost. This course explains how current models actually work, at a depth that changes how you design systems.\n\nThe day covers tokenisation, embeddings, attention, the transformer stack, training, inference and sampling. Pretraining, instruction tuning, alignment and fine-tuning are separated carefully, because they answer different problems. Quantisation, model size and scaling are discussed as engineering constraints rather than as a race.\n\nThe explanations are visual and concrete. Small demonstrations show what tokens look like, how sampling changes output, and why a longer context is not the same thing as understanding. Mathematics is used where it clarifies; it is not the point of the course.\n\nYou leave able to reason about context windows, latency, model choice and the limits of prompting, retrieval and fine-tuning with more than folklore.',
     audience:
       'Developers, architects, technical product leaders and technically curious professionals who will make or influence engineering decisions about LLMs.',
     audienceLabel: 'Developers, architects and technical professionals',
@@ -228,7 +228,7 @@ export const foundationsCourses: Course[] = [
       },
     ],
     practicalWork:
-      'The course uses visual explanations and small demonstrations rather than a full implementation lab. Participants inspect tokenisation, sampling behaviour, context effects and the difference between base and instruction-tuned models, then apply that model to design questions brought from their own systems.',
+      'The course uses visual explanations and small demonstrations rather than a full implementation lab. You inspect tokenisation, sampling behaviour, context effects and the difference between base and instruction-tuned models, then apply that picture to design questions from your own systems.',
     takeaways: [
       'A working mental model of tokens, attention, training and inference',
       'A vocabulary that holds up in architecture discussions',

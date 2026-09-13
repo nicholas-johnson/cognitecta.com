@@ -33,9 +33,12 @@ export function getCategory(id: CourseCategoryId) {
 }
 
 export function relatedCourses(course: Course, limit = 3) {
-  return courses
-    .filter((item) => item.category === course.category && item.slug !== course.slug)
-    .slice(0, limit);
+  const sameCategory = courses.filter(
+    (item) => item.category === course.category && item.slug !== course.slug,
+  );
+  const sameLevel = sameCategory.filter((item) => item.level === course.level);
+  const rest = sameCategory.filter((item) => item.level !== course.level);
+  return [...sameLevel, ...rest].slice(0, limit);
 }
 
 export function pathwayCourses(slugs: string[]) {

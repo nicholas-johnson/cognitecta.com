@@ -1,48 +1,50 @@
 import type { CourseCategory, CoursePathway } from './types';
 
 export const catalogueIntro =
-  'Cognitecta training is designed and delivered by experienced practitioners. Courses combine technical depth, clear explanation and hands-on work, with content that can be adapted to your organisation, technology stack and objectives.';
+  'Cognitecta training is designed and delivered by experienced practitioners. Courses combine technical depth, clear explanation and hands-on work, and can be adapted to your organisation, technology stack and objectives.';
 
 export const courseCategories: CourseCategory[] = [
   {
     id: 'foundations',
     title: 'Foundations',
-    summary: 'Accurate models of how generative AI works, and how to use it with judgement.',
+    summary:
+      'Build an accurate picture of how generative AI works, and how to use it with judgement.',
   },
   {
     id: 'leadership',
     title: 'Leadership',
-    summary: 'Architectural, commercial and organisational decisions about AI.',
+    summary: 'Architectural, commercial and organisational decisions about AI that you can stand behind.',
   },
   {
     id: 'ai-engineering',
     title: 'AI Engineering',
-    summary: 'Building, testing, securing and operating applications that use large language models.',
+    summary: 'Build, test, secure and operate applications that use large language models.',
   },
   {
     id: 'rag-agents',
     title: 'RAG & Agents',
-    summary: 'Retrieval systems, tool-using agents, and the combination of the two.',
+    summary: 'Design retrieval systems, tool-using agents, and the combination of the two.',
   },
   {
     id: 'architecture',
     title: 'Architecture',
-    summary: 'Enterprise shape: platforms, assistants, security boundaries and production concerns.',
+    summary:
+      'Give AI a production shape: platforms, assistants, security boundaries and the operational work that follows.',
   },
   {
     id: 'models-ml',
     title: 'Models & Machine Learning',
-    summary: 'How models work, how they are adapted, and how they are run.',
+    summary: 'How models work, how they are adapted, and how they are run in practice.',
   },
   {
     id: 'cloud-platform',
     title: 'Cloud & Platform',
-    summary: 'Cloud implementations and the internal platforms that make AI usable across teams.',
+    summary: 'Cloud implementations, and the internal platforms that make AI usable across your teams.',
   },
   {
     id: 'workshops',
     title: 'Workshops',
-    summary: 'Focused build days and facilitated working sessions around a real problem.',
+    summary: 'Focused build days and facilitated working sessions around a problem your team actually has.',
   },
 ];
 
@@ -51,7 +53,7 @@ export const coursePathways: CoursePathway[] = [
     id: 'developer',
     title: 'Developer pathway',
     summary:
-      'For software engineers who need to move from a working understanding of generative AI to production systems.',
+      'For software engineers who need to move from a working understanding of generative AI to systems they can run in production.',
     slugs: [
       'generative-ai-fundamentals',
       'ai-engineering-for-software-developers',
@@ -64,7 +66,7 @@ export const coursePathways: CoursePathway[] = [
     id: 'architect',
     title: 'Architect pathway',
     summary:
-      'For architects and senior technical leaders who have to set the shape of AI systems and the platform around them.',
+      'For architects and senior technical leaders who set the shape of AI systems and the platform around them.',
     slugs: [
       'generative-ai-fundamentals',
       'ai-for-technical-leaders',
@@ -89,7 +91,7 @@ export const coursePathways: CoursePathway[] = [
     id: 'advanced-ai',
     title: 'Advanced AI pathway',
     summary:
-      'For practitioners who need a deeper model of how language models work, and how they are trained and adapted.',
+      'For practitioners who need a deeper picture of how language models work, and how they are trained and adapted.',
     slugs: [
       'how-large-language-models-work',
       'transformers-from-first-principles',
@@ -101,18 +103,18 @@ export const coursePathways: CoursePathway[] = [
 
 export const deliveryOptions = {
   title: 'Delivery',
-  body: 'Cognitecta delivers private corporate training, on-site or as remote live training. Courses can be run as published, or adapted to the organisation’s stack, domain and experience level.',
+  body: 'Cognitecta delivers private corporate training, on-site or as remote live training. Courses can be run as published, or adapted to your organisation’s stack, domain and experience level.',
 };
 
 export const bespokeTraining = {
   title: 'Bespoke training',
-  lede: 'Most engagements are shaped to the organisation. The published catalogue is a starting point, not a constraint.',
+  lede: 'Most engagements are shaped to your organisation. The published catalogue is a starting point, not a constraint.',
   points: [
     'Tailor an existing course to a particular stack, domain or experience level.',
     'Combine modules from several courses into a single programme.',
-    'Build a programme around the organisation’s architecture, data and constraints.',
-    'Use customer-specific case studies, systems and design problems.',
+    'Build a programme around your organisation’s architecture, data and constraints.',
+    'Use organisation-specific case studies, systems and design problems.',
     'Create multi-day or multi-week learning programmes for engineering teams.',
-    'Deliver technical enablement alongside consultancy or implementation, so the people who will own the system stay in the work.',
+    'Deliver technical enablement alongside consultancy or implementation, so the people who will own the system stay involved.',
   ],
 };

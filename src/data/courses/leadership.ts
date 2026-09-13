@@ -7,12 +7,12 @@ export const leadershipCourses: Course[] = [
     shortDescription:
       'A decision-making course for CTOs, engineering managers, architects and senior technical product leaders. How to choose architectures, vendors and investments that will still make sense in production.',
     overview:
-      'Technical leaders are being asked to approve AI work with incomplete information: vendor claims, promising prototypes, and pressure to “have an AI strategy”. The cost of a poor decision is not a weak demo. It is an architecture that cannot be operated, a team that cannot be hired for, or a use case that never had a production path.\n\nThis course is for people who have to make those decisions. It covers current capabilities and limits, then spends the day on the choices that actually matter: model selection, hosted versus self-hosted, open versus commercial, build versus buy, RAG versus fine-tuning, agents versus workflows, and the production concerns of security, privacy, latency, cost, evaluation and observability.\n\nThe teaching is architectural and commercial, not a coding class. Participants work through proposed projects, score them, and design a first version of an AI roadmap that is honest about skills, data, risk and operating cost.\n\nBy the end of the day, leaders can interrogate a proposal, choose a shape that fits the organisation, and explain why a prototype is — or is not — ready to leave the lab.',
+      'Technical leaders are being asked to approve AI work with incomplete information: vendor claims, promising prototypes, and pressure to have an AI strategy. The cost of a poor decision is not a weak demo. It is an architecture that cannot be operated, a team that cannot be hired for, or a use case that never had a production path.\n\nThis course is for people who have to make those decisions. It covers current capabilities and limits, then spends the day on the choices that actually matter: model selection, hosted versus self-hosted, open versus commercial, build versus buy, RAG versus fine-tuning, agents versus workflows, and the production concerns of security, privacy, latency, cost, evaluation and observability.\n\nThe teaching is architectural and commercial, not a coding class. You work through proposed projects, score them, and design a first version of an AI roadmap that is honest about skills, data, risk and operating cost.\n\nBy the end of the day, you can interrogate a proposal, choose a shape that fits your organisation, and explain why a prototype is — or is not — ready to leave the lab.',
     audience:
       'CTOs, heads of engineering, engineering managers, architects, technical product leaders and senior decision-makers who own architecture, budget or delivery for AI work.',
     audienceLabel: 'CTOs, engineering managers, architects and technical leaders',
     prerequisites:
-      'Participants should be comfortable with software delivery and organisational constraints. Direct machine-learning experience is not required. The course assumes responsibility for decisions, not a need to write model code.',
+      'You should be comfortable with software delivery and organisational constraints. Direct machine-learning experience is not required. The course assumes responsibility for decisions, not a need to write model code.',
     duration: '1 day',
     durationNote: 'Often run as a private session for a leadership team. Can be extended with an architecture workshop on a live problem.',
     level: 'Leadership',
@@ -67,7 +67,7 @@ export const leadershipCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Participants work in small groups on real or representative proposals. They score use cases, choose architectures, identify missing production work, and produce a short roadmap. The emphasis is on decision quality, not on producing slides.',
+      'You work in small groups on real or representative proposals. You score use cases, choose architectures, identify missing production work, and produce a short roadmap. The emphasis is on decision quality, not on producing a presentation.',
     takeaways: [
       'Decision frameworks for model selection, build versus buy, and RAG versus agents versus fine-tuning',
       'A production-readiness checklist covering security, evaluation, cost and operations',
@@ -81,12 +81,12 @@ export const leadershipCourses: Course[] = [
     shortDescription:
       'A concise course for senior leaders and directors: where AI creates actual value, where it does not, and how to judge investment, risk and organisational readiness.',
     overview:
-      'Business leaders are saturated with claims about AI and short of a method for judging them. Some proposals are genuine operational improvements. Others are automation theatre, vendor narratives, or work that would be cheaper as conventional software. This course gives leaders a way to tell the difference.\n\nThe course covers current capabilities and limits, automation versus augmentation, use-case identification, value, operational impact, risk, governance, privacy, cost and organisational readiness. Vendor claims are treated as claims: they have to survive contact with data quality, process reality and the cost of being wrong.\n\nThe teaching is commercial and operational. Participants work through a structured way to find, score and sequence opportunities, including workforce implications and the difference between a tool rollout and a change to how work is done.\n\nLeaders leave able to ask better questions, reject weak proposals quickly, and sponsor a small number of uses that can actually be delivered.',
+      'Business leaders are saturated with claims about AI and short of a method for judging them. Some proposals are genuine operational improvements. Others are vendor hype, impressive-looking automation that does not change the work, or work that would be cheaper as conventional software. This course gives you a way to tell the difference.\n\nThe course covers current capabilities and limits, automation versus augmentation, use-case identification, value, operational impact, risk, governance, privacy, cost and organisational readiness. Vendor claims are treated as claims: they have to survive contact with data quality, process reality and the cost of being wrong.\n\nThe teaching is commercial and operational. You work through a structured way to find, score and sequence opportunities, including workforce implications and the difference between a tool rollout and a change to how work is done.\n\nYou leave able to ask better questions, reject weak proposals quickly, and sponsor a small number of uses that can actually be delivered.',
     audience:
       'Senior leaders, directors and business decision-makers who sponsor AI work, approve spend, or have to set organisational direction without needing to design the system themselves.',
     audienceLabel: 'Senior leaders, directors and business decision-makers',
     prerequisites:
-      'No technical background is required. Participants should bring a view of the organisation’s processes, constraints and current AI pressure, even if that view is incomplete.',
+      'No technical background is required. Bring a view of your organisation’s processes, constraints and current AI pressure, even if that view is incomplete.',
     duration: 'Half day or 1 day',
     durationNote: 'The half-day version concentrates on judgement and prioritisation. The full day adds deeper use-case work and a first roadmap.',
     level: 'Leadership',
@@ -124,7 +124,7 @@ export const leadershipCourses: Course[] = [
         title: 'Investment choices',
         points: [
           'Vendor claims, proofs of concept, and the difference between a demo and a production path.',
-          'Build versus buy, including the cost of integrating “AI platforms” into existing systems.',
+          'Build versus buy, including the cost of integrating AI platforms into existing systems.',
           'Cost: licences, usage, integration, evaluation, change and ongoing operations.',
           'Organisational readiness: data, process owners, approved tools and the capacity to change work.',
         ],
@@ -140,7 +140,7 @@ export const leadershipCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Leaders work through case examples and, where possible, their own pipeline of ideas. They score opportunities, name owners and risks, and leave with a ranked shortlist rather than a brainstorm. The half-day version uses a tighter set of examples; the full day includes a more complete roadmap exercise.',
+      'You work through case examples and, where possible, your own pipeline of ideas. You score opportunities, name owners and risks, and leave with a ranked shortlist rather than a brainstorm. The half-day version uses a tighter set of examples; the full day includes a more complete roadmap exercise.',
     takeaways: [
       'A decision lens for capability, value, risk and readiness',
       'A use-case scoring template',

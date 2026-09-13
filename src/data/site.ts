@@ -5,13 +5,13 @@ export const site = {
   email: 'hello@cognitecta.com',
   url: 'https://cognitecta.com',
   description:
-    'We help organisations understand, design and deploy artificial intelligence — through expert training, technical consultancy, production engineering and our own agentic AI products.',
+    'Cognitecta helps organisations understand, design and deploy artificial intelligence — through training, consultancy, production engineering and our own agentic products.',
   hero: 'Make AI useful.',
   support:
-    'We help organisations understand, design and deploy artificial intelligence — through expert training, technical consultancy, production engineering and our own agentic AI products.',
-  sub: 'Understand it. Design it. Build it. Deploy it.',
-  spine: 'We teach AI, architect it, build it and provide the technology to run it.',
-  why: 'Cognitecta closes the gap between understanding AI and using it to perform real work, analyse real evidence and make better decisions.',
+    'We work with organisations that need AI to do real work, not sit in a demonstration. That means training your people, designing the system properly, and taking it into production.',
+  sub: 'Understand it, design it, build it, and deploy it — with the same practice throughout.',
+  spine: 'We teach AI, design it, build it, and provide the technology to run it.',
+  why: 'Cognitecta closes the gap between understanding AI and using it — to do real work, analyse real evidence, and make better decisions.',
 } as const;
 
 export const founder = {
@@ -37,7 +37,7 @@ export const pillars = [
     title: 'Train',
     kicker: 'TRAIN',
     lede: 'Build AI capability inside your organisation.',
-    body: 'Practitioner-led technical training grounded in real engineering experience.',
+    body: 'Technical training led by practitioners, grounded in real engineering experience.',
   },
   {
     id: '02',
@@ -45,7 +45,7 @@ export const pillars = [
     title: 'Advise',
     kicker: 'ADVISE',
     lede: 'Work out what to build — and how to build it properly.',
-    body: 'Strategy, discovery and architecture from people who understand the underlying technology.',
+    body: 'Strategy, discovery and architecture from people who still work with the underlying technology.',
   },
   {
     id: '03',
@@ -61,7 +61,7 @@ export const credibility = [
   {
     id: '01',
     title: 'Training',
-    body: 'More than twenty years delivering professional technology training — the practice, not the company.',
+    body: 'More than twenty years of professional technology training — experience in the work, not the age of the company.',
   },
   {
     id: '02',
@@ -89,12 +89,12 @@ export const journey = [
   {
     id: '01',
     title: 'Learn',
-    body: 'Build shared language and judgement. Training that holds in an engineering room, not a product demo.',
+    body: 'Build shared language and judgement — training that holds up in an engineering room, not just a product demonstration.',
   },
   {
     id: '02',
     title: 'Discover',
-    body: 'Establish where AI is genuinely useful, what the constraints are, and what would constitute a good outcome.',
+    body: 'Establish where AI is genuinely useful, what the constraints are, and what a good outcome would look like.',
   },
   {
     id: '03',
@@ -104,7 +104,7 @@ export const journey = [
   {
     id: '04',
     title: 'Production',
-    body: 'Design, integrate and ship. The people who will own the system stay in the work.',
+    body: 'Design, integrate and ship — with the people who will own the system staying involved throughout.',
   },
 ] as const;
 
@@ -136,7 +136,7 @@ export const trainingAudiences = [
     id: '03',
     slug: 'organisations',
     title: 'Organisations',
-    body: 'Executive and mixed rooms: a precise model of what AI can and cannot do here, without theatre.',
+    body: 'Executive and mixed rooms: a clear picture of what AI can and cannot do in your organisation, without the hype.',
   },
 ] as const;
 
@@ -162,7 +162,7 @@ export const consultingServices = [
   {
     id: '02',
     title: 'Discovery workshops',
-    body: 'Opportunity and constraint, in the same room as the people who will have to live with the outcome.',
+    body: 'Opportunity and constraint, discussed with the people who will have to live with the outcome.',
   },
   {
     id: '03',
@@ -177,12 +177,12 @@ export const consultingServices = [
   {
     id: '05',
     title: 'Solution design',
-    body: 'A design that can be built — not a slide that cannot.',
+    body: 'A design that can actually be built — not a presentation that cannot.',
   },
   {
     id: '06',
     title: 'Model selection',
-    body: 'LLM and model choices against the actual constraints: cost, latency, control, data.',
+    body: 'LLM and model choices against the actual constraints: cost, latency, control and data.',
   },
   {
     id: '07',
@@ -242,7 +242,7 @@ export const layers = [
   {
     id: '01',
     title: 'Understand AI',
-    body: 'Build the language and judgement a team needs before it designs a system.',
+    body: 'Build the language and judgement your team needs before it designs a system.',
   },
   {
     id: '02',
