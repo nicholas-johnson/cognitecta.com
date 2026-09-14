@@ -15,8 +15,20 @@ interface Props {
 
 const { programme } = Astro.props;
 const contactHref = programmeContactHref(programme.slug);
+const contactUrl = new URL(contactHref, Astro.site).toString();
 const pageUrl = new URL(`/training/${programme.slug}/`, Astro.site).toString();
 const price = formatPrice(programme.priceFrom);
+
+const days = programme.duration.match(/(\d+)\s*day/i);
+const workload = days ? `P${days[1]}D` : undefined;
+
+const offer = {
+  '@type': 'Offer',
+  price: programme.priceFrom,
+  priceCurrency: programme.currency,
+  availability: 'https://schema.org/InStock',
+  url: contactUrl,
+};
 
 const courseLd = {
   '@context': 'https://schema.org',
@@ -30,13 +42,27 @@ const courseLd = {
     name: site.name,
     url: site.url,
   },
-  offers: {
-    '@type': 'Offer',
-    price: programme.priceFrom,
-    priceCurrency: programme.currency,
-    availability: 'Enquiry',
-    url: new URL(contactHref, Astro.site).toString(),
-  },
+  offers: offer,
+  hasCourseInstance: [
+    {
+      '@type': 'CourseInstance',
+      courseMode: 'Onsite',
+      ...(workload ? { courseWorkload: workload } : {}),
+      location: {
+        '@type': 'Place',
+        name: 'Client site',
+        address: { '@type': 'PostalAddress', addressCountry: 'GB' },
+      },
+      offers: offer,
+    },
+    {
+      '@type': 'CourseInstance',
+      courseMode: 'Online',
+      ...(workload ? { courseWorkload: workload } : {}),
+      location: { '@type': 'VirtualLocation', url: pageUrl },
+      offers: offer,
+    },
+  ],
 };
 ---
 

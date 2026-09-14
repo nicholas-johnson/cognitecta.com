@@ -18,10 +18,24 @@ interface Props {
 
 const { course } = Astro.props;
 const contactHref = courseContactHref(course.slug);
+const contactUrl = new URL(contactHref, Astro.site).toString();
 const pageUrl = new URL(`/training/${course.slug}/`, Astro.site).toString();
 const category = getCategory(course.category);
 const related = relatedCourses(course);
 const overviewParagraphs = course.overview.split(/\n\n/);
+
+// Convert a human duration ("2 days", "Half day") to an ISO 8601 workload.
+function toWorkload(duration: string): string | undefined {
+  const text = duration.toLowerCase();
+  if (text.includes('half')) return 'PT4H';
+  const days = text.match(/(\d+)\s*day/);
+  if (days) return `P${days[1]}D`;
+  const hours = text.match(/(\d+)\s*hour/);
+  if (hours) return `PT${hours[1]}H`;
+  return undefined;
+}
+
+const workload = toWorkload(course.duration);
 
 const courseLd = {
   '@context': 'https://schema.org',
@@ -36,12 +50,61 @@ const courseLd = {
     url: site.url,
   },
   educationalLevel: course.level,
-  timeRequired: course.duration,
+  timeRequired: workload ?? course.duration,
+  hasCourseInstance: [
+    {
+      '@type': 'CourseInstance',
+      courseMode: 'Onsite',
+      ...(workload ? { courseWorkload: workload } : {}),
+      location: {
+        '@type': 'Place',
+        name: 'Client site',
+        address: { '@type': 'PostalAddress', addressCountry: 'GB' },
+      },
+      offers: {
+        '@type': 'Offer',
+        category: 'Private corporate training',
+        availability: 'https://schema.org/InStock',
+        url: contactUrl,
+      },
+    },
+    {
+      '@type': 'CourseInstance',
+      courseMode: 'Online',
+      ...(workload ? { courseWorkload: workload } : {}),
+      location: { '@type': 'VirtualLocation', url: pageUrl },
+      offers: {
+        '@type': 'Offer',
+        category: 'Private corporate training',
+        availability: 'https://schema.org/InStock',
+        url: contactUrl,
+      },
+    },
+  ],
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Training', item: `${site.url}/training/` },
+    ...(category
+      ? [{ '@type': 'ListItem', position: 3, name: category.title, item: `${site.url}/training#${category.id}` }]
+      : []),
+    {
+      '@type': 'ListItem',
+      position: category ? 4 : 3,
+      name: course.title,
+      item: pageUrl,
+    },
+  ],
 };
 ---
 
 <BaseLayout title={course.title} description={course.shortDescription}>
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(courseLd)} />
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
 
   <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
     <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">

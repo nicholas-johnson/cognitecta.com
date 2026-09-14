@@ -12,6 +12,9 @@ const jsonLd = {
       url: site.url,
       email: site.email,
       description: site.description,
+      logo: `${site.url}/favicon.svg`,
+      image: `${site.url}/og.png`,
+      sameAs: [founder.linkedin],
       founder: { '@id': `${site.url}/#founder` },
     },
     {
@@ -19,7 +22,8 @@ const jsonLd = {
       '@id': `${site.url}/#founder`,
       name: founder.name,
       jobTitle: founder.role,
-      url: founder.linkedin,
+      url: `${site.url}/about`,
+      sameAs: [founder.linkedin],
       worksFor: { '@id': `${site.url}/#organisation` },
     },
     {
