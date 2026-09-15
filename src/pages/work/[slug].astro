@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaLink from '../../components/CtaLink.astro';
+import GridFrame from '../../components/diagrams/GridFrame.astro';
+import CapabilityGrid from '../../components/products/CapabilityGrid.astro';
+import { caseStudies, caseStudyHref } from '../../data/caseStudies';
+import type { CaseStudy } from '../../data/caseStudies';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return caseStudies.map((study) => ({
+    params: { slug: study.slug },
+    props: { study },
+  }));
+}
+
+interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props;
+
+const url = new URL(caseStudyHref(study.slug), site.url).toString();
+
+const caseStudyLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: study.fullName,
+  headline: study.tagline,
+  abstract: study.summary,
+  url,
+  about: study.sector,
+  creator: {
+    '@type': 'Organization',
+    name: site.name,
+    url: site.url,
+  },
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Work', item: `${site.url}/work/` },
+    { '@type': 'ListItem', position: 3, name: study.name, item: url },
+  ],
+};
+---
+
+<BaseLayout fullTitle={study.seoTitle} description={study.seoDescription}>
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(caseStudyLd)} />
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <a
+      href="/work"
+      class="font-mono text-[11px] tracking-[0.16em] text-muted no-underline hover:text-horizon-600"
+    >
+      ← Work
+    </a>
+
+    <header class="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-end lg:gap-20">
+      <div class="max-w-2xl">
+        <p class="font-mono text-[11px] tracking-[0.18em] text-muted">
+          {study.name}
+          <span class="mx-2 text-hairline">/</span>
+          <span class="uppercase">{study.sector}</span>
+        </p>
+        <h1 class="mt-4 text-[2rem] leading-[1.15] font-medium tracking-tight md:text-[2.75rem]">
+          {study.tagline}
+        </h1>
+        <p class="mt-8 max-w-xl text-[1.05rem] leading-relaxed text-muted">{study.summary}</p>
+        <div class="mt-10">
+          <CtaLink href="/contact?interest=build">Discuss a project like this</CtaLink>
+        </div>
+      </div>
+      <GridFrame class="bg-paper p-6 md:p-8">
+        <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Client project</p>
+        <dl class="mt-5 space-y-4">
+          <div>
+            <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">Sector</dt>
+            <dd class="mt-1 text-[0.98rem] text-ink">{study.sector}</dd>
+          </div>
+          <div>
+            <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">Year</dt>
+            <dd class="mt-1 text-[0.98rem] text-ink">{study.year}</dd>
+          </div>
+          <div>
+            <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">Disciplines</dt>
+            <dd class="mt-2 flex flex-wrap gap-2">
+              {study.disciplines.map((tag) => (
+                <span class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+                  {tag}
+                </span>
+              ))}
+            </dd>
+          </div>
+        </dl>
+      </GridFrame>
+    </header>
+
+    <section class="mt-20 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">The problem</p>
+      <p class="max-w-2xl text-[1.05rem] leading-relaxed text-muted">{study.problem}</p>
+    </section>
+
+    <section class="mt-16 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">The approach</p>
+      <div class="max-w-2xl space-y-5 text-[1.05rem] leading-relaxed text-muted">
+        {study.approach.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </section>
+
+    <div class="mt-20">
+      <CapabilityGrid items={study.capabilities} caption="What we built" />
+    </div>
+
+    <section class="mt-20 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Technology</p>
+      <ul class="flex flex-wrap content-start gap-2">
+        {
+          study.stack.map((item) => (
+            <li class="border border-hairline px-3 py-1.5 font-mono text-[11px] tracking-[0.1em] text-muted">
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="mt-20 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+      <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Outcome</p>
+      <div class="max-w-2xl space-y-4 text-[1.05rem] leading-relaxed text-muted">
+        <p class="text-ink">{study.outcome}</p>
+        {study.note && <p class="text-[0.92rem]">{study.note}</p>}
+      </div>
+    </section>
+
+    <div class="mt-24 border-t border-hairline pt-14">
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end">
+        <div>
+          <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Work with us</p>
+          <h2 class="mt-4 max-w-lg text-[1.45rem] leading-[1.25] font-medium tracking-tight md:text-[1.7rem]">
+            Have a project that needs building properly?
+          </h2>
+          <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <CtaLink href="/contact?interest=build">Talk to us</CtaLink>
+            <CtaLink href="/work" variant="secondary">More work</CtaLink>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

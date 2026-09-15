@@ -1,4 +1,11 @@
-export type ProductSlug = 'platform' | 'stack' | 'wargame' | 'funnel' | 'callcenter';
+export type ProductSlug =
+  | 'platform'
+  | 'stack'
+  | 'wargame'
+  | 'funnel'
+  | 'callcenter'
+  | 'query'
+  | 'chat';
 export type ProductTier = 'foundation' | 'application';
 
 export interface ProductLink {
@@ -68,6 +75,8 @@ export const comparison = [
     wargame: 'Explore strategy',
     funnel: 'Find customers',
     callcenter: 'Serve customers',
+    query: 'Measure product usage',
+    chat: 'Talk to your agents',
   },
   {
     id: 'input',
@@ -77,6 +86,8 @@ export const comparison = [
     wargame: 'Strategic problem and actor model',
     funnel: 'ICP and market signals',
     callcenter: 'Voice, messaging, email and customer context',
+    query: 'Product and website events',
+    chat: 'A question, an agent and a conversation',
   },
   {
     id: 'process',
@@ -86,6 +97,8 @@ export const comparison = [
     wargame: 'Actor modelling and simulation',
     funnel: 'Discovery, research and qualification',
     callcenter: 'Understand, retrieve, act, resolve or hand off',
+    query: 'Instrument, measure and investigate',
+    chat: 'Route, retrieve, act and stream',
   },
   {
     id: 'output',
@@ -95,6 +108,8 @@ export const comparison = [
     wargame: 'Scenario distributions and strategic options',
     funnel: 'Evidence-backed opportunities',
     callcenter: 'Resolution, action or context-rich human escalation',
+    query: 'Metrics, cohorts and investigated findings',
+    chat: 'A streamed answer with its working shown',
   },
   {
     id: 'channels',
@@ -104,6 +119,8 @@ export const comparison = [
     wargame: 'Strategic briefs and simulation outputs',
     funnel: 'Research sources and approved outreach',
     callcenter: 'Voice, WhatsApp, SMS, email, Teams, Slack, Salesforce',
+    query: 'Dashboards, event API and MCP',
+    chat: 'Web chat, voice and token streaming',
   },
   {
     id: 'human',
@@ -113,6 +130,8 @@ export const comparison = [
     wargame: 'Assumption review and strategic judgement',
     funnel: 'Approval and relationship building',
     callcenter: 'Judgement, takeover and the work that still needs a person',
+    query: 'Interpretation and prioritisation',
+    chat: 'The person asking, and taking over when needed',
   },
 ] as const;
 
@@ -828,6 +847,222 @@ export const products: Product[] = [
       'Conversation memory and retention follow your data policy. The system is not designed as indefinite recall.',
       'Specialist agents describe the operating model. They are not a claim that every deployment exposes these roles as named services.',
       'Resolution depends on approved knowledge, connected systems and the actions you have authorised.',
+    ],
+  },
+  {
+    slug: 'query',
+    name: 'Query',
+    fullName: 'Linear Horizon Query',
+    tier: 'application',
+    domain: 'Analytics',
+    category: 'Agentic Product Analytics',
+    verb: 'Measure',
+    intelligence: 'Behavioural intelligence',
+    framing: 'Agents that investigate usage',
+    shortDescription:
+      'Privacy-conscious product and website analytics, where agents investigate the numbers rather than leaving you to read another dashboard.',
+    landingLine: 'Understand what users actually do.',
+    headline: 'See what users do. Understand what to improve.',
+    support:
+      'Query is a privacy-conscious analytics system for products and websites. It measures how people actually behave, and lets an agent investigate why the numbers moved — through the same tools and evidence a good analyst would use.',
+    overview: [
+      'Query is product and website analytics built for investigation, not just reporting. It instruments the events that matter, calculates the metrics you rely on — visitors, sessions, activation, retention — and keeps them in a model an agent can question.',
+      'Analytics calculate. Agents investigate. A dashboard can tell you activation fell; it will not tell you where, for whom, or what changed just before. Query exposes its metrics through a query interface and an MCP server, so an agent can pursue that question step by step.',
+      'It is designed to be privacy-conscious by default: measure behaviour in aggregate, keep the data you actually need, and avoid the invasive tracking that most analytics quietly assume.',
+    ],
+    seoTitle: 'Query | Agentic Product Analytics | Linear Horizon',
+    seoDescription:
+      'Linear Horizon Query is privacy-conscious product and website analytics. It measures visitors, activation and retention, and lets an agent investigate what changed through a query interface and MCP server.',
+    primaryCta: { label: 'Discuss Query', href: '/contact?interest=query' },
+    secondaryCta: { label: 'See how it works', href: '#how-it-works' },
+    closingQuestion: 'Have a product where the dashboard shows the what, but never the why?',
+    capabilities: [
+      {
+        id: '01',
+        title: 'Privacy-conscious tracking',
+        body: 'Measure behaviour in aggregate with a light instrumentation footprint, rather than assuming invasive per-person tracking.',
+      },
+      {
+        id: '02',
+        title: 'Product and web analytics',
+        body: 'Visitors, sessions, page views, activation and retention — the core measures teams actually make decisions on.',
+      },
+      {
+        id: '03',
+        title: 'Event ingestion',
+        body: 'A write key and ingest pipeline collect product and website events into a single, queryable model.',
+      },
+      {
+        id: '04',
+        title: 'Funnels and retention',
+        body: 'Follow how users move from first visit to activation and return, and see where the drop-off actually happens.',
+      },
+      {
+        id: '05',
+        title: 'Segmentation and cohorts',
+        body: 'Separate the groups that moved from the averages that hide them — by source, cohort, behaviour or period.',
+      },
+      {
+        id: '06',
+        title: 'Agentic investigation',
+        body: 'Expose the metrics through a query interface and MCP server so an agent can test hypotheses about what changed.',
+      },
+    ],
+    useCases: [
+      {
+        id: '01',
+        title: 'Product analytics',
+        problem:
+          'Product teams can see that activation or engagement moved, but the dashboard does not run the follow-up: which step, which cohort, which change.',
+        approach:
+          'Query measures the funnel and lets an agent investigate the movement — comparing cohorts and periods until there is an explanation worth acting on.',
+      },
+      {
+        id: '02',
+        title: 'Website analytics',
+        problem:
+          'Marketing and web teams want to understand traffic and conversion without deploying invasive tracking or exporting visitors to a third party.',
+        approach:
+          'Query instruments the site with a light footprint, calculates the standard measures, and keeps the data in a model you control.',
+      },
+      {
+        id: '03',
+        title: 'Activation and retention',
+        problem:
+          'A drop in activation or retention has several plausible causes, and reading tiles one at a time rarely isolates the one that matters.',
+        approach:
+          'Ask Query what changed before the decline; review the segments and periods the agent compared and the reading the evidence supports.',
+      },
+      {
+        id: '04',
+        title: 'Growth experiments',
+        problem:
+          'Teams ship changes and then argue about whether the numbers moved because of the change or because of everything else.',
+        approach:
+          'Query holds the before-and-after measures in one place, so the investigation is grounded in the same events rather than competing exports.',
+      },
+    ],
+    process: [
+      { id: '01', title: 'Instrument' },
+      { id: '02', title: 'Ingest events' },
+      { id: '03', title: 'Calculate metrics' },
+      { id: '04', title: 'Ask a question' },
+      { id: '05', title: 'Investigate' },
+      { id: '06', title: 'Explain' },
+    ],
+    limits: [
+      'Query measures behaviour; it does not read intent. A metric tells you what happened, not why someone did it.',
+      'Privacy-conscious means deliberate collection. Query is not designed to reconstruct detailed individual profiles.',
+      'An investigation is grounded in the events you instrument. Gaps in instrumentation are gaps in the evidence.',
+      'Analytics support judgement. Deciding what to build or change remains a human decision.',
+    ],
+  },
+  {
+    slug: 'chat',
+    name: 'Chat',
+    fullName: 'Linear Horizon Chat',
+    tier: 'application',
+    domain: 'Interface',
+    category: 'Agentic Chat Interface',
+    verb: 'Converse',
+    intelligence: 'Conversational intelligence',
+    framing: 'Agents you can talk to',
+    shortDescription:
+      'A conversational interface to your agents — streaming answers, visible working and voice, on top of the Linear Horizon Platform.',
+    landingLine: 'A conversation on top of your agents.',
+    headline: 'A conversation on top of your agents.',
+    support:
+      'Chat is a full-page conversational interface to Linear Horizon Platform. It streams answers as they are generated, can show the working behind them, and supports hands-free voice — while the agent system does the actual work.',
+    overview: [
+      'Chat is the visible layer over an agent system. It talks to Platform through a same-origin backend, so the browser only ever speaks to one trusted origin and enterprise sign-in and permissions apply as they should.',
+      'It is deliberately more than a reply box. A picker lets people choose the right agent for the task; a "show working" view reveals the tool calls, tool results and sub-agent activity behind an answer; and responses stream token by token so the conversation feels immediate.',
+      'A conversation mode adds speech: utterances are transcribed with recent context, and replies are spoken sentence by sentence as they stream — so Chat can act as a hands-free scribe or copilot as well as a text interface.',
+    ],
+    seoTitle: 'Chat | Agentic Chat Interface | Linear Horizon',
+    seoDescription:
+      'Linear Horizon Chat is a full-page conversational interface to the Linear Horizon Platform — with agent selection, streamed answers, visible working and hands-free voice, behind enterprise sign-in.',
+    primaryCta: { label: 'Discuss Chat', href: '/contact?interest=chat' },
+    secondaryCta: { label: 'See how it works', href: '#how-it-works' },
+    closingQuestion: 'Have an agent system that still needs a front door people can talk to?',
+    capabilities: [
+      {
+        id: '01',
+        title: 'Agent selection',
+        body: 'Choose the right agent for the task from the catalogue your Platform deployment exposes.',
+      },
+      {
+        id: '02',
+        title: 'Token streaming',
+        body: 'Answers stream into the live message as they are generated, so a reply starts before it is finished.',
+      },
+      {
+        id: '03',
+        title: 'Show working',
+        body: 'Reveal the tool calls, tool results and sub-agent activity behind an answer when transparency matters.',
+      },
+      {
+        id: '04',
+        title: 'Conversation mode',
+        body: 'Speak instead of type: utterances are transcribed with context and replies are spoken as they stream.',
+      },
+      {
+        id: '05',
+        title: 'Same-origin backend',
+        body: 'The browser talks only to one trusted origin, which proxies to the private agent service — no cross-origin exposure.',
+      },
+      {
+        id: '06',
+        title: 'Enterprise sign-in',
+        body: 'Authenticate through your identity provider so conversations run as the person asking, with their permissions.',
+      },
+    ],
+    useCases: [
+      {
+        id: '01',
+        title: 'Internal assistant',
+        problem:
+          'Teams have agents that can retrieve knowledge and take actions, but no interface a non-technical colleague can actually use.',
+        approach:
+          'Chat gives them a front door: pick an agent, ask in plain language, and see the working when they need to trust the answer.',
+      },
+      {
+        id: '02',
+        title: 'Customer-facing chat',
+        problem:
+          'A public assistant has to stream quickly, stay grounded and run behind proper authentication — not leak a backend to the browser.',
+        approach:
+          'Chat serves the UI and proxies every call to the private service from the same origin, so streaming, grounding and sign-in are handled in one place.',
+      },
+      {
+        id: '03',
+        title: 'Hands-free copilot',
+        problem:
+          'Some work happens away from the keyboard, where typing a request and reading a screen is not practical.',
+        approach:
+          'Conversation mode lets a person speak requests and hear replies as they stream, using Chat as a scribe or copilot.',
+      },
+      {
+        id: '04',
+        title: 'Reference implementation',
+        problem:
+          'Teams building their own frontend need to see how a browser should talk to an agent service, end to end.',
+        approach:
+          'Chat is a working example of agent selection, streaming, visible working and a same-origin proxy that a product team can learn from.',
+      },
+    ],
+    process: [
+      { id: '01', title: 'Ask' },
+      { id: '02', title: 'Route to agent' },
+      { id: '03', title: 'Tools / RAG' },
+      { id: '04', title: 'Stream tokens' },
+      { id: '05', title: 'Show working' },
+      { id: '06', title: 'Answer' },
+    ],
+    limits: [
+      'Chat is the interface, not the intelligence. Platform and its agents do the work; Chat presents it.',
+      'It is not designed to disguise automation as a human. Where appropriate, an automated conversation should be identifiable as one.',
+      'What an agent can answer or do depends on the knowledge, tools and permissions configured behind it.',
+      'Voice uses the browser’s speech capabilities, so quality and availability vary by device and environment.',
     ],
   },
 ];

@@ -1,0 +1,52 @@
+---
+import type { Product } from '../../../data/products';
+import CapabilityGrid from '../CapabilityGrid.astro';
+import UseCases from '../UseCases.astro';
+import Limits from '../Limits.astro';
+import ProcessFlow from '../ProcessFlow.astro';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<section class="mt-20 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Analytics calculate. Agents investigate.</p>
+  <div class="max-w-2xl space-y-5 text-[1.05rem] leading-relaxed text-muted">
+    {product.overview.map((paragraph) => <p>{paragraph}</p>)}
+    <p>
+      A dashboard is a fixed set of questions someone decided to ask in advance. Query keeps the same
+      measures, but leaves the follow-up open: when a number moves, an agent can pursue it through the
+      data rather than waiting for a new chart to be built.
+    </p>
+  </div>
+</section>
+
+<section id="how-it-works" class="mt-20 scroll-mt-10">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">From events to an answer</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Instrument once. Measure continuously. Investigate on demand.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      Query collects product and website events, calculates the metrics your team relies on, and exposes
+      them through a query interface and an MCP server. The metrics answer “what”. The agent is how you
+      get to “why”.
+    </p>
+  </div>
+  <ProcessFlow steps={product.process} />
+</section>
+
+<div class="mt-20">
+  <CapabilityGrid items={product.capabilities} caption="What Query measures and investigates" />
+</div>
+
+<div class="mt-24">
+  <UseCases items={product.useCases} title="Where Query is used." />
+</div>
+
+<div class="mt-24">
+  <Limits items={product.limits} title="Measurement and investigation, not a verdict on intent." />
+</div>

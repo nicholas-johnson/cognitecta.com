@@ -27,6 +27,7 @@ export const nav = [
   { href: '/consulting', label: 'Consulting' },
   { href: '/build', label: 'Build' },
   { href: '/products', label: 'Products' },
+  { href: '/work', label: 'Work' },
   { href: '/about', label: 'About' },
   { href: '/insights', label: 'Insights' },
   { href: '/contact', label: 'Contact' },
@@ -232,6 +233,8 @@ export const interests = [
   { value: 'wargame', label: 'Wargame' },
   { value: 'funnel', label: 'Funnel' },
   { value: 'callcenter', label: 'Callcenter' },
+  { value: 'query', label: 'Query' },
+  { value: 'chat', label: 'Chat' },
   { value: 'other', label: 'Something else' },
 ] as const;
 

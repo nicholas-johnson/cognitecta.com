@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import CtaLink from '../../components/CtaLink.astro';
+import { caseStudies, caseStudyHref, caseStudyIntro } from '../../data/caseStudies';
+---
+
+<BaseLayout
+  fullTitle="Client Projects & Case Studies | Linear Horizon"
+  description="Selected client projects designed and built by Linear Horizon — production AI and agentic systems, described by problem and outcome."
+>
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <PageIntro kicker="07 / Work" title={caseStudyIntro.headline}>
+      <p>{caseStudyIntro.support}</p>
+    </PageIntro>
+
+    <ol class="mt-16 border-t border-hairline">
+      {
+        caseStudies.map((study, index) => (
+          <li>
+            <a
+              href={caseStudyHref(study.slug)}
+              class="group grid gap-6 border-b border-hairline py-12 no-underline lg:grid-cols-[5.5rem_minmax(0,20rem)_1fr] lg:gap-12"
+            >
+              <p class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                {String(index + 1).padStart(2, '0')}
+              </p>
+              <div>
+                <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{study.name}</p>
+                <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight text-ink group-hover:text-horizon-600">
+                  {study.tagline}
+                </h2>
+                <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">{study.sector}</p>
+              </div>
+              <div class="max-w-xl">
+                <p class="text-[1.02rem] leading-relaxed text-muted">{study.summary}</p>
+                <ul class="mt-5 flex flex-wrap gap-2">
+                  {study.disciplines.map((tag) => (
+                    <li class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="mt-16 flex flex-wrap items-center gap-x-8 gap-y-4">
+      <CtaLink href="/contact?interest=build">Discuss a project</CtaLink>
+      <CtaLink href="/build" variant="secondary">How we build</CtaLink>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+import type { Product } from '../../../data/products';
+import CapabilityGrid from '../CapabilityGrid.astro';
+import UseCases from '../UseCases.astro';
+import Limits from '../Limits.astro';
+import ProcessFlow from '../ProcessFlow.astro';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<section class="mt-20 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">The conversation is the visible layer.</p>
+  <div class="max-w-2xl space-y-5 text-[1.05rem] leading-relaxed text-muted">
+    {product.overview.map((paragraph) => <p>{paragraph}</p>)}
+    <p>
+      A basic chatbot replies. Chat is built to sit in front of an agent system: it selects the right
+      agent, streams the answer as it is produced, and can show the tools and sub-agents that produced
+      it — so people can trust what they are reading.
+    </p>
+  </div>
+</section>
+
+<section id="how-it-works" class="mt-20 scroll-mt-10">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">How a turn works</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Ask a question. Watch the work. Read the answer.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      A message is sent to the selected agent through a same-origin backend. The agent may call tools and
+      retrieve knowledge; intermediate steps appear as working, and the final answer streams back token by
+      token into the live message.
+    </p>
+  </div>
+  <ProcessFlow steps={product.process} />
+</section>
+
+<div class="mt-20">
+  <CapabilityGrid items={product.capabilities} caption="What Chat provides" />
+</div>
+
+<div class="mt-24">
+  <UseCases items={product.useCases} title="Where Chat is used." />
+</div>
+
+<div class="mt-24">
+  <Limits items={product.limits} title="An interface to an agent system, not the system itself." />
+</div>

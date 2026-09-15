@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" fill="none" role="img" aria-labelledby="logo-linkedin-title">
+  <title id="logo-linkedin-title">Linear Horizon</title>
+  <rect width="300" height="300" fill="#F7F5EF"/>
+  <circle cx="150" cy="150" r="94" stroke="#15181E" stroke-width="10"/>
+  <line x1="30" y1="150" x2="270" y2="150" stroke="#145BFF" stroke-width="10" stroke-linecap="butt"/>
+</svg>
