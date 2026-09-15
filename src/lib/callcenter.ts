@@ -13,7 +13,7 @@ export type EnquiryInput = {
 
 export type CallcenterEnquiry = {
   channel: 'web';
-  source: 'cognitecta.com/contact';
+  source: 'linearhorizon.com/contact';
   customer: {
     name: string;
     email: string;
@@ -47,7 +47,7 @@ export function buildCallcenterEnquiry(enquiry: EnquiryInput): CallcenterEnquiry
   const course = enquiry.course?.trim();
   return {
     channel: 'web',
-    source: 'cognitecta.com/contact',
+    source: 'linearhorizon.com/contact',
     customer: {
       name: enquiry.name.trim(),
       email: enquiry.email.trim(),

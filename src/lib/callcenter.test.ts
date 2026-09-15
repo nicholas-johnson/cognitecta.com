@@ -20,7 +20,7 @@ const enquiry = {
 test('builds a web-channel conversation for Callcenter', () => {
   assert.deepEqual(buildCallcenterEnquiry(enquiry), {
     channel: 'web',
-    source: 'cognitecta.com/contact',
+    source: 'linearhorizon.com/contact',
     customer: {
       name: 'Ada Lovelace',
       email: 'ada@example.com',
