@@ -4,7 +4,7 @@ export const site = {
   descriptor: 'Applied intelligence',
   line: 'From complexity to outcome.',
   email: 'hello@cognitecta.com',
-  url: 'https://cognitecta.com',
+  url: 'https://linearhorizon.com',
   description:
     'Linear Horizon helps organisations understand, design and deploy artificial intelligence — through training, consultancy, production engineering and our own agentic products.',
   eyebrow: 'Applied intelligence for real organisations',

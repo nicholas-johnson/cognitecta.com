@@ -2,7 +2,7 @@
 
 Corporate site for Linear Horizon — applied intelligence for real organisations. Built with Astro and Tailwind. Static output, deployed on GitHub Pages.
 
-Linear Horizon is the public brand on this site. The site remains on the existing `cognitecta.com` domain.
+The public site is `https://linearhorizon.com`. The repository is [`nicholas-johnson/linearhorizon.com`](https://github.com/nicholas-johnson/linearhorizon.com).
 
 ## Local
 
@@ -19,7 +19,7 @@ npm run dev
 
 ## GitHub Pages
 
-The site is configured for the custom domain `cognitecta.com` (`site` in `astro.config.mjs`, `public/CNAME`). There is no `base` path.
+The site is configured for the custom domain `linearhorizon.com` (`site` in `astro.config.mjs`, `public/CNAME`). There is no `base` path.
 
 1. Push to `main`.
 2. In the repository: **Settings → Pages → Source: GitHub Actions**.
@@ -27,7 +27,7 @@ The site is configured for the custom domain `cognitecta.com` (`site` in `astro.
 
 ### DNS
 
-Apex (`cognitecta.com`):
+Apex (`linearhorizon.com`):
 
 | Type | Name | Value |
 | --- | --- | --- |
@@ -59,4 +59,4 @@ Set these repository variables if the ingest host or key is not the default:
 | `PUBLIC_CALLCENTER_INGEST_URL` | Ingest endpoint. Default: `https://callcenter.cognitecta.com/api/v1/conversations` |
 | `PUBLIC_CALLCENTER_PUBLISHABLE_KEY` | Optional bearer token sent as `Authorization` |
 
-Callcenter must allow CORS from `https://cognitecta.com` (and `http://localhost:4321` in development).
+Callcenter must allow CORS from `https://linearhorizon.com` (and `http://localhost:4321` in development).
