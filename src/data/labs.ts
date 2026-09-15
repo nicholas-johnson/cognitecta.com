@@ -1,9 +1,11 @@
+import type { ProductSlug } from './products';
+
 export const labProgrammeSlugs = ['ai-engineering', 'applied-nlp'] as const;
 
 export type LabProgrammeSlug = (typeof labProgrammeSlugs)[number];
 
 export interface LabRelatedProduct {
-  slug: string;
+  slug: ProductSlug;
   label: string;
 }
 

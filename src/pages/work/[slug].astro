@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaLink from '../../components/CtaLink.astro';
-import GridFrame from '../../components/diagrams/GridFrame.astro';
 import CapabilityGrid from '../../components/products/CapabilityGrid.astro';
+import CaseStudyMotif from '../../components/work/CaseStudyMotif.astro';
 import { caseStudies, caseStudyHref } from '../../data/caseStudies';
 import type { CaseStudy } from '../../data/caseStudies';
 import { site } from '../../data/site';
@@ -74,30 +74,31 @@ const breadcrumbLd = {
           <CtaLink href="/contact?interest=build">Discuss a project like this</CtaLink>
         </div>
       </div>
-      <GridFrame class="bg-paper p-6 md:p-8">
-        <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Client project</p>
-        <dl class="mt-5 space-y-4">
-          <div>
-            <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">Sector</dt>
-            <dd class="mt-1 text-[0.98rem] text-ink">{study.sector}</dd>
-          </div>
-          <div>
-            <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">Year</dt>
-            <dd class="mt-1 text-[0.98rem] text-ink">{study.year}</dd>
-          </div>
-          <div>
-            <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">Disciplines</dt>
-            <dd class="mt-2 flex flex-wrap gap-2">
-              {study.disciplines.map((tag) => (
-                <span class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
-                  {tag}
-                </span>
-              ))}
-            </dd>
-          </div>
-        </dl>
-      </GridFrame>
+      <div class="min-w-0">
+        <CaseStudyMotif slug={study.slug} />
+      </div>
     </header>
+
+    <dl class="mt-12 grid grid-cols-1 border-t border-hairline sm:grid-cols-[10rem_8rem_1fr]">
+      <div class="border-b border-hairline py-5 sm:border-b-0 sm:pr-6">
+        <dt class="font-mono text-[11px] tracking-[0.16em] text-muted">Sector</dt>
+        <dd class="mt-2 text-[0.98rem] text-ink">{study.sector}</dd>
+      </div>
+      <div class="border-b border-hairline py-5 sm:border-b-0 sm:border-l sm:border-hairline sm:px-6">
+        <dt class="font-mono text-[11px] tracking-[0.16em] text-muted">Year</dt>
+        <dd class="mt-2 text-[0.98rem] text-ink">{study.year}</dd>
+      </div>
+      <div class="py-5 sm:border-l sm:border-hairline sm:pl-6">
+        <dt class="font-mono text-[11px] tracking-[0.16em] text-muted">Disciplines</dt>
+        <dd class="mt-2 flex flex-wrap gap-2">
+          {study.disciplines.map((tag) => (
+            <span class="border border-hairline px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted">
+              {tag}
+            </span>
+          ))}
+        </dd>
+      </div>
+    </dl>
 
     <section class="mt-20 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
       <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">The problem</p>
@@ -135,6 +136,29 @@ const breadcrumbLd = {
         {study.note && <p class="text-[0.92rem]">{study.note}</p>}
       </div>
     </section>
+
+    {
+      study.gallery && (
+        <section class="mt-20 border-t border-hairline pt-12">
+          <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{study.gallery.caption}</p>
+          <ul class="mt-8 grid grid-cols-1 gap-px border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3">
+            {study.gallery.images.map((image) => (
+              <li class="bg-paper">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  width="960"
+                  height="640"
+                  loading="lazy"
+                  decoding="async"
+                  class="aspect-[3/2] w-full object-cover"
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
 
     <div class="mt-24 border-t border-hairline pt-14">
       <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end">

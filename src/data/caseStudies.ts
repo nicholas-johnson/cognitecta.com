@@ -4,6 +4,11 @@ export interface CaseStudyCapability {
   body: string;
 }
 
+export interface CaseStudyImage {
+  src: string;
+  alt: string;
+}
+
 export interface CaseStudy {
   slug: string;
   name: string;
@@ -19,6 +24,10 @@ export interface CaseStudy {
   stack: string[];
   outcome: string;
   note?: string;
+  gallery?: {
+    caption: string;
+    images: CaseStudyImage[];
+  };
   seoTitle: string;
   seoDescription: string;
 }
@@ -217,6 +226,17 @@ export const caseStudies: CaseStudy[] = [
     outcome:
       'A complete homeschooling product with a child learning experience and a parent planning view — themed, curriculum-aware tutoring a family can use as their weekly structure.',
     note: 'Delivered under the product brand SukiTutor (project codename TabbyTutor).',
+    gallery: {
+      caption: 'Lesson cover art from the product',
+      images: [
+        { src: '/images/work/tabbytutor/ks1-sci-animals-1.png', alt: 'SukiTutor lesson cover — Key Stage 1 science, animals' },
+        { src: '/images/work/tabbytutor/ks2-art-painting-1-2.png', alt: 'SukiTutor lesson cover — Key Stage 2 art, painting' },
+        { src: '/images/work/tabbytutor/ks3-hist-tudors-2-1.png', alt: 'SukiTutor lesson cover — Key Stage 3 history, the Tudors' },
+        { src: '/images/work/tabbytutor/ks3-geo-tectonic-1-1.png', alt: 'SukiTutor lesson cover — Key Stage 3 geography, tectonics' },
+        { src: '/images/work/tabbytutor/ks3-sci-genetics-1-1.png', alt: 'SukiTutor lesson cover — Key Stage 3 science, genetics' },
+        { src: '/images/work/tabbytutor/ks2-hist-ancient-civ-1.png', alt: 'SukiTutor lesson cover — Key Stage 2 history, ancient civilisations' },
+      ],
+    },
     seoTitle: 'SukiTutor | Client Project | Linear Horizon',
     seoDescription:
       'A client project by Linear Horizon: SukiTutor is an AI homeschool tutoring app with specialist subject tutors, curriculum-aligned lessons, voice, themed rewards for children and a parent progress dashboard.',

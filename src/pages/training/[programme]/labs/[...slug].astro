@@ -1,0 +1,163 @@
+---
+import LabLayout from '../../../../layouts/LabLayout.astro';
+import SourceFiles from '../../../../components/labs/SourceFiles.astro';
+import { getCollection, render } from 'astro:content';
+import {
+  getLabSource,
+  isLabProgramme,
+  labExerciseHref,
+  labIndexHref,
+  labModuleHref,
+} from '../../../../data/labs';
+import { getProgramme, programmeContactHref, programmeHref } from '../../../../data/programmes';
+import {
+  exercisesForModule,
+  labByRestSlug,
+  labHref,
+  labNeighbors,
+  labsForProgramme,
+} from '../../../../lib/labs';
+import { site } from '../../../../data/site';
+
+export async function getStaticPaths() {
+  const labs = await getCollection('labs');
+  return labs.map((lab) => {
+    const rest = lab.id.slice(lab.data.programme.length + 1);
+    return {
+      params: { programme: lab.data.programme, slug: rest },
+      props: { labId: lab.id },
+    };
+  });
+}
+
+const { programme: programmeSlug, slug } = Astro.params;
+const { labId } = Astro.props;
+
+if (!programmeSlug || !isLabProgramme(programmeSlug) || !slug) {
+  throw new Error('Unknown lab page');
+}
+
+const programme = getProgramme(programmeSlug);
+const source = getLabSource(programmeSlug);
+if (!programme || !source) throw new Error(`Unknown programme: ${programmeSlug}`);
+
+const labs = labsForProgramme(await getCollection('labs'), programmeSlug);
+const lab = labs.find((item) => item.id === labId) ?? labByRestSlug(labs, programmeSlug, slug);
+if (!lab) throw new Error(`Unknown lab: ${programmeSlug}/${slug}`);
+
+const { Content } = await render(lab);
+const exercises = lab.data.kind === 'module'
+  ? exercisesForModule(labs, programmeSlug, lab.data.moduleSlug)
+  : [];
+const neighbors = labNeighbors(labs, lab);
+const parentModule = lab.data.kind === 'exercise'
+  ? labs.find((item) => item.data.kind === 'module' && item.data.moduleSlug === lab.data.moduleSlug)
+  : undefined;
+
+const pageUrl = new URL(`${labHref(lab)}/`, Astro.site).toString();
+const landingUrl = new URL(`${programmeHref(programmeSlug)}/`, Astro.site).toString();
+const moduleUrl = new URL(
+  `${labModuleHref(programmeSlug, lab.data.moduleSlug)}/`,
+  Astro.site,
+).toString();
+
+const crumbs = [
+  { href: '/training', label: 'Training' },
+  { href: programmeHref(programmeSlug), label: programme.title },
+  { href: labIndexHref(programmeSlug), label: 'Labs' },
+];
+if (lab.data.kind === 'exercise') {
+  crumbs.push({
+    href: labModuleHref(programmeSlug, lab.data.moduleSlug),
+    label: parentModule?.data.title ?? `Module ${lab.data.moduleId}`,
+  });
+}
+crumbs.push({ href: labHref(lab), label: lab.data.title });
+
+const kicker = lab.data.kind === 'module'
+  ? `Module ${lab.data.moduleId}`
+  : `Exercise · Module ${lab.data.moduleId}`;
+
+const learningLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LearningResource',
+  name: lab.data.title,
+  description: lab.data.description,
+  url: pageUrl,
+  learningResourceType: lab.data.kind === 'module' ? 'Module' : 'Exercise',
+  isPartOf: [
+    {
+      '@type': 'Course',
+      name: programme.title,
+      url: landingUrl,
+      provider: { '@type': 'Organization', '@id': `${site.url}/#organisation`, name: site.name },
+    },
+    ...(lab.data.kind === 'exercise'
+      ? [
+          {
+            '@type': 'LearningResource',
+            name: parentModule?.data.title ?? lab.data.moduleSlug,
+            url: moduleUrl,
+          },
+        ]
+      : []),
+  ],
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((crumb, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: crumb.label,
+    item: new URL(crumb.href.endsWith('/') ? crumb.href : `${crumb.href}/`, Astro.site).toString(),
+  })),
+};
+---
+
+<LabLayout
+  title={lab.data.title}
+  description={lab.data.description}
+  kicker={kicker}
+  programmeSlug={programmeSlug}
+  githubUrl={lab.data.githubUrl}
+  crumbs={crumbs}
+  previous={neighbors.previous ? { href: labHref(neighbors.previous), label: neighbors.previous.data.title } : undefined}
+  next={neighbors.next ? { href: labHref(neighbors.next), label: neighbors.next.data.title } : undefined}
+>
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(learningLd)} />
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+
+  <Content />
+
+  {
+    exercises.length > 0 && (
+      <section class="mt-14">
+        <h2>Exercises</h2>
+        <ol>
+          {exercises.map((exercise) => (
+            <li>
+              <a href={labExerciseHref(programmeSlug, lab.data.moduleSlug, exercise.data.exerciseSlug ?? '')}>
+                {exercise.data.title}
+              </a>
+              <p>{exercise.data.description}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )
+  }
+
+  {lab.data.kind === 'exercise' && lab.data.sources && <SourceFiles files={lab.data.sources} />}
+
+  <p class="mt-10">
+    <a href={programmeContactHref(programmeSlug)}>Enquire about the private programme</a>
+    {parentModule && (
+      <>
+        {' · '}
+        <a href={labModuleHref(programmeSlug, lab.data.moduleSlug)}>{parentModule.data.title}</a>
+      </>
+    )}
+  </p>
+</LabLayout>

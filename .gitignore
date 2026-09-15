@@ -1,3 +1,6 @@
+# course lab checkouts used at build time
+vendor/
+
 # build output
 dist/
 # generated types

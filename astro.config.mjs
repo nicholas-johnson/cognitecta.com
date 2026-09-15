@@ -8,6 +8,11 @@ export default defineConfig({
   output: 'static',
   prefetch: true,
   devToolbar: { enabled: false },
+  markdown: {
+    shikiConfig: {
+      theme: 'github-light',
+    },
+  },
   integrations: [sitemap()],
   redirects: {
     '/approach': '/consulting',

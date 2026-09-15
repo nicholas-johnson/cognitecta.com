@@ -1,5 +1,4 @@
 import path from 'node:path';
-import { labExerciseHref, labModuleHref } from '../../data/labs';
 
 export interface RewriteContext {
   programme: string;
@@ -35,8 +34,12 @@ export function parseDescription(markdown: string, limit = 220): string {
   return truncate(paragraph || 'Lab notes from the Linear Horizon training programme.', limit);
 }
 
+export function stripOpeningBlockquote(markdown: string): string {
+  return markdown.replace(/^(?:>.*\n)+\n*/, '');
+}
+
 export function rewriteLabMarkdown(markdown: string, ctx: RewriteContext): string {
-  const prepared = stripFirstH1(stripSlidesSection(markdown));
+  const prepared = stripOpeningBlockquote(stripFirstH1(stripSlidesSection(markdown))).trimStart();
   return prepared.replace(LINK, (full, open: string, text: string, href: string) => {
     const rewritten = rewriteHref(href.trim(), ctx);
     return `${open}${text}](${rewritten})`;
@@ -52,7 +55,7 @@ export function rewriteHref(href: string, ctx: RewriteContext): string {
 
   const exerciseMatch = cleaned.match(/(?:^|\/)exercises\/(\d+-[^/]+)/);
   if (exerciseMatch) {
-    return `${labExerciseHref(ctx.programme, ctx.moduleSlug, exerciseMatch[1])}${hash}`;
+    return `/training/${ctx.programme}/labs/${ctx.moduleSlug}/${exerciseMatch[1]}${hash}`;
   }
 
   const moduleMatch = cleaned.match(/(?:^|\/)module-(\d+-[^/]+)/);
@@ -60,15 +63,15 @@ export function rewriteHref(href: string, ctx: RewriteContext): string {
     const rest = cleaned.split(`module-${moduleMatch[1]}`)[1] ?? '';
     const nestedExercise = rest.match(/^\/exercises\/(\d+-[^/]+)/);
     if (nestedExercise) {
-      return `${labExerciseHref(ctx.programme, moduleMatch[1], nestedExercise[1])}${hash}`;
+      return `/training/${ctx.programme}/labs/${moduleMatch[1]}/${nestedExercise[1]}${hash}`;
     }
-    return `${labModuleHref(ctx.programme, moduleMatch[1])}${hash}`;
+    return `/training/${ctx.programme}/labs/${moduleMatch[1]}${hash}`;
   }
 
   if (ctx.kind === 'exercise' && cleaned.startsWith('../')) {
     const sibling = cleaned.replace(/^\.\.\//, '').replace(/\/README\.md$/, '');
     if (/^\d+-/.test(sibling) && !sibling.includes('/')) {
-      return `${labExerciseHref(ctx.programme, ctx.moduleSlug, sibling)}${hash}`;
+      return `/training/${ctx.programme}/labs/${ctx.moduleSlug}/${sibling}${hash}`;
     }
   }
 

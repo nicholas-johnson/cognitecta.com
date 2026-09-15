@@ -2,12 +2,15 @@
 import BaseLayout from './BaseLayout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import CtaLink from '../components/CtaLink.astro';
+import { getCollection } from 'astro:content';
 import { founder, site } from '../data/site';
+import { labIndexHref, labModuleHref } from '../data/labs';
 import {
   type Programme,
   formatPrice,
   programmeContactHref,
 } from '../data/programmes';
+import { findLabModule, modulesForProgramme } from '../lib/labs';
 
 interface Props {
   programme: Programme;
@@ -17,7 +20,10 @@ const { programme } = Astro.props;
 const contactHref = programmeContactHref(programme.slug);
 const contactUrl = new URL(contactHref, Astro.site).toString();
 const pageUrl = new URL(`/training/${programme.slug}/`, Astro.site).toString();
+const labsHref = labIndexHref(programme.slug);
 const price = formatPrice(programme.priceFrom);
+const labs = await getCollection('labs');
+const labModules = modulesForProgramme(labs, programme.slug);
 
 const days = programme.duration.match(/(\d+)\s*day/i);
 const workload = days ? `P${days[1]}D` : undefined;
@@ -43,6 +49,12 @@ const courseLd = {
     url: site.url,
   },
   offers: offer,
+  hasPart: labModules.map((lab) => ({
+    '@type': 'LearningResource',
+    name: lab.data.title,
+    url: new URL(`${labModuleHref(programme.slug, lab.data.moduleSlug)}/`, Astro.site).toString(),
+    learningResourceType: 'Module',
+  })),
   hasCourseInstance: [
     {
       '@type': 'CourseInstance',
@@ -84,8 +96,9 @@ const courseLd = {
       From {price}
     </p>
 
-    <p class="mt-8">
+    <p class="mt-8 flex flex-wrap gap-x-8 gap-y-3">
       <CtaLink href={contactHref}>Talk to us</CtaLink>
+      <CtaLink href={labsHref} variant="secondary">Open the lab handbook</CtaLink>
     </p>
 
     <div class="mt-16 grid gap-10 border-t border-ink/20 pt-10 md:grid-cols-2 md:gap-16">
@@ -123,13 +136,27 @@ const courseLd = {
             <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Day {day.id}</p>
             <h3 class="mt-2 text-[1.15rem] font-medium tracking-tight">{day.title}</h3>
             <ol class="mt-6 border-t border-hairline">
-              {day.modules.map((mod) => (
+              {day.modules.map((mod) => {
+                const lab = findLabModule(labs, programme.slug, mod.id);
+                return (
                 <li class="grid grid-cols-1 gap-2 border-b border-hairline py-6 md:grid-cols-[5.5rem_minmax(0,16rem)_1fr] md:gap-10">
                   <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{mod.id}</span>
-                  <h4 class="text-[1.05rem] font-medium tracking-tight">{mod.title}</h4>
+                  <h4 class="text-[1.05rem] font-medium tracking-tight">
+                    {lab ? (
+                      <a
+                        href={labModuleHref(programme.slug, lab.data.moduleSlug)}
+                        class="text-ink no-underline hover:text-cobalt"
+                      >
+                        {mod.title}
+                      </a>
+                    ) : (
+                      mod.title
+                    )}
+                  </h4>
                   <p class="max-w-2xl text-[0.98rem] leading-relaxed text-muted">{mod.body}</p>
                 </li>
-              ))}
+                );
+              })}
             </ol>
           </div>
         ))
@@ -158,8 +185,9 @@ const courseLd = {
       </p>
     </section>
 
-    <p class="mt-16">
+    <p class="mt-16 flex flex-wrap gap-x-8 gap-y-3">
       <CtaLink href={contactHref}>Talk to us</CtaLink>
+      <CtaLink href={labsHref} variant="secondary">Open the lab handbook</CtaLink>
     </p>
   </article>
 </BaseLayout>

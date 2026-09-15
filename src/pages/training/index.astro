@@ -156,7 +156,8 @@ import { formatPrice, programmeContactHref, programmes } from '../../data/progra
       <h2 class="text-[1.35rem] font-medium tracking-tight">Flagship Python programmes</h2>
       <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">
         Two priced, lab-intensive programmes taught in Python. They sit alongside the catalogue and
-        can be tailored to your team in the same way as the rest of the courses.
+        can be tailored to your team in the same way as the rest of the courses. Each has a public
+        lab handbook — the module notes and exercises from the course repository.
       </p>
       <ol class="mt-8 border-t border-ink/20">
         {
@@ -175,7 +176,13 @@ import { formatPrice, programmeContactHref, programmes } from '../../data/progra
               </div>
               <div class="max-w-xl">
                 <p class="text-[1.02rem] leading-relaxed text-muted">{item.summary}</p>
-                <p class="mt-4">
+                <p class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                  <a
+                    href={`/training/${item.slug}/labs`}
+                    class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+                  >
+                    Lab handbook
+                  </a>
                   <a
                     href={programmeContactHref(item.slug)}
                     class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"

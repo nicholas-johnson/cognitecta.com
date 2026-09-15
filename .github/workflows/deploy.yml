@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  repository_dispatch:
+    types: [course-updated]
+  schedule:
+    - cron: '0 6 * * *'
 
 permissions:
   contents: read
@@ -19,6 +23,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+      - name: Checkout AI Engineering course
+        uses: actions/checkout@v7
+        with:
+          repository: nicholas-johnson/ai-with-python-course
+          path: vendor/ai-with-python-course
+      - name: Checkout Applied NLP course
+        uses: actions/checkout@v7
+        with:
+          repository: nicholas-johnson/nlp-detective-agency
+          path: vendor/nlp-python-course
       - name: Install, build, and upload
         uses: withastro/action@v6
         with:

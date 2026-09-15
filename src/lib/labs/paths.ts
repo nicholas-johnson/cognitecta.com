@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import { labSources, type LabSource } from '../../data/labs';
+import { labSources, type LabSource } from '../../data/labs.ts';
 
 const MODULE_DIR = /^module-(\d+)-(.+)$/;
 const EXERCISE_DIR = /^(\d+)-(.+)$/;
