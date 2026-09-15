@@ -1,4 +1,6 @@
 ---
+import OutcomeLine from '../brand/OutcomeLine.astro';
+
 /**
  * Reusable case-study structure for future evidence.
  * Do not publish fictional customers or outcomes.
@@ -31,7 +33,7 @@ const {
 const fields = [
   { label: 'Customer problem', value: problem },
   { label: 'Environment', value: environment },
-  { label: 'Cognitecta approach', value: approach },
+  { label: 'Linear Horizon approach', value: approach },
   { label: 'Product used', value: product },
   { label: 'Integration', value: integration },
   { label: 'Outcome', value: outcome },
@@ -42,6 +44,7 @@ const fields = [
 {
   published && (
     <article class="border border-hairline bg-paper p-6 md:p-8">
+      <OutcomeLine class="mb-6" label="Outcome" />
       {customer && (
         <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{customer}</p>
       )}

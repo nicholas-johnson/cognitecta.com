@@ -1,0 +1,36 @@
+---
+interface Props {
+  class?: string;
+  tone?: 'default' | 'on-dark';
+  label?: string;
+}
+
+const { class: className, tone = 'default', label } = Astro.props;
+const labelled = Boolean(label);
+const lineClass = tone === 'on-dark' ? 'text-white' : 'text-graphite-950';
+const squareClass = tone === 'on-dark' ? 'text-white' : 'text-horizon-500';
+---
+
+<svg
+  class:list={['inline-block align-middle', className]}
+  viewBox="0 0 88 12"
+  width="88"
+  height="12"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden={labelled ? undefined : 'true'}
+  role={labelled ? 'img' : undefined}
+>
+  {labelled && <title>{label}</title>}
+  <line
+    class={lineClass}
+    x1="0"
+    y1="6"
+    x2="72"
+    y2="6"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="butt"
+  />
+  <rect class={squareClass} x="76" y="2" width="8" height="8" fill="currentColor" />
+</svg>

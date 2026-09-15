@@ -1,0 +1,158 @@
+---
+import { products, productHref } from '../../data/products';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<nav aria-label="Product system" class:list={['product-line', className]}>
+  <p class="mb-6 font-mono text-[11px] tracking-[0.16em] text-muted">
+    One system · five products
+  </p>
+
+  <ol class="product-line__mobile md:hidden">
+    {
+      products.map((product, index) => (
+        <li class="product-line__step">
+          <a href={productHref(product.slug)} class="product-line__node no-underline">
+            <span class="product-line__dot" aria-hidden="true"></span>
+            <span class="min-w-0">
+              <span class="block font-mono text-[11px] tracking-[0.16em] text-horizon-600">
+                {product.name}
+              </span>
+              <span class="mt-1 block text-[0.95rem] tracking-tight text-ink">
+                {product.landingLine}
+              </span>
+            </span>
+          </a>
+          {index === products.length - 1 && (
+            <span class="product-line__outcome" aria-hidden="true"></span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="product-line__desktop relative hidden md:block">
+    <span class="product-line__axis" aria-hidden="true"></span>
+    <ol class="relative z-10 grid grid-cols-5 gap-4">
+      {
+        products.map((product, index) => (
+          <li class="min-w-0">
+            <a
+              href={productHref(product.slug)}
+              class="group flex flex-col items-start no-underline"
+            >
+              <span class="product-line__station" aria-hidden="true"></span>
+              <span class="mt-5 font-mono text-[11px] tracking-[0.16em] text-horizon-600">
+                {product.name}
+              </span>
+              <span class="mt-2 max-w-[12rem] text-[0.95rem] leading-snug tracking-tight text-ink group-hover:text-horizon-600">
+                {product.landingLine}
+              </span>
+            </a>
+            {index === products.length - 1 && (
+              <span class="product-line__desktop-outcome" aria-hidden="true"></span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .product-line__mobile {
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  .product-line__mobile::before {
+    content: '';
+    position: absolute;
+    top: 0.4rem;
+    bottom: 0.15rem;
+    left: 0.2rem;
+    width: 2px;
+    background: var(--color-graphite-950);
+  }
+
+  .product-line__step {
+    position: relative;
+    padding-bottom: 1.5rem;
+  }
+
+  .product-line__step:last-child {
+    padding-bottom: 0;
+  }
+
+  .product-line__node {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+
+  .product-line__dot,
+  .product-line__station {
+    display: block;
+    width: 0.55rem;
+    height: 0.55rem;
+    background: var(--color-porcelain);
+    border: 2px solid var(--color-graphite-950);
+    border-radius: 0;
+  }
+
+  .product-line__dot {
+    position: relative;
+    z-index: 1;
+    margin-top: 0.3rem;
+    margin-left: -1.16rem;
+    flex-shrink: 0;
+  }
+
+  .product-line__outcome {
+    display: block;
+    width: 0.55rem;
+    height: 0.55rem;
+    margin-top: 1rem;
+    margin-left: -1.16rem;
+    background: var(--color-horizon-500);
+  }
+
+  .product-line__axis {
+    position: absolute;
+    top: 0.26rem;
+    right: 0;
+    left: 0.2rem;
+    height: 2px;
+    background: var(--color-graphite-950);
+  }
+
+  .product-line__desktop-outcome {
+    position: absolute;
+    top: 0.05rem;
+    right: -0.05rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    background: var(--color-horizon-500);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .product-line__axis {
+      transform-origin: left center;
+      animation: product-axis 720ms var(--ease-brand) both;
+    }
+  }
+
+  @keyframes product-axis {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+</style>

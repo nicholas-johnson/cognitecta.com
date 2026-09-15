@@ -1,0 +1,93 @@
+---
+interface Props {
+  class?: string;
+  caption?: string;
+}
+
+const {
+  class: className,
+  caption = 'Fragmented signals resolving into one direction.',
+} = Astro.props;
+---
+
+<figure class:list={['resolution-mark', className]}>
+  <figcaption class="sr-only">{caption}</figcaption>
+  <svg
+    class="block h-auto w-full text-graphite-950"
+    viewBox="0 0 720 64"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <line
+      class="resolution-mark__line text-graphite-950"
+      x1="24"
+      y1="32"
+      x2="696"
+      y2="32"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="butt"
+    />
+    <circle class="resolution-mark__point resolution-mark__point--a" cx="40" cy="32" r="5" fill="currentColor" />
+    <circle class="resolution-mark__point resolution-mark__point--b" cx="88" cy="32" r="5" fill="currentColor" />
+    <circle class="resolution-mark__point resolution-mark__point--c" cx="136" cy="32" r="5" fill="currentColor" />
+  </svg>
+</figure>
+
+<style>
+  .resolution-mark__line {
+    stroke-dasharray: 672;
+    stroke-dashoffset: 0;
+  }
+
+  .resolution-mark__point {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .resolution-mark__line {
+      stroke-dashoffset: 672;
+      animation: resolution-line 720ms var(--ease-brand) 160ms forwards;
+    }
+
+    .resolution-mark__point {
+      opacity: 1;
+      animation: resolution-point 640ms var(--ease-brand) forwards;
+    }
+
+    .resolution-mark__point--a {
+      animation-delay: 0ms;
+    }
+
+    .resolution-mark__point--b {
+      animation-delay: 70ms;
+    }
+
+    .resolution-mark__point--c {
+      animation-delay: 140ms;
+    }
+  }
+
+  @keyframes resolution-line {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes resolution-point {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+  }
+</style>

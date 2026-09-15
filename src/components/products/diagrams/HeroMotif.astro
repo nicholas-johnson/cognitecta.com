@@ -43,11 +43,11 @@ const copy = {
         <path d="M32 30v12h90V30" stroke="currentColor" stroke-opacity="0.45" />
         <rect x="74" y="42" width="92" height="22" stroke="currentColor" />
         <path d="M120 64v10" stroke="currentColor" stroke-opacity="0.45" />
-        <rect x="16" y="74" width="44" height="20" stroke="#1B4DFF" />
+        <rect x="16" y="74" width="44" height="20" stroke="#145BFF" />
         <rect x="70" y="74" width="44" height="20" stroke="currentColor" stroke-opacity="0.55" />
         <rect x="124" y="74" width="44" height="20" stroke="currentColor" stroke-opacity="0.55" />
         <rect x="178" y="74" width="44" height="20" stroke="currentColor" stroke-opacity="0.55" />
-        <circle class="motif-pulse" cx="120" cy="53" r="3" fill="#1B4DFF" />
+        <rect x="118" y="50" width="4" height="4" fill="#145BFF" />
       </svg>
     )
   }
@@ -57,7 +57,7 @@ const copy = {
         <rect x="74" y="6" width="92" height="20" stroke="currentColor" />
         <path d="M120 26v12M40 56V38h160v18" stroke="currentColor" stroke-opacity="0.45" />
         <rect x="8" y="56" width="38" height="18" stroke="currentColor" stroke-opacity="0.5" />
-        <rect x="54" y="56" width="38" height="18" stroke="#1B4DFF" />
+        <rect x="54" y="56" width="38" height="18" stroke="#145BFF" />
         <rect x="100" y="56" width="38" height="18" stroke="currentColor" stroke-opacity="0.5" />
         <rect x="146" y="56" width="38" height="18" stroke="currentColor" stroke-opacity="0.5" />
         <rect x="192" y="56" width="38" height="18" stroke="currentColor" stroke-opacity="0.5" />
@@ -70,7 +70,7 @@ const copy = {
     slug === 'wargame' && (
       <svg class="mt-6 h-32 w-full text-ink" viewBox="0 0 240 110" fill="none" aria-hidden="true">
         <circle cx="40" cy="30" r="12" stroke="currentColor" />
-        <circle cx="120" cy="22" r="12" stroke="#1B4DFF" />
+        <circle cx="120" cy="22" r="12" stroke="#145BFF" />
         <circle cx="200" cy="30" r="12" stroke="currentColor" />
         <circle cx="80" cy="74" r="12" stroke="currentColor" stroke-opacity="0.65" />
         <circle cx="160" cy="74" r="12" stroke="currentColor" stroke-opacity="0.65" />
@@ -79,9 +79,9 @@ const copy = {
           stroke="currentColor"
           stroke-opacity="0.4"
         />
-        <rect x="16" y="98" width="70" height="5" fill="#1B4DFF" />
-        <rect x="92" y="98" width="42" height="5" fill="#1B4DFF" fill-opacity="0.6" />
-        <rect x="140" y="98" width="24" height="5" fill="#1B4DFF" fill-opacity="0.35" />
+        <rect x="16" y="98" width="70" height="5" fill="#145BFF" />
+        <rect x="92" y="98" width="42" height="5" fill="#145BFF" fill-opacity="0.6" />
+        <rect x="140" y="98" width="24" height="5" fill="#145BFF" fill-opacity="0.35" />
       </svg>
     )
   }
@@ -99,8 +99,8 @@ const copy = {
         <path d="M70 44v10h100V44" stroke="currentColor" stroke-opacity="0.4" />
         <rect x="70" y="54" width="100" height="14" stroke="currentColor" />
         <path d="M95 68v10h50V68" stroke="currentColor" stroke-opacity="0.4" />
-        <rect x="95" y="78" width="50" height="16" stroke="#1B4DFF" />
-        <circle class="motif-pulse" cx="120" cy="86" r="2.5" fill="#1B4DFF" />
+        <rect x="95" y="78" width="50" height="16" stroke="#145BFF" />
+        <rect x="118" y="84" width="4" height="4" fill="#145BFF" />
       </svg>
     )
   }
@@ -114,9 +114,9 @@ const copy = {
         <path d="M52 16h28V82H52" stroke="currentColor" stroke-opacity="0.4" />
         <rect x="80" y="38" width="86" height="22" stroke="currentColor" />
         <path d="M166 49h18" stroke="currentColor" stroke-opacity="0.45" />
-        <rect x="184" y="18" width="48" height="20" stroke="#1B4DFF" />
+        <rect x="184" y="18" width="48" height="20" stroke="#145BFF" />
         <rect x="184" y="62" width="48" height="20" stroke="currentColor" stroke-opacity="0.55" />
-        <circle class="motif-pulse" cx="123" cy="49" r="2.5" fill="#1B4DFF" />
+        <rect x="121" y="47" width="4" height="4" fill="#145BFF" />
       </svg>
     )
   }
@@ -124,21 +124,3 @@ const copy = {
     {copy.line}
   </p>
 </GridFrame>
-
-<style>
-  @media (prefers-reduced-motion: no-preference) {
-    .motif-pulse {
-      animation: motif-pulse 2.2s ease-in-out infinite;
-    }
-  }
-
-  @keyframes motif-pulse {
-    0%,
-    100% {
-      opacity: 0.35;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-</style>
