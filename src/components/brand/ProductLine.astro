@@ -13,7 +13,7 @@ const { class: className } = Astro.props;
     One system · five products
   </p>
 
-  <ol class="product-line__mobile md:hidden">
+  <ol class="product-line__mobile lg:hidden">
     {
       products.map((product, index) => (
         <li class="product-line__step">
@@ -36,7 +36,7 @@ const { class: className } = Astro.props;
     }
   </ol>
 
-  <div class="product-line__desktop relative hidden md:block">
+  <div class="product-line__desktop relative hidden lg:block">
     <span class="product-line__axis" aria-hidden="true"></span>
     <ol class="relative z-10 grid grid-cols-5 gap-4">
       {
@@ -143,7 +143,7 @@ const { class: className } = Astro.props;
   @media (prefers-reduced-motion: no-preference) {
     .product-line__axis {
       transform-origin: left center;
-      animation: product-axis 720ms var(--ease-brand) both;
+      animation: product-axis 720ms var(--ease-brand) forwards;
     }
   }
 

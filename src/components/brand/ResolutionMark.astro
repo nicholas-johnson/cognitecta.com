@@ -20,7 +20,7 @@ const {
     aria-hidden="true"
   >
     <line
-      class="resolution-mark__line text-graphite-950"
+      class="resolution-mark__line"
       x1="24"
       y1="32"
       x2="696"
@@ -49,13 +49,11 @@ const {
 
   @media (prefers-reduced-motion: no-preference) {
     .resolution-mark__line {
-      stroke-dashoffset: 672;
-      animation: resolution-line 720ms var(--ease-brand) 160ms forwards;
+      animation: resolution-line 720ms var(--ease-brand) 120ms both;
     }
 
     .resolution-mark__point {
-      opacity: 1;
-      animation: resolution-point 640ms var(--ease-brand) forwards;
+      animation: resolution-point 640ms var(--ease-brand) both;
     }
 
     .resolution-mark__point--a {
@@ -72,20 +70,20 @@ const {
   }
 
   @keyframes resolution-line {
+    from {
+      stroke-dashoffset: 672;
+    }
     to {
       stroke-dashoffset: 0;
     }
   }
 
   @keyframes resolution-point {
-    0% {
+    from {
       opacity: 1;
       transform: translateX(0);
     }
-    70% {
-      opacity: 1;
-    }
-    100% {
+    to {
       opacity: 0;
       transform: translateX(-8px);
     }
