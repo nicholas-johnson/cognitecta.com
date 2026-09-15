@@ -56,7 +56,7 @@ Set these repository variables if the ingest host or key is not the default:
 
 | Variable | Purpose |
 | --- | --- |
-| `PUBLIC_CALLCENTER_INGEST_URL` | Ingest endpoint. Default: `https://callcenter.cognitecta.com/api/v1/conversations` |
+| `PUBLIC_CALLCENTER_INGEST_URL` | Ingest endpoint. Default: `https://callcenter.linearhorizon.com/api/v1/conversations` |
 | `PUBLIC_CALLCENTER_PUBLISHABLE_KEY` | Optional bearer token sent as `Authorization` |
 
 Callcenter must allow CORS from `https://linearhorizon.com` (and `http://localhost:4321` in development).

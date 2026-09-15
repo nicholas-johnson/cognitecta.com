@@ -1,5 +1,5 @@
 export const DEFAULT_CALLCENTER_INGEST_URL =
-  'https://callcenter.cognitecta.com/api/v1/conversations';
+  'https://callcenter.linearhorizon.com/api/v1/conversations';
 
 export type EnquiryInput = {
   name: string;

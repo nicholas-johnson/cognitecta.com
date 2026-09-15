@@ -1,9 +1,9 @@
 export const site = {
   name: 'Linear Horizon',
-  legalName: 'Cognitecta',
+  legalName: 'Linear Horizon',
   descriptor: 'Applied intelligence',
   line: 'From complexity to outcome.',
-  email: 'hello@cognitecta.com',
+  email: 'hello@linearhorizon.com',
   url: 'https://linearhorizon.com',
   description:
     'Linear Horizon helps organisations understand, design and deploy artificial intelligence — through training, consultancy, production engineering and our own agentic products.',
