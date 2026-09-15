@@ -27,7 +27,7 @@ test('builds a web-channel conversation for Callcenter', () => {
       organisation: 'Analytical Engines',
     },
     message: {
-      subject: 'Cognitecta enquiry — Analytical Engines — RAG in a Day',
+      subject: 'Linear Horizon enquiry — Analytical Engines — RAG in a Day',
       body: 'We need one conversation across email and voice.',
     },
     metadata: {
@@ -39,12 +39,12 @@ test('builds a web-channel conversation for Callcenter', () => {
 
 test('omits an empty course from metadata', () => {
   const payload = buildCallcenterEnquiry({ ...enquiry, course: '  ' });
-  assert.equal(payload.message.subject, 'Cognitecta enquiry — Analytical Engines — Callcenter');
+  assert.equal(payload.message.subject, 'Linear Horizon enquiry — Analytical Engines — Callcenter');
   assert.deepEqual(payload.metadata, { interest: 'callcenter' });
 });
 
 test('subject prefers the course when present', () => {
-  assert.equal(enquirySubject(enquiry), 'Cognitecta enquiry — Analytical Engines — RAG in a Day');
+  assert.equal(enquirySubject(enquiry), 'Linear Horizon enquiry — Analytical Engines — RAG in a Day');
 });
 
 test('posts the enquiry JSON to the Callcenter ingest URL', async () => {

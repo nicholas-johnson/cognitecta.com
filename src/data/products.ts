@@ -52,10 +52,10 @@ export interface Product {
 }
 
 export const productFamily = {
-  kicker: 'Cognitecta Products',
+  kicker: 'Linear Horizon Products',
   headline: 'Agentic systems for real organisational work.',
   support:
-    'Cognitecta Platform provides the foundation. Specialist products then apply agentic AI to analysis, strategy, growth and customer service.',
+    'Linear Horizon Platform provides the foundation. Specialist products then apply agentic AI to analysis, strategy, growth and customer service.',
   model: 'Foundation. Applications.',
 } as const;
 
@@ -120,7 +120,7 @@ export const products: Product[] = [
   {
     slug: 'platform',
     name: 'Platform',
-    fullName: 'Cognitecta Platform',
+    fullName: 'Linear Horizon Platform',
     tier: 'foundation',
     domain: 'Infrastructure',
     category: 'Agentic Infrastructure',
@@ -132,15 +132,15 @@ export const products: Product[] = [
     landingLine: 'Build and run agentic systems.',
     headline: 'Agents that can actually do the work.',
     support:
-      'Cognitecta Platform orchestrates teams of agents, tools, RAG pipelines and workflows around the processes you already run — with permission boundaries, escalation and production controls.',
+      'Linear Horizon Platform orchestrates teams of agents, tools, RAG pipelines and workflows around the processes you already run — with permission boundaries, escalation and production controls.',
     overview: [
       'Platform is an agent harness and runtime. It provides the reusable infrastructure needed to put specialist agent teams into organisational work: orchestration, tools, workflows, retrieval, memory, routing, integration and the operational controls that decide whether a system can leave a prototype.',
       'A chatbot can be one interface to Platform, but the product is broader than chat. Its function is to let agents operate inside your organisation with access to the appropriate tools, knowledge and workflows — and to stop, ask or escalate when the work exceeds a defined boundary.',
       'You can build customer support, knowledge assistants and operational agents on a common production-ready foundation, adapted to the systems you already run rather than replacing them.',
     ],
-    seoTitle: 'Platform | Agentic Infrastructure | Cognitecta',
+    seoTitle: 'Platform | Agentic Infrastructure | Linear Horizon',
     seoDescription:
-      'Cognitecta Platform is an agent harness and runtime for deploying teams of AI agents around organisational work — with tools, RAG, workflows, escalation and production controls.',
+      'Linear Horizon Platform is an agent harness and runtime for deploying teams of AI agents around organisational work — with tools, RAG, workflows, escalation and production controls.',
     primaryCta: { label: 'Discuss a deployment', href: '/contact?interest=platform' },
     secondaryCta: { label: 'Explore capabilities', href: '#capabilities' },
     closingQuestion: 'Have a workflow that could benefit from agentic automation?',
@@ -265,7 +265,7 @@ export const products: Product[] = [
   {
     slug: 'stack',
     name: 'Stack',
-    fullName: 'Cognitecta Stack',
+    fullName: 'Linear Horizon Stack',
     tier: 'application',
     domain: 'Analysis',
     category: 'Agentic Data Analysis',
@@ -283,9 +283,9 @@ export const products: Product[] = [
       'It does not simply translate that question into one SQL query. It behaves more like an analytical team: interpret the question, inspect the available data, form hypotheses, test those that can be tested, compare evidence, reject weak explanations, refine the analysis, and decide how the findings should be communicated.',
       'Traditional BI asks what the dashboard shows. Stack asks what might be happening, and what evidence supports that reading. The result is an investigative workflow, not a guaranteed account of the truth.',
     ],
-    seoTitle: 'Stack | Agentic Data Analysis | Cognitecta',
+    seoTitle: 'Stack | Agentic Data Analysis | Linear Horizon',
     seoDescription:
-      'Cognitecta Stack is an agentic data analysis system. Ask an open-ended question; Stack investigates hypotheses, tests them against the evidence and produces structured analysis and presentations.',
+      'Linear Horizon Stack is an agentic data analysis system. Ask an open-ended question; Stack investigates hypotheses, tests them against the evidence and produces structured analysis and presentations.',
     primaryCta: { label: 'Discuss your data', href: '/contact?interest=stack' },
     secondaryCta: { label: 'See how it works', href: '#how-it-works' },
     closingQuestion: 'Have an open-ended question you would like Stack to investigate?',
@@ -418,7 +418,7 @@ export const products: Product[] = [
   {
     slug: 'wargame',
     name: 'Wargame',
-    fullName: 'Cognitecta Wargame',
+    fullName: 'Linear Horizon Wargame',
     tier: 'application',
     domain: 'Strategy',
     category: 'Agentic Strategy',
@@ -436,9 +436,9 @@ export const products: Product[] = [
       'Strategy is a system of interacting actors. Wargame attempts to model those actors and explore how their decisions may interact. It can then run large numbers of possible scenarios, using Monte Carlo simulation where appropriate, to estimate a distribution of outcomes rather than a single forecast.',
       'The aim is not to predict the future with certainty. It is to make assumptions explicit, explore their consequences at scale, and help you see risks, opportunities, influential variables and actions that may shift the distribution.',
     ],
-    seoTitle: 'Wargame | Agentic Strategy & Simulation | Cognitecta',
+    seoTitle: 'Wargame | Agentic Strategy & Simulation | Linear Horizon',
     seoDescription:
-      'Cognitecta Wargame models actors, incentives and possible responses, then runs repeated simulations to explore how different strategies may change the distribution of outcomes.',
+      'Linear Horizon Wargame models actors, incentives and possible responses, then runs repeated simulations to explore how different strategies may change the distribution of outcomes.',
     primaryCta: { label: 'Discuss a scenario', href: '/contact?interest=wargame' },
     secondaryCta: { label: 'See the methodology', href: '#methodology' },
     closingQuestion:
@@ -539,7 +539,7 @@ export const products: Product[] = [
   {
     slug: 'funnel',
     name: 'Funnel',
-    fullName: 'Cognitecta Funnel',
+    fullName: 'Linear Horizon Funnel',
     tier: 'application',
     domain: 'Growth',
     category: 'Agentic Sales Intelligence',
@@ -557,9 +557,9 @@ export const products: Product[] = [
       'It is not a bulk email tool. Conventional outbound buys a list, filters by job title and sends at volume. Funnel is built against that model. The expensive part of good prospecting is not sending a message. It is understanding who is worth contacting, and why.',
       'The workflow is simple to state: find the right company, understand why they might buy, and know what to say. Someone on your team decides whether to make contact.',
     ],
-    seoTitle: 'Funnel | Agentic Sales Intelligence | Cognitecta',
+    seoTitle: 'Funnel | Agentic Sales Intelligence | Linear Horizon',
     seoDescription:
-      'Cognitecta Funnel is an agentic B2B prospecting system. It researches organisations, finds evidence of buying intent and prepares qualified, evidence-backed outreach for human approval.',
+      'Linear Horizon Funnel is an agentic B2B prospecting system. It researches organisations, finds evidence of buying intent and prepares qualified, evidence-backed outreach for human approval.',
     primaryCta: { label: 'Discuss Funnel', href: '/contact?interest=funnel' },
     secondaryCta: { label: 'See how it works', href: '#how-it-works' },
     closingQuestion: 'Have a market where better research would change who you contact?',
@@ -683,7 +683,7 @@ export const products: Product[] = [
   {
     slug: 'callcenter',
     name: 'Callcenter',
-    fullName: 'Cognitecta Callcenter',
+    fullName: 'Linear Horizon Callcenter',
     tier: 'application',
     domain: 'Customer Service',
     category: 'Agentic Customer Service',
@@ -697,13 +697,13 @@ export const products: Product[] = [
     support:
       'Callcenter connects voice, WhatsApp, SMS, email, Teams, Slack and Salesforce through an agentic service layer that can understand customer needs, retrieve knowledge, take permitted actions and hand complex interactions to people without losing context.',
     overview: [
-      'Callcenter is an AI-powered customer-service platform for call deflection, multichannel handling, automated resolution, intelligent routing, human handoff and agent augmentation. It is a specialist product on the same agentic principles as Cognitecta Platform, applied to contact centres, support desks and service operations.',
+      'Callcenter is an AI-powered customer-service platform for call deflection, multichannel handling, automated resolution, intelligent routing, human handoff and agent augmentation. It is a specialist product on the same agentic principles as Linear Horizon Platform, applied to contact centres, support desks and service operations.',
       'A customer might start by email, continue over WhatsApp, then phone. Callcenter is designed to retain that context and treat the interactions as one service journey rather than three unrelated conversations.',
       'The aim is to resolve what AI can, route what it cannot, and give people everything they need to finish the job.',
     ],
-    seoTitle: 'Callcenter | Agentic Customer Service | Cognitecta',
+    seoTitle: 'Callcenter | Agentic Customer Service | Linear Horizon',
     seoDescription:
-      'Cognitecta Callcenter unifies voice, WhatsApp, SMS, email, Teams, Slack and Salesforce into an agentic customer-service layer for automated resolution, intelligent routing and human handoff.',
+      'Linear Horizon Callcenter unifies voice, WhatsApp, SMS, email, Teams, Slack and Salesforce into an agentic customer-service layer for automated resolution, intelligent routing and human handoff.',
     primaryCta: { label: 'Discuss Callcenter', href: '/contact?interest=callcenter' },
     secondaryCta: { label: 'See how it works', href: '#how-it-works' },
     closingQuestion: 'Have a service operation where customers still have to start again?',

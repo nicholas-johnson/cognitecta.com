@@ -2,16 +2,18 @@
 interface Props {
   as?: 'h1' | 'p' | 'span';
   class?: string;
+  tone?: 'dark' | 'light';
 }
 
-const { as: Tag = 'span', class: className } = Astro.props;
+const { as: Tag = 'span', class: className, tone = 'dark' } = Astro.props;
 ---
 
 <Tag
   class:list={[
-    'font-sans font-medium uppercase text-ink',
+    'font-sans font-medium tracking-[0.22em] uppercase',
+    tone === 'light' ? 'text-white' : 'text-ink',
     className,
   ]}
 >
-  Cognitecta
+  Linear Horizon
 </Tag>

@@ -45,21 +45,3 @@ const { caption = 'Figure · Platform architecture' } = Astro.props;
     Events and requests enter an agent router, then an agent team, then tools, workflows, retrieval and memory, then enterprise systems and knowledge sources, with human escalation, observability and governance around the system.
   </figcaption>
 </figure>
-
-<style>
-  @media (prefers-reduced-motion: no-preference) {
-    .platform-arch__dot {
-      animation: platform-route 3.6s ease-in-out infinite;
-    }
-  }
-
-  @keyframes platform-route {
-    0%,
-    100% {
-      opacity: 0.25;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-</style>

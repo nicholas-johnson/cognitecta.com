@@ -26,7 +26,7 @@ const { caption = 'Figure · Autonomy and policy' } = Astro.props;
             <p class="text-[0.98rem] leading-relaxed text-muted">{level.body}</p>
             {index < callcenterAutonomy.length - 1 && (
               <span
-                class="callcenter-autonomy__pulse pointer-events-none absolute bottom-0 left-8 hidden h-px w-10 bg-cobalt/70 md:block"
+                class="pointer-events-none absolute bottom-0 left-8 hidden h-px w-10 bg-graphite-950/40 md:block"
                 aria-hidden="true"
               />
             )}
@@ -36,21 +36,3 @@ const { caption = 'Figure · Autonomy and policy' } = Astro.props;
     </ol>
   </GridFrame>
 </figure>
-
-<style>
-  @media (prefers-reduced-motion: no-preference) {
-    .callcenter-autonomy__pulse {
-      animation: callcenter-autonomy 3.2s ease-in-out infinite;
-    }
-  }
-
-  @keyframes callcenter-autonomy {
-    0%,
-    100% {
-      opacity: 0.2;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-</style>

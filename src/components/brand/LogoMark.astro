@@ -1,0 +1,43 @@
+---
+interface Props {
+  class?: string;
+  tone?: 'color' | 'dark' | 'light';
+  title?: string;
+}
+
+const { class: className, tone = 'color', title } = Astro.props;
+const labelled = Boolean(title);
+const circleClass =
+  tone === 'light' ? 'text-white' : 'text-graphite-950';
+const horizonClass =
+  tone === 'color' ? 'text-horizon-500' : tone === 'light' ? 'text-white' : 'text-graphite-950';
+---
+
+<svg
+  class:list={['block', className]}
+  viewBox="0 0 100 100"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden={labelled ? undefined : 'true'}
+  role={labelled ? 'img' : undefined}
+>
+  {labelled && <title>{title}</title>}
+  <circle
+    class={circleClass}
+    cx="50"
+    cy="50"
+    r="36"
+    stroke="currentColor"
+    stroke-width="4"
+  />
+  <line
+    class={horizonClass}
+    x1="4"
+    y1="50"
+    x2="96"
+    y2="50"
+    stroke="currentColor"
+    stroke-width="4"
+    stroke-linecap="butt"
+  />
+</svg>

@@ -186,7 +186,7 @@ export const workshopCourses: Course[] = [
     shortDescription:
       'A facilitated workshop for technical teams, architects and engineering leaders around a real customer problem. The output is an architecture and a next-step roadmap, not a training certificate.',
     overview:
-      'This is consultancy delivered as a structured workshop. Your team brings a real problem. Cognitecta facilitates a day that produces clarified requirements, an AI suitability assessment, architecture options, risks, a recommended approach, an initial technical architecture and a next-step roadmap.\n\nThe day is not a lecture with a case study bolted on. It uses a repeatable method: problem framing, constraints, data and systems, options, risks, and a recommendation that can be owned by the people who will deliver it. Training content is used only where it helps the decision.\n\nParticipants should include the people who will own the system. The workshop fails if the only output is a diagram nobody is accountable for.\n\nYour organisation leaves with artefacts it can put in front of delivery, security and budget, and a clear account of what would still need discovery or a proof of concept.',
+      'This is consultancy delivered as a structured workshop. Your team brings a real problem. Linear Horizon facilitates a day that produces clarified requirements, an AI suitability assessment, architecture options, risks, a recommended approach, an initial technical architecture and a next-step roadmap.\n\nThe day is not a lecture with a case study bolted on. It uses a repeatable method: problem framing, constraints, data and systems, options, risks, and a recommendation that can be owned by the people who will deliver it. Training content is used only where it helps the decision.\n\nParticipants should include the people who will own the system. The workshop fails if the only output is a diagram nobody is accountable for.\n\nYour organisation leaves with artefacts it can put in front of delivery, security and budget, and a clear account of what would still need discovery or a proof of concept.',
     audience:
       'Technical teams, architects and engineering leaders with a live problem that might be an AI system — or might not.',
     audienceLabel: 'Technical teams, architects and engineering leaders',
@@ -233,7 +233,7 @@ export const workshopCourses: Course[] = [
       },
     ],
     practicalWork:
-      'Facilitated working session on your organisation’s problem. You produce written artefacts: problem statement, suitability assessment, options, risks, recommended architecture and a next-step roadmap. Cognitecta facilitates and contributes architecture judgement; your organisation owns the decision.',
+      'Facilitated working session on your organisation’s problem. You produce written artefacts: problem statement, suitability assessment, options, risks, recommended architecture and a next-step roadmap. Linear Horizon facilitates and contributes architecture judgement; your organisation owns the decision.',
     takeaways: [
       'Clarified requirements and success criteria',
       'AI suitability assessment',

@@ -10,4 +10,4 @@ AI is often useful where there is already a corpus, a repeated judgement, and a 
 
 That is an engineering and architecture conversation, not a product conversation. Model choice, retrieval design, evaluation, and the places the system should refuse are the work. Applying AI indiscriminately is a way of avoiding it.
 
-Cognitecta’s consulting starts there: where AI is genuinely useful in your organisation, and how to build it so that the people who will own it can still explain what it does.
+Linear Horizon’s consulting starts there: where AI is genuinely useful in your organisation, and how to build it so that the people who will own it can still explain what it does.

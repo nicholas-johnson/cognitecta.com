@@ -1,17 +1,19 @@
 export const site = {
-  name: 'Cognitecta',
-  descriptor: 'Applied AI',
-  line: 'Applied AI. From capability to production.',
+  name: 'Linear Horizon',
+  legalName: 'Cognitecta',
+  descriptor: 'Applied intelligence',
+  line: 'From complexity to outcome.',
   email: 'hello@cognitecta.com',
   url: 'https://cognitecta.com',
   description:
-    'Cognitecta helps organisations understand, design and deploy artificial intelligence — through training, consultancy, production engineering and our own agentic products.',
-  hero: 'Make AI useful.',
+    'Linear Horizon helps organisations understand, design and deploy artificial intelligence — through training, consultancy, production engineering and our own agentic products.',
+  eyebrow: 'Applied intelligence for real organisations',
+  hero: 'From complexity to outcome.',
   support:
-    'We work with organisations that need AI to do real work, not sit in a demonstration. That means training your people, designing the system properly, and taking it into production.',
-  sub: 'Understand it, design it, build it, and deploy it — with the same practice throughout.',
+    'Linear Horizon understands how work actually happens, identifies the points of friction, and builds intelligent systems that turn insight into action.',
+  sub: 'We work with organisations that need AI to do real work, not sit in a demonstration. That means training your people, designing the system properly, and taking it into production.',
   spine: 'We teach AI, design it, build it, and provide the technology to run it.',
-  why: 'Cognitecta closes the gap between understanding AI and using it — to do real work, analyse real evidence, and make better decisions.',
+  why: 'Linear Horizon closes the gap between understanding AI and using it — to do real work, analyse real evidence, and make better decisions.',
 } as const;
 
 export const founder = {
@@ -257,7 +259,7 @@ export const layers = [
   {
     id: '04',
     title: 'Accelerate with products',
-    body: 'Use existing Cognitecta technology where the problem already has a product shape.',
+    body: 'Use existing Linear Horizon technology where the problem already has a product shape.',
   },
 ] as const;
 
@@ -283,16 +285,16 @@ export const reinforcement = [
   {
     id: '04',
     kicker: 'PRODUCTS',
-    title: 'Accelerate using reusable Cognitecta technology',
+    title: 'Accelerate using reusable Linear Horizon technology',
     href: '/products',
   },
 ] as const;
 
 export const engagementStarts = [
   { title: 'Book a training programme', href: '/training' },
-  { title: 'Bring Cognitecta in for AI architecture', href: '/consulting' },
+  { title: 'Bring Linear Horizon in for AI architecture', href: '/consulting' },
   { title: 'Commission a bespoke application', href: '/build' },
-  { title: 'Deploy a Cognitecta product', href: '/products' },
+  { title: 'Deploy a Linear Horizon product', href: '/products' },
   { title: 'Customise Platform around a specific workflow', href: '/products/platform' },
   { title: 'Connect Stack to an analytical environment', href: '/products/stack' },
   { title: 'Use Wargame for a strategic decision process', href: '/products/wargame' },

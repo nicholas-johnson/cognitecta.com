@@ -1,6 +1,5 @@
 ---
-import Mark from './Mark.astro';
-import Wordmark from './Wordmark.astro';
+import LogoLockup from './brand/LogoLockup.astro';
 import { nav, currentPath, isActivePath } from '../data/site';
 import {
   productHref,
@@ -9,27 +8,16 @@ import {
 } from '../data/products';
 
 const path = currentPath(Astro.url.pathname);
-const isHome = path === '/';
 const foundation = getFoundationProducts();
 const applications = getApplicationProducts();
 ---
 
 <header class="relative z-30 border-b border-hairline">
-  <div class="h-[3px] bg-cobalt" aria-hidden="true"></div>
   <div
     class="mx-auto flex max-w-[88rem] flex-col gap-5 px-6 py-5 sm:flex-row sm:items-center sm:justify-between md:px-10 lg:px-16"
   >
-    <a
-      href="/"
-      class="flex items-center gap-3 no-underline"
-      aria-label="Cognitecta home"
-    >
-      <Mark class="size-7 text-ink" />
-      {
-        !isHome && (
-          <Wordmark class="text-[0.7rem] tracking-[0.28em] sm:text-[0.78rem]" />
-        )
-      }
+    <a href="/" class="flex min-w-0 items-center no-underline" aria-label="Linear Horizon home">
+      <LogoLockup />
     </a>
     <nav aria-label="Primary">
       <ul class="flex flex-wrap gap-x-4 gap-y-2 sm:gap-x-6">
@@ -44,7 +32,7 @@ const applications = getApplicationProducts();
                   aria-current={active ? 'page' : undefined}
                   class:list={[
                     'font-mono text-[11px] tracking-[0.16em] no-underline',
-                    active ? 'text-cobalt' : 'text-ink hover:text-cobalt',
+                    active ? 'text-horizon-600' : 'text-ink hover:text-horizon-600',
                   ]}
                 >
                   {item.label}
@@ -62,8 +50,8 @@ const applications = getApplicationProducts();
                             class:list={[
                               'block px-4 py-3 font-mono text-[11px] tracking-[0.14em] no-underline',
                               isActivePath(path, productHref(product.slug))
-                                ? 'text-cobalt'
-                                : 'text-ink hover:text-cobalt',
+                                ? 'text-horizon-600'
+                                : 'text-ink hover:text-horizon-600',
                             ]}
                           >
                             {product.name}
@@ -85,8 +73,8 @@ const applications = getApplicationProducts();
                             class:list={[
                               'block px-4 py-2.5 font-mono text-[11px] tracking-[0.14em] no-underline',
                               isActivePath(path, productHref(product.slug))
-                                ? 'text-cobalt'
-                                : 'text-ink hover:text-cobalt',
+                                ? 'text-horizon-600'
+                                : 'text-ink hover:text-horizon-600',
                             ]}
                           >
                             {product.name}

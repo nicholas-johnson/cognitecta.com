@@ -1,7 +1,7 @@
 import type { CourseCategory, CoursePathway } from './types';
 
 export const catalogueIntro =
-  'Cognitecta training is designed and delivered by experienced practitioners. Courses combine technical depth, clear explanation and hands-on work, and can be adapted to your organisation, technology stack and objectives.';
+  'Linear Horizon training is designed and delivered by experienced practitioners. Courses combine technical depth, clear explanation and hands-on work, and can be adapted to your organisation, technology stack and objectives.';
 
 export const courseCategories: CourseCategory[] = [
   {
@@ -103,7 +103,7 @@ export const coursePathways: CoursePathway[] = [
 
 export const deliveryOptions = {
   title: 'Delivery',
-  body: 'Cognitecta delivers private corporate training, on-site or as remote live training. Courses can be run as published, or adapted to your organisation’s stack, domain and experience level.',
+  body: 'Linear Horizon delivers private corporate training, on-site or as remote live training. Courses can be run as published, or adapted to your organisation’s stack, domain and experience level.',
 };
 
 export const bespokeTraining = {

@@ -2,6 +2,7 @@
 import Section from '../Section.astro';
 import GridFrame from '../diagrams/GridFrame.astro';
 import CtaLink from '../CtaLink.astro';
+import OutcomeLine from '../brand/OutcomeLine.astro';
 ---
 
 <Section class="pb-16 md:pb-24">
@@ -14,8 +15,9 @@ import CtaLink from '../CtaLink.astro';
       <p class="mt-5 max-w-lg text-[1.02rem] leading-relaxed text-muted">
         Tell us about your organisation and the problem. We can help with training, architecture, delivery, a product deployment — or the path that actually fits.
       </p>
-      <div class="mt-8">
+      <div class="mt-8 flex flex-wrap items-center gap-5">
         <CtaLink href="/contact">Talk to us</CtaLink>
+        <OutcomeLine class="hidden sm:inline-block" />
       </div>
     </div>
     <GridFrame class="bg-paper p-6 md:p-8">

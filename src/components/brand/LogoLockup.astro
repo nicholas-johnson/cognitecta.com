@@ -1,0 +1,41 @@
+---
+import LogoMark from './LogoMark.astro';
+import Wordmark from '../Wordmark.astro';
+
+interface Props {
+  variant?: 'horizontal' | 'stacked' | 'mark';
+  tone?: 'color' | 'dark' | 'light';
+  title?: string;
+  class?: string;
+}
+
+const {
+  variant = 'horizontal',
+  tone = 'color',
+  title = 'Linear Horizon',
+  class: className,
+} = Astro.props;
+
+const wordmarkTone = tone === 'light' ? 'light' : 'dark';
+const wordmarkClass = 'text-[0.68rem] sm:text-[0.74rem]';
+---
+
+{
+  variant === 'mark' ? (
+    <LogoMark class={className} tone={tone} title={title} />
+  ) : (
+    <span
+      class:list={[
+        'inline-flex min-w-0',
+        variant === 'stacked' ? 'flex-col items-start gap-2' : 'items-center gap-2.5 sm:gap-3',
+        className,
+      ]}
+    >
+      <LogoMark
+        class:list={[variant === 'stacked' ? 'size-9' : 'size-7']}
+        tone={tone}
+      />
+      <Wordmark class={wordmarkClass} tone={wordmarkTone} />
+    </span>
+  )
+}

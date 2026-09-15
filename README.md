@@ -1,6 +1,8 @@
-# Cognitecta
+# Linear Horizon
 
-Corporate site for Cognitecta — applied AI and technology. Built with Astro and Tailwind. Static output, deployed on GitHub Pages.
+Corporate site for Linear Horizon — applied intelligence for real organisations. Built with Astro and Tailwind. Static output, deployed on GitHub Pages.
+
+Linear Horizon is the public brand on this site. The site remains on the existing `cognitecta.com` domain.
 
 ## Local
 

@@ -1,46 +1,62 @@
-@import '@fontsource-variable/geist';
-@import '@fontsource-variable/geist-mono';
+@import '@fontsource-variable/inter';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+  --font-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  --color-ink: #111110;
-  --color-cream: #f4f1ea;
-  --color-paper: #fbfaf6;
-  --color-cobalt: #1b4dff;
-  --color-hairline: rgb(17 17 16 / 0.14);
-  --color-muted: rgb(17 17 16 / 0.62);
+  --color-graphite-950: #15181e;
+  --color-graphite-800: #2a2f38;
+  --color-graphite-600: #5d6572;
+  --color-horizon-500: #145bff;
+  --color-horizon-600: #0047d6;
+  --color-porcelain: #f7f5ef;
+  --color-rule: #d9dce2;
+
+  --color-ink: var(--color-graphite-950);
+  --color-cream: var(--color-porcelain);
+  --color-paper: #ffffff;
+  --color-cobalt: var(--color-horizon-600);
+  --color-horizon: var(--color-horizon-500);
+  --color-hairline: var(--color-rule);
+  --color-muted: var(--color-graphite-600);
+
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-ui: 180ms;
+  --duration-line: 700ms;
+  --duration-page: 1100ms;
 }
 
 @layer base {
   html {
+    overflow-x: clip;
     scroll-behavior: smooth;
   }
 
   body {
     font-family: var(--font-sans);
-    font-weight: 450;
-    background-color: var(--color-cream);
-    color: var(--color-ink);
+    font-weight: 400;
+    background-color: var(--color-porcelain);
+    color: var(--color-graphite-950);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background: var(--color-cobalt);
+    background: var(--color-horizon-500);
     color: #fff;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-cobalt);
+    outline: 2px solid var(--color-horizon-600);
     outline-offset: 3px;
   }
 
   a {
     text-underline-offset: 0.18em;
-    transition: color 150ms ease;
+    transition: color var(--duration-ui) var(--ease-brand);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -51,15 +67,10 @@
     *,
     *::before,
     *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
-}
-
-@utility grid-surface {
-  background-image:
-    linear-gradient(to right, rgb(17 17 16 / 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(17 17 16 / 0.045) 1px, transparent 1px);
-  background-size: 32px 32px;
-  background-position: -1px -1px;
 }

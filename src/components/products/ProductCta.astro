@@ -1,6 +1,7 @@
 ---
 import GridFrame from '../diagrams/GridFrame.astro';
 import CtaLink from '../CtaLink.astro';
+import OutcomeLine from '../brand/OutcomeLine.astro';
 import type { Product } from '../../data/products';
 
 interface Props {
@@ -16,8 +17,9 @@ const { product } = Astro.props;
     <h2 class="mt-4 max-w-lg text-[1.45rem] leading-[1.25] font-medium tracking-tight md:text-[1.7rem]">
       {product.closingQuestion}
     </h2>
-    <div class="mt-8">
+    <div class="mt-8 flex flex-wrap items-center gap-5">
       <CtaLink href={product.primaryCta.href}>Talk to us</CtaLink>
+      <OutcomeLine class="hidden sm:inline-block" />
     </div>
   </div>
   <GridFrame class="bg-paper p-6 md:p-8">

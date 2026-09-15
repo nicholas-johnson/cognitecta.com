@@ -40,7 +40,7 @@ export class CallcenterSubmitError extends Error {
 }
 
 export function enquirySubject(enquiry: EnquiryInput) {
-  return `Cognitecta enquiry — ${enquiry.organisation} — ${enquiry.course?.trim() || enquiry.interestLabel}`;
+  return `Linear Horizon enquiry — ${enquiry.organisation} — ${enquiry.course?.trim() || enquiry.interestLabel}`;
 }
 
 export function buildCallcenterEnquiry(enquiry: EnquiryInput): CallcenterEnquiry {
